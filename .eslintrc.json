@@ -1,13 +1,14 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true
   },
   "extends": [
-    "plugin:import/recommended",
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended"
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
@@ -21,7 +22,56 @@
     "import/order": [
       "error",
       {
-        "groups": [["builtin", "external"], "internal", ["parent", "sibling"], "index"],
+        "groups": [
+          ["builtin", "external"],
+          "internal",
+          ["parent", "sibling"],
+          "index",
+          "unknown"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react*,react*/**",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "@Hooks/*",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@Utils/*",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@Constant/*",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@Pages/*",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@Components/*",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@Assets/*",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@Styles/*",
+            "group": "internal",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": [],
         "newlines-between": "always",
         "alphabetize": {
           "order": "asc"
