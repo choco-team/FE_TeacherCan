@@ -1,7 +1,9 @@
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+
 import ROUTE_PATH from '@Constant/routePath';
+
 import Hd from '@Pages/Hd';
 import Landing from '@Pages/Landing';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 function Router() {
   return (

@@ -1,7 +1,8 @@
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig } from 'vite';
-import babel from 'vite-plugin-babel';
+import svgrPlugin from 'vite-plugin-svgr';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,7 +10,7 @@ export default defineConfig({
     loader: 'tsx',
   },
   server: { host: 'localhost', port: 3000 },
-  plugins: [react(), babel()],
+  plugins: [react(), tsconfigPaths(), svgrPlugin()],
   resolve: {
     alias: {
       '@Assets': path.resolve(__dirname, './src/assets'),
