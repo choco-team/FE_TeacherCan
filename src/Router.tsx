@@ -1,12 +1,13 @@
-import React from 'react';
+import Hd from '@Pages/Hd';
+import Landing from '@Pages/Landing';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import Landing from './pages/Landing';
 
 function Router() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/hd" element={<Hd />} />
       </Routes>
     </BrowserRouter>
   );

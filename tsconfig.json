@@ -14,11 +14,21 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@Assets/*": ["./src/assets/*"],
+      "@Components/*": ["./src/components/*"],
+      "@Constant/*": ["./src/constant/*"],
+      "@Hooks/*": ["./src/hooks/*"],
+      "@Pages/*": ["./src/pages/*"],
+      "@Utils/*": ["./src/utils/*"],
+      "@Styles/*": ["./src/styles/*"]
+    }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "parserOptions": {
     "project": "./tsconfig.json"
- }
+  }
 }

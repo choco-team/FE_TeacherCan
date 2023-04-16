@@ -1,8 +1,7 @@
-import React from 'react';
-import { Title } from './style';
+import * as S from './style';
 
 function Landing() {
-  return <Title>Landing</Title>;
+  return <S.Title>Landing</S.Title>;
 }
 
 export default Landing;
