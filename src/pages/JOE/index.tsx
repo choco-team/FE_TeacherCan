@@ -1,7 +1,7 @@
-import * as S from './style';
+import { Button } from './style';
 
 const Joe = () => {
-  return <S.Button>JOE TEST</S.Button>;
+  return <Button>JOE TEST</Button>;
 };
 
 export default Joe;
