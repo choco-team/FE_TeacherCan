@@ -1,8 +1,8 @@
 const ROUTE_PATH = {
   landing: '/',
   hd: '/hd',
+  milkcheck: '/milkcheck',
   joe: '/joe',
-  jy: '/jy',
 } as const;
 
 
