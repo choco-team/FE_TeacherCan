@@ -1,7 +1,7 @@
-import * as S from './style';
+import { Button } from '@Styles/common';
 
 const Name = () => {
-  return <S.Text>홍동</S.Text>;
+  return <Button>홍동</Button>;
 };
 
 export default Name;
