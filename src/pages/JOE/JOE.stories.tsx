@@ -19,3 +19,9 @@ export const Primary: Story = {
     label: 'Primary',
   },
 };
+
+export const Secondary: Story = {
+  args: {
+    label: 'Secondary',
+  },
+};
