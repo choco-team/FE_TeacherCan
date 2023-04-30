@@ -1,7 +1,12 @@
 import { Button } from './style';
 
 const Joe = () => {
-  return <Button>JOE TEST</Button>;
+  return (
+    <>
+      <h1>JOE TEST</h1>
+      <Button>NEW</Button>
+    </>
+  );
 };
 
 export default Joe;
