@@ -15,7 +15,7 @@ const Hd = () => {
   return (
     <S.Box>
       <Header />
-      <Name />
+      <Name name="홍동" age={30} />
       <S.List>
         {todos.map((todo) => (
           <TodoItem key={todo.id} todo={todo.contents} />

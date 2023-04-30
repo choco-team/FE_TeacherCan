@@ -6,6 +6,7 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-controls',
+    '@storybook/addon-styling',
   ],
   framework: {
     name: '@storybook/react-vite',
@@ -15,4 +16,5 @@ const config: StorybookConfig = {
     autodocs: true,
   },
 };
+
 export default config;
