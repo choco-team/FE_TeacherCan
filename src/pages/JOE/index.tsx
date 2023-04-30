@@ -1,7 +1,12 @@
-import { Button } from './style';
+import { Button, Input } from './style';
 
-const Joe = () => {
-  return <Button>JOE TEST</Button>;
+const Joe = ({ text }: { text: string }) => {
+  return (
+    <>
+      <Input></Input>
+      <Button>{text}</Button>
+    </>
+  );
 };
 
 export default Joe;
