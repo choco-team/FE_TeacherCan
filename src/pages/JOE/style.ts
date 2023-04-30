@@ -6,12 +6,12 @@ export const Button = styled.button`
   color: blue;
   background-color: orange;
   border-radius: 20px;
-  height: 20px;
+  height: 30px;
   width: 50px;
   align-items: center;
 `;
 
 export const Input = styled.input`
-  height: 10px;
+  height: 20px;
   width: 100px;
 `;
