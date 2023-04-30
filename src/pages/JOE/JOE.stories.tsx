@@ -1,5 +1,5 @@
-import { Button } from './style';
 import type { Meta, StoryObj } from '@storybook/react';
+import Joe from '.';
 
 /**
  * BtnJoe
@@ -7,21 +7,20 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 const meta = {
   title: 'BtnJoe',
-  component: Button,
-} satisfies Meta<typeof Button>;
+  component: Joe,
+} satisfies Meta<typeof Joe>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    primary: true,
-    label: 'Primary',
+    text: 'Primary',
   },
 };
 
 export const Secondary: Story = {
   args: {
-    label: 'Secondary',
+    text: 'NEW',
   },
 };

@@ -8,5 +8,10 @@ export const Button = styled.button`
   border-radius: 20px;
   height: 20px;
   width: 50px;
-  text-align: center;
+  align-items: center;
+`;
+
+export const Input = styled.input`
+  height: 10px;
+  width: 100px;
 `;

@@ -1,10 +1,10 @@
-import { Button } from './style';
+import { Button, Input } from './style';
 
-const Joe = () => {
+const Joe = ({ text }: { text: string }) => {
   return (
     <>
-      <h1>JOE TEST</h1>
-      <Button>NEW</Button>
+      <Input></Input>
+      <Button>{text}</Button>
     </>
   );
 };
