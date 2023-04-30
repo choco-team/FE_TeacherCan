@@ -1,7 +1,10 @@
+import { H1, Button } from "@Styles/common";
+
 function MilkCheck(){
   return(
     <div>
-      <h1>우유 마신 학생</h1>
+      <H1>우유 마신 학생</H1>
+      <Button>학생명</Button>
     </div>
   )
 }
