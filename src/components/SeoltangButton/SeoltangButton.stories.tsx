@@ -17,6 +17,7 @@ export default meta;
 export const SeoltangButtonDefault: Story = {
   args: {
     text: '버튼',
+    handleClick: () => alert('clicked!'),
     backgroundColor: 'lavender',
   },
 };

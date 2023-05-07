@@ -4,10 +4,17 @@ import * as T from './type';
 function SeoltangButton({
   type = 'button',
   text,
+  handleClick,
   backgroundColor,
 }: T.SeoltangButton) {
+  const onClick = () => handleClick();
+
   return (
-    <S.SeoltangButton type={type} backgroundColor={backgroundColor}>
+    <S.SeoltangButton
+      type={type}
+      onClick={onClick}
+      backgroundColor={backgroundColor}
+    >
       {text}
     </S.SeoltangButton>
   );
