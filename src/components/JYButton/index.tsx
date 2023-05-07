@@ -1,20 +1,8 @@
-import styled from 'styled-components';
+import * as S from './style';
+import * as T from './type';
 
-type ButtonType = {
-  backgroundColor: string;
-};
-
-const Button = styled.button<ButtonType>`
-  background-color: ${(props) => props.backgroundColor};
-`;
-
-type JYButtonProps = {
-  text: string;
-  backgroundColor: string;
-};
-
-function JYButton({ text, backgroundColor }: JYButtonProps) {
-  return <Button backgroundColor={backgroundColor}>{text}</Button>;
+function JYButton({ text, backgroundColor }: T.Button) {
+  return <S.Button backgroundColor={backgroundColor}>{text}</S.Button>;
 }
 
 export default JYButton;
