@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import HDButton from '.';
+
 /**
  * `HDButton` 컴포넌트는 연습 버튼 컴포넌트입니다.
  */
