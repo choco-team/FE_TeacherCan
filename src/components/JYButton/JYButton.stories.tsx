@@ -11,4 +11,9 @@ const meta: Meta<typeof JYButton> = {
 export default meta;
 type Story = StoryObj<typeof JYButton>;
 
-export const JYButtonDefault: Story = {};
+export const JYButtonDefault: Story = {
+  args: {
+    text: 'button',
+    backgroundColor: 'orange',
+  },
+};
