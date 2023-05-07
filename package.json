@@ -7,9 +7,17 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --cache",
+    "lint-staged": "lint-staged",
+    "postinstall": "husky install",
     "sb": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "npx chromatic --project-token=f8662398d13f"
+  },
+  "lint-staged": {
+    "**/*.{tsx,ts,jsx,js}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "-": "^0.0.1",
@@ -47,6 +55,8 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-storybook": "^0.6.11",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "prettier": "^2.8.7",
     "prop-types": "^15.8.1",
     "redux": "^4.2.1",
