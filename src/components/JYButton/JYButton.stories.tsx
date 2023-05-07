@@ -16,5 +16,6 @@ export const JYButtonDefault: Story = {
   args: {
     text: 'button',
     backgroundColor: 'orange',
+    activeColor: 'green',
   },
 };
