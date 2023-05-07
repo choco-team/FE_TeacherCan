@@ -32,10 +32,10 @@ export const Button = styled.button`
   }
 `;
 
-export const H1=styled.h1`
-color: ${theme.color.gray}
-font-weight:500;
-`
+export const H1 = styled.h1`
+  color: ${theme.color.gray};
+  font-weight: 500;
+`;
 
 export const BorderedButton = styled(Button)`
   background-color: transparent;
