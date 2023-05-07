@@ -14,4 +14,9 @@ export default meta;
 
 type Story = StoryObj<typeof HDButton>;
 
-export const HDButtonDefault: Story = {};
+export const HDButtonDefault: Story = {
+  args: {
+    text: '기본값',
+    backgroundColor: 'red',
+  },
+};
