@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Button as _Button } from '@Styles/common';
+// import { Button as _Button } from '@Styles/common';
 
 import * as T from './type';
 
