@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+
 import * as T from './type';
 
-export const Div = styled.div<T.StyledDiv>`
+export const Div = styled.div<T.Div>`
   border: 2px solid black;
   border-radius: 20px;
   font-weight: bold;

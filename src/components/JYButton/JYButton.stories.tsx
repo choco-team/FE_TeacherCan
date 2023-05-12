@@ -14,8 +14,10 @@ export default meta;
 
 export const JYButtonDefault: Story = {
   args: {
-    text: 'button',
-    backgroundColor: 'orange',
+    text1: '방학까지 ',
+    text2: 'D-129',
+    backgroundColor: '#F59E0B',
     activeColor: 'green',
+    color: 'white',
   },
 };

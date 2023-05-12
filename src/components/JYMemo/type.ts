@@ -1,5 +1,3 @@
-export type StyledDiv = {};
-
 export type Div = {
   text1: string;
   text2: string;
