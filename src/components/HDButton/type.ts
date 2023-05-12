@@ -9,4 +9,5 @@ export type Button = {
   text: string;
   variant: Variant;
   hasBorder?: boolean;
+  disabled?: boolean;
 };

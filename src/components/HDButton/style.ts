@@ -9,4 +9,6 @@ export const Button = styled.button<T.StyledButton>`
   border-radius: 20px;
   border: ${(props) =>
     props.hasBorder && `1px solid ${props.theme.border[props.variant]}`};
+  cursor: ${(props) => (props.disabled ? 'init' : 'pointer')};
+  opacity: ${(props) => (props.disabled ? '0.6' : 1)};
 `;

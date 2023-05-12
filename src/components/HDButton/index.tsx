@@ -1,9 +1,14 @@
 import * as S from './style';
 import * as T from './type';
 
-function HDButton({ text, variant, hasBorder = false }: T.Button) {
+function HDButton({
+  text,
+  variant,
+  hasBorder = false,
+  disabled = false,
+}: T.Button) {
   return (
-    <S.Button variant={variant} hasBorder={hasBorder}>
+    <S.Button variant={variant} hasBorder={hasBorder} disabled={disabled}>
       {text}
     </S.Button>
   );
