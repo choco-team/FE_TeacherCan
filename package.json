@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "-": "^0.0.1",
-    "@storybook/addon-styling": "^1.0.5",
     "D": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -33,6 +32,7 @@
     "@storybook/addon-essentials": "^7.0.7",
     "@storybook/addon-interactions": "^7.0.7",
     "@storybook/addon-links": "^7.0.7",
+    "@storybook/addon-styling": "^1.0.7",
     "@storybook/blocks": "^7.0.7",
     "@storybook/react": "^7.0.7",
     "@storybook/react-vite": "^7.0.7",
