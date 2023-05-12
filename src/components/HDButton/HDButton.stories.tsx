@@ -48,3 +48,11 @@ export const ErrorButton: Story = {
     color: 'error',
   },
 };
+
+export const BorderButton: Story = {
+  args: {
+    text: 'border button',
+    color: 'primary',
+    border: true,
+  },
+};
