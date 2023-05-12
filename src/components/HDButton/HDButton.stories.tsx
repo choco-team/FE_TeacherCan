@@ -64,3 +64,11 @@ export const BorderButton: Story = {
     hasBorder: true,
   },
 };
+
+export const DisableButton: Story = {
+  args: {
+    text: 'disable button',
+    variant: 'primary',
+    disabled: true,
+  },
+};
