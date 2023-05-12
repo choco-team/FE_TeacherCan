@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { VARIANT } from './type';
+import { VARIANT } from '@Constant/style';
 
 import HDButton from '.';
 

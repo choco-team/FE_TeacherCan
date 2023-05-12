@@ -1,12 +1,4 @@
-export const VARIANT = [
-  'primary',
-  'secondary',
-  'success',
-  'warning',
-  'error',
-] as const;
-
-export type Variant = (typeof VARIANT)[number];
+import { Variant } from 'src/types/style';
 
 export type StyledButton = {
   variant: Variant;
