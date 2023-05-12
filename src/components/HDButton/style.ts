@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
-import { Button as _Button } from '@Styles/common';
-
 import * as T from './type';
 
-export const Button = styled(_Button)<T.StyledButton>`
-  background-color: ${(props) => props.backgroundColor};
-  :active {
-    background-color: pink;
-  }
+export const Button = styled.button<T.StyledButton>`
+  background-color: ${(props) => props.theme[props.color]};
+  color: ${(props) => props.theme.text};
+  padding: 10px 20px;
+  border-radius: 10px;
 `;

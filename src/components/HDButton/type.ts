@@ -1,8 +1,8 @@
 export type StyledButton = {
-  backgroundColor: string;
+  color: 'primary' | 'secondary' | 'success' | 'warning' | 'error';
 };
 
 export type Button = {
   text: string;
-  backgroundColor: string;
+  color: 'primary' | 'secondary' | 'success' | 'warning' | 'error';
 };

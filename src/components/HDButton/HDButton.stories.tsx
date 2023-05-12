@@ -14,9 +14,37 @@ const meta: Meta<typeof HDButton> = {
 
 export default meta;
 
-export const HDButtonDefault: Story = {
+export const PrimaryButton: Story = {
   args: {
-    text: '기본값',
-    backgroundColor: 'red',
+    text: 'primary button',
+    color: 'primary',
+  },
+};
+
+export const SecondaryButton: Story = {
+  args: {
+    text: 'secondary button',
+    color: 'secondary',
+  },
+};
+
+export const SuccessButton: Story = {
+  args: {
+    text: 'success button',
+    color: 'success',
+  },
+};
+
+export const WarningButton: Story = {
+  args: {
+    text: 'warning button',
+    color: 'warning',
+  },
+};
+
+export const ErrorButton: Story = {
+  args: {
+    text: 'error button',
+    color: 'error',
   },
 };
