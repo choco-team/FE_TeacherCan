@@ -1,3 +1,4 @@
+import { ButtonHTMLAttributes } from 'react';
 import { Variant } from 'src/types/style';
 
 export type StyledButton = {
@@ -9,5 +10,7 @@ export type Button = {
   text: string;
   variant: Variant;
   hasBorder?: boolean;
-  disabled?: boolean;
-};
+} & Pick<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  'type' | 'disabled' | 'onClick'
+>;

@@ -6,9 +6,15 @@ function HDButton({
   variant,
   hasBorder = false,
   disabled = false,
+  onClick,
 }: T.Button) {
   return (
-    <S.Button variant={variant} hasBorder={hasBorder} disabled={disabled}>
+    <S.Button
+      onClick={onClick}
+      variant={variant}
+      hasBorder={hasBorder}
+      disabled={disabled}
+    >
       {text}
     </S.Button>
   );
