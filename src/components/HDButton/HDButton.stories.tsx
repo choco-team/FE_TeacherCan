@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { VARIANT } from './type';
+
 import HDButton from '.';
 
 type Story = StoryObj<typeof HDButton>;
@@ -10,6 +12,12 @@ type Story = StoryObj<typeof HDButton>;
 const meta: Meta<typeof HDButton> = {
   title: 'HDButton',
   component: HDButton,
+  argTypes: {
+    variant: {
+      options: VARIANT,
+      control: { type: 'radio' },
+    },
+  },
 };
 
 export default meta;
