@@ -1,8 +1,10 @@
 export type StyledButton = {
-  color: 'primary' | 'secondary' | 'success' | 'warning' | 'error';
+  variant: 'primary' | 'secondary' | 'success' | 'warning' | 'error';
+  hasBorder: boolean;
 };
 
 export type Button = {
   text: string;
-  color: 'primary' | 'secondary' | 'success' | 'warning' | 'error';
+  variant: 'primary' | 'secondary' | 'success' | 'warning' | 'error';
+  hasBorder?: boolean;
 };

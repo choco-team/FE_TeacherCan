@@ -17,42 +17,42 @@ export default meta;
 export const PrimaryButton: Story = {
   args: {
     text: 'primary button',
-    color: 'primary',
+    variant: 'primary',
   },
 };
 
 export const SecondaryButton: Story = {
   args: {
     text: 'secondary button',
-    color: 'secondary',
+    variant: 'secondary',
   },
 };
 
 export const SuccessButton: Story = {
   args: {
     text: 'success button',
-    color: 'success',
+    variant: 'success',
   },
 };
 
 export const WarningButton: Story = {
   args: {
     text: 'warning button',
-    color: 'warning',
+    variant: 'warning',
   },
 };
 
 export const ErrorButton: Story = {
   args: {
     text: 'error button',
-    color: 'error',
+    variant: 'error',
   },
 };
 
 export const BorderButton: Story = {
   args: {
     text: 'border button',
-    color: 'primary',
-    border: true,
+    variant: 'error',
+    hasBorder: true,
   },
 };
