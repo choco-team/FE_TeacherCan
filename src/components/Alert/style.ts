@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import * as T from './type';
 
-const color = {
+const COLOR = {
   success: '#21c55e',
   error: '#f04444',
 } as const;
@@ -12,8 +12,8 @@ export const Alert = styled.div<T.StyledAlert>`
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   background-color: ${({ type, isReverse }) =>
-    isReverse ? color[type] : 'white'};
-  color: ${({ type, isReverse }) => (isReverse ? 'white' : color[type])};
+    isReverse ? COLOR[type] : 'white'};
+  color: ${({ type, isReverse }) => (isReverse ? 'white' : COLOR[type])};
 `;
 
 export const Text = styled.div`
@@ -25,11 +25,11 @@ export const DurationBar = styled.div<T.StyledDurationBar>`
   height: 5px;
   border-radius: 5px;
   background-color: ${({ type, isReverse }) =>
-    isReverse ? 'white' : color[type]};
-  --webkit-animation: duration ${({ duration }) => duration}s linear both;
+    isReverse ? 'white' : COLOR[type]};
+  -webkit-animation: duration ${({ duration }) => duration}s linear both;
   animation: duration ${({ duration }) => duration}s linear both;
 
-  @--webkit-keyframes duration {
+  @-webkit-keyframes duration {
     from {
       width: 100%;
     }
