@@ -14,8 +14,8 @@ export default meta;
 
 export const JYButtonDefault: Story = {
   args: {
-    text1: '방학까지 ',
-    text2: 'D-129',
+    vacationtext: '방학까지 ',
+    datetext: 'D-129',
     backgroundColor: '#F59E0B',
     activeColor: 'green',
     color: 'white',

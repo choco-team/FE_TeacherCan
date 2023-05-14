@@ -1,11 +1,9 @@
-// import { Button } from '@Styles/common';
-
 import * as S from './style';
 import * as T from './type';
 
 function JYButton({
-  text1,
-  text2,
+  vacationtext,
+  datetext,
   backgroundColor,
   activeColor,
   handleClick,
@@ -23,8 +21,8 @@ function JYButton({
       color={color}
       onClick={onClick}
     >
-      {text1}
-      <S.Boldspan>{text2}</S.Boldspan>
+      {vacationtext}
+      <S.DayToVacation>{datetext}</S.DayToVacation>
     </S.Button>
   );
 }

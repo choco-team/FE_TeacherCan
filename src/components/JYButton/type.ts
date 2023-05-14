@@ -5,8 +5,8 @@ export type StyledButton = {
 
 export type Button = {
   type: 'button' | 'submit' | 'reset' | undefined;
-  text1: string;
-  text2: string;
+  vacationtext: string;
+  datetext: string;
   backgroundColor: string;
   activeColor: string;
   handleClick: () => void;

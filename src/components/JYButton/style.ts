@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-// import { Button as _Button } from '@Styles/common';
-
 import * as T from './type';
 
 export const Button = styled.button<T.StyledButton>`
@@ -15,6 +13,6 @@ export const Button = styled.button<T.StyledButton>`
   padding: 7px;
 `;
 
-export const Boldspan = styled.span`
+export const DayToVacation = styled.span`
   font-weight: bold;
 `;

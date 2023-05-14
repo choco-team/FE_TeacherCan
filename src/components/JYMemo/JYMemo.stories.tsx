@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import JYMemo from '.';
+
 type Story = StoryObj<typeof JYMemo>;
 
 const meta: Meta<typeof JYMemo> = {
