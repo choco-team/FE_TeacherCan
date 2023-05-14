@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 import * as T from './type';
 
-export const Div = styled.div<T.Div>`
-  border: 2px solid black;
-  border-radius: 20px;
-  font-weight: bold;
-  height: 150px;
-  text-align: center;
+export const MemoDiv = styled.div<T.StyledMemoDiv>`
   width: 500px;
+  height: 150px;
+  border: 2px solid ${(props) => props.bordercolor};
+  border-radius: 20px;
+  font-weight: ${(props) => props.fontweight};
+  text-align: center;
 `;
 
 export const P1 = styled.p`

@@ -14,6 +14,8 @@ export default meta;
 export const MemoDefault: Story = {
   args: {
     text1: '메모',
+    bordercolor: 'black',
+    fontweight: 'bold',
   },
 };
 
@@ -22,6 +24,8 @@ export const Lunch: Story = {
     text1: '오늘의 급식 메뉴',
     text2: '옥수수밥 미역국 돈까스 김치 오렌지쥬스',
     text3: '알러지학생: 홍길동',
+    bordercolor: 'black',
+    fontweight: 'bold',
   },
 };
 
@@ -29,5 +33,7 @@ export const Attend: Story = {
   args: {
     date: '4/23',
     text1: '출결',
+    bordercolor: 'black',
+    fontweight: 'bold',
   },
 };
