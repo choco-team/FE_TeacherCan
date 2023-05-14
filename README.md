@@ -10,6 +10,6 @@ yarn dev
 
 ---
 
-### 📚 storybook
+## 📚 Storybook
 
-[티처캔 스토리북](https://644e63891c6fc6ab0c396a5b-gkpdezagzo.chromatic.com/)
+[티처캔 스토리북](https://develop--644e63891c6fc6ab0c396a5b.chromatic.com/)
