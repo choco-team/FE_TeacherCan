@@ -8,7 +8,8 @@ function MemoButton({
   handleClick,
   activeColor,
   activeText,
-  activeBorder,
+  width,
+  height,
 }: T.MemoButton) {
   const onClick = () => {
     handleClick();
@@ -21,7 +22,8 @@ function MemoButton({
       onClick={onClick}
       activeColor={activeColor}
       activeText={activeText}
-      activeBorder={activeBorder}
+      width={width}
+      height={height}
     >
       {text}
     </S.Button>

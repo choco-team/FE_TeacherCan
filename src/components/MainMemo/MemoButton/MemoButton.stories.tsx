@@ -24,10 +24,12 @@ export default meta;
 
 export const SaveListButton: Story = {
   args: {
-    text: '저장목록',
+    text: '+',
     variant: 'white',
     activeColor: '#FCA5A5',
     activeText: 'white',
+    width: '30px',
+    height: '30px',
   },
 };
 
@@ -37,6 +39,8 @@ export const SaveButton: Story = {
     variant: 'white',
     activeColor: '#FCA5A5',
     activeText: 'white',
+    width: '90px',
+    height: '30px',
   },
 };
 
@@ -46,5 +50,7 @@ export const DeleteButton: Story = {
     variant: 'white',
     activeColor: '#FCA5A5',
     activeText: 'white',
+    width: '90px',
+    height: '30px',
   },
 };

@@ -10,8 +10,8 @@ export const Button = styled.button<T.StyledButton>`
     color: ${(props) => props.activeText};
     border: 1px solid #fca5a5;
   }
-  width: 90px;
-  height: 32px;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   text-align: center;
   align-items: center;
   border-radius: 5px;

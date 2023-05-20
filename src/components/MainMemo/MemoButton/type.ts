@@ -4,7 +4,8 @@ export type StyledButton = {
   variant: Variant;
   activeColor: string;
   activeText: string;
-  activeBorder: string;
+  width: string;
+  height: string;
 };
 
 export type MemoButton = {
@@ -14,5 +15,6 @@ export type MemoButton = {
   handleClick: () => void;
   activeColor: string;
   activeText: string;
-  activeBorder: string;
+  width: string;
+  height: string;
 };
