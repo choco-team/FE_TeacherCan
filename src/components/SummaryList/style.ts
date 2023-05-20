@@ -1,8 +1,8 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled from 'styled-components';
 
-type LayoutProps = {
-  width: string;
-};
+import { TextSkeletonStyle } from '@Styles/skeleton';
+
+import type { LayoutProps, SummaryTextProps } from './type';
 
 export const Layout = styled.div<LayoutProps>`
   display: grid;
@@ -40,10 +40,6 @@ export const SummaryItem = styled.li`
   }
 `;
 
-type SummaryTextProps = {
-  isLoading?: boolean;
-};
-
 export const SummaryText = styled.div<SummaryTextProps>`
   line-height: 160%;
 
@@ -66,25 +62,4 @@ export const NoSummaryMessage = styled.div`
 export const NoSummaryGuideMessage = styled.div`
   color: ${({ theme }) => theme.subText};
   line-height: 160%;
-`;
-
-const SkeletonAnimation = keyframes`
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-`;
-
-const TextSkeletonStyle = css`
-  color: transparent;
-
-  background: linear-gradient(-90deg, #dee2e6, #f0f0f0, #dee2e6, #f0f0f0);
-  background-size: 400%;
-
-  animation: ${SkeletonAnimation} 5s infinite ease-in-out;
 `;

@@ -1,18 +1,12 @@
 import * as S from './style';
-
-type SummaryListProps = {
-  title: string;
-  list?: string[];
-  guideMessage?: string;
-  width?: string;
-};
+import type { SummaryList } from './type';
 
 function SummaryList({
   title,
   list,
   guideMessage,
   width = '100%',
-}: SummaryListProps) {
+}: SummaryList) {
   return (
     <S.Layout width={width}>
       <S.Title>{title}</S.Title>
