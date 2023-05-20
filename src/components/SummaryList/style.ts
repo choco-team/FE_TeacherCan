@@ -20,7 +20,7 @@ export const Layout = styled.div<LayoutProps>`
 `;
 
 export const Title = styled.div`
-  font-weight: 600;
+  font-weight: 700;
 
   line-height: 160%;
 `;
@@ -51,10 +51,21 @@ export const SummaryText = styled.div<SummaryTextProps>`
 `;
 
 export const NoSummaryItem = styled.div`
-  padding: 40px;
+  padding: 4rem;
   border-top: 0.05rem solid #e2e2e2;
 
   text-align: center;
+`;
+
+export const NoSummaryMessage = styled.div`
+  margin-bottom: 1rem;
+
+  font-weight: 700;
+`;
+
+export const NoSummaryGuideMessage = styled.div`
+  color: ${({ theme }) => theme.subText};
+  line-height: 160%;
 `;
 
 const SkeletonAnimation = keyframes`

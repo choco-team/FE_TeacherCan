@@ -3,10 +3,16 @@ import * as S from './style';
 type SummaryListProps = {
   title: string;
   list?: string[];
+  guideMessage?: string;
   width?: string;
 };
 
-function SummaryList({ title, list, width = '100%' }: SummaryListProps) {
+function SummaryList({
+  title,
+  list,
+  guideMessage,
+  width = '100%',
+}: SummaryListProps) {
   return (
     <S.Layout width={width}>
       <S.Title>{title}</S.Title>
@@ -24,7 +30,10 @@ function SummaryList({ title, list, width = '100%' }: SummaryListProps) {
             </S.SummaryItem>
           ))
         ) : (
-          <S.NoSummaryItem>정보가 없습니다.</S.NoSummaryItem>
+          <S.NoSummaryItem>
+            <S.NoSummaryMessage>정보가 없습니다.</S.NoSummaryMessage>
+            <S.NoSummaryGuideMessage>{guideMessage}</S.NoSummaryGuideMessage>
+          </S.NoSummaryItem>
         )}
       </S.SummaryList>
     </S.Layout>
