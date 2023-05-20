@@ -14,4 +14,10 @@ const meta: Meta<typeof SummaryList> = {
 
 export default meta;
 
-export const DefaultSummaryList: Story = {};
+export const DefaultSummaryList: Story = {
+  args: {
+    title: '요약 정보의 타이틀',
+    list: ['옥수수밥', '미역국', '돈까스', '김치'],
+    width: '320px',
+  },
+};
