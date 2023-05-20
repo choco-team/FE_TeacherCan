@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
-export const Layout = styled.div`
+type LayoutProps = {
+  width: string;
+};
+
+export const Layout = styled.div<LayoutProps>`
   display: grid;
   row-gap: 1.5rem;
 
+  width: ${({ width }) => width};
   padding: 1.5rem;
   border-radius: 0.5rem;
 

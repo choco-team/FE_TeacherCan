@@ -1,14 +1,19 @@
 import * as S from './style';
 
-function SummaryList() {
+type SummaryListProps = {
+  title: string;
+  list: string[];
+  width?: string;
+};
+
+function SummaryList({ title, list, width = '100%' }: SummaryListProps) {
   return (
-    <S.Layout>
-      <S.Title>오늘의 급식 메뉴</S.Title>
+    <S.Layout width={width}>
+      <S.Title>{title}</S.Title>
       <S.SummaryList>
-        <S.SummaryItem>옥수수밥</S.SummaryItem>
-        <S.SummaryItem>미역국</S.SummaryItem>
-        <S.SummaryItem>돈까스</S.SummaryItem>
-        <S.SummaryItem>김치</S.SummaryItem>
+        {list.map((summary, index) => (
+          <S.SummaryItem key={index}>{summary}</S.SummaryItem>
+        ))}
       </S.SummaryList>
     </S.Layout>
   );
