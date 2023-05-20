@@ -51,3 +51,13 @@ export const NoExistListSummaryList: Story = {
     width: '320px',
   },
 };
+
+/**
+ * 요약 정보를 불러올 때 보여지는 `SummaryList`의 스토리입니다.
+ */
+export const SkeletonListSummaryList: Story = {
+  args: {
+    title: '요약 정보의 타이틀',
+    width: '320px',
+  },
+};
