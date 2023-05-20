@@ -3,7 +3,7 @@ export type StyledTextArea = {
 };
 
 export type MemoTextArea = {
-  text: string;
   handleClick: () => void;
   border: string;
+  text: string;
 };
