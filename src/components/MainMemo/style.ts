@@ -5,6 +5,6 @@ import * as T from './type';
 export const Div = styled.div<T.MemoDiv>`
   width: 400px;
   height: 400px;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: bolder;
 `;
