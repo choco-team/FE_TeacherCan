@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 type LayoutProps = {
   width: string;
@@ -40,9 +40,40 @@ export const SummaryItem = styled.li`
   }
 `;
 
+type SummaryTextProps = {
+  isLoading?: boolean;
+};
+
+export const SummaryText = styled.div<SummaryTextProps>`
+  line-height: 160%;
+
+  ${({ isLoading }) => isLoading && TextSkeletonStyle}
+`;
+
 export const NoSummaryItem = styled.div`
   padding: 40px;
   border-top: 0.05rem solid #e2e2e2;
 
   text-align: center;
+`;
+
+const SkeletonAnimation = keyframes`
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+`;
+
+const TextSkeletonStyle = css`
+  color: transparent;
+
+  background: linear-gradient(-90deg, #dee2e6, #f0f0f0, #dee2e6, #f0f0f0);
+  background-size: 400%;
+
+  animation: ${SkeletonAnimation} 5s infinite ease-in-out;
 `;
