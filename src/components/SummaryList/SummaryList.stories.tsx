@@ -14,6 +14,9 @@ const meta: Meta<typeof SummaryList> = {
 
 export default meta;
 
+/**
+ * `SummaryList`의 기본 스토리입니다.
+ */
 export const DefaultSummaryList: Story = {
   args: {
     title: '요약 정보의 타이틀',
@@ -22,6 +25,9 @@ export const DefaultSummaryList: Story = {
   },
 };
 
+/**
+ * 긴 제목과 요약이 있는 `SummaryList`의 스토리입니다.
+ */
 export const LongSummaryList: Story = {
   args: {
     title: '매우 긴 요약 정보의 타이틀 매우 긴 요약 정보의 타이틀',
@@ -31,6 +37,17 @@ export const LongSummaryList: Story = {
       '매우 긴 요약을 가진 정보3 매우 긴 요약을 가진 정보3 매우 긴 요약을 가진 정보3',
       '매우 긴 요약을 가진 정보4 매우 긴 요약을 가진 정보4 매우 긴 요약을 가진 정보4',
     ],
+    width: '320px',
+  },
+};
+
+/**
+ * 요약 정보가 없는 `SummaryList`의 스토리입니다.
+ */
+export const NoExistListSummaryList: Story = {
+  args: {
+    title: '요약 정보의 타이틀',
+    list: [],
     width: '320px',
   },
 };
