@@ -21,6 +21,8 @@ export const Layout = styled.div<LayoutProps>`
 
 export const Title = styled.div`
   font-weight: 600;
+
+  line-height: 160%;
 `;
 
 export const SummaryList = styled.ul`
@@ -31,6 +33,8 @@ export const SummaryItem = styled.li`
   padding: 1.5rem 0rem;
 
   border-top: 0.05rem solid #e2e2e2;
+
+  line-height: 160%;
 
   :last-child {
     padding-bottom: 0rem;
