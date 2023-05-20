@@ -10,11 +10,12 @@ export const Button = styled.button<T.StyledButton>`
     color: ${(props) => props.activeText};
     border: 1px solid #fca5a5;
   }
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  width: 90px;
+  height: 30px;
   text-align: center;
   align-items: center;
   border-radius: 5px;
   border: 1px solid #9ca3af;
   font-weight: bold;
+  font-size: 13px;
 `;
