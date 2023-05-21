@@ -1,17 +1,7 @@
 import * as S from './style';
+import type { WeatherBadge } from './type';
 
-type Weather = {
-  sky: string;
-  temperature: string;
-  dust: string;
-};
-
-type WeatherBadgeProps = {
-  weather?: Weather;
-  isRejected: boolean;
-};
-
-function WeatherBadge({ weather, isRejected = false }: WeatherBadgeProps) {
+function WeatherBadge({ weather, isRejected = false }: WeatherBadge) {
   return (
     <S.Layout>
       {isRejected ? (

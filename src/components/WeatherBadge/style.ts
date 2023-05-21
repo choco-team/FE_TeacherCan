@@ -1,8 +1,6 @@
 import styled, { css, keyframes } from 'styled-components';
 
-type ContainerProps = {
-  isLoading?: boolean;
-};
+import { ContainerProps } from './type';
 
 export const Layout = styled.span`
   display: inline-block;
