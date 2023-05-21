@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { flexCustom } from '@Styles/common';
-
 import MemoDiv from '.';
 
 type Story = StoryObj<typeof MemoDiv>;
@@ -19,6 +17,5 @@ export default meta;
 export const MainMemo: Story = {
   args: {
     text: '메모',
-    css: flexCustom(),
   },
 };

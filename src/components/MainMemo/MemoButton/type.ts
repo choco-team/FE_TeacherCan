@@ -1,3 +1,4 @@
+import { ButtonHTMLAttributes } from 'react';
 import { Variant } from 'src/types/style';
 
 export type StyledButton = {
@@ -8,9 +9,8 @@ export type StyledButton = {
 
 export type MemoButton = {
   variant: Variant;
-  type: 'button' | 'submit' | 'reset' | undefined;
   text: string;
   handleClick: () => void;
   activeColor: string;
   activeText: string;
-};
+} & Pick<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>;

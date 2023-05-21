@@ -9,15 +9,11 @@ function MemoButton({
   activeColor,
   activeText,
 }: T.MemoButton) {
-  const onClick = () => {
-    handleClick();
-  };
-
   return (
     <S.Button
       type={type}
       variant={variant}
-      onClick={onClick}
+      onClick={handleClick}
       activeColor={activeColor}
       activeText={activeText}
     >

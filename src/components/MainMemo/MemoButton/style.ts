@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import * as T from './type';
 
 export const Button = styled.button<T.StyledButton>`
-  align-items: center;
   width: 90px;
   height: 30px;
   border-radius: 5px;
@@ -13,6 +12,7 @@ export const Button = styled.button<T.StyledButton>`
   text-align: center;
   background-color: ${(props) => props.theme.background[props.variant]};
   color: ${(props) => props.theme.text};
+
   &:active {
     background-color: ${(props) => props.activeColor};
     color: ${(props) => props.activeText};
