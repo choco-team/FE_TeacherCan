@@ -1,6 +1,6 @@
 import { css, keyframes } from 'styled-components';
 
-export const SkeletonAnimation = keyframes`
+const SkeletonAnimation = keyframes`
   0% {
     background-position: 0% 50%;
   }
@@ -10,6 +10,13 @@ export const SkeletonAnimation = keyframes`
   100% {
     background-position: 0% 50%;
   }
+`;
+
+export const BadgeSkeletonStyle = css`
+  border-radius: 1.5rem;
+  color: transparent;
+  background: linear-gradient(-90deg, #f3f9ff, #e8f3ff, #f3f9ff, #e8f3ff);
+  background-size: 400%;
 `;
 
 export const TextSkeletonStyle = css`
