@@ -17,5 +17,13 @@ export const BadgeSkeletonStyle = css`
   color: transparent;
   background: linear-gradient(-90deg, #f3f9ff, #e8f3ff, #f3f9ff, #e8f3ff);
   background-size: 400%;
+`;
+
+export const TextSkeletonStyle = css`
+  color: transparent;
+
+  background: linear-gradient(-90deg, #dee2e6, #f0f0f0, #dee2e6, #f0f0f0);
+  background-size: 400%;
+
   animation: ${SkeletonAnimation} 5s infinite ease-in-out;
 `;
