@@ -13,4 +13,4 @@ export type MemoButton = {
   handleClick: () => void;
   activeColor: string;
   activeText: string;
-} & Pick<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>;
+} & Pick<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'disabled'>;

@@ -8,6 +8,7 @@ function MemoButton({
   handleClick,
   activeColor,
   activeText,
+  disabled,
 }: T.MemoButton) {
   return (
     <S.Button
@@ -16,6 +17,7 @@ function MemoButton({
       onClick={handleClick}
       activeColor={activeColor}
       activeText={activeText}
+      disabled={disabled}
     >
       {text}
     </S.Button>

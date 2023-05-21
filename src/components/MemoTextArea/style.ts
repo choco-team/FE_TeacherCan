@@ -7,4 +7,5 @@ export const TextArea = styled.textarea<T.StyledTextArea>`
   height: ${(props) => props.height};
   padding: 10px;
   border: ${(props) => props.border};
+  font-size: 10px;
 `;

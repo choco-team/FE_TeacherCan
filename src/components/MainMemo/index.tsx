@@ -1,17 +1,17 @@
-import MemoButton from './MemoButton/index';
-import { MemoDiv } from './MemoDiv/style';
-import AddTextArea from './MemoTextArea';
 import * as S from './style';
 import * as T from './type';
+import MemoButton from '../MemoButton/index';
+import { MemoDiv } from '../MemoDiv/style';
+import AddTextArea from '../MemoTextArea/index';
 
-function MemoTitle({ text }: T.MemoTitle) {
+function MemoTitle({ text, width, height }: T.MemoTitle) {
   const handleClick = () => {
     console.log('아직 모름');
   };
   const Border = '2px dashed #D1D5DB';
 
   return (
-    <S.Div text={text}>
+    <S.Div text={text} width={width} height={height}>
       <MemoDiv>
         {text}
         <MemoButton
@@ -47,6 +47,7 @@ function MemoTitle({ text }: T.MemoTitle) {
         activeText="white"
         type="submit"
         handleClick={handleClick}
+        disabled={false}
       />
     </S.Div>
   );
