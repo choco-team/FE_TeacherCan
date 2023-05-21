@@ -1,6 +1,7 @@
-import kakaoIcon from '@Assets/image/icon/kakao.png';
 import { FcGoogle } from 'react-icons/fc';
 import { SiNaver } from 'react-icons/si';
+
+import kakaoIcon from '@Assets/image/icon/kakao.png';
 
 import * as S from './style';
 
