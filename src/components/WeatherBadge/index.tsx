@@ -1,14 +1,22 @@
-import Cloud from '@Assets/image/Cloud.png';
-
 import * as S from './style';
 
-function WeatherBadge() {
+type Weather = {
+  sky: string;
+  temperature: string;
+  dust: string;
+};
+
+type WeatherBadgeProps = {
+  weather: Weather;
+};
+
+function WeatherBadge({ weather }: WeatherBadgeProps) {
   return (
     <S.Layout>
       <S.Container>
-        <S.WeatherIcon src={Cloud} />
-        <S.Temperature>21℃</S.Temperature>
-        <S.Dust>매우나쁨</S.Dust>
+        <S.WeatherIcon src={weather.sky} />
+        <S.Temperature>{weather.temperature}</S.Temperature>
+        <S.Dust>{weather.dust}</S.Dust>
       </S.Container>
     </S.Layout>
   );
