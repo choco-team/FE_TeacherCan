@@ -20,6 +20,7 @@ export const Layout = styled.div<LayoutProps>`
 `;
 
 export const Title = styled.div`
+  font-size: 1.8rem;
   font-weight: 700;
 
   line-height: 160%;
