@@ -37,3 +37,10 @@ export const RejectWeatherBadge: Story = {
     isRejected: true,
   },
 };
+
+/**
+ * 날씨 정보가 불러오는 동안 보여지는 `WeatherBadge`의 스토리입니다.
+ */
+export const SkeletonWeatherBadge: Story = {
+  args: {},
+};
