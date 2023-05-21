@@ -1,6 +1,6 @@
 export type TimerBtn = {
   type?: 'default' | 'selected';
-  text: string;
+  text?: string;
   isSelect: boolean;
   backgroundColor: string;
 };
