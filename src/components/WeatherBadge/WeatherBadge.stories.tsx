@@ -28,3 +28,12 @@ export const DefaultWeatherBadge: Story = {
     },
   },
 };
+
+/**
+ * 날씨 권환을 거부하였을 때의 `WeatherBadge`의 스토리입니다.
+ */
+export const RejectWeatherBadge: Story = {
+  args: {
+    isRejected: true,
+  },
+};
