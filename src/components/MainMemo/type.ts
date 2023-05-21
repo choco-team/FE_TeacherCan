@@ -1,3 +1,3 @@
-export type MemoDiv = {
+export type MemoTitle = {
   text: string;
 };
