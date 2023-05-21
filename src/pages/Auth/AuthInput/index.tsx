@@ -17,16 +17,17 @@ const INPUT_TYPE = {
   },
 };
 
-function Input({ type }: T.Input) {
-  const [isPasswordVisible, setisPasswordVisible] = useState(false);
+function AuthInput({ type }: T.AuthInput) {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  const togglePasswordVisible = () => setisPasswordVisible((prev) => !prev);
+  const togglePasswordVisible = () => setIsPasswordVisible((prev) => !prev);
 
   return (
     <S.Label>
       {INPUT_TYPE[type].label}
       <S.InputWrapper>
-        <S.Input
+        <S.AuthInput
+          name={type}
           type={isPasswordVisible ? 'text' : type}
           placeholder={INPUT_TYPE[type].placeholder}
         />
@@ -40,4 +41,4 @@ function Input({ type }: T.Input) {
   );
 }
 
-export default Input;
+export default AuthInput;

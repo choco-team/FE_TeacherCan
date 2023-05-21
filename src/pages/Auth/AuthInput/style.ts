@@ -16,9 +16,10 @@ export const InputWrapper = styled.div`
   width: 100%;
 `;
 
-export const Input = styled.input<T.StyledInput>`
+export const AuthInput = styled.input<T.StyledInput>`
   width: 100%;
-  padding: ${({ type }) => (type === 'email' ? '16px' : '16px 40px 16px 16px')};
+  padding: ${({ name }) =>
+    name === 'password' ? '16px 40px 16px 16px' : '16px'};
   border: 1px solid ${({ theme }) => theme.color.gray[300]};
   border-radius: 3px;
   color: ${({ theme }) => theme.color.primary[500]};

@@ -1,7 +1,7 @@
-export type Input = {
+export type AuthInput = {
   type: 'email' | 'password';
 };
 
 export type StyledInput = {
-  type: 'email' | 'password' | 'text';
+  name: 'email' | 'password' | 'text';
 };

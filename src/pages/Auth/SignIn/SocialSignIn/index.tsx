@@ -4,7 +4,7 @@ import { SiNaver } from 'react-icons/si';
 
 import * as S from './style';
 
-function SocialLogin() {
+function SocialSignIn() {
   return (
     <S.Layout>
       <S.Title>다른 방법으로 로그인</S.Title>
@@ -25,4 +25,4 @@ function SocialLogin() {
   );
 }
 
-export default SocialLogin;
+export default SocialSignIn;

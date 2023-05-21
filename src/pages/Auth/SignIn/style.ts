@@ -4,6 +4,7 @@ import { flexCustom } from '@Styles/common';
 
 export const Layout = styled.div`
   ${flexCustom('column', 'center', 'flex-start')}
+  width: 100%;
   max-width: 448px;
   margin: auto;
 `;

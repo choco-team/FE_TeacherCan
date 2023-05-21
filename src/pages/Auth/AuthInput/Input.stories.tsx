@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Input from '.';
+import AuthInput from '.';
 
-type Story = StoryObj<typeof Input>;
+type Story = StoryObj<typeof AuthInput>;
 
 /**
- * 로그인 Input 컴포넌트
+ * 로그인/회원가입 AuthInput 컴포넌트
  */
-const meta: Meta<typeof Input> = {
-  title: 'Login/Input',
-  component: Input,
+const meta: Meta<typeof AuthInput> = {
+  title: 'SignIn/AuthInput',
+  component: AuthInput,
 };
 
 export default meta;
