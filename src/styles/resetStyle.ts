@@ -24,10 +24,13 @@ const resetStyle = css`
     box-sizing: border-box;
   }
 
-  /* Reapply the pointer cursor for anchor tags */
   a,
   button {
-    cursor: revert;
+    cursor: pointer;
+  }
+
+  button {
+    text-align: center;
   }
 
   /* Remove list styles (bullets/numbers) */

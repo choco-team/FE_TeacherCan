@@ -1,4 +1,5 @@
 import React from 'react';
+import { MemoryRouter } from 'react-router';
 import type { Preview } from '@storybook/react';
 import GlobalStyle from '../src/styles/GlobalStyle';
 
@@ -31,7 +32,9 @@ const preview: Preview = {
     (Story) => (
       <>
         <GlobalStyle />
-        <Story />
+        <MemoryRouter initialEntries={['/']}>
+          <Story />
+        </MemoryRouter>
       </>
     ),
   ],
