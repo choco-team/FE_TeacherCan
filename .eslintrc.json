@@ -17,26 +17,16 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "import",
-    "react",
-    "@typescript-eslint"
-  ],
+  "plugins": ["import", "react", "@typescript-eslint"],
   "rules": {
     "import/no-unresolved": "off",
     "import/order": [
       "error",
       {
         "groups": [
-          [
-            "builtin",
-            "external"
-          ],
+          ["builtin", "external"],
           "internal",
-          [
-            "parent",
-            "sibling"
-          ],
+          ["parent", "sibling"],
           "index",
           "unknown"
         ],
@@ -72,7 +62,7 @@
             "position": "after"
           },
           {
-            "pattern": "@Assets/*",
+            "pattern": "@Assets/**/*",
             "group": "internal",
             "position": "after"
           },
