@@ -1,27 +1,47 @@
 import * as S from './style';
 import * as T from './type';
 
-function MemoButton({
+function Button({
   variant,
   type,
-  text,
-  handleClick,
-  activeColor,
-  activeText,
   disabled,
-}: T.MemoButton) {
+  handleClick,
+  width,
+  height,
+  borderRadius,
+  border,
+  activeBorder,
+  backgroundColor,
+  activeColor,
+  text,
+  color,
+  activeText,
+  textAlign,
+  fontSize,
+  fontWeight,
+}: T.StyledButton) {
   return (
     <S.Button
-      type={type}
       variant={variant}
-      onClick={handleClick}
-      activeColor={activeColor}
-      activeText={activeText}
+      type={type}
       disabled={disabled}
+      onClick={handleClick}
+      width={width}
+      height={height}
+      borderRadius={borderRadius}
+      border={border}
+      activeBorder={activeBorder}
+      backgroundColor={backgroundColor}
+      activeColor={activeColor}
+      color={color}
+      activeText={activeText}
+      textAlign={textAlign}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
     >
       {text}
     </S.Button>
   );
 }
 
-export default MemoButton;
+export default Button;

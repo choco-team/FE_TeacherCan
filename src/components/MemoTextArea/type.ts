@@ -2,6 +2,7 @@ export type StyledTextArea = {
   width: string;
   height: string;
   border: string;
+  color: string;
 };
 
 export type MemoTextArea = {
@@ -10,4 +11,5 @@ export type MemoTextArea = {
   handleClick: () => void;
   border: string;
   text: string;
+  color: string;
 };

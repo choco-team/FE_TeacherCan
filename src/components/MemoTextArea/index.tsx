@@ -7,6 +7,7 @@ function AddTextArea({
   border,
   width,
   height,
+  color,
 }: T.MemoTextArea) {
   return (
     <S.TextArea
@@ -15,6 +16,7 @@ function AddTextArea({
       border={border}
       placeholder={text}
       onClick={handleClick}
+      color={color}
     />
   );
 }

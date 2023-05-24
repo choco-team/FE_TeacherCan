@@ -10,7 +10,7 @@ const darkTheme = Object.assign(theme, {
     success: theme.color.success[600],
     warning: theme.color.warning[500],
     error: theme.color.error[500],
-    white: theme.color.white,
+    white: theme.color.black,
   },
   border: {
     primary: theme.color.primary[700],
@@ -18,7 +18,7 @@ const darkTheme = Object.assign(theme, {
     success: theme.color.success[900],
     warning: theme.color.warning[700],
     error: theme.color.error[700],
-    white: theme.color.white,
+    white: theme.color.black,
   },
 });
 

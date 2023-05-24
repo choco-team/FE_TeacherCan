@@ -18,9 +18,10 @@ export default meta;
 
 export const AddTextAreaDefault: Story = {
   args: {
-    text: '메모를 남겨주세요',
+    text: '메모를 남겨주세요.',
     border: Border,
     width: '350px',
     height: '130px',
+    color: '#a1a1aa',
   },
 };
