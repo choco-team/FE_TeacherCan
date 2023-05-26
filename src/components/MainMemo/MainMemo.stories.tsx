@@ -17,7 +17,7 @@ export default meta;
 export const MainMemo: Story = {
   args: {
     text: '메모',
-    width: '400px',
-    height: '400px',
+    width: '280px',
+    height: '280px',
   },
 };

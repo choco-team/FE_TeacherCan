@@ -15,40 +15,66 @@ function MemoTitle({ text, width, height }: T.MemoTitle) {
       <MemoDiv>
         {text}
         <MemoButton
-          variant="white"
-          text="저장목록"
-          activeColor="#FCA5A5"
-          activeText="white"
+          variant="primary"
           type="button"
           handleClick={handleClick}
+          text="저장목록"
+          width="90px"
+          height="30px"
+          activeColor="white"
+          borderRadius="5px"
+          border="1px solid #fca5a5"
+          activeBorder="1px solid #d4d4d8"
+          activeText="black"
+          textAlign="center"
+          fontSize="14px"
+          fontWeight="bold"
         />
       </MemoDiv>
       <MemoDiv>
         <AddTextArea
           text="메모를 남겨주세요"
-          width="350px"
+          width="250px"
           height="130px"
           handleClick={handleClick}
           border={Border}
+          color="#71717a"
         />
       </MemoDiv>
-      <MemoButton
-        variant="white"
-        text="취소"
-        activeColor="#FCA5A5"
-        activeText="white"
-        type="reset"
-        handleClick={handleClick}
-      />
-      <MemoButton
-        variant="white"
-        text="저장"
-        activeColor="#FCA5A5"
-        activeText="white"
-        type="submit"
-        handleClick={handleClick}
-        disabled={false}
-      />
+      <MemoDiv>
+        <MemoButton
+          variant="primary"
+          type="reset"
+          handleClick={handleClick}
+          text="취소"
+          width="90px"
+          height="30px"
+          activeColor="white"
+          borderRadius="5px"
+          border="1px solid #fca5a5"
+          activeBorder="1px solid #d4d4d8"
+          activeText="black"
+          textAlign="center"
+          fontSize="14px"
+          fontWeight="bold"
+        />
+        <MemoButton
+          variant="primary"
+          type="submit"
+          handleClick={handleClick}
+          text="저장"
+          width="90px"
+          height="30px"
+          activeColor="white"
+          borderRadius="5px"
+          border="1px solid #fca5a5"
+          activeBorder="1px solid #d4d4d8"
+          activeText="black"
+          textAlign="center"
+          fontSize="14px"
+          fontWeight="bold"
+        />
+      </MemoDiv>
     </S.Div>
   );
 }

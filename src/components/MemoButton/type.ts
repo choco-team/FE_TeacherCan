@@ -5,6 +5,7 @@ export type StyledButton = {
   variant?: Variant;
   width?: string;
   height?: string;
+  margin?: string;
   border?: string;
   borderRadius?: string;
   activeBorder?: string;
