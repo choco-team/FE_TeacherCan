@@ -20,7 +20,7 @@ export const AddTextAreaDefault: Story = {
   args: {
     text: '메모를 남겨주세요.',
     border: Border,
-    width: '250px',
+    width: '260px',
     height: '130px',
     color: '#71717a',
   },

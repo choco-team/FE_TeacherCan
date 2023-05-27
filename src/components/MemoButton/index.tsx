@@ -10,6 +10,7 @@ function Button({
   height,
   borderRadius,
   border,
+  marginLeft,
   activeBorder,
   backgroundColor,
   activeColor,
@@ -30,6 +31,7 @@ function Button({
       height={height}
       borderRadius={borderRadius}
       border={border}
+      marginLeft={marginLeft}
       activeBorder={activeBorder}
       backgroundColor={backgroundColor}
       activeColor={activeColor}

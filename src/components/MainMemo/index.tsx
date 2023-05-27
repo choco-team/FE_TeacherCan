@@ -13,7 +13,7 @@ function MemoTitle({ text, width, height }: T.MemoTitle) {
   return (
     <S.Div text={text} width={width} height={height}>
       <MemoDiv>
-        {text}
+        <span style={{ width: '200px' }}>{text}</span>
         <MemoButton
           variant="primary"
           type="button"
@@ -34,7 +34,7 @@ function MemoTitle({ text, width, height }: T.MemoTitle) {
       <MemoDiv>
         <AddTextArea
           text="메모를 남겨주세요"
-          width="250px"
+          width="260px"
           height="130px"
           handleClick={handleClick}
           border={Border}
@@ -49,10 +49,10 @@ function MemoTitle({ text, width, height }: T.MemoTitle) {
           text="취소"
           width="90px"
           height="30px"
-          activeColor="white"
           borderRadius="5px"
           border="1px solid #fca5a5"
           activeBorder="1px solid #d4d4d8"
+          activeColor="white"
           activeText="black"
           textAlign="center"
           fontSize="14px"
@@ -68,6 +68,7 @@ function MemoTitle({ text, width, height }: T.MemoTitle) {
           activeColor="white"
           borderRadius="5px"
           border="1px solid #fca5a5"
+          marginLeft="7px"
           activeBorder="1px solid #d4d4d8"
           activeText="black"
           textAlign="center"

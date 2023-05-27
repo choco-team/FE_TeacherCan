@@ -6,6 +6,7 @@ export type StyledButton = {
   width?: string;
   height?: string;
   margin?: string;
+  marginLeft?: string;
   border?: string;
   borderRadius?: string;
   activeBorder?: string;
