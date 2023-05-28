@@ -47,7 +47,6 @@ export const LongSummaryList: Story = {
 export const NoExistListSummaryList: Story = {
   args: {
     title: '요약 정보의 타이틀',
-    list: [],
     guideMessage: '어떤 조치를 취해주세요.',
     width: '320px',
   },
@@ -60,5 +59,6 @@ export const SkeletonListSummaryList: Story = {
   args: {
     title: '요약 정보의 타이틀',
     width: '320px',
+    isLoading: true,
   },
 };
