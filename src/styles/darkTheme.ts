@@ -1,6 +1,7 @@
 import theme from './theme';
 
-const darkTheme = Object.assign(theme, {
+const darkTheme = {
+  ...theme,
   text: theme.color.neutral[100],
   subText: theme.color.neutral[400],
   background: {
@@ -20,6 +21,6 @@ const darkTheme = Object.assign(theme, {
     error: theme.color.error[700],
     white: theme.color.white,
   },
-});
+};
 
 export default darkTheme;
