@@ -3,12 +3,15 @@ import { Variant } from 'src/types/style';
 
 export type StyledButton = {
   variant?: Variant;
+  boxSizing?: string;
   width?: string;
+  minWidth?: string;
   height?: string;
   margin?: string;
   marginLeft?: string;
   border?: string;
   borderRadius?: string;
+  padding?: string;
   activeBorder?: string;
   handleClick?: () => void;
   backgroundColor?: string;

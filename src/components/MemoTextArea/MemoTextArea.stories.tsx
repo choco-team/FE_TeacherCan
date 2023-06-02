@@ -1,22 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import AddTextArea from '.';
+import MemoTextArea from './index';
 
-type Story = StoryObj<typeof AddTextArea>;
+type Story = StoryObj<typeof MemoTextArea>;
 
 /**
- * `MemoInput` 컴포넌트는 메인 화면의 메모 추가 컴포넌트입니다.
+ * `MemoTextAreaDefault` 컴포넌트는 메인 화면의 메모 추가 컴포넌트입니다.
  */
 const Border = '2px dashed #D1D5DB';
 
-const meta: Meta<typeof AddTextArea> = {
-  title: 'AddTextArea',
-  component: AddTextArea,
+const meta: Meta<typeof MemoTextArea> = {
+  title: 'MemoTextArea',
+  component: MemoTextArea,
 };
 
 export default meta;
 
-export const AddTextAreaDefault: Story = {
+export const MemoTextAreaDefault: Story = {
   args: {
     text: '메모를 남겨주세요.',
     border: Border,

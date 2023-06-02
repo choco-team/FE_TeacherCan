@@ -6,11 +6,14 @@ function Button({
   type,
   disabled,
   handleClick,
+  boxSizing,
   width,
+  minWidth,
   height,
   borderRadius,
   border,
   marginLeft,
+  padding,
   activeBorder,
   backgroundColor,
   activeColor,
@@ -27,11 +30,14 @@ function Button({
       type={type}
       disabled={disabled}
       onClick={handleClick}
+      boxSizing={boxSizing}
       width={width}
+      minWidth={minWidth}
       height={height}
       borderRadius={borderRadius}
       border={border}
       marginLeft={marginLeft}
+      padding={padding}
       activeBorder={activeBorder}
       backgroundColor={backgroundColor}
       activeColor={activeColor}

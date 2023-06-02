@@ -1,7 +1,7 @@
 import * as S from './style';
 import * as T from './type';
 
-function AddTextArea({
+function MemoTextArea({
   text,
   handleClick,
   border,
@@ -11,6 +11,7 @@ function AddTextArea({
 }: T.MemoTextArea) {
   return (
     <S.TextArea
+      text={text}
       width={width}
       height={height}
       border={border}
@@ -21,4 +22,4 @@ function AddTextArea({
   );
 }
 
-export default AddTextArea;
+export default MemoTextArea;

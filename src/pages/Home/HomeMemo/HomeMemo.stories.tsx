@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import MemoTitle from '.';
+import HomeMemo from '.';
 
-type Story = StoryObj<typeof MemoTitle>;
+type Story = StoryObj<typeof HomeMemo>;
 
 /**
  * `MemoDiv` 컴포넌트는 메인 화면의 메모 컴포넌트입니다.
  */
-const meta: Meta<typeof MemoTitle> = {
-  title: 'MemoDiv',
-  component: MemoTitle,
+const meta: Meta<typeof HomeMemo> = {
+  title: 'HomeMemo',
+  component: HomeMemo,
 };
 
 export default meta;
