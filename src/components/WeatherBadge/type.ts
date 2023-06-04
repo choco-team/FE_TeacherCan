@@ -7,6 +7,7 @@ type Weather = {
 type WeatherBadge = {
   weather?: Weather;
   isRejected: boolean;
+  isLoading: boolean;
 };
 
 export type ContainerProps = {
