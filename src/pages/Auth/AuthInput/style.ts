@@ -18,11 +18,20 @@ export const InputWrapper = styled.div`
 
 export const AuthInput = styled.input<T.StyledInput>`
   width: 100%;
+  height: calc(1.6rem + 36px);
   padding: ${({ name }) =>
     name === 'password' ? '16px 40px 16px 16px' : '16px'};
   border: 1px solid ${({ theme }) => theme.color.gray[300]};
   border-radius: 3px;
   color: ${({ theme }) => theme.color.primary[500]};
+
+  &:hover {
+    border-color: ${({ theme }) => theme.color.gray[400]};
+  }
+
+  &:focus {
+    border-color: ${({ theme }) => theme.color.primary[500]};
+  }
 
   &::placeholder {
     color: ${({ theme }) => theme.color.gray[300]};

@@ -30,6 +30,7 @@ function AuthInput({ type }: T.AuthInput) {
           name={type}
           type={isPasswordVisible ? 'text' : type}
           placeholder={INPUT_TYPE[type].placeholder}
+          spellCheck={false}
         />
         {type === 'password' && (
           <S.EyeButton onClick={togglePasswordVisible}>
