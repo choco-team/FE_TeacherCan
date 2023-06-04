@@ -1,26 +1,30 @@
 import styled from 'styled-components';
 
 import * as T from './type';
-
 export const Button = styled.button<T.StyledButton>`
-  box-sizing: ${(props) => props.boxSizing};
-  width: ${(props) => props.width};
+  width: ${(props) => (props.fullWidth ? '100%' : props.width)};
   min-width: ${(props) => props.minWidth};
-  height: ${(props) => props.height};
   border-radius: ${(props) => props.borderRadius};
-  border: ${(props) => props.border};
+  border: 1px solid ${(props) => props.theme.background[props.variant]};
   margin: ${(props) => props.margin};
-  margin-left: ${(props) => props.marginLeft};
   padding: ${(props) => props.padding};
   background-color: ${(props) => props.theme.background[props.variant]};
   color: ${(props) => props.theme.text};
-  text-align: ${(props) => props.textAlign};
+  text-align: center;
   font-size: ${(props) => props.fontSize};
-  font-weight: ${(props) => props.fontWeight};
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+
+  &:hover {
+    background-color: ${(props) => props.theme.hoverBackground[props.variant]};
+  }
 
   &:active {
-    background-color: ${(props) => props.activeColor};
-    color: ${(props) => props.activeText};
-    border: ${(props) => props.activeBorder};
+    background-color: ${(props) => props.theme.activeBackground[props.variant]};
+  }
+
+  &:disabled {
+    background-color: ${(props) => props.theme.color.gray[300]};
+    border-color: ${(props) => props.theme.color.gray[300]};
+    cursor: not-allowed;
   }
 `;

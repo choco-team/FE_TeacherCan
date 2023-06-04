@@ -1,36 +1,27 @@
-import {
-  SaveListButton,
-  SaveButton,
-  DeleteButton,
-} from '@Components/Button/Button.stories';
-import { MemoDiv } from '@Components/MemoDiv/style';
-import { MemoTextAreaDefault } from '@Components/MemoTextArea/MemoTextArea.stories';
-
 import Button from '@Components/Button';
-import MemoTextArea from '@Components/MemoTextArea';
+import TextArea from '@Components/TextArea';
 
 import * as S from './style';
-import * as T from './type';
 
-function HomeMemo({ text, width, height }: T.HomeMemo) {
+function HomeMemo() {
   const handleClick = () => {
     console.log('아직 모름');
   };
 
   return (
-    <S.Div text={text} width={width} height={height}>
-      <MemoDiv>
-        <span>{text}</span>
-        <Button {...SaveListButton.args} handleClick={handleClick} />
-      </MemoDiv>
-      <MemoDiv>
-        <MemoTextArea {...MemoTextAreaDefault.args} />
-      </MemoDiv>
-      <MemoDiv>
-        <Button {...DeleteButton.args} />
-        <Button {...SaveButton.args} />
-      </MemoDiv>
-    </S.Div>
+    <S.Layout>
+      <S.HeaderContainer>
+        <S.Label>메모</S.Label>
+        <Button handleClick={handleClick} fontSize="1.4rem">
+          저장목록
+        </Button>
+      </S.HeaderContainer>
+      <TextArea placeholder="메모를 남겨주세요." border="dashed" rows={4} />
+      <S.ButtonContainer>
+        <Button fontSize="1.4rem">취소</Button>
+        <Button fontSize="1.4rem">저장</Button>
+      </S.ButtonContainer>
+    </S.Layout>
   );
 }
 

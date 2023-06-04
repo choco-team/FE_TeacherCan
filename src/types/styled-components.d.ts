@@ -11,5 +11,7 @@ declare module 'styled-components' {
     subText: string;
     background: Partial<Variant, string>;
     border: Partial<Variant, string>;
+    activeBackground: Partial<Variant, string>;
+    hoverBackground: Partial<Variant, string>;
   }
 }

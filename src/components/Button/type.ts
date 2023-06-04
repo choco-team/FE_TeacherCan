@@ -1,26 +1,23 @@
 import { ButtonHTMLAttributes } from 'react';
 import { Variant } from 'src/types/style';
 
+// hover도 active와 스타일 다르게
 export type StyledButton = {
+  className?: string;
   variant?: Variant;
-  boxSizing?: string;
+  concept?: 'text' | 'contained' | 'outlined';
   width?: string;
+  fullWidth?: boolean;
   minWidth?: string;
-  height?: string;
   margin?: string;
-  marginLeft?: string;
   border?: string;
   borderRadius?: string;
   padding?: string;
-  activeBorder?: string;
   handleClick?: () => void;
   backgroundColor?: string;
-  activeColor?: string;
-  activeText?: string;
-  text?: string;
+  activeBackgroundColor?: string;
+  hoverBackgroundColor?: string;
   color?: string;
-  textAlign?: string;
-  fontFamily?: string;
   fontSize?: string;
   fontWeight?: string;
 } & Pick<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'disabled'>;

@@ -20,6 +20,12 @@ const darkTheme = Object.assign(theme, {
     error: theme.color.error[700],
     white: theme.color.black,
   },
+  hoverBackground: {
+    primary: theme.color.primary[300],
+  },
+  activeBackground: {
+    primary: theme.color.primary[800],
+  },
 });
 
 export default darkTheme;

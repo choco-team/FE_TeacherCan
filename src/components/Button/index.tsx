@@ -2,52 +2,38 @@ import * as S from './style';
 import * as T from './type';
 
 function Button({
-  variant,
-  type,
-  disabled,
+  className,
+  variant = 'primary',
+  concept = 'contained',
+  type = 'button',
+  disabled = false,
   handleClick,
-  boxSizing,
   width,
-  minWidth,
-  height,
-  borderRadius,
-  border,
-  marginLeft,
-  padding,
-  activeBorder,
-  backgroundColor,
-  activeColor,
-  text,
-  color,
-  activeText,
-  textAlign,
-  fontSize,
-  fontWeight,
-}: T.StyledButton) {
+  fullWidth = false,
+  minWidth = '6.4rem',
+  borderRadius = '3px',
+  padding = '0.8rem 1.2rem',
+  children,
+  fontSize = '1.6rem',
+  fontWeight = '600',
+}: React.PropsWithChildren<T.StyledButton>) {
   return (
     <S.Button
+      className={className}
       variant={variant}
+      concept={concept}
       type={type}
       disabled={disabled}
       onClick={handleClick}
-      boxSizing={boxSizing}
       width={width}
+      fullWidth={fullWidth}
       minWidth={minWidth}
-      height={height}
       borderRadius={borderRadius}
-      border={border}
-      marginLeft={marginLeft}
       padding={padding}
-      activeBorder={activeBorder}
-      backgroundColor={backgroundColor}
-      activeColor={activeColor}
-      color={color}
-      activeText={activeText}
-      textAlign={textAlign}
       fontSize={fontSize}
       fontWeight={fontWeight}
     >
-      {text}
+      {children}
     </S.Button>
   );
 }
