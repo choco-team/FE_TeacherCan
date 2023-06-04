@@ -52,7 +52,7 @@
             "position": "after"
           },
           {
-            "pattern": "@Pages/*",
+            "pattern": "@Pages/**/*",
             "group": "internal",
             "position": "after"
           },
@@ -68,6 +68,11 @@
           },
           {
             "pattern": "@Styles/*",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "@Types/*",
             "group": "internal",
             "position": "after"
           }
