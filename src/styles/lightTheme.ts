@@ -2,7 +2,7 @@ import theme from './theme';
 
 const lightTheme = {
   ...theme,
-  text: theme.color.neutral[800],
+  text: theme.color.neutral[100],
   subText: theme.color.neutral[400],
   background: {
     basic: theme.color.white,

@@ -1,11 +1,10 @@
 import { ButtonHTMLAttributes } from 'react';
 import { Variant } from 'src/types/style';
 
-// hover도 active와 스타일 다르게
 export type StyledButton = {
   className?: string;
   variant?: Variant;
-  concept?: 'text' | 'contained' | 'outlined';
+  concept: 'text' | 'contained' | 'outlined';
   width?: string;
   fullWidth?: boolean;
   minWidth?: string;

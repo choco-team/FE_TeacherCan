@@ -2,7 +2,7 @@ import theme from './theme';
 
 const darkTheme = {
   ...theme,
-  text: theme.color.neutral[100],
+  text: theme.color.neutral[800],
   subText: theme.color.neutral[400],
   background: {
     basic: theme.color.black,

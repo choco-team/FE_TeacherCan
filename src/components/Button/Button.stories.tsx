@@ -48,3 +48,17 @@ export const DisabledButton: Story = {
     disabled: true,
   },
 };
+
+export const OutlinedButton: Story = {
+  args: {
+    children: '버튼',
+    concept: 'outlined',
+  },
+};
+
+export const TextButton: Story = {
+  args: {
+    children: '버튼',
+    concept: 'text',
+  },
+};
