@@ -23,9 +23,19 @@ const darkTheme = {
   },
   hoverBackground: {
     primary: theme.color.primary[300],
+    secondary: theme.color.secondary[300],
+    success: theme.color.success[400],
+    warning: theme.color.warning[300],
+    error: theme.color.error[300],
+    white: theme.color.black,
   },
   activeBackground: {
     primary: theme.color.primary[800],
+    secondary: theme.color.secondary[800],
+    success: theme.color.success[900],
+    warning: theme.color.warning[800],
+    error: theme.color.error[800],
+    white: theme.color.black,
   },
 };
 

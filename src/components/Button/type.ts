@@ -4,7 +4,7 @@ import { Variant } from 'src/types/style';
 export type StyledButton = {
   className?: string;
   variant?: Variant;
-  concept: 'text' | 'contained' | 'outlined';
+  concept?: 'text' | 'contained' | 'outlined';
   width?: string;
   fullWidth?: boolean;
   minWidth?: string;
@@ -14,8 +14,6 @@ export type StyledButton = {
   padding?: string;
   handleClick?: () => void;
   backgroundColor?: string;
-  activeBackgroundColor?: string;
-  hoverBackgroundColor?: string;
   color?: string;
   fontSize?: string;
   fontWeight?: string;

@@ -1,13 +1,6 @@
 import styled from 'styled-components';
 
-import theme from '@Styles/theme';
-
 import * as T from './type';
-
-export const BACKGROUND_COLOR = {
-  text: `${theme.color.neutral[800]}`,
-  outlined: `${theme.color.neutral[800]}`,
-} as const;
 
 export const Button = styled.button<T.StyledButton>`
   width: ${(props) => (props.fullWidth ? '100%' : props.width)};
@@ -18,14 +11,14 @@ export const Button = styled.button<T.StyledButton>`
       props.concept === 'contained'
         ? props.theme.background[props.variant]
         : props.concept === 'outlined'
-        ? props.theme.color.text
+        ? props.theme.background[props.variant]
         : 'transparent'};
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
   background-color: ${(props) =>
     props.concept === 'contained'
       ? props.theme.background[props.variant]
-      : props.theme.color.text};
+      : 'transparent'};
   color: ${(props) =>
     props.concept === 'contained'
       ? props.theme.text
