@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { CATEGORIES } from '@Constant/routePath';
+
 import NavigationLink from '.';
 
 type Story = StoryObj<typeof NavigationLink>;
@@ -14,4 +16,11 @@ const meta: Meta<typeof NavigationLink> = {
 
 export default meta;
 
-export const DefaultNavigationLink: Story = {};
+export const DefaultNavigationLink: Story = {
+  args: {
+    category: 'main',
+    isSelected: false,
+    name: CATEGORIES.curriculum.name,
+    path: CATEGORIES.curriculum.path,
+  },
+};

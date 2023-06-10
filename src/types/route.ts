@@ -5,14 +5,14 @@ import {
 
 type MainCategory = {
   type: 'main';
-  name: string;
+  name: MainCategoriesNames;
   path: string;
   children: Readonly<MiddleCategoriesNames[]>;
 };
 
 type MiddleCategory = {
   type: 'middle';
-  name: string;
+  name: MiddleCategoriesNames;
   path: string;
 };
 
@@ -24,4 +24,4 @@ type CategoriesNames = MainCategoriesNames | MiddleCategoriesNames;
 
 type Categories = Record<CategoriesNames, MainCategory | MiddleCategory>;
 
-export type { Categories };
+export type { Categories, CategoriesNames };

@@ -4,6 +4,7 @@ const lightTheme = {
   ...theme,
   text: theme.color.neutral[800],
   subText: theme.color.neutral[400],
+  accentText: theme.color.primary[500],
   background: {
     basic: theme.color.white,
     primary: theme.color.primary[500],

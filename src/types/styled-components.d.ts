@@ -9,6 +9,7 @@ declare module 'styled-components' {
   export interface DefaultTheme extends Theme {
     text: string;
     subText: string;
+    accentText: string;
     background: Partial<Variant, string>;
     border: Partial<Variant, string>;
     activeBackground: Partial<Variant, string>;
