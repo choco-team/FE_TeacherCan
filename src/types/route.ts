@@ -6,6 +6,7 @@ import {
 } from '@Constant/routePath';
 
 type MainCategory = {
+  key: MainCategoriesNames;
   category: 'main';
   name: string;
   path: string;
@@ -13,6 +14,7 @@ type MainCategory = {
 };
 
 type MiddleCategory = {
+  key: MiddleCategoriesNames;
   category: 'middle';
   name: string;
   path: string;
@@ -25,6 +27,6 @@ type MiddleCategoriesNames = (typeof MIDDLE_CATEGORY_NAMES)[number];
 
 type CategoriesNames = MainCategoriesNames | MiddleCategoriesNames;
 
-type Categories = Record<CategoriesNames, MainCategory | MiddleCategory>;
+type Categories = Array<MainCategory | MiddleCategory>;
 
 export type { Categories, CategoriesNames };

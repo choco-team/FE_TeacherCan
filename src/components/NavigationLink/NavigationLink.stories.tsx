@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
-import { CATEGORIES } from '@Constant/routePath';
+import { BiTimer } from 'react-icons/bi';
 
 import NavigationLink from '.';
 
@@ -21,10 +20,10 @@ export default meta;
  */
 export const DefaultNavigationLink: Story = {
   args: {
-    category: CATEGORIES.curriculum.category,
+    category: 'main',
     isSelected: false,
-    name: CATEGORIES.curriculum.name,
-    path: CATEGORIES.curriculum.path,
+    name: '교육과정',
+    path: '',
   },
 };
 
@@ -33,10 +32,10 @@ export const DefaultNavigationLink: Story = {
  */
 export const SelectedHeaderNavigationLink: Story = {
   args: {
-    category: CATEGORIES.curriculum.category,
+    category: 'main',
     isSelected: true,
-    name: CATEGORIES.curriculum.name,
-    path: CATEGORIES.curriculum.path,
+    name: '교육과정',
+    path: '',
   },
 };
 
@@ -45,14 +44,11 @@ export const SelectedHeaderNavigationLink: Story = {
  */
 export const SideNavigationLink: Story = {
   args: {
-    category: CATEGORIES.academicCalendar.category,
+    category: 'middle',
     isSelected: false,
-    name: CATEGORIES.academicCalendar.name,
-    path: CATEGORIES.academicCalendar.path,
-    Icon:
-      CATEGORIES.academicCalendar.category === 'middle'
-        ? CATEGORIES.academicCalendar.Icon
-        : undefined,
+    name: '타이머',
+    path: '',
+    Icon: BiTimer,
   },
 };
 
@@ -61,13 +57,10 @@ export const SideNavigationLink: Story = {
  */
 export const SideSelectedNavigationLink: Story = {
   args: {
-    category: CATEGORIES.academicCalendar.category,
+    category: 'middle',
     isSelected: true,
-    name: CATEGORIES.academicCalendar.name,
-    path: CATEGORIES.academicCalendar.path,
-    Icon:
-      CATEGORIES.academicCalendar.category === 'middle'
-        ? CATEGORIES.academicCalendar.Icon
-        : undefined,
+    name: '타이머',
+    path: '',
+    Icon: BiTimer,
   },
 };

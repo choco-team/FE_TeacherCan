@@ -33,26 +33,30 @@ export const MIDDLE_CATEGORY_NAMES = [
   'weather',
 ] as const;
 
-export const CATEGORIES: Categories = {
-  curriculum: {
+export const CATEGORIES: Categories = [
+  {
+    key: 'curriculum',
     category: 'main',
     name: '교육과정',
     path: 'curriculum',
     children: ['academicCalendar', 'timeTable', 'lunchMenu'],
   },
-  classJournal: {
+  {
+    key: 'classJournal',
     category: 'main',
     name: '학급일지',
     path: 'class-journal',
     children: [],
   },
-  studentManagement: {
+  {
+    key: 'studentManagement',
     category: 'main',
     name: '학생관리',
     path: 'student-management',
     children: [],
   },
-  tools: {
+  {
+    key: 'tools',
     category: 'main',
     name: '도구',
     path: 'tools',
@@ -66,78 +70,92 @@ export const CATEGORIES: Categories = {
       'weather',
     ],
   },
-  support: {
+  {
+    key: 'support',
     category: 'main',
     name: '고객센터',
     path: 'support',
     children: [],
   },
 
-  academicCalendar: {
+  {
+    key: 'academicCalendar',
     category: 'middle',
     name: '학사일정',
     path: 'academic-calendar',
     Icon: HiOutlineAcademicCap,
   },
-  timeTable: {
+  {
+    key: 'timeTable',
     category: 'middle',
     name: '시간표',
     path: 'time-table',
     Icon: CiViewTimeline,
   },
-  lunchMenu: {
+  {
+    key: 'lunchMenu',
     category: 'middle',
     name: '식단표',
     path: 'lunch-menu',
     Icon: BiBowlRice,
   },
-  timer: {
+  {
+    key: 'timer',
     category: 'middle',
     name: '타이머',
     path: 'timer',
     Icon: BiTimer,
   },
-  randomDrawing: {
+  {
+    key: 'randomDrawing',
     category: 'middle',
     name: '랜덤뽑기',
     path: 'random-drawing',
     Icon: GiCardRandom,
   },
-  changeSeats: {
+  {
+    key: 'changeSeats',
     category: 'middle',
     name: '자리바꾸기',
     path: 'change-seats',
     Icon: TbExchange,
   },
-  setOrder: {
+  {
+    key: 'setOrder',
     category: 'middle',
     name: '순서정하기',
     path: 'set-order',
     Icon: CgReorder,
   },
-  qrCode: {
+  {
+    key: 'qrCode',
     category: 'middle',
     name: 'QR코드',
     path: 'qr-code',
     Icon: BsQrCodeScan,
   },
-  news: {
+  {
+    key: 'news',
     category: 'middle',
     name: '뉴스',
     path: 'news',
     Icon: BsNewspaper,
   },
-  weather: {
+  {
+    key: 'weather',
     category: 'middle',
     name: '날씨',
     path: 'weather',
     Icon: TiWeatherWindyCloudy,
   },
-};
+];
 
 export const ROUTE_PATH = {
   main: '',
   auth: 'auth',
   signIn: 'signin',
   signUp: 'signup',
+  ...CATEGORIES.reduce((acc, cur) => {
+    return { ...acc, [cur.key]: cur.path };
+  }, {}),
 } as const;

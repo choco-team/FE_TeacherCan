@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { CATEGORIES, ROUTE_PATH } from '@Constant/routePath';
+import { ROUTE_PATH } from '@Constant/routePath';
 
 import Auth from '@Pages/Auth';
 import SignIn from '@Pages/Auth/SignIn';
@@ -19,27 +19,27 @@ const router = createBrowserRouter([
       },
       {
         // 교육과정
-        path: CATEGORIES.curriculum.path,
+        path: ROUTE_PATH.curriculum,
         children: [],
       },
       {
         // 학급일지
-        path: CATEGORIES.classJournal.path,
+        path: ROUTE_PATH.classJournal,
         children: [],
       },
       {
         // 학생관리
-        path: CATEGORIES.studentManagement.path,
+        path: ROUTE_PATH.studentManagement,
         children: [],
       },
       {
         // 도구
-        path: CATEGORIES.tools.path,
+        path: ROUTE_PATH.tools,
         children: [],
       },
       {
         // 고객센터
-        path: CATEGORIES.support.path,
+        path: ROUTE_PATH.support,
         children: [],
       },
     ],
