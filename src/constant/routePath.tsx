@@ -1,3 +1,12 @@
+import { BiBowlRice, BiTimer } from 'react-icons/bi';
+import { BsNewspaper, BsQrCodeScan } from 'react-icons/bs';
+import { CgReorder } from 'react-icons/cg';
+import { CiViewTimeline } from 'react-icons/ci';
+import { GiCardRandom } from 'react-icons/gi';
+import { HiOutlineAcademicCap } from 'react-icons/hi';
+import { TbExchange } from 'react-icons/tb';
+import { TiWeatherWindyCloudy } from 'react-icons/ti';
+
 import type { Categories } from '@Types/route';
 
 export const MAIN_CATEGORY_NAMES = [
@@ -68,51 +77,61 @@ export const CATEGORIES: Categories = {
     type: 'middle',
     name: '학사일정',
     path: 'academic-calendar',
+    Icon: HiOutlineAcademicCap,
   },
   timeTable: {
     type: 'middle',
     name: '시간표',
     path: 'time-table',
+    Icon: CiViewTimeline,
   },
   lunchMenu: {
     type: 'middle',
     name: '식단표',
     path: 'lunch-menu',
+    Icon: BiBowlRice,
   },
   timer: {
     type: 'middle',
     name: '타이머',
     path: 'timer',
+    Icon: BiTimer,
   },
   randomDrawing: {
     type: 'middle',
     name: '랜덤뽑기',
     path: 'random-drawing',
+    Icon: GiCardRandom,
   },
   changeSeats: {
     type: 'middle',
     name: '자리바꾸기',
     path: 'change-seats',
+    Icon: TbExchange,
   },
   setOrder: {
     type: 'middle',
     name: '순서정하기',
     path: 'set-order',
+    Icon: CgReorder,
   },
   qrCode: {
     type: 'middle',
     name: 'QR코드',
     path: 'qr-code',
+    Icon: BsQrCodeScan,
   },
   news: {
     type: 'middle',
     name: '뉴스',
     path: 'news',
+    Icon: BsNewspaper,
   },
   weather: {
     type: 'middle',
     name: '날씨',
     path: 'weather',
+    Icon: TiWeatherWindyCloudy,
   },
 };
 

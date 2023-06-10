@@ -1,3 +1,5 @@
+import { IconType } from 'react-icons';
+
 import {
   MAIN_CATEGORY_NAMES,
   MIDDLE_CATEGORY_NAMES,
@@ -5,15 +7,16 @@ import {
 
 type MainCategory = {
   type: 'main';
-  name: MainCategoriesNames;
+  name: string;
   path: string;
   children: Readonly<MiddleCategoriesNames[]>;
 };
 
 type MiddleCategory = {
   type: 'middle';
-  name: MiddleCategoriesNames;
+  name: string;
   path: string;
+  Icon: IconType;
 };
 
 type MainCategoriesNames = (typeof MAIN_CATEGORY_NAMES)[number];
