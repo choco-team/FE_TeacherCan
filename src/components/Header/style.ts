@@ -10,6 +10,8 @@ export const Layout = styled.div`
   padding: 2rem 2rem 0rem;
 
   background-color: ${(props) => props.theme.background.basic};
+
+  z-index: 1;
 `;
 
 export const LinkList = styled.ul`

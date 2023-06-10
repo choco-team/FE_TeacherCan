@@ -20,7 +20,17 @@ const router = createBrowserRouter([
       {
         // 교육과정
         path: ROUTE_PATH.curriculum,
-        children: [],
+        children: [
+          {
+            path: ROUTE_PATH.academicCalendar,
+          },
+          {
+            path: ROUTE_PATH.timeTable,
+          },
+          {
+            path: ROUTE_PATH.lunchMenu,
+          },
+        ],
       },
       {
         // 학급일지

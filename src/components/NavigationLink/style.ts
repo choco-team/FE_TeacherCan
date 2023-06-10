@@ -12,7 +12,7 @@ export const Layout = styled.div<LayoutProps>`
       : 'none'};
 
   text-align: center;
-  font-size: ${(props) => (props.category === 'main' ? '2rem' : '1.6rem')};
+  font-size: ${(props) => (props.category === 'main' ? '2rem' : '1.8rem')};
   letter-spacing: 0.1rem;
   color: ${(props) =>
     props.isSelected ? props.theme.accentText : props.theme.subText};
@@ -30,6 +30,7 @@ const SideNavigationLink = css<LayoutProps>`
   text-align: start;
   padding: 1.6rem 2rem;
   border-radius: 1rem;
+  margin-bottom: 2rem;
 
   font-weight: ${(props) => (props.isSelected ? 600 : 400)};
   color: ${(props) =>

@@ -10,7 +10,7 @@ type MainCategory = {
   category: 'main';
   name: string;
   path: string;
-  children: Readonly<MiddleCategoriesNames[]>;
+  children: MiddleCategoriesNames[];
 };
 
 type MiddleCategory = {
@@ -29,4 +29,4 @@ type CategoriesNames = MainCategoriesNames | MiddleCategoriesNames;
 
 type Categories = Array<MainCategory | MiddleCategory>;
 
-export type { Categories, CategoriesNames };
+export type { Categories, CategoriesNames, MiddleCategory };

@@ -1,14 +1,10 @@
-import { useLocation } from 'react-router-dom';
-
 import { CATEGORIES } from '@Constant/routePath';
 
 import NavigationLink from '@Components/NavigationLink';
 
 import * as S from './style';
 
-function Header() {
-  const { pathname } = useLocation();
-
+function Header({ pathname }: { pathname: string }) {
   const mainCategories = CATEGORIES.filter(
     (category) => category.category === 'main',
   );
