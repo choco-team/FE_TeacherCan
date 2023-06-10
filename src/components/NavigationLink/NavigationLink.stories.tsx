@@ -21,7 +21,7 @@ export default meta;
  */
 export const DefaultNavigationLink: Story = {
   args: {
-    category: 'main',
+    category: CATEGORIES.curriculum.category,
     isSelected: false,
     name: CATEGORIES.curriculum.name,
     path: CATEGORIES.curriculum.path,
@@ -33,7 +33,7 @@ export const DefaultNavigationLink: Story = {
  */
 export const SelectedHeaderNavigationLink: Story = {
   args: {
-    category: 'main',
+    category: CATEGORIES.curriculum.category,
     isSelected: true,
     name: CATEGORIES.curriculum.name,
     path: CATEGORIES.curriculum.path,
@@ -45,12 +45,28 @@ export const SelectedHeaderNavigationLink: Story = {
  */
 export const SideNavigationLink: Story = {
   args: {
-    category: 'middle',
+    category: CATEGORIES.academicCalendar.category,
     isSelected: false,
     name: CATEGORIES.academicCalendar.name,
     path: CATEGORIES.academicCalendar.path,
     Icon:
-      CATEGORIES.academicCalendar.type === 'middle'
+      CATEGORIES.academicCalendar.category === 'middle'
+        ? CATEGORIES.academicCalendar.Icon
+        : undefined,
+  },
+};
+
+/**
+ * 선택된 Side 메뉴의 `NavigationLink` 스토리입니다.
+ */
+export const SideSelectedNavigationLink: Story = {
+  args: {
+    category: CATEGORIES.academicCalendar.category,
+    isSelected: true,
+    name: CATEGORIES.academicCalendar.name,
+    path: CATEGORIES.academicCalendar.path,
+    Icon:
+      CATEGORIES.academicCalendar.category === 'middle'
         ? CATEGORIES.academicCalendar.Icon
         : undefined,
   },
