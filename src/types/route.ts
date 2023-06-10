@@ -29,4 +29,4 @@ type CategoriesNames = MainCategoriesNames | MiddleCategoriesNames;
 
 type Categories = Array<MainCategory | MiddleCategory>;
 
-export type { Categories, CategoriesNames, MiddleCategory };
+export type { Categories, CategoriesNames, MainCategory, MiddleCategory };

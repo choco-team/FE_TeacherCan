@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import { CATEGORIES, ROUTE_PATH } from '@Constant/routePath';
+import route from '@Utils/route';
+
+import { ROUTE_PATH } from '@Constant/routePath';
 
 import NavigationLink from '@Components/NavigationLink';
 
@@ -9,9 +11,7 @@ import logo from '@Assets/image/icon/logo.png';
 import * as S from './style';
 
 function Header({ pathname }: { pathname: string }) {
-  const mainCategories = CATEGORIES.filter(
-    (category) => category.category === 'main',
-  );
+  const mainCategories = route.getMainCategories();
 
   return (
     <S.Layout>
@@ -28,7 +28,7 @@ function Header({ pathname }: { pathname: string }) {
             name={category.name}
             category={category.category}
             path={category.path}
-            isSelected={pathname.split('/').includes(category.path)}
+            isSelected={route.getPathnames(pathname).includes(category.path)}
           />
         ))}
       </S.LinkList>

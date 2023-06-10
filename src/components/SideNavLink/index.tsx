@@ -1,26 +1,17 @@
 import route from '@Utils/route';
 
-import { CATEGORIES } from '@Constant/routePath';
-
 import NavigationLink from '@Components/NavigationLink';
 
-import type { MiddleCategory } from '@Types/route';
+import type { MainCategory } from '@Types/route';
 
 import * as S from './style';
 
 function SideNavLink({ pathname }: { pathname: string }) {
-  const [, mainPath, subPath] = pathname.split('/');
+  const [mainPath, subPath] = route.getPathnames(pathname);
 
-  const mainCategory = CATEGORIES.find(
-    (category) => category.path === mainPath,
-  );
+  const mainCategory = route.findCategory(mainPath) as MainCategory;
 
-  const middleCategory = CATEGORIES.filter((category) => {
-    if (mainCategory?.category === 'middle' || category.category === 'main')
-      return false;
-
-    return mainCategory?.children.includes(category.key);
-  }) as MiddleCategory[];
+  const middleCategory = route.getMiddleCategories(mainCategory);
 
   return (
     <S.Layout>

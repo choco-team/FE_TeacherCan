@@ -15,6 +15,9 @@ export const Layout = styled.div`
 `;
 
 export const Logo = styled.h1`
+  position: relative;
+  bottom: 0.5rem;
+
   grid-column: 1/3;
 
   padding-left: 2rem;
