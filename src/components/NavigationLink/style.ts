@@ -13,6 +13,7 @@ export const Layout = styled.div<LayoutProps>`
 
   text-align: center;
   font-size: ${(props) => (props.category === 'main' ? '2rem' : '1.6rem')};
+  letter-spacing: 0.1rem;
   color: ${(props) =>
     props.isSelected ? props.theme.accentText : props.theme.subText};
 
@@ -23,12 +24,18 @@ export const Layout = styled.div<LayoutProps>`
   }
 `;
 
-const SideNavigationLink = css`
+const SideNavigationLink = css<LayoutProps>`
   display: flex;
 
   text-align: start;
   padding: 1.6rem 2rem;
   border-radius: 1rem;
+
+  font-weight: ${(props) => (props.isSelected ? 600 : 400)};
+  color: ${(props) =>
+    props.isSelected ? props.theme.accentText : props.theme.subText};
+  background-color: ${(props) =>
+    props.isSelected ? props.theme.color.primary[100] : 'transparent'};
 
   transition: background-color 0.1s ease;
 
@@ -42,3 +49,5 @@ const SideNavigationLink = css`
     margin-right: 1rem;
   }
 `;
+
+export const LinkName = styled.span``;

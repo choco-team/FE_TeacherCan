@@ -14,7 +14,7 @@ function NavigationLink({
     <S.Layout category={category} isSelected={isSelected}>
       <Link to={path}>
         {Icon && <Icon />}
-        <span>{name}</span>
+        <S.LinkName>{name}</S.LinkName>
       </Link>
     </S.Layout>
   );
