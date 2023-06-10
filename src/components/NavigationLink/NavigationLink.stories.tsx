@@ -39,3 +39,19 @@ export const SelectedHeaderNavigationLink: Story = {
     path: CATEGORIES.curriculum.path,
   },
 };
+
+/**
+ * Side 메뉴의 `NavigationLink` 스토리입니다.
+ */
+export const SideNavigationLink: Story = {
+  args: {
+    category: 'middle',
+    isSelected: false,
+    name: CATEGORIES.academicCalendar.name,
+    path: CATEGORIES.academicCalendar.path,
+    Icon:
+      CATEGORIES.academicCalendar.type === 'middle'
+        ? CATEGORIES.academicCalendar.Icon
+        : undefined,
+  },
+};
