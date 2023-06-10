@@ -1,6 +1,6 @@
 import route from '@Utils/route';
 
-import ROUTE_PATH from '@Constant/routePath';
+import { ROUTE_PATH } from '@Constant/routePath';
 
 import LinkText from './LinkText';
 import SocialSignIn from './SocialSignIn';

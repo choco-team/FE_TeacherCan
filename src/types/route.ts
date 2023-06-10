@@ -1,5 +1,27 @@
-import ROUTE_PATH from '@Constant/routePath';
+import {
+  MAIN_CATEGORY_NAMES,
+  MIDDLE_CATEGORY_NAMES,
+} from '@Constant/routePath';
 
-type RoutePath = (typeof ROUTE_PATH)[keyof typeof ROUTE_PATH];
+type MainCategory = {
+  type: 'main';
+  name: string;
+  path: string;
+  children: Readonly<MiddleCategoriesNames[]>;
+};
 
-export type { RoutePath };
+type MiddleCategory = {
+  type: 'middle';
+  name: string;
+  path: string;
+};
+
+type MainCategoriesNames = (typeof MAIN_CATEGORY_NAMES)[number];
+
+type MiddleCategoriesNames = (typeof MIDDLE_CATEGORY_NAMES)[number];
+
+type CategoriesNames = MainCategoriesNames | MiddleCategoriesNames;
+
+type Categories = Record<CategoriesNames, MainCategory | MiddleCategory>;
+
+export type { Categories };
