@@ -38,7 +38,7 @@ const SideNavigationLink = css<LayoutProps>`
   background-color: ${(props) =>
     props.isSelected ? props.theme.color.primary[100] : 'transparent'};
 
-  transition: background-color 0.1s ease;
+  transition: background-color 0.2s ease;
 
   &:hover {
     background-color: ${(props) => props.theme.color.primary[100]};

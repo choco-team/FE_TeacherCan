@@ -14,6 +14,30 @@ export const Layout = styled.div`
   z-index: 1;
 `;
 
+export const Logo = styled.h1`
+  grid-column: 1/3;
+
+  padding-left: 2rem;
+
+  a {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 2rem;
+    align-items: flex-end;
+  }
+`;
+
+export const LogoImage = styled.img`
+  width: 4rem;
+`;
+
+export const LogoText = styled.span`
+  color: ${(props) => props.theme.accentText};
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: 0.3rem;
+`;
+
 export const LinkList = styled.ul`
   grid-column: 3/-3;
   display: grid;
