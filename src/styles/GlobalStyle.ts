@@ -31,7 +31,7 @@ export const DefaultPageLayout = styled.div`
   grid-template-columns: repeat(12, 1fr);
   background-color: ${(props) => props.theme.pageBackground};
   min-height: 100vh;
-  padding-top: 10rem;
+  padding: 10rem 3rem;
 `;
 
 export default GlobalStyle;
