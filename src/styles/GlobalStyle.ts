@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 import resetStyle from './resetStyle';
 
@@ -24,6 +24,14 @@ const GlobalStyle = createGlobalStyle`
       font-family: auto;
     }
   }
+`;
+
+export const DefaultPageLayout = styled.div`
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  background-color: ${(props) => props.theme.pageBackground};
+  min-height: 100vh;
+  padding-top: 10rem;
 `;
 
 export default GlobalStyle;

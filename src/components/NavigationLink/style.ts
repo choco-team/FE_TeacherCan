@@ -5,7 +5,7 @@ import { NavigationLink } from './type';
 type LayoutProps = Pick<NavigationLink, 'category' | 'isSelected'>;
 
 export const Layout = styled.div<LayoutProps>`
-  padding-bottom: ${(props) => (props.category === 'main' ? '1rem' : '0rem')};
+  padding-bottom: ${(props) => (props.category === 'main' ? '2rem' : '0rem')};
   border-bottom: ${(props) =>
     props.category === 'main' && props.isSelected
       ? `2px solid ${props.theme.accentText}`

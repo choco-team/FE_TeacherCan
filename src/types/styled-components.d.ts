@@ -10,6 +10,7 @@ declare module 'styled-components' {
     text: string;
     subText: string;
     accentText: string;
+    pageBackground: string;
     background: Partial<Variant, string>;
     border: Partial<Variant, string>;
     activeBackground: Partial<Variant, string>;

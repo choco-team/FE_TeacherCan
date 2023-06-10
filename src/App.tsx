@@ -1,7 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import GlobalStyle from '@Styles/GlobalStyle';
+import Header from '@Components/Header';
+
+import GlobalStyle, { DefaultPageLayout } from '@Styles/GlobalStyle';
 import lightTheme from '@Styles/lightTheme';
 
 function App() {
@@ -9,7 +11,10 @@ function App() {
     <>
       <GlobalStyle />
       <ThemeProvider theme={lightTheme}>
-        <Outlet />
+        <Header />
+        <DefaultPageLayout>
+          <Outlet />
+        </DefaultPageLayout>
       </ThemeProvider>
     </>
   );
