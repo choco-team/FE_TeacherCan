@@ -6,14 +6,14 @@ import {
 } from '@Constant/routePath';
 
 type MainCategory = {
-  type: 'main';
+  category: 'main';
   name: string;
   path: string;
   children: Readonly<MiddleCategoriesNames[]>;
 };
 
 type MiddleCategory = {
-  type: 'middle';
+  category: 'middle';
   name: string;
   path: string;
   Icon: IconType;
