@@ -1,11 +1,11 @@
 import { CATEGORIES } from '@Constant/routePath';
 
-import { MainCategory, MiddleCategory } from '@Types/route';
+import { MainCategory, MiddleCategory, Path } from '@Types/route';
 
 const route = {
-  calculatePath: (paths: string[]) => '/' + paths.join('/'),
+  calculatePath: (paths: Path[]) => '/' + paths.join('/'),
 
-  getPathnames: (pathname: string) => pathname.split('/').slice(1),
+  getPathnames: (pathname: string) => pathname.split('/').slice(1) as Path[],
 
   getMainCategories: () =>
     CATEGORIES.filter(

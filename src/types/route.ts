@@ -16,6 +16,14 @@ type MiddleCategoriesPaths = ArrTransform<
   'path'
 >[number];
 
+type Path =
+  | ''
+  | 'auth'
+  | 'signin'
+  | 'signup'
+  | MainCategoriesPaths
+  | MiddleCategoriesPaths;
+
 type MainCategory = {
   key: MainCategoriesNames;
   category: 'main';
@@ -50,4 +58,4 @@ type RoutePath = {
 } & MainCategoriesRoutePath &
   MiddleCategoriesRoutePath;
 
-export type { Categories, MainCategory, MiddleCategory, RoutePath };
+export type { Path, Categories, MainCategory, MiddleCategory, RoutePath };
