@@ -6,8 +6,9 @@ import { flexCustom } from '@Styles/common';
 
 export const Layout = styled.div`
   ${flexCustom('column', 'center', 'center')};
+  row-gap: 24px;
   width: 100%;
   min-height: 100vh;
-  padding: 32px;
+  padding: 36px;
   background: url(${backgroundImg}) no-repeat center/cover;
 `;

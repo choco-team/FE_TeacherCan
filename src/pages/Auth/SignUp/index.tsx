@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import route from '@Utils/route';
+
 import { ROUTE_PATH } from '@Constant/routePath';
 
 import LinkText from '@Components/LinkText';
@@ -53,7 +55,7 @@ function SignUp() {
 
       <LinkText
         text="이미 계정이 있으신가요? 로그인"
-        linkTo={ROUTE_PATH.signIn}
+        linkTo={route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn])}
       />
     </S.Layout>
   );

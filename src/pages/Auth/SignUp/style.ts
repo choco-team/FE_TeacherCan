@@ -10,7 +10,6 @@ export const Layout = styled.div`
 `;
 
 export const Heading = styled.h1`
-  align-self: flex-start;
   margin-bottom: 8px;
   color: ${({ theme }) => theme.color.primary[500]};
   font-size: 3.6rem;
@@ -18,7 +17,6 @@ export const Heading = styled.h1`
 `;
 
 export const Description = styled.div`
-  align-self: flex-start;
   margin-bottom: 32px;
   color: ${({ theme }) => theme.color.gray[400]};
 `;
