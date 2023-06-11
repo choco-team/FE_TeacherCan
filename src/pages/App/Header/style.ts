@@ -31,7 +31,8 @@ export const Logo = styled.h1`
 `;
 
 export const LogoImage = styled.img`
-  width: 4rem;
+  min-width: 4rem;
+  max-width: 4rem;
 `;
 
 export const LogoText = styled.span`
