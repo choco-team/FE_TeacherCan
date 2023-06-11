@@ -5,11 +5,12 @@ import route from '@Utils/route';
 
 import { ROUTE_PATH } from '@Constant/routePath';
 
-import Header from '@Components/Header';
-import SideNavLink from '@Components/SideNavLink';
-
-import GlobalStyle, { DefaultPageLayout } from '@Styles/GlobalStyle';
+import GlobalStyle from '@Styles/GlobalStyle';
 import lightTheme from '@Styles/lightTheme';
+
+import Header from './Header';
+import SideNavLink from './SideNavLink';
+import * as S from './style';
 
 function App() {
   const { pathname } = useLocation();
@@ -19,12 +20,12 @@ function App() {
       <GlobalStyle />
       <ThemeProvider theme={lightTheme}>
         <Header pathname={pathname} />
-        <DefaultPageLayout>
+        <S.DefaultPageLayout>
           {pathname !== route.calculatePath([ROUTE_PATH.main]) && (
             <SideNavLink pathname={pathname} />
           )}
           <Outlet />
-        </DefaultPageLayout>
+        </S.DefaultPageLayout>
       </ThemeProvider>
     </>
   );

@@ -4,11 +4,10 @@ import route from '@Utils/route';
 
 import { ROUTE_PATH } from '@Constant/routePath';
 
-import NavigationLink from '@Components/NavigationLink';
-
 import logo from '@Assets/image/icon/logo.png';
 
 import * as S from './style';
+import NavigationLink from '../NavigationLink';
 
 function Header({ pathname }: { pathname: string }) {
   const mainCategories = route.getMainCategories();

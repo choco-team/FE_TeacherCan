@@ -2,11 +2,10 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import { ROUTE_PATH } from '@Constant/routePath';
 
+import App from '@Pages/App';
 import Auth from '@Pages/Auth';
 import SignIn from '@Pages/Auth/SignIn';
 import Home from '@Pages/Home';
-
-import App from './App';
 
 const router = createBrowserRouter([
   {
