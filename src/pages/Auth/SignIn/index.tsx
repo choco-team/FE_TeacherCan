@@ -1,6 +1,7 @@
 import ROUTE_PATH from '@Constant/routePath';
 
-import LinkText from './LinkText';
+import LinkText from '@Components/LinkText';
+
 import SocialSignIn from './SocialSignIn';
 import * as S from './style';
 import AuthInput from '../AuthInput';
@@ -13,8 +14,8 @@ function SignIn() {
   return (
     <S.Layout>
       <S.Form onSubmit={onSubmit}>
-        <AuthInput type="email" />
-        <AuthInput type="password" />
+        <AuthInput name="email" />
+        <AuthInput name="password" />
         <S.SubmitButton type="submit">로그인</S.SubmitButton>
       </S.Form>
 

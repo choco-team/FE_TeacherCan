@@ -1,7 +1,7 @@
 export type AuthInput = {
-  type: 'email' | 'password';
+  name: 'userName' | 'email' | 'password' | 'passwordConfirmation';
 };
 
 export type StyledInput = {
-  name: 'email' | 'password' | 'text';
+  type: string;
 };

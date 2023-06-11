@@ -16,12 +16,12 @@ export default meta;
 
 export const InputEmail: Story = {
   args: {
-    type: 'email',
+    name: 'email',
   },
 };
 
 export const InputPassword: Story = {
   args: {
-    type: 'password',
+    name: 'password',
   },
 };

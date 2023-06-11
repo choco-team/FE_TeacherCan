@@ -5,6 +5,11 @@ import * as S from './style';
 import * as T from './type';
 
 const INPUT_TYPE = {
+  userName: {
+    type: 'text',
+    label: '이름',
+    placeholder: '이름을 입력하세요.',
+  },
   email: {
     type: 'email',
     label: '이메일',
@@ -13,23 +18,30 @@ const INPUT_TYPE = {
   password: {
     type: 'password',
     label: '비밀번호',
-    placeholder: '비밀번호를 입력하세요.',
+    placeholder: '영어, 숫자, 특수문자 포함 8자 이상 비밀번호를 입력하세요.',
+  },
+  passwordConfirmation: {
+    type: 'password',
+    label: '비밀번호 확인',
+    placeholder: '비밀번호를 한 번 더 입력하세요.',
   },
 };
 
-function AuthInput({ type }: T.AuthInput) {
+function AuthInput({ name }: T.AuthInput) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const { type, label, placeholder } = INPUT_TYPE[name];
 
   const togglePasswordVisible = () => setIsPasswordVisible((prev) => !prev);
 
   return (
     <S.Label>
-      {INPUT_TYPE[type].label}
+      {label}
       <S.InputWrapper>
         <S.AuthInput
-          name={type}
+          name={name}
           type={isPasswordVisible ? 'text' : type}
-          placeholder={INPUT_TYPE[type].placeholder}
+          placeholder={placeholder}
           spellCheck={false}
         />
         {type === 'password' && (
