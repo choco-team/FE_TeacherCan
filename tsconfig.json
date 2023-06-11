@@ -23,7 +23,8 @@
       "@Hooks/*": ["./src/hooks/*"],
       "@Pages/*": ["./src/pages/*"],
       "@Utils/*": ["./src/utils/*"],
-      "@Styles/*": ["./src/styles/*"]
+      "@Styles/*": ["./src/styles/*"],
+      "@Types/*": ["./src/types/*"]
     }
   },
   "include": ["src"],
