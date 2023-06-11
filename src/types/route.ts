@@ -29,6 +29,7 @@ type MainCategory = {
   category: 'main';
   name: string;
   path: MainCategoriesPaths;
+  firstChildPath: MiddleCategoriesPaths;
   children: MiddleCategoriesNames[];
 };
 

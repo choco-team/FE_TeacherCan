@@ -26,7 +26,7 @@ function Header({ pathname }: { pathname: string }) {
             key={category.name}
             name={category.name}
             category={category.category}
-            path={category.path}
+            path={route.calculatePath([category.path, category.firstChildPath])}
             isSelected={route.getPathnames(pathname).includes(category.path)}
           />
         ))}

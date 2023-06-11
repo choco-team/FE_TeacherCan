@@ -53,6 +53,7 @@ export const CATEGORIES: Categories = [
     category: 'main',
     name: '교육과정',
     path: 'curriculum',
+    firstChildPath: 'academic-calendar',
     children: ['academicCalendar', 'timeTable', 'lunchMenu'],
   },
   {
@@ -60,6 +61,7 @@ export const CATEGORIES: Categories = [
     category: 'main',
     name: '학급일지',
     path: 'class-journal',
+    firstChildPath: 'notice',
     children: ['notice', 'todo', 'dDay', 'stickyNote'],
   },
   {
@@ -67,6 +69,7 @@ export const CATEGORIES: Categories = [
     category: 'main',
     name: '학생관리',
     path: 'student-management',
+    firstChildPath: 'notice',
     children: [],
   },
   {
@@ -74,6 +77,7 @@ export const CATEGORIES: Categories = [
     category: 'main',
     name: '도구',
     path: 'tools',
+    firstChildPath: 'timer',
     children: [
       'timer',
       'randomDrawing',
@@ -89,6 +93,7 @@ export const CATEGORIES: Categories = [
     category: 'main',
     name: '고객센터',
     path: 'support',
+    firstChildPath: 'notice',
     children: [],
   },
 
