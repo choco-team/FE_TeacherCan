@@ -11,6 +11,7 @@ const router = createBrowserRouter([
   {
     path: ROUTE_PATH.main,
     element: <App />,
+    errorElement: <div>Not Found</div>,
     children: [
       {
         index: true,
@@ -34,7 +35,20 @@ const router = createBrowserRouter([
       {
         // 학급일지
         path: ROUTE_PATH.classJournal,
-        children: [],
+        children: [
+          {
+            path: ROUTE_PATH.notice,
+          },
+          {
+            path: ROUTE_PATH.todo,
+          },
+          {
+            path: ROUTE_PATH.dDay,
+          },
+          {
+            path: ROUTE_PATH.stickyNote,
+          },
+        ],
       },
       {
         // 학생관리
@@ -44,7 +58,29 @@ const router = createBrowserRouter([
       {
         // 도구
         path: ROUTE_PATH.tools,
-        children: [],
+        children: [
+          {
+            path: ROUTE_PATH.timer,
+          },
+          {
+            path: ROUTE_PATH.randomDrawing,
+          },
+          {
+            path: ROUTE_PATH.changeSeats,
+          },
+          {
+            path: ROUTE_PATH.setOrder,
+          },
+          {
+            path: ROUTE_PATH.qrCode,
+          },
+          {
+            path: ROUTE_PATH.news,
+          },
+          {
+            path: ROUTE_PATH.weather,
+          },
+        ],
       },
       {
         // 고객센터
