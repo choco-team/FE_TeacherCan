@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes } from 'react';
 import { Variant } from 'src/types/style';
 
-export type StyledButton = {
+type Button = {
   className?: string;
   variant?: Variant;
   concept?: 'text' | 'contained' | 'outlined';
@@ -18,3 +18,21 @@ export type StyledButton = {
   fontSize?: string;
   fontWeight?: string;
 } & Pick<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'disabled'>;
+
+type StyledButton = {
+  variant: Variant;
+  concept: 'text' | 'contained' | 'outlined';
+  width: string;
+  fullWidth: boolean;
+  minWidth: string;
+  margin: string;
+  border: string;
+  borderRadius: string;
+  padding: string;
+  backgroundColor: string;
+  color: string;
+  fontSize: string;
+  fontWeight: string;
+};
+
+export type { Button, StyledButton };
