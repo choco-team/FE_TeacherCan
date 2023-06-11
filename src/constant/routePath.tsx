@@ -1,39 +1,53 @@
 import { BiBowlRice, BiTimer } from 'react-icons/bi';
-import { BsNewspaper, BsQrCodeScan } from 'react-icons/bs';
+import {
+  BsCalendarWeek,
+  BsNewspaper,
+  BsQrCodeScan,
+  BsSticky,
+} from 'react-icons/bs';
 import { CgReorder } from 'react-icons/cg';
 import { CiViewTimeline } from 'react-icons/ci';
 import { GiCardRandom } from 'react-icons/gi';
 import { HiOutlineAcademicCap } from 'react-icons/hi';
+import { RiCalendarTodoLine } from 'react-icons/ri';
 import { TbExchange } from 'react-icons/tb';
+import { TfiNotepad } from 'react-icons/tfi';
 import { TiWeatherWindyCloudy } from 'react-icons/ti';
 
-import type { Categories } from '@Types/route';
+import type { Categories, RoutePath } from '@Types/route';
 
-export const MAIN_CATEGORY_NAMES = [
-  'curriculum',
-  'classJournal',
-  'studentManagement',
-  'tools',
-  'support',
+export const MAIN_CATEGORIES = [
+  { name: 'curriculum', path: 'curriculum' },
+  { name: 'classJournal', path: 'class-journal' },
+  { name: 'studentManagement', path: 'student-management' },
+  { name: 'tools', path: 'tools' },
+  { name: 'support', path: 'support' },
 ] as const;
 
-export const MIDDLE_CATEGORY_NAMES = [
+export const MIDDLE_CATEGORIES = [
   // curriculum
-  'academicCalendar',
-  'timeTable',
-  'lunchMenu',
+  { name: 'academicCalendar', path: 'academic-calendar' },
+  { name: 'timeTable', path: 'time-table' },
+  { name: 'lunchMenu', path: 'lunch-menu' },
+
+  // classJournal
+  { name: 'notice', path: 'notice' },
+  { name: 'todo', path: 'todo' },
+  { name: 'dDay', path: 'd-day' },
+  { name: 'stickyNote', path: 'sticky-note' },
 
   // tools
-  'timer',
-  'randomDrawing',
-  'changeSeats',
-  'setOrder',
-  'qrCode',
-  'news',
-  'weather',
+  { name: 'timer', path: 'timer' },
+  { name: 'randomDrawing', path: 'random-drawing' },
+  { name: 'changeSeats', path: 'change-seats' },
+  { name: 'setOrder', path: 'set-order' },
+  { name: 'qrCode', path: 'qr-code' },
+  { name: 'news', path: 'news' },
+  { name: 'weather', path: 'weather' },
 ] as const;
 
 export const CATEGORIES: Categories = [
+  // main category
   {
     key: 'curriculum',
     category: 'main',
@@ -46,7 +60,7 @@ export const CATEGORIES: Categories = [
     category: 'main',
     name: '학급일지',
     path: 'class-journal',
-    children: [],
+    children: ['notice', 'todo', 'dDay', 'stickyNote'],
   },
   {
     key: 'studentManagement',
@@ -78,6 +92,9 @@ export const CATEGORIES: Categories = [
     children: [],
   },
 
+  // middle category
+
+  // curriculum
   {
     key: 'academicCalendar',
     category: 'middle',
@@ -99,6 +116,38 @@ export const CATEGORIES: Categories = [
     path: 'lunch-menu',
     Icon: BiBowlRice,
   },
+
+  // classJournal
+  {
+    key: 'notice',
+    category: 'middle',
+    name: '알림장',
+    path: 'notice',
+    Icon: TfiNotepad,
+  },
+  {
+    key: 'todo',
+    category: 'middle',
+    name: '할일',
+    path: 'todo',
+    Icon: RiCalendarTodoLine,
+  },
+  {
+    key: 'dDay',
+    category: 'middle',
+    name: '디데이',
+    path: 'd-day',
+    Icon: BsCalendarWeek,
+  },
+  {
+    key: 'stickyNote',
+    category: 'middle',
+    name: '스티커 메모',
+    path: 'sticky-note',
+    Icon: BsSticky,
+  },
+
+  // tools
   {
     key: 'timer',
     category: 'middle',
@@ -150,12 +199,38 @@ export const CATEGORIES: Categories = [
   },
 ];
 
-export const ROUTE_PATH = {
+export const ROUTE_PATH: RoutePath = {
   main: '',
   auth: 'auth',
   signIn: 'signin',
   signUp: 'signup',
-  ...CATEGORIES.reduce((acc, cur) => {
-    return { ...acc, [cur.key]: cur.path };
-  }, {}),
-} as const;
+
+  // main category
+  curriculum: 'curriculum',
+  classJournal: 'class-journal',
+  studentManagement: 'student-management',
+  tools: 'tools',
+  support: 'support',
+
+  // middle category
+
+  // curriculum
+  academicCalendar: 'academic-calendar',
+  timeTable: 'time-table',
+  lunchMenu: 'lunch-menu',
+
+  // classJournal
+  notice: 'notice',
+  todo: 'todo',
+  dDay: 'd-day',
+  stickyNote: 'sticky-note',
+
+  // tools
+  timer: 'timer',
+  randomDrawing: 'random-drawing',
+  changeSeats: 'change-seats',
+  setOrder: 'set-order',
+  qrCode: 'qr-code',
+  news: 'news',
+  weather: 'weather',
+};

@@ -1,15 +1,26 @@
 import { IconType } from 'react-icons';
 
-import {
-  MAIN_CATEGORY_NAMES,
-  MIDDLE_CATEGORY_NAMES,
-} from '@Constant/routePath';
+import { MAIN_CATEGORIES, MIDDLE_CATEGORIES } from '@Constant/routePath';
+
+import { ArrTransform } from './utils';
+
+type MainCategoriesNames = ArrTransform<typeof MAIN_CATEGORIES, 'name'>[number];
+type MiddleCategoriesNames = ArrTransform<
+  typeof MIDDLE_CATEGORIES,
+  'name'
+>[number];
+
+type MainCategoriesPaths = ArrTransform<typeof MAIN_CATEGORIES, 'path'>[number];
+type MiddleCategoriesPaths = ArrTransform<
+  typeof MIDDLE_CATEGORIES,
+  'path'
+>[number];
 
 type MainCategory = {
   key: MainCategoriesNames;
   category: 'main';
   name: string;
-  path: string;
+  path: MainCategoriesPaths;
   children: MiddleCategoriesNames[];
 };
 
@@ -17,16 +28,26 @@ type MiddleCategory = {
   key: MiddleCategoriesNames;
   category: 'middle';
   name: string;
-  path: string;
+  path: MiddleCategoriesPaths;
   Icon: IconType;
 };
 
-type MainCategoriesNames = (typeof MAIN_CATEGORY_NAMES)[number];
-
-type MiddleCategoriesNames = (typeof MIDDLE_CATEGORY_NAMES)[number];
-
-type CategoriesNames = MainCategoriesNames | MiddleCategoriesNames;
-
 type Categories = Array<MainCategory | MiddleCategory>;
 
-export type { Categories, CategoriesNames, MainCategory, MiddleCategory };
+type MainCategoriesRoutePath = {
+  [K in (typeof MAIN_CATEGORIES)[number]['name']]: (typeof MAIN_CATEGORIES)[number]['path'];
+};
+
+type MiddleCategoriesRoutePath = {
+  [K in (typeof MIDDLE_CATEGORIES)[number]['name']]: (typeof MIDDLE_CATEGORIES)[number]['path'];
+};
+
+type RoutePath = {
+  main: '';
+  auth: 'auth';
+  signIn: 'signin';
+  signUp: 'signup';
+} & MainCategoriesRoutePath &
+  MiddleCategoriesRoutePath;
+
+export type { Categories, MainCategory, MiddleCategory, RoutePath };
