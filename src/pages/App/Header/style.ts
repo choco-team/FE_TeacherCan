@@ -9,7 +9,7 @@ export const Layout = styled.div`
 
   padding: 2rem 2rem 0rem;
 
-  background-color: ${(props) => props.theme.background.basic};
+  background-color: ${(props) => props.theme.background.white};
 
   z-index: 1;
 `;
