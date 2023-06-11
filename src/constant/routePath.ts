@@ -36,7 +36,7 @@ export const MIDDLE_CATEGORIES = [
   { name: 'dDay', path: 'd-day' },
   { name: 'stickyNote', path: 'sticky-note' },
 
-  //
+  // studentManagement
   { name: 'studentList', path: 'student-list' },
   { name: 'attendance', path: 'attendance' },
   { name: 'roles', path: 'roles' },
@@ -157,6 +157,7 @@ export const CATEGORIES: Categories = [
     Icon: BsSticky,
   },
 
+  // studentManagement
   {
     key: 'studentList',
     category: 'middle',
@@ -257,7 +258,7 @@ export const ROUTE_PATH: RoutePath = {
   dDay: 'd-day',
   stickyNote: 'sticky-note',
 
-  //
+  // studentManagement
   studentList: 'student-list',
   attendance: 'attendance',
   roles: 'roles',
