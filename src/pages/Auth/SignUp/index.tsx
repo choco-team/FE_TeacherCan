@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import ROUTE_PATH from '@Constant/routePath';
+import { ROUTE_PATH } from '@Constant/routePath';
 
 import LinkText from '@Components/LinkText';
 

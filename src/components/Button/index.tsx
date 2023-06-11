@@ -8,7 +8,7 @@ function Button({
   type = 'button',
   disabled = false,
   handleClick,
-  width = '100%',
+  width = 'auto',
   fullWidth = false,
   minWidth = '6.4rem',
   borderRadius = '3px',
