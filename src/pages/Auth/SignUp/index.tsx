@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import ROUTE_PATH from '@Constant/routePath';
 
 import LinkText from '@Components/LinkText';
@@ -5,9 +7,31 @@ import LinkText from '@Components/LinkText';
 import * as S from './style';
 import AuthInput from '../AuthInput';
 
+const INPUT_NAMES = [
+  'id',
+  'password',
+  'passwordConfirmation',
+  'userName',
+] as const;
+
 function SignUp() {
+  const [inputValue, setInputValue] = useState({
+    id: '',
+    password: '',
+    passwordConfirmation: '',
+    userName: '',
+  });
+
+  const handleChangeInputValue = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const { name, value } = event.target;
+    setInputValue((prev) => ({ ...prev, [name]: value }));
+  };
+
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    return inputValue;
   };
 
   return (
@@ -16,10 +40,14 @@ function SignUp() {
       <S.Description>회원가입에 필요한 정보를 입력해 주세요.</S.Description>
 
       <S.Form onSubmit={onSubmit}>
-        <AuthInput name="userName" />
-        <AuthInput name="email" />
-        <AuthInput name="password" />
-        <AuthInput name="passwordConfirmation" />
+        {INPUT_NAMES.map((name) => (
+          <AuthInput
+            key={name}
+            name={name}
+            value={inputValue[name]}
+            handleChange={handleChangeInputValue}
+          />
+        ))}
         <S.SubmitButton name="submit">회원가입</S.SubmitButton>
       </S.Form>
 

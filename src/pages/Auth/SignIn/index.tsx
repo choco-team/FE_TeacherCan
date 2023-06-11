@@ -1,3 +1,7 @@
+import { useState } from 'react';
+
+import validation from '@Utils/validation';
+
 import ROUTE_PATH from '@Constant/routePath';
 
 import LinkText from '@Components/LinkText';
@@ -7,15 +11,38 @@ import * as S from './style';
 import AuthInput from '../AuthInput';
 
 function SignIn() {
+  const [inputValue, setInputValue] = useState({
+    id: '',
+    password: '',
+  });
+
+  const handleChangeInputValue = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const { name, value } = event.target;
+    setInputValue((prev) => ({ ...prev, [name]: value }));
+  };
+
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    const isValid = validation.checkIsAllTextFilled(Object.values(inputValue));
+    if (!isValid) return;
   };
 
   return (
     <S.Layout>
       <S.Form onSubmit={onSubmit}>
-        <AuthInput name="email" />
-        <AuthInput name="password" />
+        <AuthInput
+          name="id"
+          value={inputValue.id}
+          handleChange={handleChangeInputValue}
+        />
+        <AuthInput
+          name="password"
+          value={inputValue.password}
+          handleChange={handleChangeInputValue}
+        />
         <S.SubmitButton type="submit">로그인</S.SubmitButton>
       </S.Form>
 

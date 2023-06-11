@@ -16,7 +16,7 @@ export default meta;
 
 export const InputEmail: Story = {
   args: {
-    name: 'email',
+    name: 'id',
   },
 };
 
