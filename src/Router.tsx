@@ -1,10 +1,10 @@
-import SignIn from '@Pages/Auth/SignIn';
-import SignUp from '@Pages/Auth/SignUp';
 import { Routes, BrowserRouter, Route } from 'react-router-dom';
 
 import ROUTE_PATH from '@Constant/routePath';
 
 import Auth from '@Pages/Auth';
+import SignIn from '@Pages/Auth/SignIn';
+import SignUp from '@Pages/Auth/SignUp';
 
 function Router() {
   return (
