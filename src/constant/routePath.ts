@@ -36,6 +36,11 @@ export const MIDDLE_CATEGORIES = [
   { name: 'dDay', path: 'd-day' },
   { name: 'stickyNote', path: 'sticky-note' },
 
+  //
+  { name: 'studentList', path: 'student-list' },
+  { name: 'attendance', path: 'attendance' },
+  { name: 'roles', path: 'roles' },
+
   // tools
   { name: 'timer', path: 'timer' },
   { name: 'randomDrawing', path: 'random-drawing' },
@@ -69,8 +74,8 @@ export const CATEGORIES: Categories = [
     category: 'main',
     name: '학생관리',
     path: 'student-management',
-    firstChildPath: 'notice',
-    children: [],
+    firstChildPath: 'student-list',
+    children: ['studentList', 'attendance', 'roles'],
   },
   {
     key: 'tools',
@@ -152,6 +157,28 @@ export const CATEGORIES: Categories = [
     Icon: BsSticky,
   },
 
+  {
+    key: 'studentList',
+    category: 'middle',
+    name: '학생명렬표',
+    path: 'student-list',
+    Icon: BsSticky,
+  },
+  {
+    key: 'attendance',
+    category: 'middle',
+    name: '출결',
+    path: 'attendance',
+    Icon: BsSticky,
+  },
+  {
+    key: 'roles',
+    category: 'middle',
+    name: '1인1역',
+    path: 'roles',
+    Icon: BsSticky,
+  },
+
   // tools
   {
     key: 'timer',
@@ -229,6 +256,11 @@ export const ROUTE_PATH: RoutePath = {
   todo: 'todo',
   dDay: 'd-day',
   stickyNote: 'sticky-note',
+
+  //
+  studentList: 'student-list',
+  attendance: 'attendance',
+  roles: 'roles',
 
   // tools
   timer: 'timer',

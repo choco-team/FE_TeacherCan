@@ -53,7 +53,17 @@ const router = createBrowserRouter([
       {
         // 학생관리
         path: ROUTE_PATH.studentManagement,
-        children: [],
+        children: [
+          {
+            path: ROUTE_PATH.studentList,
+          },
+          {
+            path: ROUTE_PATH.attendance,
+          },
+          {
+            path: ROUTE_PATH.roles,
+          },
+        ],
       },
       {
         // 도구
