@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import * as T from './type';
+import type { StyledButton } from './type';
 
-export const Button = styled.button<T.StyledButton>`
+export const Button = styled.button<StyledButton>`
   width: ${(props) => (props.fullWidth ? '100%' : props.width)};
   min-width: ${(props) => props.minWidth};
   border-radius: ${(props) => props.borderRadius};
@@ -21,7 +21,7 @@ export const Button = styled.button<T.StyledButton>`
       : 'transparent'};
   color: ${(props) =>
     props.concept === 'contained'
-      ? props.theme.text
+      ? props.theme.buttonText
       : props.theme.background[props.variant]};
   text-align: center;
   font-size: ${(props) => props.fontSize};

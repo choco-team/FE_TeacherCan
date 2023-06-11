@@ -8,6 +8,7 @@ declare module 'styled-components' {
 
   export interface DefaultTheme extends Theme {
     text: string;
+    buttonText: string;
     subText: string;
     accentText: string;
     pageBackground: string;
