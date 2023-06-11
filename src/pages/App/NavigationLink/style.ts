@@ -9,7 +9,7 @@ export const Layout = styled.div<LayoutProps>`
   border-bottom: ${(props) =>
     props.category === 'main' && props.isSelected
       ? `2px solid ${props.theme.accentText}`
-      : 'none'};
+      : '2px solid transparent'};
 
   text-align: center;
   font-size: ${(props) => (props.category === 'main' ? '2rem' : '1.8rem')};
