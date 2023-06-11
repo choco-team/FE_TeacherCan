@@ -1,4 +1,6 @@
-import ROUTE_PATH from '@Constant/routePath';
+import route from '@Utils/route';
+
+import { ROUTE_PATH } from '@Constant/routePath';
 
 import LinkText from './LinkText';
 import SocialSignIn from './SocialSignIn';
@@ -23,7 +25,7 @@ function SignIn() {
         <LinkText text="이메일/비밀번호를 잊어버렸어요" linkTo="/" />
         <LinkText
           text="계정이 없으신가요? 회원가입"
-          linkTo={ROUTE_PATH.signUp}
+          linkTo={route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signUp])}
         />
       </S.LinkContainer>
 
