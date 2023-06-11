@@ -28,10 +28,10 @@ export const DefaultButton: Story = {
   },
 };
 
-export const SecondaryButton: Story = {
+export const SuccessButton: Story = {
   args: {
     children: '버튼',
-    variant: 'secondary',
+    variant: 'success',
   },
 };
 
@@ -46,5 +46,35 @@ export const DisabledButton: Story = {
   args: {
     children: '버튼',
     disabled: true,
+  },
+};
+
+export const SuccessOutlinedButton: Story = {
+  args: {
+    children: '버튼',
+    variant: 'success',
+    concept: 'outlined',
+  },
+};
+
+export const OutlinedButton: Story = {
+  args: {
+    children: '버튼',
+    concept: 'outlined',
+  },
+};
+
+export const TextButton: Story = {
+  args: {
+    children: '버튼',
+    concept: 'text',
+  },
+};
+
+export const SuccessTextButton: Story = {
+  args: {
+    children: '버튼',
+    variant: 'success',
+    concept: 'text',
   },
 };
