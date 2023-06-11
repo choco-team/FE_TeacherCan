@@ -1,21 +1,35 @@
 import styled from 'styled-components';
 
-import * as T from './type';
-export const Button = styled.button<T.StyledButton>`
+import type { StyledButton } from './type';
+
+export const Button = styled.button<StyledButton>`
   width: ${(props) => (props.fullWidth ? '100%' : props.width)};
   min-width: ${(props) => props.minWidth};
   border-radius: ${(props) => props.borderRadius};
-  border: 1px solid ${(props) => props.theme.background[props.variant]};
-  margin: ${(props) => props.margin};
+  border: 1px solid
+    ${(props) =>
+      props.concept === 'contained'
+        ? props.theme.background[props.variant]
+        : props.concept === 'outlined'
+        ? props.theme.background[props.variant]
+        : 'transparent'};
   padding: ${(props) => props.padding};
-  background-color: ${(props) => props.theme.background[props.variant]};
-  color: ${(props) => props.theme.text};
+  background-color: ${(props) =>
+    props.concept === 'contained'
+      ? props.theme.background[props.variant]
+      : 'transparent'};
+  color: ${(props) =>
+    props.concept === 'contained'
+      ? props.theme.buttonText
+      : props.theme.background[props.variant]};
   text-align: center;
   font-size: ${(props) => props.fontSize};
+  font-weight: ${(props) => props.fontWeight};
   transition: background-color 0.3s ease, border-color 0.3s ease;
 
   &:hover {
     background-color: ${(props) => props.theme.hoverBackground[props.variant]};
+    color: ${(props) => props.theme.text};
   }
 
   &:active {

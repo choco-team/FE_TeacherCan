@@ -1,5 +1,5 @@
 import * as S from './style';
-import * as T from './type';
+import type { Button } from './type';
 
 function Button({
   className,
@@ -8,7 +8,7 @@ function Button({
   type = 'button',
   disabled = false,
   handleClick,
-  width,
+  width = '100%',
   fullWidth = false,
   minWidth = '6.4rem',
   borderRadius = '3px',
@@ -16,7 +16,7 @@ function Button({
   children,
   fontSize = '1.6rem',
   fontWeight = '600',
-}: React.PropsWithChildren<T.StyledButton>) {
+}: React.PropsWithChildren<Button>) {
   return (
     <S.Button
       className={className}

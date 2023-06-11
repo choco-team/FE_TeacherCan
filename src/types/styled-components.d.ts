@@ -8,10 +8,13 @@ declare module 'styled-components' {
 
   export interface DefaultTheme extends Theme {
     text: string;
+    buttonText: string;
     subText: string;
-    background: Partial<Variant, string>;
-    border: Partial<Variant, string>;
-    activeBackground: Partial<Variant, string>;
-    hoverBackground: Partial<Variant, string>;
+    accentText: string;
+    pageBackground: string;
+    background: Partial<Record<Variant, string>>;
+    border: Partial<Record<Variant, string>>;
+    activeBackground: Partial<Record<Variant, string>>;
+    hoverBackground: Partial<Record<Variant, string>>;
   }
 }
