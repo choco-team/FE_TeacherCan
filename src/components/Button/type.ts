@@ -13,7 +13,6 @@ type Button = {
   borderRadius?: string;
   padding?: string;
   handleClick?: () => void;
-  backgroundColor?: string;
   color?: string;
   fontSize?: string;
   fontWeight?: string;
@@ -25,12 +24,8 @@ type StyledButton = {
   width: string;
   fullWidth: boolean;
   minWidth: string;
-  margin: string;
-  border: string;
   borderRadius: string;
   padding: string;
-  backgroundColor: string;
-  color: string;
   fontSize: string;
   fontWeight: string;
 };

@@ -13,7 +13,6 @@ export const Button = styled.button<StyledButton>`
         : props.concept === 'outlined'
         ? props.theme.background[props.variant]
         : 'transparent'};
-  margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
   background-color: ${(props) =>
     props.concept === 'contained'
