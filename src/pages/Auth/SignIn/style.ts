@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import Button from '@Components/Button';
+
 import { flexCustom } from '@Styles/common';
 
 export const Layout = styled.div`
@@ -15,13 +17,9 @@ export const Form = styled.form`
   width: 100%;
 `;
 
-export const SubmitButton = styled.button`
-  width: 100%;
+export const SubmitButton = styled(Button)`
   padding: 16px;
-  border-radius: 3px;
-  background-color: ${({ theme }) => theme.color.primary[500]};
-  color: ${({ theme }) => theme.color.white};
-  font-weight: 600;
+  border-radius: calc((1.6rem + 16px));
 `;
 
 export const LinkContainer = styled.div`

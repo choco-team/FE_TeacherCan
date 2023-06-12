@@ -3,6 +3,7 @@ import type { Button } from './type';
 
 function Button({
   className,
+  name,
   variant = 'primary',
   concept = 'contained',
   type = 'button',
@@ -13,6 +14,7 @@ function Button({
   minWidth = '6.4rem',
   borderRadius = '3px',
   padding = '0.8rem 1.2rem',
+  margin = '0',
   children,
   fontSize = '1.6rem',
   fontWeight = '600',
@@ -20,6 +22,7 @@ function Button({
   return (
     <S.Button
       className={className}
+      name={name}
       variant={variant}
       concept={concept}
       type={type}
@@ -30,6 +33,7 @@ function Button({
       minWidth={minWidth}
       borderRadius={borderRadius}
       padding={padding}
+      margin={margin}
       fontSize={fontSize}
       fontWeight={fontWeight}
     >

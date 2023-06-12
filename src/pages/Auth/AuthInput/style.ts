@@ -22,7 +22,7 @@ export const AuthInput = styled.input<T.StyledInput>`
   padding: ${({ type }) =>
     type === 'password' ? '16px 40px 16px 16px' : '16px'};
   border: 1px solid ${({ theme }) => theme.color.gray[300]};
-  border-radius: 3px;
+  border-radius: 5px;
   color: ${({ theme }) => theme.color.primary[500]};
 
   &:hover {
@@ -36,6 +36,15 @@ export const AuthInput = styled.input<T.StyledInput>`
   &::placeholder {
     color: ${({ theme }) => theme.color.gray[300]};
   }
+`;
+
+export const LabelContent = styled.div`
+  ${flexCustom('row', 'flex-start', 'center')}
+  column-gap: 0.5rem;
+`;
+
+export const Required = styled.span`
+  color: ${({ theme }) => theme.color.error[500]};
 `;
 
 export const EyeButton = styled.button`
