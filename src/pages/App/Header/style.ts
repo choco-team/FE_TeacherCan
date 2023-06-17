@@ -46,4 +46,5 @@ export const LinkList = styled.ul<{ mainCategoriesCount: number }>`
   grid-column: 3/-3;
   display: grid;
   grid-template-columns: repeat(${(props) => props.mainCategoriesCount}, 1fr);
+  column-gap: 2rem;
 `;
