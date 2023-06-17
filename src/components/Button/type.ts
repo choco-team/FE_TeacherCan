@@ -16,7 +16,7 @@ type Button = {
   color?: string;
   fontSize?: string;
   fontWeight?: string;
-} & Pick<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'disabled'>;
+} & Pick<ButtonHTMLAttributes<HTMLButtonElement>, 'name' | 'type' | 'disabled'>;
 
 type StyledButton = {
   variant: Variant;
@@ -26,6 +26,7 @@ type StyledButton = {
   minWidth: string;
   borderRadius: string;
   padding: string;
+  margin: string;
   fontSize: string;
   fontWeight: string;
 };

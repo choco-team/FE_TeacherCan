@@ -3,14 +3,40 @@ import styled, { css } from 'styled-components';
 import theme from './theme';
 
 export const flexCustom = (
-  flexDirection = 'row',
-  alignItems = 'center',
-  justifyContent = 'center',
+  flexDirection: 'row' | 'row-reverse' | 'column' | 'column-reverse',
+  alignItems:
+    | 'center'
+    | 'start'
+    | 'end'
+    | 'self-start'
+    | 'self-end'
+    | 'flex-start'
+    | 'flex-end'
+    | 'normal'
+    | 'stretch'
+    | 'baseline'
+    | 'first baseline'
+    | 'last baseline',
+  justifyContent:
+    | 'center'
+    | 'start'
+    | 'end'
+    | 'flex-start'
+    | 'flex-end'
+    | 'left'
+    | 'right'
+    | 'normal'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+    | 'stretch',
+  gap = '0',
 ) => css`
   display: flex;
   flex-direction: ${flexDirection};
   align-items: ${alignItems};
   justify-content: ${justifyContent};
+  gap: ${gap};
 `;
 
 export const Button = styled.button`

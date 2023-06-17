@@ -11,6 +11,18 @@ export const Layout = styled.div`
   margin: auto;
 `;
 
+export const Heading = styled.h1`
+  margin-bottom: 8px;
+  color: ${({ theme }) => theme.color.primary[500]};
+  font-size: 3.6rem;
+  font-weight: 700;
+`;
+
+export const Description = styled.div`
+  margin-bottom: 32px;
+  color: ${({ theme }) => theme.color.gray[400]};
+`;
+
 export const Form = styled.form`
   ${flexCustom('column', 'center', 'flex-start')}
   row-gap: 32px;
@@ -19,11 +31,6 @@ export const Form = styled.form`
 
 export const SubmitButton = styled(Button)`
   padding: 16px;
+  margin-bottom: 16px;
   border-radius: calc((1.6rem + 16px));
-`;
-
-export const LinkContainer = styled.div`
-  ${flexCustom('row', 'flex-start', 'space-between')}
-  width: 100%;
-  margin: 16px 0 48px;
 `;

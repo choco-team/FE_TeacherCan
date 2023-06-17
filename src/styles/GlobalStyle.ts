@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   html {
+    font-family: "Pretendard Variable";
     font-size: 62.5%;
   }
 
@@ -21,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: monospace;
 
     &::placeholder {
-      font-family: auto;
+      font-family: "Pretendard Variable";
     }
   }
 `;

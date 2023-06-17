@@ -14,6 +14,7 @@ export const Button = styled.button<StyledButton>`
         ? props.theme.background[props.variant]
         : 'transparent'};
   padding: ${(props) => props.padding};
+  margin: ${(props) => props.margin};
   background-color: ${(props) =>
     props.concept === 'contained'
       ? props.theme.background[props.variant]
@@ -29,7 +30,6 @@ export const Button = styled.button<StyledButton>`
 
   &:hover {
     background-color: ${(props) => props.theme.hoverBackground[props.variant]};
-    color: ${(props) => props.theme.text};
   }
 
   &:active {

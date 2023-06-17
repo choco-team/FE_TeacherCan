@@ -5,6 +5,7 @@ import { ROUTE_PATH } from '@Constant/routePath';
 import App from '@Pages/App';
 import Auth from '@Pages/Auth';
 import SignIn from '@Pages/Auth/SignIn';
+import SignUp from '@Pages/Auth/SignUp';
 import Home from '@Pages/Home';
 
 const router = createBrowserRouter([
@@ -106,6 +107,10 @@ const router = createBrowserRouter([
       {
         path: ROUTE_PATH.signIn,
         element: <SignIn />,
+      },
+      {
+        path: ROUTE_PATH.signUp,
+        element: <SignUp />,
       },
     ],
   },
