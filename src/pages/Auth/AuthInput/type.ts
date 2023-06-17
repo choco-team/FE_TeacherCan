@@ -6,6 +6,8 @@ export type AuthInput = {
   label: string;
   value: string;
   required?: boolean;
+  isValid?: boolean;
+  validationMessage?: string;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 } & Partial<Pick<HTMLInputElement, 'placeholder' | 'autocomplete'>>;
 

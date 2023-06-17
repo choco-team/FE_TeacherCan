@@ -1,3 +1,4 @@
+import { BsCheckCircleFill } from 'react-icons/bs';
 import styled from 'styled-components';
 
 import { flexCustom } from '@Styles/common';
@@ -5,8 +6,7 @@ import { flexCustom } from '@Styles/common';
 import * as T from './type';
 
 export const Label = styled.label`
-  ${flexCustom('column', 'flex-start', 'flex-start')}
-  row-gap: 8px;
+  ${flexCustom('column', 'flex-start', 'flex-start', '8px')}
   width: 100%;
   max-width: 448px;
 `;
@@ -38,9 +38,13 @@ export const AuthInput = styled.input<T.StyledInput>`
   }
 `;
 
+export const LabelHeader = styled.div`
+  ${flexCustom('row', 'center', 'space-between')}
+  width: 100%;
+`;
+
 export const LabelContent = styled.div`
-  ${flexCustom('row', 'flex-start', 'center')}
-  column-gap: 0.5rem;
+  ${flexCustom('row', 'flex-start', 'center', '0.5rem')}
 `;
 
 export const Required = styled.span`
@@ -54,4 +58,14 @@ export const EyeButton = styled.button`
   color: ${({ theme }) => theme.color.primary[500]};
   line-height: 0;
   transform: translateY(-50%);
+`;
+
+export const ValidationMessage = styled.div`
+  color: ${({ theme }) => theme.color.error[500]};
+  font-size: 1.4rem;
+`;
+
+export const CheckIcon = styled(BsCheckCircleFill)`
+  color: ${({ theme }) => theme.color.success[500]};
+  font-size: 1.4rem;
 `;

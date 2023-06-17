@@ -12,6 +12,8 @@ function AuthInput({
   autocomplete = 'off',
   value,
   required = false,
+  isValid,
+  validationMessage,
   handleChange,
 }: T.AuthInput) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -20,10 +22,18 @@ function AuthInput({
 
   return (
     <S.Label>
-      <S.LabelContent>
-        {label}
-        {required && <S.Required>*</S.Required>}
-      </S.LabelContent>
+      <S.LabelHeader>
+        <S.LabelContent>
+          {label}
+          {required && <S.Required>*</S.Required>}
+        </S.LabelContent>
+        {value &&
+          (isValid ? (
+            <S.CheckIcon />
+          ) : (
+            <S.ValidationMessage>{validationMessage}</S.ValidationMessage>
+          ))}
+      </S.LabelHeader>
 
       <S.InputWrapper>
         <S.AuthInput

@@ -16,6 +16,7 @@ const SIGN_UP_INPUTS = [
     label: '아이디',
     placeholder: '아이디를 입력하세요.',
     autocomplete: 'off',
+    validationMessage: '영어(숫자 포함 가능) 6~15자로 입력해주세요.',
   },
   {
     name: 'password',
@@ -23,6 +24,7 @@ const SIGN_UP_INPUTS = [
     label: '비밀번호',
     placeholder: '영어, 숫자, 특수문자 포함 8자 이상',
     autocomplete: 'new-password',
+    validationMessage: '영어, 숫자, 특수문자 포함 8~20자로 입력해주세요.',
   },
   {
     name: 'passwordConfirmation',
@@ -30,6 +32,7 @@ const SIGN_UP_INPUTS = [
     label: '비밀번호 확인',
     placeholder: '비밀번호를 한 번 더 입력하세요.',
     autocomplete: 'new-password',
+    validationMessage: '동일한 비밀번호를 입력해주세요.',
   },
   {
     name: 'userName',
@@ -37,6 +40,7 @@ const SIGN_UP_INPUTS = [
     label: '이름(닉네임)',
     placeholder: '멋진 이름을 지어주세요.',
     autocomplete: 'off',
+    validationMessage: '한글/영어/숫자 2~10자로 입력해주세요.',
   },
 ] as const;
 
@@ -92,7 +96,14 @@ function SignUp() {
 
       <S.Form onSubmit={onSubmit}>
         {SIGN_UP_INPUTS.map(
-          ({ name, type, label, placeholder, autocomplete }) => (
+          ({
+            name,
+            type,
+            label,
+            placeholder,
+            autocomplete,
+            validationMessage,
+          }) => (
             <AuthInput
               key={name}
               name={name}
@@ -101,6 +112,8 @@ function SignUp() {
               placeholder={placeholder}
               autocomplete={autocomplete}
               value={inputValue[name]}
+              isValid={validation[name]}
+              validationMessage={validationMessage}
               required
               handleChange={handleChangeInputValue}
             />
