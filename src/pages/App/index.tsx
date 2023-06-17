@@ -14,6 +14,18 @@ import * as S from './style';
 
 function App() {
   const { pathname } = useLocation();
+  const [main] = route.getPathnames(pathname);
+
+  if (main === 'auth') {
+    return (
+      <>
+        <GlobalStyle />
+        <ThemeProvider theme={lightTheme}>
+          <Outlet />
+        </ThemeProvider>
+      </>
+    );
+  }
 
   return (
     <>

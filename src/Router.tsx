@@ -18,6 +18,22 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
+
+      {
+        // 로그인, 회원가입
+        path: ROUTE_PATH.auth,
+        element: <Auth />,
+        children: [
+          {
+            path: ROUTE_PATH.signIn,
+            element: <SignIn />,
+          },
+          {
+            path: ROUTE_PATH.signUp,
+            element: <SignUp />,
+          },
+        ],
+      },
       {
         // 학급운영
         path: ROUTE_PATH.classManagement,
@@ -104,20 +120,6 @@ const router = createBrowserRouter([
             path: ROUTE_PATH.inquiry,
           },
         ],
-      },
-    ],
-  },
-  {
-    path: ROUTE_PATH.auth,
-    element: <Auth />,
-    children: [
-      {
-        path: ROUTE_PATH.signIn,
-        element: <SignIn />,
-      },
-      {
-        path: ROUTE_PATH.signUp,
-        element: <SignUp />,
       },
     ],
   },
