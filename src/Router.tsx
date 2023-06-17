@@ -19,29 +19,23 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        // 교육과정
-        path: ROUTE_PATH.curriculum,
+        // 학급운영
+        path: ROUTE_PATH.classManagement,
         children: [
           {
-            path: ROUTE_PATH.academicCalendar,
-          },
-          {
-            path: ROUTE_PATH.timeTable,
+            path: ROUTE_PATH.schedule,
           },
           {
             path: ROUTE_PATH.lunchMenu,
           },
-        ],
-      },
-      {
-        // 학급일지
-        path: ROUTE_PATH.classJournal,
-        children: [
           {
-            path: ROUTE_PATH.notice,
+            path: ROUTE_PATH.roles,
           },
           {
-            path: ROUTE_PATH.todo,
+            path: ROUTE_PATH.writing,
+          },
+          {
+            path: ROUTE_PATH.toDos,
           },
           {
             path: ROUTE_PATH.dDay,
@@ -56,18 +50,18 @@ const router = createBrowserRouter([
         path: ROUTE_PATH.studentManagement,
         children: [
           {
+            path: ROUTE_PATH.classJournal,
+          },
+          {
             path: ROUTE_PATH.studentList,
           },
           {
             path: ROUTE_PATH.attendance,
           },
-          {
-            path: ROUTE_PATH.roles,
-          },
         ],
       },
       {
-        // 도구
+        // 편의도구
         path: ROUTE_PATH.tools,
         children: [
           {
@@ -86,6 +80,9 @@ const router = createBrowserRouter([
             path: ROUTE_PATH.qrCode,
           },
           {
+            path: ROUTE_PATH.favorites,
+          },
+          {
             path: ROUTE_PATH.news,
           },
           {
@@ -96,7 +93,17 @@ const router = createBrowserRouter([
       {
         // 고객센터
         path: ROUTE_PATH.support,
-        children: [],
+        children: [
+          {
+            path: ROUTE_PATH.information,
+          },
+          {
+            path: ROUTE_PATH.termsOfUse,
+          },
+          {
+            path: ROUTE_PATH.inquiry,
+          },
+        ],
       },
     ],
   },
