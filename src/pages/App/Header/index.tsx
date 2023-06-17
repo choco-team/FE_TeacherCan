@@ -11,6 +11,7 @@ import NavigationLink from '../NavigationLink';
 
 function Header({ pathname }: { pathname: string }) {
   const mainCategories = route.getMainCategories();
+  const mainCategoriesCount = mainCategories.length;
 
   return (
     <S.Layout>
@@ -20,7 +21,7 @@ function Header({ pathname }: { pathname: string }) {
           <S.LogoText>티처캔</S.LogoText>
         </Link>
       </S.Logo>
-      <S.LinkList>
+      <S.LinkList mainCategoriesCount={mainCategoriesCount}>
         {mainCategories.map((category) => (
           <NavigationLink
             key={category.name}
