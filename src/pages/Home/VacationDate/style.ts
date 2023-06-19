@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-// import * as T from './type';
-
 export const VacationDate = styled.span`
   border-radius: 20px;
   background-color: #ff8a00;
