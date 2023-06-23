@@ -5,6 +5,5 @@ export const VacationDate = styled.span`
   background-color: #ff8a00;
   color: ${(props) => props.theme.text};
   font-weight: 600;
-  font-size: 1.6rem;
   padding: 5px 30px;
 `;
