@@ -1,6 +1,9 @@
 import { HiOutlineBell, HiUserCircle } from 'react-icons/hi';
 import { MdKeyboardArrowDown } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+import route from '@Utils/route';
 
 import { flexCustom } from '@Styles/common';
 
@@ -24,7 +27,9 @@ function HeaderBadge({ username, alarm }: HeaderBadgeType) {
             <MdKeyboardArrowDown />
           </UserNameWrapper>
         ) : (
-          <UserNameWrapper>Sign In</UserNameWrapper>
+          <UserName>
+            <Link to={route.calculatePath(['auth', 'signin'])}>Sign In</Link>
+          </UserName>
         )}
       </HeaderUserContainer>
     </Layout>
