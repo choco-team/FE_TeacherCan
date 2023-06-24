@@ -21,6 +21,8 @@ export const AlarmContainer = styled.div`
 
   margin-right: 10px;
 
+  color: ${(props) => props.theme.subText};
+
   cursor: pointer;
 `;
 

@@ -32,7 +32,7 @@ function Header({ pathname }: { pathname: string }) {
           />
         ))}
       </S.LinkList>
-      <HeaderBadge username="김선생" />
+      <HeaderBadge username="김선생" alarm />
     </S.Layout>
   );
 }
