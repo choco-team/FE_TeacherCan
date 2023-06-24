@@ -5,9 +5,11 @@ import { flexCustom } from '@Styles/common';
 export const Layout = styled.div`
   grid-column: -1 / -3;
   justify-self: flex-end;
-  align-self: center;
 
   ${flexCustom('row', 'center', 'normal')}
+
+  padding: 2rem;
+
   svg {
     ${flexCustom('row', 'center', 'normal')}
     font-size: 2.5rem;
