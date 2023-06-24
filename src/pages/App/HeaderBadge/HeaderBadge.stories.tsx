@@ -22,3 +22,10 @@ export const DefaultHeaderBadge: Story = {
     username: '김선생',
   },
 };
+
+/**
+ * 로그인하지 않았을 때의 스토리입니다.
+ */
+export const NotUserHeaderBadge: Story = {
+  args: {},
+};
