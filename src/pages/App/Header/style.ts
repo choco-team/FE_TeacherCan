@@ -7,7 +7,7 @@ export const Layout = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 
-  background-color: ${(props) => props.theme.background.white};
+  background-color: ${(props) => props.theme.background.basic};
 
   z-index: 1;
 `;

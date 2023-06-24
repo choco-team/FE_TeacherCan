@@ -10,7 +10,7 @@ export const Layout = styled.div<LayoutProps>`
   padding: 1.5rem;
   border-radius: 0.5rem;
 
-  box-shadow: 0rem 0.2rem 1.5rem rgba(198, 198, 198, 0.25);
+  box-shadow: ${(props) => props.theme.shadow};
 
   background: ${({ theme }) => theme.background.basic};
 
