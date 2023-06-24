@@ -7,20 +7,17 @@ export const Layout = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 
-  padding: 2rem 2rem 0rem;
-
-  background-color: ${(props) => props.theme.background.white};
+  background-color: ${(props) => props.theme.background.basic};
 
   z-index: 1;
 `;
 
 export const Logo = styled.h1`
   position: relative;
-  bottom: 0.5rem;
 
   grid-column: 1/3;
 
-  padding-left: 2rem;
+  padding: 2rem;
 
   a {
     display: grid;

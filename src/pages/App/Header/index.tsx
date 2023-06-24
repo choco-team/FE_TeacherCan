@@ -7,6 +7,7 @@ import { ROUTE_PATH } from '@Constant/routePath';
 import logo from '@Assets/image/icon/logo.png';
 
 import * as S from './style';
+import HeaderBadge from '../HeaderBadge';
 import NavigationLink from '../NavigationLink';
 
 function Header({ pathname }: { pathname: string }) {
@@ -32,6 +33,7 @@ function Header({ pathname }: { pathname: string }) {
           />
         ))}
       </S.LinkList>
+      <HeaderBadge username="김선생" alarm />
     </S.Layout>
   );
 }
