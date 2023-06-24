@@ -17,7 +17,7 @@ function HeaderBadge({ username, alarm }: HeaderBadgeType) {
     <Layout>
       <AlarmContainer>
         <HiOutlineBell />
-        <div>{alarm && <div></div>}</div>
+        <AlarmDot>{alarm && <Dot></Dot>}</AlarmDot>
       </AlarmContainer>
       <HeaderUserContainer>
         <HiUserCircle />
@@ -47,9 +47,25 @@ const Layout = styled.div`
 `;
 
 const AlarmContainer = styled.div`
+  position: relative;
+
   margin-right: 10px;
 
   cursor: pointer;
+`;
+
+const AlarmDot = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: -2px;
+`;
+
+const Dot = styled.div`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  background-color: ${(props) => props.theme.accentText};
 `;
 
 const HeaderUserContainer = styled.div`
