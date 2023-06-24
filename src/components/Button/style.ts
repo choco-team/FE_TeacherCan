@@ -20,7 +20,7 @@ export const Button = styled.button<StyledButton>`
       : 'transparent'};
   color: ${(props) =>
     props.concept === 'contained'
-      ? props.theme.buttonText
+      ? props.theme.primaryText
       : props.theme.background[props.variant]};
   text-align: center;
   font-size: ${(props) => props.fontSize};

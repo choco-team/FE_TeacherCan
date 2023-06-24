@@ -3,7 +3,7 @@ import theme from './theme';
 const lightTheme = {
   ...theme,
   text: theme.color.neutral[800],
-  buttonText: theme.color.neutral[100],
+  primaryText: theme.color.neutral[100],
   subText: theme.color.neutral[400],
   accentText: theme.color.primary[500],
   pageBackground: theme.color.gray[100],
@@ -15,6 +15,7 @@ const lightTheme = {
     warning: theme.color.warning[100],
     error: theme.color.error[100],
     white: theme.color.white,
+    orange: theme.color.orange[600],
   },
   border: {
     primary: theme.color.primary[500],
@@ -23,6 +24,7 @@ const lightTheme = {
     warning: theme.color.warning[600],
     error: theme.color.error[400],
     white: theme.color.white,
+    orange: theme.color.orange[800],
   },
   hoverBackground: {
     primary: theme.color.primary[700],
@@ -31,6 +33,7 @@ const lightTheme = {
     warning: theme.color.warning[300],
     error: theme.color.error[300],
     white: theme.color.white,
+    orange: theme.color.orange[900],
   },
   activeBackground: {
     primary: theme.color.primary[800],
@@ -39,6 +42,7 @@ const lightTheme = {
     warning: theme.color.warning[400],
     error: theme.color.error[400],
     white: theme.color.white,
+    orange: theme.color.orange[800],
   },
 };
 
