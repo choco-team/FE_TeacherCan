@@ -7,13 +7,15 @@ import route from '@Utils/route';
 import * as S from './style';
 import type { HeaderBadge } from './type';
 
-function HeaderBadge({ username, alarm }: HeaderBadge) {
+function HeaderBadge({ username, alarm = false }: HeaderBadge) {
   return (
     <S.Layout>
-      <S.AlarmContainer>
-        <HiOutlineBell />
-        <S.AlarmDot>{alarm && <S.Dot></S.Dot>}</S.AlarmDot>
-      </S.AlarmContainer>
+      {username && (
+        <S.AlarmContainer>
+          <HiOutlineBell />
+          <S.AlarmDot>{alarm && <S.Dot></S.Dot>}</S.AlarmDot>
+        </S.AlarmContainer>
+      )}
       <S.HeaderUserContainer>
         <HiUserCircle />
         {username ? (

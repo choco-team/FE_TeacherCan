@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { flexCustom } from '@Styles/common';
 
 export const Layout = styled.div`
+  grid-column: -1 / -3;
+  justify-self: flex-end;
+  align-self: center;
+
   ${flexCustom('row', 'center', 'normal')}
   svg {
     ${flexCustom('row', 'center', 'normal')}
