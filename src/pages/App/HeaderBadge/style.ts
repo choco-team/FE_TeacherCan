@@ -40,21 +40,11 @@ export const Dot = styled.div`
   background-color: ${(props) => props.theme.accentText};
 `;
 
-export const HeaderUserContainer = styled.div`
-  ${flexCustom('row', 'center', 'normal')}
-  background-color: ${(props) => props.theme.background.primary};
-  color: ${(props) => props.theme.background.basic};
-
-  padding: 5px 10px;
-  border-radius: 20px;
-
-  cursor: pointer;
-`;
-
 export const UserNameWrapper = styled.div`
-  ${flexCustom('row', 'center', 'normal')}
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  align-items: center;
+  column-gap: 5px;
 `;
 
-export const UserName = styled.div`
-  margin: 0px 5px;
-`;
+export const UserName = styled.div``;

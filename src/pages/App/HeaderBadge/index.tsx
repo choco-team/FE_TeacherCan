@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import route from '@Utils/route';
 
+import Button from '@Components/Button';
+
 import * as S from './style';
 import type { HeaderBadge } from './type';
 
@@ -16,19 +18,22 @@ function HeaderBadge({ username, alarm = false }: HeaderBadge) {
           <S.AlarmDot>{alarm && <S.Dot></S.Dot>}</S.AlarmDot>
         </S.AlarmContainer>
       )}
-      <S.HeaderUserContainer>
-        <HiUserCircle />
-        {username ? (
-          <S.UserNameWrapper>
-            <S.UserName>{username}</S.UserName>
-            <MdKeyboardArrowDown />
-          </S.UserNameWrapper>
-        ) : (
-          <S.UserName>
-            <Link to={route.calculatePath(['auth', 'signin'])}>Sign In</Link>
-          </S.UserName>
-        )}
-      </S.HeaderUserContainer>
+      <Button borderRadius="20px" padding="5px 10px">
+        <S.UserNameWrapper>
+          {username ? (
+            <>
+              <HiUserCircle />
+              <S.UserName>{username}</S.UserName>
+              <MdKeyboardArrowDown />
+            </>
+          ) : (
+            <>
+              <HiUserCircle />
+              <Link to={route.calculatePath(['auth', 'signin'])}>Sign In</Link>
+            </>
+          )}
+        </S.UserNameWrapper>
+      </Button>
     </S.Layout>
   );
 }
