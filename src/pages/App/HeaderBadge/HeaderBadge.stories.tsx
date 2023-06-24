@@ -29,3 +29,13 @@ export const DefaultHeaderBadge: Story = {
 export const NotUserHeaderBadge: Story = {
   args: {},
 };
+
+/**
+ * 알림이 있을 때의 스토리입니다.
+ */
+export const AlarmHeaderBadge: Story = {
+  args: {
+    username: '김선생',
+    alarm: true,
+  },
+};
