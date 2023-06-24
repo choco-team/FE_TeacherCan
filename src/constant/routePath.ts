@@ -7,39 +7,40 @@ import {
 } from 'react-icons/bs';
 import { CgReorder } from 'react-icons/cg';
 import { CiViewTimeline } from 'react-icons/ci';
+import { FaPeopleCarry } from 'react-icons/fa';
 import { GiCardRandom } from 'react-icons/gi';
-import { HiOutlineAcademicCap } from 'react-icons/hi';
+import { GoReport } from 'react-icons/go';
+import { IoInformationCircleOutline } from 'react-icons/io5';
+import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import { RiCalendarTodoLine } from 'react-icons/ri';
-import { TbExchange } from 'react-icons/tb';
+import { TbWriting, TbExchange } from 'react-icons/tb';
 import { TfiNotepad } from 'react-icons/tfi';
 import { TiWeatherWindyCloudy } from 'react-icons/ti';
+import { VscSymbolProperty } from 'react-icons/vsc';
 
 import type { Categories, RoutePath } from '@Types/route';
 
 export const MAIN_CATEGORIES = [
-  { name: 'curriculum', path: 'curriculum' },
-  { name: 'classJournal', path: 'class-journal' },
+  { name: 'classManagement', path: 'class-management' },
   { name: 'studentManagement', path: 'student-management' },
   { name: 'tools', path: 'tools' },
   { name: 'support', path: 'support' },
 ] as const;
 
 export const MIDDLE_CATEGORIES = [
-  // curriculum
-  { name: 'academicCalendar', path: 'academic-calendar' },
-  { name: 'timeTable', path: 'time-table' },
+  // classManagement
+  { name: 'schedule', path: 'schedule' },
   { name: 'lunchMenu', path: 'lunch-menu' },
-
-  // classJournal
-  { name: 'notice', path: 'notice' },
-  { name: 'todo', path: 'todo' },
+  { name: 'roles', path: 'roles' },
+  { name: 'writing', path: 'writing' },
+  { name: 'toDos', path: 'to-dos' },
   { name: 'dDay', path: 'd-day' },
   { name: 'stickyNote', path: 'sticky-note' },
 
   // studentManagement
+  { name: 'classJournal', path: 'class-journal' },
   { name: 'studentList', path: 'student-list' },
   { name: 'attendance', path: 'attendance' },
-  { name: 'roles', path: 'roles' },
 
   // tools
   { name: 'timer', path: 'timer' },
@@ -47,40 +48,46 @@ export const MIDDLE_CATEGORIES = [
   { name: 'changeSeats', path: 'change-seats' },
   { name: 'setOrder', path: 'set-order' },
   { name: 'qrCode', path: 'qr-code' },
+  { name: 'favorites', path: 'favorites' },
   { name: 'news', path: 'news' },
   { name: 'weather', path: 'weather' },
+
+  // support
+  { name: 'information', path: 'information' },
+  { name: 'termsOfUse', path: 'terms-of-use' },
+  { name: 'inquiry', path: 'inquiry' },
 ] as const;
 
 export const CATEGORIES: Categories = [
   // main category
   {
-    key: 'curriculum',
+    key: 'classManagement',
     category: 'main',
-    name: '교육과정',
-    path: 'curriculum',
-    firstChildPath: 'academic-calendar',
-    children: ['academicCalendar', 'timeTable', 'lunchMenu'],
-  },
-  {
-    key: 'classJournal',
-    category: 'main',
-    name: '학급일지',
-    path: 'class-journal',
-    firstChildPath: 'notice',
-    children: ['notice', 'todo', 'dDay', 'stickyNote'],
+    name: '학급운영',
+    path: 'class-management',
+    firstChildPath: 'schedule',
+    children: [
+      'schedule',
+      'lunchMenu',
+      'roles',
+      'writing',
+      'toDos',
+      'dDay',
+      'stickyNote',
+    ],
   },
   {
     key: 'studentManagement',
     category: 'main',
     name: '학생관리',
     path: 'student-management',
-    firstChildPath: 'student-list',
-    children: ['studentList', 'attendance', 'roles'],
+    firstChildPath: 'class-journal',
+    children: ['classJournal', 'studentList', 'attendance'],
   },
   {
     key: 'tools',
     category: 'main',
-    name: '도구',
+    name: '편의도구',
     path: 'tools',
     firstChildPath: 'timer',
     children: [
@@ -89,6 +96,7 @@ export const CATEGORIES: Categories = [
       'changeSeats',
       'setOrder',
       'qrCode',
+      'favorites',
       'news',
       'weather',
     ],
@@ -98,25 +106,18 @@ export const CATEGORIES: Categories = [
     category: 'main',
     name: '고객센터',
     path: 'support',
-    firstChildPath: 'notice',
-    children: [],
+    firstChildPath: 'information',
+    children: ['information', 'termsOfUse', 'inquiry'],
   },
 
   // middle category
 
-  // curriculum
+  // classManagement
   {
-    key: 'academicCalendar',
-    category: 'middle',
-    name: '학사일정',
-    path: 'academic-calendar',
-    Icon: HiOutlineAcademicCap,
-  },
-  {
-    key: 'timeTable',
+    key: 'schedule',
     category: 'middle',
     name: '시간표',
-    path: 'time-table',
+    path: 'schedule',
     Icon: CiViewTimeline,
   },
   {
@@ -126,20 +127,25 @@ export const CATEGORIES: Categories = [
     path: 'lunch-menu',
     Icon: BiBowlRice,
   },
-
-  // classJournal
   {
-    key: 'notice',
+    key: 'roles',
     category: 'middle',
-    name: '알림장',
-    path: 'notice',
-    Icon: TfiNotepad,
+    name: '1인1역',
+    path: 'roles',
+    Icon: FaPeopleCarry,
   },
   {
-    key: 'todo',
+    key: 'writing',
+    category: 'middle',
+    name: '판서',
+    path: 'writing',
+    Icon: TbWriting,
+  },
+  {
+    key: 'toDos',
     category: 'middle',
     name: '할일',
-    path: 'todo',
+    path: 'to-dos',
     Icon: RiCalendarTodoLine,
   },
   {
@@ -159,6 +165,13 @@ export const CATEGORIES: Categories = [
 
   // studentManagement
   {
+    key: 'classJournal',
+    category: 'middle',
+    name: '학급일지',
+    path: 'class-journal',
+    Icon: TfiNotepad,
+  },
+  {
     key: 'studentList',
     category: 'middle',
     name: '학생명렬표',
@@ -170,13 +183,6 @@ export const CATEGORIES: Categories = [
     category: 'middle',
     name: '출결',
     path: 'attendance',
-    Icon: BsSticky,
-  },
-  {
-    key: 'roles',
-    category: 'middle',
-    name: '1인1역',
-    path: 'roles',
     Icon: BsSticky,
   },
 
@@ -217,6 +223,13 @@ export const CATEGORIES: Categories = [
     Icon: BsQrCodeScan,
   },
   {
+    key: 'favorites',
+    category: 'middle',
+    name: '즐겨찾기',
+    path: 'favorites',
+    Icon: MdOutlineFavoriteBorder,
+  },
+  {
     key: 'news',
     category: 'middle',
     name: '뉴스',
@@ -230,6 +243,29 @@ export const CATEGORIES: Categories = [
     path: 'weather',
     Icon: TiWeatherWindyCloudy,
   },
+
+  // support
+  {
+    key: 'information',
+    category: 'middle',
+    name: '티처캔안내',
+    path: 'information',
+    Icon: IoInformationCircleOutline,
+  },
+  {
+    key: 'termsOfUse',
+    category: 'middle',
+    name: '이용약관',
+    path: 'terms-of-use',
+    Icon: GoReport,
+  },
+  {
+    key: 'inquiry',
+    category: 'middle',
+    name: '문의사항',
+    path: 'inquiry',
+    Icon: VscSymbolProperty,
+  },
 ];
 
 export const ROUTE_PATH: RoutePath = {
@@ -239,29 +275,26 @@ export const ROUTE_PATH: RoutePath = {
   signUp: 'signup',
 
   // main category
-  curriculum: 'curriculum',
-  classJournal: 'class-journal',
+  classManagement: 'class-management',
   studentManagement: 'student-management',
   tools: 'tools',
   support: 'support',
 
   // middle category
 
-  // curriculum
-  academicCalendar: 'academic-calendar',
-  timeTable: 'time-table',
+  // classManagement
+  schedule: 'schedule',
   lunchMenu: 'lunch-menu',
-
-  // classJournal
-  notice: 'notice',
-  todo: 'todo',
+  roles: 'roles',
+  writing: 'writing',
+  toDos: 'to-dos',
   dDay: 'd-day',
   stickyNote: 'sticky-note',
 
   // studentManagement
+  classJournal: 'class-journal',
   studentList: 'student-list',
   attendance: 'attendance',
-  roles: 'roles',
 
   // tools
   timer: 'timer',
@@ -269,6 +302,12 @@ export const ROUTE_PATH: RoutePath = {
   changeSeats: 'change-seats',
   setOrder: 'set-order',
   qrCode: 'qr-code',
+  favorites: 'favorites',
   news: 'news',
   weather: 'weather',
+
+  // support
+  information: 'information',
+  termsOfUse: 'terms-of-use',
+  inquiry: 'inquiry',
 };

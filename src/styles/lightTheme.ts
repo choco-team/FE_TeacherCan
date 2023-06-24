@@ -6,6 +6,7 @@ const lightTheme = {
   primaryText: theme.color.neutral[100],
   subText: theme.color.neutral[400],
   accentText: theme.color.primary[500],
+  shadow: `0rem 0.2rem 1.5rem ${'rgba(198, 198, 198, 0.25)'}`,
   pageBackground: theme.color.gray[100],
   background: {
     basic: theme.color.white,
@@ -14,7 +15,6 @@ const lightTheme = {
     success: theme.color.success[100],
     warning: theme.color.warning[100],
     error: theme.color.error[100],
-    white: theme.color.white,
     orange: theme.color.orange[600],
   },
   border: {
@@ -23,7 +23,6 @@ const lightTheme = {
     success: theme.color.success[600],
     warning: theme.color.warning[600],
     error: theme.color.error[400],
-    white: theme.color.white,
     orange: theme.color.orange[800],
   },
   hoverBackground: {
@@ -32,7 +31,6 @@ const lightTheme = {
     success: theme.color.success[300],
     warning: theme.color.warning[300],
     error: theme.color.error[300],
-    white: theme.color.white,
     orange: theme.color.orange[900],
   },
   activeBackground: {
@@ -41,7 +39,6 @@ const lightTheme = {
     success: theme.color.success[400],
     warning: theme.color.warning[400],
     error: theme.color.error[400],
-    white: theme.color.white,
     orange: theme.color.orange[800],
   },
 };

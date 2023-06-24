@@ -12,6 +12,7 @@ declare module 'styled-components' {
     subText: string;
     accentText: string;
     pageBackground: string;
+    shadow: string;
     background: Partial<Record<Variant, string>> & { orange: string };
     border: Partial<Record<Variant, string>>;
     activeBackground: Partial<Record<Variant, string>>;

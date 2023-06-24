@@ -4,32 +4,46 @@ import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import * as S from './style';
 import * as T from './type';
 
-const INPUT_TYPE = {
-  email: {
-    type: 'email',
-    label: '이메일',
-    placeholder: 'teachercan@email.com',
-  },
-  password: {
-    type: 'password',
-    label: '비밀번호',
-    placeholder: '비밀번호를 입력하세요.',
-  },
-};
-
-function AuthInput({ type }: T.AuthInput) {
+function AuthInput({
+  name,
+  type = 'text',
+  label,
+  placeholder = '',
+  autocomplete = 'off',
+  value,
+  required = false,
+  isValid,
+  validationMessage,
+  handleChange,
+}: T.AuthInput) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const togglePasswordVisible = () => setIsPasswordVisible((prev) => !prev);
 
   return (
     <S.Label>
-      {INPUT_TYPE[type].label}
+      <S.LabelHeader>
+        <S.LabelContent>
+          {label}
+          {required && <S.Required>*</S.Required>}
+        </S.LabelContent>
+        {value &&
+          (isValid ? (
+            <S.CheckIcon />
+          ) : (
+            <S.ValidationMessage>{validationMessage}</S.ValidationMessage>
+          ))}
+      </S.LabelHeader>
+
       <S.InputWrapper>
         <S.AuthInput
-          name={type}
+          name={name}
+          value={value}
           type={isPasswordVisible ? 'text' : type}
-          placeholder={INPUT_TYPE[type].placeholder}
+          placeholder={placeholder}
+          autoComplete={autocomplete}
+          spellCheck={false}
+          onChange={handleChange}
         />
         {type === 'password' && (
           <S.EyeButton onClick={togglePasswordVisible}>
