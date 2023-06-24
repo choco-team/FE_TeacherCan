@@ -3,7 +3,7 @@ import theme from './theme';
 const darkTheme = {
   ...theme,
   text: theme.color.neutral[100],
-  buttonText: theme.color.neutral[800],
+  primaryText: theme.color.neutral[800],
   subText: theme.color.neutral[400],
   accentText: theme.color.primary[500],
   shadow: `0rem 0.2rem 1.5rem ${theme.color.gray[950]}`,
@@ -15,6 +15,7 @@ const darkTheme = {
     success: theme.color.success[600],
     warning: theme.color.warning[500],
     error: theme.color.error[500],
+    orange: theme.color.orange[400],
   },
   border: {
     primary: theme.color.primary[700],
@@ -22,6 +23,7 @@ const darkTheme = {
     success: theme.color.success[900],
     warning: theme.color.warning[700],
     error: theme.color.error[700],
+    orange: theme.color.orange[600],
   },
   hoverBackground: {
     primary: theme.color.primary[300],
@@ -29,6 +31,7 @@ const darkTheme = {
     success: theme.color.success[400],
     warning: theme.color.warning[300],
     error: theme.color.error[300],
+    orange: theme.color.orange[500],
   },
   activeBackground: {
     primary: theme.color.primary[800],
@@ -36,6 +39,7 @@ const darkTheme = {
     success: theme.color.success[900],
     warning: theme.color.warning[800],
     error: theme.color.error[800],
+    orange: theme.color.orange[700],
   },
 };
 
