@@ -13,6 +13,7 @@ export const Layout = styled.div`
 `;
 
 export const Label = styled.span`
+  font-weight: 700;
   font-size: 2rem;
 `;
 
