@@ -12,7 +12,7 @@ export const BORDER_STYLE = {
 export const TextArea = styled.textarea<T.StyledTextArea>`
   width: 100%;
   border: ${(props) => BORDER_STYLE[props.border]};
-  padding: 5px;
+  padding: 16px;
   font-size: 15px;
 
   &::placeholder {
