@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const SideSection = styled.div`
+  min-width: 30rem;
+
   grid-column: -3/-1;
   align-self: flex-start;
 

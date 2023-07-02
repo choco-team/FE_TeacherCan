@@ -5,5 +5,4 @@ export const VARIANT = [
   'success',
   'warning',
   'error',
-  'white',
 ] as const;

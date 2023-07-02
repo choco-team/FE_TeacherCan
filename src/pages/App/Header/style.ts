@@ -7,20 +7,17 @@ export const Layout = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 
-  padding: 2rem 2rem 0rem;
-
-  background-color: ${(props) => props.theme.background.white};
+  background-color: ${(props) => props.theme.background.basic};
 
   z-index: 1;
 `;
 
 export const Logo = styled.h1`
   position: relative;
-  bottom: 0.5rem;
 
   grid-column: 1/3;
 
-  padding-left: 2rem;
+  padding: 2rem;
 
   a {
     display: grid;
@@ -42,8 +39,9 @@ export const LogoText = styled.span`
   letter-spacing: 0.3rem;
 `;
 
-export const LinkList = styled.ul`
+export const LinkList = styled.ul<{ mainCategoriesCount: number }>`
   grid-column: 3/-3;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(${(props) => props.mainCategoriesCount}, 1fr);
+  column-gap: 2rem;
 `;

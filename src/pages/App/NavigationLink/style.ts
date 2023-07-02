@@ -1,17 +1,21 @@
 import styled, { css } from 'styled-components';
 
+import { flexCustom } from '@Styles/common';
+
 import { NavigationLink } from './type';
 
 type LayoutProps = Pick<NavigationLink, 'category' | 'isSelected'>;
 
 export const Layout = styled.div<LayoutProps>`
-  padding-bottom: ${(props) => (props.category === 'main' ? '2rem' : '0rem')};
+  padding: ${(props) => (props.category === 'main' ? '2rem' : '0rem')};
   border-bottom: ${(props) =>
     props.category === 'main' && props.isSelected
       ? `2px solid ${props.theme.accentText}`
       : '2px solid transparent'};
 
-  text-align: center;
+  ${flexCustom('row', 'center', 'center')}
+  text-align:center;
+
   font-size: ${(props) => (props.category === 'main' ? '2rem' : '1.8rem')};
   letter-spacing: 0.1rem;
   color: ${(props) =>
