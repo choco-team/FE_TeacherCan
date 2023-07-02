@@ -5,14 +5,15 @@ import { flexCustom } from '@Styles/common';
 export const Layout = styled.div`
   ${flexCustom('column', 'stretch', 'flex-start')}
   background-color: ${(props) => props.theme.background.basic};
+  color: ${(props) => props.theme.text};
   row-gap: 16px;
   padding: 1.5rem;
   border-radius: 0.5rem;
-  box-shadow: 0rem 0.2rem 1.5rem rgba(198, 198, 198, 0.25);
+  box-shadow: ${(props) => props.theme.shadow};
 `;
 
 export const Label = styled.span`
-  font-weight: bold;
+  font-weight: 700;
   font-size: 2rem;
 `;
 

@@ -8,12 +8,12 @@ interface VacationDateProps {
 }
 
 function VacationDate({ season, date }: VacationDateProps) {
+  const displayVacationDate = `${season}방학 D - ${date}`;
   return (
-    <S.VacationDate>
-      <VscCalendar /> {season}
-      {'방학 D-'}
-      {date}
-    </S.VacationDate>
+    <S.Layout>
+      <VscCalendar />
+      <S.VacationDate>{displayVacationDate}</S.VacationDate>
+    </S.Layout>
   );
 }
 

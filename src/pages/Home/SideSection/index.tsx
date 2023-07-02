@@ -2,10 +2,12 @@ import SummaryList from '@Components/SummaryList';
 
 import * as S from './style';
 import HomeMemo from '../HomeMemo';
+import VacationDate from '../VacationDate';
 
 function SideSection() {
   return (
     <S.SideSection>
+      <VacationDate season="여름" date={100} />
       <HomeMemo />
       <SummaryList
         title="오늘의 급식 메뉴"
