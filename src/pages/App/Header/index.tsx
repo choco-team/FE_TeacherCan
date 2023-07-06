@@ -24,7 +24,7 @@ type User = {
 };
 
 function Header({ pathname }: { pathname: string }) {
-  const { data, loading } = useFetch<User>('/user/info');
+  const { data, isLoading } = useFetch<User>('/user/info');
 
   const mainCategories = route.getMainCategories();
   const mainCategoriesCount = mainCategories.length;
@@ -48,7 +48,7 @@ function Header({ pathname }: { pathname: string }) {
           />
         ))}
       </S.LinkList>
-      <HeaderBadge username={data?.data.nickName} alarm loading={loading} />
+      <HeaderBadge username={data?.data.nickName} alarm isLoading={isLoading} />
     </S.Layout>
   );
 }

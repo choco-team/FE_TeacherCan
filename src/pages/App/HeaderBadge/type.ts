@@ -1,7 +1,7 @@
 type HeaderBadge = {
   username?: string;
   alarm?: boolean;
-  loading: boolean;
+  isLoading: boolean;
 };
 
 export type { HeaderBadge };
