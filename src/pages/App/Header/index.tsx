@@ -19,6 +19,7 @@ type User = {
     nickName: string;
     schoolName: string;
     schoolCode: string;
+    areaCode: string;
   };
 };
 

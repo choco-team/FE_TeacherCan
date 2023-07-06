@@ -7,6 +7,7 @@ const userResponse = {
     nickName: 'KHD',
     schoolName: 'string',
     schoolCode: 'string',
+    areCode: 'string',
   },
 };
 
