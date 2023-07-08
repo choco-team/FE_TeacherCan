@@ -1,12 +1,11 @@
 import { useState } from 'react';
+import { PiSunBold, PiMoonStarsBold } from 'react-icons/pi';
 import { Outlet, useLocation } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import route from '@Utils/route';
 
 import { ROUTE_PATH } from '@Constant/routePath';
-
-import Button from '@Components/Button';
 
 import GlobalStyle from '@Styles/GlobalStyle';
 import darkTheme from '@Styles/darkTheme';
@@ -47,9 +46,9 @@ function App() {
           <S.PageWrapper>
             <Outlet />
           </S.PageWrapper>
-          <div style={{ position: 'absolute', bottom: '0', left: '0' }}>
-            <Button handleClick={toggleTheme}>모드 변경</Button>
-          </div>
+          <S.ThemeToggleButton handleClick={toggleTheme}>
+            {isLightTheme ? <PiSunBold /> : <PiMoonStarsBold />}
+          </S.ThemeToggleButton>
         </S.DefaultPageLayout>
       </ThemeProvider>
     </>
