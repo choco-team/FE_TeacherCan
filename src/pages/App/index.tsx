@@ -17,7 +17,8 @@ import SideNavLink from './SideNavLink';
 import * as S from './style';
 
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [isLightTheme, setIsLightTheme] = useState(true);
+
   const { pathname } = useLocation();
   const [main] = route.getPathnames(pathname);
 
@@ -32,21 +33,20 @@ function App() {
     );
   }
 
-  const toggleTheme = () => {
-    if (theme === 'light') setTheme('dark');
-    else setTheme('light');
-  };
+  const toggleTheme = () => setIsLightTheme((prev) => !prev);
 
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
         <Header pathname={pathname} />
         <S.DefaultPageLayout>
           {pathname !== route.calculatePath([ROUTE_PATH.main]) && (
             <SideNavLink pathname={pathname} />
           )}
-          <Outlet />
+          <S.PageWrapper>
+            <Outlet />
+          </S.PageWrapper>
           <div style={{ position: 'absolute', bottom: '0', left: '0' }}>
             <Button handleClick={toggleTheme}>모드 변경</Button>
           </div>

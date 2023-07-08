@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { flexCustom } from '@Styles/common';
+
 export const Layout = styled.div`
   position: fixed;
   min-width: 100vw;
@@ -15,9 +17,10 @@ export const Layout = styled.div`
 export const Logo = styled.h1`
   position: relative;
 
+  ${flexCustom('row', 'center', 'center')}
   grid-column: 1/3;
 
-  padding: 2rem;
+  padding: 0 16px;
 
   a {
     display: grid;

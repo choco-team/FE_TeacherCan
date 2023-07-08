@@ -6,3 +6,7 @@ export const DefaultPageLayout = styled.div`
   background-color: ${(props) => props.theme.pageBackground};
   min-height: 100vh;
 `;
+
+export const PageWrapper = styled.div`
+  margin-top: calc(2rem + 34px);
+`;
