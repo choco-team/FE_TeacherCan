@@ -8,7 +8,7 @@ export const Layout = styled.div`
 
   ${flexCustom('row', 'center', 'normal')}
 
-  padding: 2rem;
+  padding: 0 16px;
 
   svg {
     ${flexCustom('row', 'center', 'normal')}
@@ -48,3 +48,8 @@ export const UserNameWrapper = styled.div`
 `;
 
 export const UserName = styled.div``;
+
+export const LoadingText = styled.div`
+  color: transparent;
+  font-size: 2rem;
+`;

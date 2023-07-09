@@ -1,7 +1,7 @@
 export const VARIANT = [
-  'basic',
   'primary',
   'secondary',
+  'gray',
   'success',
   'warning',
   'error',

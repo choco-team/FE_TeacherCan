@@ -1,61 +1,36 @@
 import { useEffect, useState } from 'react';
 
-import { SuccessLunchMenuRoot, FailLunchMenuRoot } from '@Types/lunchMenu';
-
-import useFetch from './useFetch';
-
-const LUNCH_MENU_OPEN_NEIS_URL =
-  'https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=954dac30b088454d9a95700f044ce620&Type=json&pIndex=1&pSize=100&';
-
-type SchoolInfoType = {
-  areaCode: string;
-  schoolCode: string;
-  date: number;
+type LunchMenu = {
+  statusCode: number;
+  data: {
+    lunchMenu: { menu: string; allergy: number[] }[];
+    origins: { ingredient: string; origin: string }[];
+  };
 };
 
-const useLunchMenu = (schoolInfo: SchoolInfoType) => {
-  const [menu, setMenu] = useState<string[] | undefined>();
-  const [error, setError] = useState<string | undefined>();
+const useLunchMenu = () => {
+  const [lunchMenu, setLunchMenu] = useState<
+    undefined | { menu: string; allergy: number[] }[]
+  >();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const { data, loading, reFetchData } = useFetch<
-    SuccessLunchMenuRoot | FailLunchMenuRoot
-  >(
-    LUNCH_MENU_OPEN_NEIS_URL +
-      `ATPT_OFCDC_SC_CODE=${schoolInfo.areaCode}&SD_SCHUL_CODE=${schoolInfo.schoolCode}&MLSV_YMD=${schoolInfo.date}`,
-  );
+  const getLunchMenu = async () => {
+    setIsLoading(true);
 
-  const updateSchoolInfo = (updateSchoolInfo: Partial<SchoolInfoType>) => {
-    const newSchoolInfo = { ...schoolInfo, ...updateSchoolInfo };
-
-    reFetchData(
-      LUNCH_MENU_OPEN_NEIS_URL +
-        `ATPT_OFCDC_SC_CODE=${newSchoolInfo.areaCode}&SD_SCHUL_CODE=${newSchoolInfo.schoolCode}&MLSV_YMD=${newSchoolInfo.date}`,
+    const response = await fetch(
+      '/school/lunch-menu?areaCode=T10&schoolCode=9290083&date=230706',
     );
-  };
+    const result = (await response.json()) as LunchMenu;
 
-  const progressSetMenu = () => {
-    if (!data) return;
-
-    if ('RESULT' in data) {
-      setError('등록된 정보가 없습니다.');
-
-      return;
-    }
-
-    const { DDISH_NM } = data.mealServiceDietInfo[1].row[0];
-
-    setMenu(
-      DDISH_NM.split('<br/>').map((item: string) => {
-        return item.replace(/[0-9.()\s]/g, '');
-      }),
-    );
+    setIsLoading(false);
+    setLunchMenu(result?.data.lunchMenu);
   };
 
   useEffect(() => {
-    progressSetMenu();
-  }, [data]);
+    getLunchMenu();
+  }, []);
 
-  return { loading, menu, error, updateSchoolInfo };
+  return { lunchMenu, isLoading };
 };
 
 export default useLunchMenu;
