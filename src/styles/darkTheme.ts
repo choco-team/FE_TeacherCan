@@ -2,9 +2,9 @@ import theme from './theme';
 
 const darkTheme = {
   ...theme,
-  text: theme.color.neutral[100],
-  primaryText: theme.color.neutral[800],
-  subText: theme.color.neutral[400],
+  text: theme.color.gray[100],
+  primaryText: theme.color.gray[800],
+  subText: theme.color.gray[400],
   accentText: theme.color.primary[500],
   shadow: `0rem 0.2rem 1.5rem ${theme.color.gray[950]}`,
   pageBackground: theme.color.gray[900],
