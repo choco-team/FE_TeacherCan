@@ -13,9 +13,13 @@ declare module 'styled-components' {
     accentText: string;
     pageBackground: string;
     shadow: string;
-    background: Partial<Record<Variant, string>> & { orange: string };
+    background: Partial<Record<Variant, string>> & {
+      disabled?: string;
+      orange?: string;
+    };
     border: Partial<Record<Variant, string>>;
     activeBackground: Partial<Record<Variant, string>>;
     hoverBackground: Partial<Record<Variant, string>>;
+    hoverBorder: Partial<Record<Variant, string>>;
   }
 }

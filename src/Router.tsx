@@ -66,13 +66,10 @@ const router = createBrowserRouter([
         path: ROUTE_PATH.studentManagement,
         children: [
           {
-            path: ROUTE_PATH.classJournal,
+            path: ROUTE_PATH.studentInfo,
           },
           {
-            path: ROUTE_PATH.studentList,
-          },
-          {
-            path: ROUTE_PATH.attendance,
+            path: ROUTE_PATH.studentRegister,
           },
         ],
       },

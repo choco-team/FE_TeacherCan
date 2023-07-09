@@ -8,7 +8,7 @@ export const Layout = styled.div`
 
   ${flexCustom('row', 'center', 'normal')}
 
-  padding: 2rem;
+  padding: 0 16px;
 
   svg {
     ${flexCustom('row', 'center', 'normal')}

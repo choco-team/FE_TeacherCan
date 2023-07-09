@@ -1,3 +1,4 @@
+import { AiOutlineUsergroupAdd } from 'react-icons/ai';
 import { BiBowlRice, BiTimer } from 'react-icons/bi';
 import {
   BsCalendarWeek,
@@ -13,8 +14,7 @@ import { GoReport } from 'react-icons/go';
 import { IoInformationCircleOutline } from 'react-icons/io5';
 import { MdOutlineFavoriteBorder } from 'react-icons/md';
 import { RiCalendarTodoLine } from 'react-icons/ri';
-import { TbWriting, TbExchange } from 'react-icons/tb';
-import { TfiNotepad } from 'react-icons/tfi';
+import { TbWriting, TbExchange, TbMoodKid } from 'react-icons/tb';
 import { TiWeatherWindyCloudy } from 'react-icons/ti';
 import { VscSymbolProperty } from 'react-icons/vsc';
 
@@ -38,9 +38,8 @@ export const MIDDLE_CATEGORIES = [
   { name: 'stickyNote', path: 'sticky-note' },
 
   // studentManagement
-  { name: 'classJournal', path: 'class-journal' },
-  { name: 'studentList', path: 'student-list' },
-  { name: 'attendance', path: 'attendance' },
+  { name: 'studentInfo', path: 'student-info' },
+  { name: 'studentRegister', path: 'student-register' },
 
   // tools
   { name: 'timer', path: 'timer' },
@@ -81,8 +80,8 @@ export const CATEGORIES: Categories = [
     category: 'main',
     name: '학생관리',
     path: 'student-management',
-    firstChildPath: 'class-journal',
-    children: ['classJournal', 'studentList', 'attendance'],
+    firstChildPath: 'student-info',
+    children: ['studentInfo', 'studentRegister'],
   },
   {
     key: 'tools',
@@ -165,25 +164,18 @@ export const CATEGORIES: Categories = [
 
   // studentManagement
   {
-    key: 'classJournal',
+    key: 'studentInfo',
     category: 'middle',
-    name: '학급일지',
-    path: 'class-journal',
-    Icon: TfiNotepad,
+    name: '학생 정보',
+    path: 'student-info',
+    Icon: TbMoodKid,
   },
   {
-    key: 'studentList',
+    key: 'studentRegister',
     category: 'middle',
-    name: '학생명렬표',
-    path: 'student-list',
-    Icon: BsSticky,
-  },
-  {
-    key: 'attendance',
-    category: 'middle',
-    name: '출결',
-    path: 'attendance',
-    Icon: BsSticky,
+    name: '학생 등록',
+    path: 'student-register',
+    Icon: AiOutlineUsergroupAdd,
   },
 
   // tools
@@ -292,9 +284,8 @@ export const ROUTE_PATH: RoutePath = {
   stickyNote: 'sticky-note',
 
   // studentManagement
-  classJournal: 'class-journal',
-  studentList: 'student-list',
-  attendance: 'attendance',
+  studentInfo: 'student-info',
+  studentRegister: 'student-register',
 
   // tools
   timer: 'timer',
