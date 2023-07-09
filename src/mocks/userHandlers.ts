@@ -12,7 +12,7 @@ const userResponse = {
 };
 
 export const userHandlers = [
-  rest.get('/user/Info', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(userResponse), ctx.delay(500));
+  rest.get('/user/info', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(userResponse), ctx.delay(200));
   }),
 ];

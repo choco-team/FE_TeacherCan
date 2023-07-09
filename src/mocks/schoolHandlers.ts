@@ -19,7 +19,7 @@ const lunchMenuResponse = {
 };
 
 export const schoolHandlers = [
-  rest.get('/user/lunch-menu/:areaCode/:schoolCode/:date', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(lunchMenuResponse), ctx.delay(500));
+  rest.get('/school/lunch-menu', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(lunchMenuResponse), ctx.delay(200));
   }),
 ];
