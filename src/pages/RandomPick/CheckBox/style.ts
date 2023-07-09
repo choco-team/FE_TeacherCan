@@ -4,6 +4,7 @@ import theme from '@Styles/theme';
 
 import type { CheckboxLabel } from './type';
 
+// 설탕쌤이 만드신 input으로 바꿔끼울 수 있을지 보자.
 export const CheckBox = styled.input`
   height: 3rem;
   width: 3rem;
