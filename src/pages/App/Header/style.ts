@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Layout = styled.div`
   position: fixed;
   min-width: 100vw;
+  min-height: 80px;
 
   display: grid;
   grid-template-columns: repeat(12, 1fr);
