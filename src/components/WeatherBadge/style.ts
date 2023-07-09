@@ -1,8 +1,13 @@
-import styled from 'styled-components';
-
-import { BadgeSkeletonStyle } from '@Styles/skeleton';
+import styled, { css } from 'styled-components';
 
 import { ContainerProps } from './type';
+
+const BadgeSkeletonStyle = css`
+  border-radius: 1.5rem;
+  color: transparent;
+  background: linear-gradient(-90deg, #f3f9ff, #e8f3ff, #f3f9ff, #e8f3ff);
+  background-size: 400%;
+`;
 
 export const Layout = styled.span`
   display: inline-block;
