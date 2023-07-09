@@ -9,17 +9,19 @@ const lightTheme = {
   shadow: `0rem 0.2rem 1.5rem ${'rgba(198, 198, 198, 0.25)'}`,
   pageBackground: theme.color.gray[100],
   background: {
-    basic: theme.color.white,
     primary: theme.color.primary[500],
     secondary: theme.color.secondary[100],
+    gray: theme.color.gray[50],
     success: theme.color.success[100],
     warning: theme.color.warning[100],
     error: theme.color.error[100],
+    disabled: theme.color.gray[200],
     orange: theme.color.orange[600],
   },
   border: {
     primary: theme.color.primary[500],
     secondary: theme.color.secondary[600],
+    gray: theme.color.gray[300],
     success: theme.color.success[600],
     warning: theme.color.warning[600],
     error: theme.color.error[400],
@@ -40,6 +42,9 @@ const lightTheme = {
     warning: theme.color.warning[400],
     error: theme.color.error[400],
     orange: theme.color.orange[800],
+  },
+  hoverBorder: {
+    gray: theme.color.gray[400],
   },
 };
 

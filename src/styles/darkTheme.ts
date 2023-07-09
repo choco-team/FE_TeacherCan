@@ -9,17 +9,19 @@ const darkTheme = {
   shadow: `0rem 0.2rem 1.5rem ${theme.color.gray[950]}`,
   pageBackground: theme.color.gray[900],
   background: {
-    basic: theme.color.black,
     primary: theme.color.primary[500],
     secondary: theme.color.secondary[500],
+    gray: theme.color.gray[950],
     success: theme.color.success[600],
     warning: theme.color.warning[500],
     error: theme.color.error[500],
+    disabled: theme.color.gray[600],
     orange: theme.color.orange[400],
   },
   border: {
     primary: theme.color.primary[700],
     secondary: theme.color.secondary[600],
+    gray: theme.color.gray[400],
     success: theme.color.success[900],
     warning: theme.color.warning[700],
     error: theme.color.error[700],
@@ -40,6 +42,9 @@ const darkTheme = {
     warning: theme.color.warning[800],
     error: theme.color.error[800],
     orange: theme.color.orange[700],
+  },
+  hoverBorder: {
+    gray: theme.color.gray[300],
   },
 };
 
