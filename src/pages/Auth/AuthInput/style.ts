@@ -1,6 +1,8 @@
 import { BsCheckCircleFill } from 'react-icons/bs';
 import styled from 'styled-components';
 
+import Input from '@Components/Input';
+
 import { flexCustom } from '@Styles/common';
 
 import * as T from './type';
@@ -16,26 +18,11 @@ export const InputWrapper = styled.div`
   width: 100%;
 `;
 
-export const AuthInput = styled.input<T.StyledInput>`
-  width: 100%;
+export const AuthInput = styled(Input)<T.StyledInput>`
   height: calc(1.6rem + 36px);
   padding: ${({ type }) =>
     type === 'password' ? '16px 40px 16px 16px' : '16px'};
-  border: 1px solid ${({ theme }) => theme.color.gray[300]};
-  border-radius: 5px;
-  color: ${({ theme }) => theme.color.primary[500]};
-
-  &:hover {
-    border-color: ${({ theme }) => theme.color.gray[400]};
-  }
-
-  &:focus {
-    border-color: ${({ theme }) => theme.color.primary[500]};
-  }
-
-  &::placeholder {
-    color: ${({ theme }) => theme.color.gray[300]};
-  }
+  color: ${({ theme }) => theme.border.primary};
 `;
 
 export const LabelHeader = styled.div`
@@ -55,7 +42,7 @@ export const EyeButton = styled.button`
   position: absolute;
   right: 16px;
   top: 50%;
-  color: ${({ theme }) => theme.color.primary[500]};
+  color: ${({ theme }) => theme.border.primary};
   line-height: 0;
   transform: translateY(-50%);
 `;

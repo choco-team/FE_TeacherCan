@@ -7,7 +7,7 @@ import { NavigationLink } from './type';
 type LayoutProps = Pick<NavigationLink, 'category' | 'isSelected'>;
 
 export const Layout = styled.div<LayoutProps>`
-  padding: ${(props) => (props.category === 'main' ? '2rem' : '0rem')};
+  padding: ${(props) => (props.category === 'main' ? '16px' : '0')};
   border-bottom: ${(props) =>
     props.category === 'main' && props.isSelected
       ? `2px solid ${props.theme.accentText}`
@@ -17,6 +17,7 @@ export const Layout = styled.div<LayoutProps>`
   text-align:center;
 
   font-size: ${(props) => (props.category === 'main' ? '2rem' : '1.8rem')};
+  line-height: ${(props) => (props.category === 'main' ? '2rem' : '1.8rem')};
   letter-spacing: 0.1rem;
   color: ${(props) =>
     props.isSelected ? props.theme.accentText : props.theme.subText};
@@ -32,7 +33,7 @@ const SideNavigationLink = css<LayoutProps>`
   display: flex;
 
   text-align: start;
-  padding: 1.6rem 2rem;
+  padding: 16px 2rem;
   border-radius: 1rem;
   margin-bottom: 2rem;
 

@@ -12,7 +12,7 @@ export const Layout = styled.div<LayoutProps>`
 
   box-shadow: ${(props) => props.theme.shadow};
 
-  background: ${({ theme }) => theme.background.basic};
+  background: ${({ theme }) => theme.background.gray};
 
   color: ${({ theme }) => theme.text};
 `;

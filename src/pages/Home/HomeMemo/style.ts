@@ -4,7 +4,7 @@ import { flexCustom } from '@Styles/common';
 
 export const Layout = styled.div`
   ${flexCustom('column', 'stretch', 'flex-start')}
-  background-color: ${(props) => props.theme.background.basic};
+  background-color: ${(props) => props.theme.background.gray};
   color: ${(props) => props.theme.text};
   row-gap: 16px;
   padding: 1.5rem;
