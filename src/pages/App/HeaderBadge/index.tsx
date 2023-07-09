@@ -9,7 +9,7 @@ import Button from '@Components/Button';
 import * as S from './style';
 import type { HeaderBadge } from './type';
 
-function HeaderBadge({ username, alarm = false }: HeaderBadge) {
+function HeaderBadge({ username, alarm = false, isLoading }: HeaderBadge) {
   const navigate = useNavigate();
 
   const handleClickHeaderBadge = () => {
@@ -24,6 +24,15 @@ function HeaderBadge({ username, alarm = false }: HeaderBadge) {
   const something = () => {
     alert('something...');
   };
+
+  if (isLoading)
+    return (
+      <S.Layout>
+        <Button borderRadius="20px" padding="5px 10px" fontWeight="400">
+          <S.LoadingText>Loading</S.LoadingText>
+        </Button>
+      </S.Layout>
+    );
 
   return (
     <S.Layout>

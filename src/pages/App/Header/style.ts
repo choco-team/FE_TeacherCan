@@ -5,6 +5,7 @@ import { flexCustom } from '@Styles/common';
 export const Layout = styled.div`
   position: fixed;
   min-width: 100vw;
+  min-height: 80px;
 
   display: grid;
   grid-template-columns: repeat(12, 1fr);
