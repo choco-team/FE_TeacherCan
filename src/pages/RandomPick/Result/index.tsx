@@ -1,10 +1,15 @@
-import * as S from './style';
-import { ResultContainerLayout } from './type';
+import React from 'react';
 
-function Result({ children }: ResultContainerLayout) {
+import * as S from './style';
+
+interface ResultProps {
+  result: React.ReactNode;
+}
+
+function Result({ result }: ResultProps) {
   return (
     <S.ResultContainer>
-      뽑힌 사람은 {children.join(', ')} 입니다.
+      뽑힌 사람은 {React.Children.toArray(result).join(', ')} 입니다.
     </S.ResultContainer>
   );
 }

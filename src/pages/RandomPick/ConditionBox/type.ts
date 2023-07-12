@@ -4,4 +4,4 @@ type ConditionBox = {
   Icon?: IconType;
 };
 
-export default ConditionBox;
+export type { ConditionBox };

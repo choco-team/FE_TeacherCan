@@ -17,6 +17,6 @@ export default meta;
 
 export const ResultBox: Story = {
   args: {
-    children: ['김나비', '박호빵'],
+    result: ['김나비', '박호빵'],
   },
 };

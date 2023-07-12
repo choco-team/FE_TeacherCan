@@ -1,10 +1,8 @@
-// import { LuLogOut } from 'react-icons/lu';
-
 import StyledConditionBox from './style';
 import * as S from './style';
-import ConditionBox from './type';
+import type { ConditionBox } from './type';
 
-function CBox({ Icon }: ConditionBox) {
+function ConditionBox({ Icon }: ConditionBox) {
   return (
     <StyledConditionBox>
       <S.Layout>
@@ -15,4 +13,4 @@ function CBox({ Icon }: ConditionBox) {
   );
 }
 
-export default CBox;
+export default ConditionBox;

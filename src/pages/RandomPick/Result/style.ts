@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-import { ResultContainerLayout } from './type';
-export const ResultContainer = styled.div<ResultContainerLayout>`
+export const ResultContainer = styled.div`
   min-width: 60vw;
   max-width: fit-content;
   padding: 30px;

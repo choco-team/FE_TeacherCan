@@ -1,7 +1,7 @@
 import * as S from './style';
 
-function RandomPickPage() {
+function RandomPick() {
   return <S.RandomPickLayout></S.RandomPickLayout>;
 }
 
-export default RandomPickPage;
+export default RandomPick;
