@@ -1,8 +1,14 @@
+import { IconType } from 'react-icons';
+
 import StyledConditionBox from './style';
 import * as S from './style';
-import type { ConditionBox } from './type';
+// import type { ConditionBox } from './type';
 
-function ConditionBox({ Icon }: ConditionBox) {
+interface ConditionBoxProps {
+  Icon: IconType;
+}
+
+function ConditionBox({ Icon }: ConditionBoxProps) {
   return (
     <StyledConditionBox>
       <S.Layout>

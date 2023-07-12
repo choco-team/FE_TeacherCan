@@ -1,11 +1,13 @@
 import * as S from './style';
-import { CheckboxLabel } from './type';
 
-function CheckBox({ children }: CheckboxLabel) {
+interface CheckBoxProps {
+  name: string;
+}
+function CheckBox({ name }: CheckBoxProps) {
   return (
     <S.Layout>
-      <S.CheckBox type="checkbox" id={children} />
-      <S.Label htmlFor={children}>{children}</S.Label>
+      <S.CheckBox type="checkbox" id={name} />
+      <S.Label htmlFor={name}>{name}</S.Label>
     </S.Layout>
   );
 }

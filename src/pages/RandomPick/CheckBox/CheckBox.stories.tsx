@@ -16,12 +16,12 @@ export default meta;
 
 export const ListCheckBox: Story = {
   args: {
-    children: '기존 명단',
+    name: '기존 명단',
   },
 };
 
 export const MethodCheckBox: Story = {
   args: {
-    children: '한 명 뽑기',
+    name: '한 명 뽑기',
   },
 };

@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 import theme from '@Styles/theme';
 
-import type { CheckboxLabel } from './type';
-
 // 설탕쌤이 만드신 input으로 바꿔끼울 수 있을지 보자.
 export const CheckBox = styled.input`
   height: 3rem;
@@ -14,7 +12,7 @@ export const CheckBox = styled.input`
   vertical-align: middle;
 `;
 
-export const Label = styled.label<CheckboxLabel>`
+export const Label = styled.label`
   padding: 1px;
   margin-left: 10px;
   color: ${theme.color.primary[700]};

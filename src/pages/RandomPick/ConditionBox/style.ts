@@ -2,9 +2,7 @@ import styled from 'styled-components';
 
 import Button from '@Components/Button';
 
-import ConditionBox from './type';
-
-const StyledConditionBox = styled(Button)<ConditionBox>`
+const StyledConditionBox = styled(Button)`
   pointer-events: none;
   cursor: not-allowed;
   &:hover {

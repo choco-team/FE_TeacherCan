@@ -3,13 +3,13 @@ import { AiOutlineUserAdd } from 'react-icons/ai';
 import { HiUserGroup } from 'react-icons/hi';
 import { LuLogOut } from 'react-icons/lu';
 
-import CBox from '.';
+import ConditionBox from '.';
 
-type Story = StoryObj<typeof CBox>;
+type Story = StoryObj<typeof ConditionBox>;
 
-const meta: Meta<typeof CBox> = {
+const meta: Meta<typeof ConditionBox> = {
   title: 'RandomPick/ConditionBox',
-  component: CBox,
+  component: ConditionBox,
 };
 
 export default meta;
