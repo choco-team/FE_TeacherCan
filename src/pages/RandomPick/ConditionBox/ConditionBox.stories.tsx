@@ -17,17 +17,20 @@ export default meta;
 export const DefaultConditionBox: Story = {
   args: {
     Icon: LuLogOut,
+    String: '조건설정',
   },
 };
 
 export const TargetConditionBox: Story = {
   args: {
     Icon: AiOutlineUserAdd,
+    String: '대상',
   },
 };
 
 export const UsersConditionBox: Story = {
   args: {
     Icon: HiUserGroup,
+    String: '방식',
   },
 };
