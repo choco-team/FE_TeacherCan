@@ -14,7 +14,7 @@ export const CheckBox = styled.input`
 
 export const Label = styled.label`
   padding: 1px;
-  margin-left: 10px;
+  margin-left: 1vw;
   color: ${theme.color.primary[700]};
   font-size: 2.8rem;
   font-weight: bold;
@@ -24,5 +24,5 @@ export const Layout = styled.div`
   min-width: 192px;
   display: flex;
   align-items: center;
-  margin-right: 32px;
+  margin-right: 2vw;
 `;

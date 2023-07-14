@@ -6,14 +6,15 @@ import * as S from './style';
 interface ConditionBoxProps {
   Icon: IconType;
   String: string;
+  disableCursor: boolean;
 }
 
-function ConditionBox({ Icon, String }: ConditionBoxProps) {
+function ConditionBox({ Icon, String, disableCursor }: ConditionBoxProps) {
   return (
     <S.Layout>
-      <StyledConditionBox>
+      <StyledConditionBox disableCursor={disableCursor}>
         <S.Layout>
-          {Icon && <Icon size="2.2rem" />}
+          <S.IconWrapper>{Icon && <Icon size="2.2rem" />}</S.IconWrapper>
           {String}
         </S.Layout>
       </StyledConditionBox>
