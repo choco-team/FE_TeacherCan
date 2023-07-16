@@ -5,5 +5,6 @@ import { flexCustom } from '@Styles/common';
 export const RandomPickLayout = styled.div`
   ${flexCustom('column', 'center', 'center')}
   background-color: white;
-  padding: 10vw;
+  margin-top: 10vh;
+  padding: 3vw;
 `;
