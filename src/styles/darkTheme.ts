@@ -11,7 +11,7 @@ const darkTheme = {
   background: {
     primary: theme.color.primary[500],
     secondary: theme.color.secondary[500],
-    gray: theme.color.gray[950],
+    gray: theme.color.gray[600],
     success: theme.color.success[600],
     warning: theme.color.warning[500],
     error: theme.color.error[500],

@@ -8,6 +8,7 @@ import { flexCustom } from '@Styles/common';
 interface StyledConditionBoxProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   disableCursor?: boolean;
+  marginRight?: string;
 }
 
 const StyledConditionBox = styled(Button)<StyledConditionBoxProps>`
@@ -27,8 +28,9 @@ const StyledConditionBox = styled(Button)<StyledConditionBoxProps>`
   min-width: 140px;
   min-height: 50px;
   box-shadow: 2px 2px ${(props) => props.theme.color.gray[400]};
-  font-size: 2.2rem;
-  margin-right: 2vw;
+  font-size: 1.8rem;
+  margin-right: ${(props) => props.marginRight};
+  padding-bottom: 0;
 `;
 
 export const Layout = styled.div`
@@ -38,7 +40,7 @@ export const Layout = styled.div`
 `;
 
 export const IconWrapper = styled.div`
-  margin-right: 1rem; /* Adjust the margin value as needed */
+  margin-right: 1rem;
 `;
 
 export default StyledConditionBox;

@@ -7,12 +7,21 @@ interface ConditionBoxProps {
   Icon: IconType;
   String: string;
   disableCursor: boolean;
+  marginRight?: string;
 }
 
-function ConditionBox({ Icon, String, disableCursor }: ConditionBoxProps) {
+function ConditionBox({
+  Icon,
+  String,
+  disableCursor,
+  marginRight,
+}: ConditionBoxProps) {
   return (
     <S.Layout>
-      <StyledConditionBox disableCursor={disableCursor}>
+      <StyledConditionBox
+        disableCursor={disableCursor}
+        marginRight={marginRight}
+      >
         <S.Layout>
           <S.IconWrapper>{Icon && <Icon size="2.2rem" />}</S.IconWrapper>
           {String}

@@ -4,8 +4,6 @@ import theme from '@Styles/theme';
 
 // 설탕쌤이 만드신 input으로 바꿔끼울 수 있을지 보자.
 export const CheckBox = styled.input`
-  height: 4rem;
-  width: 4rem;
   padding: 10px;
   border: 5px solid ${theme.color.primary[500]};
   border-radius: 3px;
@@ -21,8 +19,8 @@ export const Label = styled.label`
 `;
 
 export const Layout = styled.div`
-  min-width: 192px;
+  min-width: 30%;
   display: flex;
   align-items: center;
-  margin-right: 2vw;
+  margin-right: 5%;
 `;
