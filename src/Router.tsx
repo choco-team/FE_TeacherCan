@@ -8,6 +8,7 @@ import SignIn from '@Pages/Auth/SignIn';
 import SignUp from '@Pages/Auth/SignUp';
 import Home from '@Pages/Home';
 import RandomPick from '@Pages/RandomPick';
+import RandomResult from '@Pages/RandomResult';
 
 const router = createBrowserRouter([
   {
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
           {
             path: ROUTE_PATH.randomDrawing,
             element: <RandomPick />,
+          },
+          {
+            path: ROUTE_PATH.randomResult,
+            element: <RandomResult />,
           },
           {
             path: ROUTE_PATH.changeSeats,

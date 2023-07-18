@@ -44,6 +44,7 @@ export const MIDDLE_CATEGORIES = [
   // tools
   { name: 'timer', path: 'timer' },
   { name: 'randomDrawing', path: 'random-drawing' },
+  { name: 'randomResult', path: 'random-result' },
   { name: 'changeSeats', path: 'change-seats' },
   { name: 'setOrder', path: 'set-order' },
   { name: 'qrCode', path: 'qr-code' },
@@ -92,6 +93,7 @@ export const CATEGORIES: Categories = [
     children: [
       'timer',
       'randomDrawing',
+      'randomResult',
       'changeSeats',
       'setOrder',
       'qrCode',
@@ -290,6 +292,7 @@ export const ROUTE_PATH: RoutePath = {
   // tools
   timer: 'timer',
   randomDrawing: 'random-drawing',
+  randomResult: 'random-result',
   changeSeats: 'change-seats',
   setOrder: 'set-order',
   qrCode: 'qr-code',

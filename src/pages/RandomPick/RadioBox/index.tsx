@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { ImCheckboxChecked, ImCheckboxUnchecked } from 'react-icons/im';
 
 import * as S from './style';
 

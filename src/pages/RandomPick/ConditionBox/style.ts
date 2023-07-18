@@ -19,8 +19,7 @@ const StyledConditionBox = styled(Button)<StyledConditionBoxProps>`
       cursor: not-allowed;
       pointer-events: none;
     `}
-  /* pointer-events: none;
-  cursor: not-allowed; */
+
   &:hover {
     background-color: ${(props) =>
       props.theme.background[props.variant || 'primary']};
