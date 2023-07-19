@@ -41,3 +41,9 @@ export const UpDownWrapper = styled.div<UpDownWrapperProps>`
   padding: 0;
   margin-left: 0;
 `;
+
+export const ResultDiv = styled.div`
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+`;
