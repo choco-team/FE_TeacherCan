@@ -9,6 +9,7 @@ interface StyledConditionBoxProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
   disableCursor?: boolean;
   marginRight?: string;
+  marginLeft?: string;
 }
 
 const StyledConditionBox = styled(Button)<StyledConditionBoxProps>`
@@ -29,6 +30,7 @@ const StyledConditionBox = styled(Button)<StyledConditionBoxProps>`
   box-shadow: 2px 2px ${(props) => props.theme.color.gray[400]};
   font-size: 1.8rem;
   margin-right: ${(props) => props.marginRight};
+  margin-left: ${(props) => props.marginLeft};
   padding-bottom: 0;
 `;
 

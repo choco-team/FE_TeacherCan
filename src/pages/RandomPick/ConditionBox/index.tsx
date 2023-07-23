@@ -8,6 +8,7 @@ interface ConditionBoxProps {
   String: string;
   disableCursor: boolean;
   marginRight?: string;
+  marginLeft?: string;
 }
 
 function ConditionBox({
@@ -15,12 +16,14 @@ function ConditionBox({
   String,
   disableCursor,
   marginRight,
+  marginLeft,
 }: ConditionBoxProps) {
   return (
     <S.Layout>
       <StyledConditionBox
         disableCursor={disableCursor}
         marginRight={marginRight}
+        marginLeft={marginLeft}
       >
         <S.Layout>
           <S.IconWrapper>{Icon && <Icon size="2.2rem" />}</S.IconWrapper>

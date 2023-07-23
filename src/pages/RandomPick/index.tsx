@@ -17,7 +17,7 @@ function RandomPick() {
           Icon={LuLogOut}
           String="조건설정"
           disableCursor={true}
-          marginRight="10%"
+          marginLeft="-8px"
         />
       </UpDownWrapper>
       <ChoosedComponentsContainer>
@@ -25,7 +25,8 @@ function RandomPick() {
           Icon={HiUserGroup}
           String="대상"
           disableCursor={true}
-          marginRight="70%"
+          marginLeft="-48px"
+          marginRight="48px"
         />
         <RadioBox name="list">기존 명단</RadioBox>
         <RadioBox name="list">새로운 명단</RadioBox>
@@ -35,7 +36,8 @@ function RandomPick() {
           Icon={TiFlowMerge}
           String="방식"
           disableCursor={true}
-          marginRight="70%"
+          marginLeft="-48px"
+          marginRight="48px"
         />
 
         <RadioBox name="method">한 명 뽑기</RadioBox>
@@ -46,7 +48,8 @@ function RandomPick() {
           Icon={BsEye}
           String="대상 설정"
           disableCursor={true}
-          marginRight="70%"
+          marginLeft="-48px"
+          marginRight="48px"
         />
 
         <RadioBox name="target">인원 설정</RadioBox>
