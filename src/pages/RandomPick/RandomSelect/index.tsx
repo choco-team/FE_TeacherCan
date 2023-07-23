@@ -9,9 +9,9 @@ import RadioBox from './RadioBox';
 import { UpDownWrapper, ChoosedComponentsContainer } from './style';
 import * as S from './style';
 
-function RandomPick() {
+function RandomSelect() {
   return (
-    <S.RandomPickLayout>
+    <S.RandomSelectLayout>
       <UpDownWrapper>
         <ConditionBox
           Icon={LuLogOut}
@@ -62,8 +62,8 @@ function RandomPick() {
           disableCursor={false}
         />
       </UpDownWrapper>
-    </S.RandomPickLayout>
+    </S.RandomSelectLayout>
   );
 }
 
-export default RandomPick;
+export default RandomSelect;

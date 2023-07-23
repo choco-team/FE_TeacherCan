@@ -7,8 +7,8 @@ import Auth from '@Pages/Auth';
 import SignIn from '@Pages/Auth/SignIn';
 import SignUp from '@Pages/Auth/SignUp';
 import Home from '@Pages/Home';
-import RandomPick from '@Pages/RandomPick';
-import RandomResult from '@Pages/RandomResult';
+import RandomResult from '@Pages/RandomPick/RandomResult';
+import RandomPick from '@Pages/RandomPick/RandomSelect';
 
 const router = createBrowserRouter([
   {

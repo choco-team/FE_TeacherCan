@@ -4,15 +4,13 @@ import styled from 'styled-components';
 import { flexCustom } from '@Styles/common';
 import theme from '@Styles/theme';
 
-export const RandomPickLayout = styled.div`
+export const RandomSelectLayout = styled.div`
   ${flexCustom('column', 'center', 'center')}
   width: 100%;
   max-width: 880px;
   background-color: ${(props) => props.theme.background.gray};
-  margin-top: 10%;
+  margin: auto;
   border-radius: 10px;
-  margin-left: 10%;
-  margin-right: 10%;
 `;
 
 export const ChoosedComponentsContainer = styled.div`

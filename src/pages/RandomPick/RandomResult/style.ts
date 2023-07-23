@@ -10,20 +10,24 @@ interface RandomResultLayoutProps {
   backgroundImage: string;
 }
 
-export const RandomResultLayout = styled.div<RandomResultLayoutProps>`
-  ${flexCustom('column', 'center', 'space-around')}
+export const Layout = styled.div`
+  ${flexCustom('column', 'center', 'center')}
+  width: 100%;
+  height: 100%;
+`;
+
+export const RandomResult = styled.div<RandomResultLayoutProps>`
+  ${flexCustom('column', 'center', 'space-between')}
+  width: 100%;
+  aspect-ratio: 5/3;
+  max-width: 896px;
+  margin: auto;
+  border-radius: 10px;
   background-image: url(${(props) => props.backgroundImage});
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-color: burlywood;
-  width: 100%;
-  min-height: 480px;
-  max-width: 880px;
-  margin-top: 10%;
-  border-radius: 10px;
-  margin-left: 10%;
-  margin-right: 10%;
 `;
 
 export const ChoosedComponentsContainer = styled.div`
@@ -42,7 +46,7 @@ interface UpDownWrapperProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
 }
 
-interface ResultDivProps {
+interface ResultWrapperProps {
   color: string;
 }
 
@@ -55,8 +59,7 @@ export const UpDownWrapper = styled.div<UpDownWrapperProps>`
   margin-left: 0;
 `;
 
-export const ResultDiv = styled.div<ResultDivProps>`
-  padding: 168px 0px;
+export const ResultWrapper = styled.div<ResultWrapperProps>`
   color: ${(props) => props.color};
   font-weight: bold;
   font-size: 3rem;
