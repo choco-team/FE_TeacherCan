@@ -4,10 +4,17 @@ import styled from 'styled-components';
 import { flexCustom } from '@Styles/common';
 import theme from '@Styles/theme';
 
-export const RandomSelectLayout = styled.div`
+export const Layout = styled.div`
   ${flexCustom('column', 'center', 'center')}
   width: 100%;
-  max-width: 880px;
+  height: 100%;
+`;
+
+export const RandomSelectContainer = styled.div`
+  ${flexCustom('column', 'center', 'space-between')}
+  width: 100%;
+  aspect-ratio: 5/3;
+  max-width: 896px;
   background-color: ${(props) => props.theme.background.gray};
   margin: auto;
   border-radius: 10px;

@@ -63,14 +63,37 @@ export const ResultWrapper = styled.div<ResultWrapperProps>`
   color: ${(props) => props.color};
   font-weight: bold;
   font-size: 3rem;
+  margin-bottom: 16px;
 `;
 
-export const RandomPickBackgroundButton = styled(Button)`
+export const BackgroundButtonContainer = styled.div`
   ${flexCustom('row', 'center', 'center')}
-  width: 48px;
-  min-width: 48px;
-  height: 48px;
-  margin: 8px;
+`;
+
+interface backgroundButtonProps {
+  backgroundColor: string;
+  hoverBackground: string;
+}
+
+export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
+  ${flexCustom('row', 'center', 'center')}
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  margin: 8px 4px;
   border-radius: 50%;
-  font-size: 32px;
+  background-color: ${(props) => props.backgroundColor};
+  border-color: ${(props) => props.backgroundColor};
+  &:hover {
+    background-color: ${(props) => props.hoverBackground};
+  }
+
+  &:active {
+    background-color: ${(props) => props.hoverBackground};
+  }
+`;
+
+export const ResultSpan = styled.span`
+  font-size: 3.6rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, gold 50%);
 `;

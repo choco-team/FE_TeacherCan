@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { LuLogOut } from 'react-icons/lu';
-import { PiSunBold, PiMoonStarsBold } from 'react-icons/pi';
 
 import ConditionBox from '@Pages/RandomPick/RandomSelect/ConditionBox';
 
@@ -13,8 +12,11 @@ import * as S from './style';
 function RandomPick() {
   const [chosenStudents, setChosenStudents] = useState<string[]>([]);
   const [isWoodBackground, setIsWoodBackground] = useState(true);
-  const toggleBackground = () => {
-    setIsWoodBackground((prev) => !prev);
+  const toggleWoodBackground = () => {
+    setIsWoodBackground(true);
+  };
+  const toggleWhiteBackground = () => {
+    setIsWoodBackground(false);
   };
 
   useEffect(() => {
@@ -39,14 +41,24 @@ function RandomPick() {
             disableCursor={true}
             marginLeft="-8px"
           />
-          <S.RandomPickBackgroundButton handleClick={toggleBackground}>
-            {isWoodBackground ? <PiSunBold /> : <PiMoonStarsBold />}
-          </S.RandomPickBackgroundButton>
+          <S.BackgroundButtonContainer>
+            <S.WoodBackgroundButton
+              handleClick={toggleWoodBackground}
+              backgroundColor="#6eaa5e"
+              hoverBackground="#14540d"
+            />
+            <S.WoodBackgroundButton
+              handleClick={toggleWhiteBackground}
+              backgroundColor="white"
+              hoverBackground="#ece6cc"
+            />
+          </S.BackgroundButtonContainer>
         </S.UpDownWrapper>
         <S.ResultWrapper color={isWoodBackground ? 'white' : 'black'}>
           {chosenStudents.length > 0 ? (
             <p>
-              뽑힌 학생은 <span>{chosenStudents.join(', ')}</span> 입니다.
+              뽑힌 학생은{' '}
+              <S.ResultSpan>{chosenStudents.join('  ')}</S.ResultSpan> 입니다.
             </p>
           ) : (
             <p>아직 선정이 완료되지 않았습니다</p>
