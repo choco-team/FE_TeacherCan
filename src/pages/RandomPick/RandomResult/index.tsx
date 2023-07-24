@@ -44,7 +44,7 @@ function RandomPick() {
           <S.BackgroundButtonContainer>
             <S.WoodBackgroundButton
               handleClick={toggleWoodBackground}
-              backgroundColor="#6eaa5e"
+              backgroundColor="#007200"
               hoverBackground="#14540d"
             />
             <S.WoodBackgroundButton
