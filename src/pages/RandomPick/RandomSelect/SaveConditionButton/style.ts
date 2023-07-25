@@ -1,25 +1,28 @@
 import { ButtonHTMLAttributes } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import Button from '@Components/Button';
 
 import { flexCustom } from '@Styles/common';
 
-interface StyledConditionBoxProps
+export const Layout = styled.div`
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+`;
+
+export const IconWrapper = styled.div`
+  margin-right: 1rem;
+`;
+
+interface SaveConditionButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
-  disableCursor?: boolean;
   marginRight?: string;
   marginLeft?: string;
 }
 
-const StyledConditionBox = styled(Button)<StyledConditionBoxProps>`
+export const SaveConditionButton = styled(Button)<SaveConditionButtonProps>`
   ${flexCustom('row', 'center', 'space-between')}
-  ${({ disableCursor }) =>
-    disableCursor &&
-    css`
-      cursor: not-allowed;
-      pointer-events: none;
-    `}
 
   &:hover {
     background-color: ${(props) =>
@@ -33,15 +36,3 @@ const StyledConditionBox = styled(Button)<StyledConditionBoxProps>`
   margin-left: ${(props) => props.marginLeft};
   padding-bottom: 0;
 `;
-
-export const Layout = styled.div`
-  height: auto;
-  display: flex;
-  justify-content: space-around;
-`;
-
-export const IconWrapper = styled.div`
-  margin-right: 1rem;
-`;
-
-export default StyledConditionBox;

@@ -4,8 +4,9 @@ import { HiUserGroup } from 'react-icons/hi';
 import { LuLogOut } from 'react-icons/lu';
 import { TiFlowMerge } from 'react-icons/ti';
 
-import ConditionBox from './ConditionBox';
 import RadioBox from './RadioBox';
+import SaveConditionButton from './SaveConditionButton';
+import SelectBox from './SelectBox';
 import { UpDownWrapper, ChoosedComponentsContainer } from './style';
 import * as S from './style';
 
@@ -14,18 +15,12 @@ function RandomSelect() {
     <S.Layout>
       <S.RandomSelectContainer>
         <UpDownWrapper>
-          <ConditionBox
-            Icon={LuLogOut}
-            String="조건설정"
-            disableCursor={true}
-            marginLeft="-8px"
-          />
+          <SelectBox Icon={LuLogOut} String="조건설정" marginLeft="-8px" />
         </UpDownWrapper>
         <ChoosedComponentsContainer>
-          <ConditionBox
+          <SelectBox
             Icon={HiUserGroup}
             String="대상"
-            disableCursor={true}
             marginLeft="-48px"
             marginRight="48px"
           />
@@ -33,10 +28,9 @@ function RandomSelect() {
           <RadioBox name="list">새로운 명단</RadioBox>
         </ChoosedComponentsContainer>
         <ChoosedComponentsContainer>
-          <ConditionBox
+          <SelectBox
             Icon={TiFlowMerge}
             String="방식"
-            disableCursor={true}
             marginLeft="-48px"
             marginRight="48px"
           />
@@ -45,10 +39,9 @@ function RandomSelect() {
           <RadioBox name="method">줄 세우기</RadioBox>
         </ChoosedComponentsContainer>
         <ChoosedComponentsContainer>
-          <ConditionBox
+          <SelectBox
             Icon={BsEye}
             String="대상 설정"
-            disableCursor={true}
             marginLeft="-48px"
             marginRight="48px"
           />
@@ -57,11 +50,7 @@ function RandomSelect() {
           <RadioBox name="target">전체 랜덤</RadioBox>
         </ChoosedComponentsContainer>
         <UpDownWrapper justifyContent="flex-end">
-          <ConditionBox
-            Icon={AiOutlineUserAdd}
-            String="조건저장"
-            disableCursor={false}
-          />
+          <SaveConditionButton Icon={AiOutlineUserAdd} String="조건저장" />
         </UpDownWrapper>
       </S.RandomSelectContainer>
     </S.Layout>

@@ -14,7 +14,7 @@ export const RandomSelectContainer = styled.div`
   ${flexCustom('column', 'center', 'space-between')}
   width: 100%;
   aspect-ratio: 5/3;
-  max-width: 896px;
+  max-width: 1024px;
   background-color: ${(props) => props.theme.background.gray};
   margin: auto;
   border-radius: 10px;

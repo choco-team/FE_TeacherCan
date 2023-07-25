@@ -20,7 +20,7 @@ export const RandomResult = styled.div<RandomResultLayoutProps>`
   ${flexCustom('column', 'center', 'space-between')}
   width: 100%;
   aspect-ratio: 5/3;
-  max-width: 896px;
+  max-width: 1024px;
   margin: auto;
   border-radius: 10px;
   background-image: url(${(props) => props.backgroundImage});

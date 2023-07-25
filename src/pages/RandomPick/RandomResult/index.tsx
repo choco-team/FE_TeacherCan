@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { LuLogOut } from 'react-icons/lu';
 
-import ConditionBox from '@Pages/RandomPick/RandomSelect/ConditionBox';
+import SaveConditionButton from '@Pages/RandomPick/RandomSelect/SaveConditionButton';
 
 import whitebackground from '@Assets/image/background/random-whitebg.png';
 import woodbackground from '@Assets/image/background/random-woodbg.png';
 
 import * as S from './style';
+import SelectBox from '../RandomSelect/SelectBox';
 
 function RandomPick() {
   const [chosenStudents, setChosenStudents] = useState<string[]>([]);
@@ -35,12 +36,7 @@ function RandomPick() {
         backgroundImage={isWoodBackground ? woodbackground : whitebackground}
       >
         <S.UpDownWrapper justifyContent="space-between">
-          <ConditionBox
-            Icon={LuLogOut}
-            String="랜덤뽑기"
-            disableCursor={true}
-            marginLeft="-8px"
-          />
+          <SelectBox Icon={LuLogOut} String="랜덤뽑기" marginLeft="-8px" />
           <S.BackgroundButtonContainer>
             <S.WoodBackgroundButton
               handleClick={toggleWoodBackground}
@@ -65,22 +61,19 @@ function RandomPick() {
           )}
         </S.ResultWrapper>
         <S.UpDownWrapper justifyContent="flex-end">
-          <ConditionBox
+          <SaveConditionButton
             Icon={AiOutlineUserAdd}
             String="뽑기"
-            disableCursor={false}
             marginLeft="10px"
           />
-          <ConditionBox
+          <SaveConditionButton
             Icon={AiOutlineUserAdd}
             String="한 번 더"
-            disableCursor={false}
             marginLeft="10px"
           />
-          <ConditionBox
+          <SaveConditionButton
             Icon={AiOutlineUserAdd}
             String="조건설정"
-            disableCursor={false}
             marginLeft="10px"
           />
         </S.UpDownWrapper>

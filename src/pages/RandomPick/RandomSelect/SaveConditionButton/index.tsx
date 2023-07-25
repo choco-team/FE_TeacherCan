@@ -1,37 +1,30 @@
 import { IconType } from 'react-icons';
 
-import StyledConditionBox from './style';
 import * as S from './style';
 
-interface ConditionBoxProps {
+interface SaveConditionButtonProps {
   Icon: IconType;
   String: string;
-  disableCursor: boolean;
   marginRight?: string;
   marginLeft?: string;
 }
 
-function ConditionBox({
+function SaveConditionButton({
   Icon,
   String,
-  disableCursor,
   marginRight,
   marginLeft,
-}: ConditionBoxProps) {
+}: SaveConditionButtonProps) {
   return (
     <S.Layout>
-      <StyledConditionBox
-        disableCursor={disableCursor}
-        marginRight={marginRight}
-        marginLeft={marginLeft}
-      >
+      <S.SaveConditionButton marginRight={marginRight} marginLeft={marginLeft}>
         <S.Layout>
           <S.IconWrapper>{Icon && <Icon size="2.2rem" />}</S.IconWrapper>
           {String}
         </S.Layout>
-      </StyledConditionBox>
+      </S.SaveConditionButton>
     </S.Layout>
   );
 }
 
-export default ConditionBox;
+export default SaveConditionButton;
