@@ -1,9 +1,16 @@
 import styled from 'styled-components';
 
+import { TextSkeletonStyle } from '@Styles/skeleton';
 import theme from '@Styles/theme';
 
-export const Layout = styled.div`
-  display: grid;
+type LoadingProps = {
+  isLoading?: boolean;
+};
+
+export const Layout = styled.div<LoadingProps>`
+  display: ${(props) => (props.isLoading ? 'flex' : 'grid')};
+  flex-direction: column;
+  row-gap: 40px;
 
   padding: 40px;
   border-radius: 12px;
@@ -17,8 +24,10 @@ export const Menu = styled.div`
   gap: 10px;
 `;
 
-export const Name = styled.div`
+export const Name = styled.div<LoadingProps>`
   font-size: 2.4rem;
+
+  ${(props) => props.isLoading && TextSkeletonStyle}
 `;
 
 export const Allergies = styled.div`
