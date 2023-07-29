@@ -36,3 +36,15 @@ export const SchoolName = styled.div`
 export const StandardDate = styled.input`
   font-size: 2rem;
 `;
+
+export const IconWrapper = styled.div`
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  svg {
+    width: 500px;
+    height: 500px;
+  }
+`;

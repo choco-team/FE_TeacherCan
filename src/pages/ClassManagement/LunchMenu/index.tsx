@@ -1,3 +1,4 @@
+import TeacherCanWarningIcon from '@Components/Icon/TeacherCanWarningIcon';
 import { ChangeEvent, useState } from 'react';
 
 import useMe from '@Hooks/api/useMe';
@@ -43,7 +44,13 @@ function LunchMenu() {
         value={standardDate}
         onChange={changeStandardDate}
       />
-      {schoolName && <Board />}
+      {schoolName ? (
+        <Board />
+      ) : (
+        <S.IconWrapper>
+          <TeacherCanWarningIcon />
+        </S.IconWrapper>
+      )}
     </S.Layout>
   );
 }
