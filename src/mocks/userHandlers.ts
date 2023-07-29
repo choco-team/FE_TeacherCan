@@ -6,6 +6,7 @@ const userResponse = {
     userId: 'string',
     nickName: 'KHD',
     schoolName: '서원주초등학교',
+    // schoolName: undefined,
     schoolCode: 'string',
     areaCode: 'string',
   },
@@ -13,6 +14,6 @@ const userResponse = {
 
 export const userHandlers = [
   rest.get('/user/info', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(userResponse), ctx.delay(200));
+    return res(ctx.status(200), ctx.json(userResponse), ctx.delay(0));
   }),
 ];
