@@ -5,8 +5,8 @@ const userResponse = {
   data: {
     userId: 'string',
     nickName: 'KHD',
-    // schoolName: '서원주초등학교',
-    schoolName: undefined,
+    schoolName: '서원주초등학교',
+    // schoolName: undefined,
     schoolCode: 'string',
     areaCode: 'string',
   },

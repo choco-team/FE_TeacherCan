@@ -35,6 +35,10 @@ export const SchoolName = styled.div`
 
 export const StandardDate = styled.input`
   font-size: 2rem;
+
+  &::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+  }
 `;
 
 export const IconWrapper = styled.div`

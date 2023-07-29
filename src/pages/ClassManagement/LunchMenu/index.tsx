@@ -43,6 +43,7 @@ function LunchMenu() {
         type="date"
         value={standardDate}
         onChange={changeStandardDate}
+        disabled={!schoolName}
       />
       {schoolName ? (
         <Board />
