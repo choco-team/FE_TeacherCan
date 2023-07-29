@@ -8,6 +8,7 @@ const darkTheme = {
   accentText: theme.color.primary[500],
   shadow: `0rem 0.2rem 1.5rem ${theme.color.gray[950]}`,
   pageBackground: theme.color.gray[900],
+  modalBackground: 'rgba(255, 255, 255, 0.3)',
   background: {
     primary: theme.color.primary[500],
     secondary: theme.color.secondary[500],
