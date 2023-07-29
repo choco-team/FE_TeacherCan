@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import useMe from '@Hooks/api/useMe';
 
+import Board from './Board/Board';
 import RegisterShoolButton from './RegisterShoolButton/RegisterShoolButton';
 
 function LunchMenu() {
@@ -32,7 +33,7 @@ function LunchMenu() {
         )}
       </div>
       <StandardDate>{standardDate}</StandardDate>
-      <div>식단표</div>
+      <Board />
     </Layout>
   );
 }
@@ -50,6 +51,8 @@ const Layout = styled.div`
   padding: 60px;
 
   min-height: 100%;
+
+  color: ${(props) => props.theme.text};
 `;
 
 const SchoolName = styled.div`
