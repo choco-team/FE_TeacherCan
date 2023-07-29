@@ -25,6 +25,6 @@ export const SchoolName = styled.div`
   color: ${(props) => props.theme.primaryText};
 `;
 
-export const StandardDate = styled.div`
+export const StandardDate = styled.input`
   font-size: 2rem;
 `;
