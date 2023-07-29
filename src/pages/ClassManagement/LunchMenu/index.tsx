@@ -4,6 +4,8 @@ import useMe from '@Hooks/api/useMe';
 
 import dateFunctions from '@Utils/date';
 
+import CircularProgress from '@Components/CircularProgress';
+
 import Board from './Board';
 import RegisterShoolButton from './RegisterShoolButton/RegisterShoolButton';
 import * as S from './style';
@@ -16,7 +18,12 @@ function LunchMenu() {
     setStandardDate(event.target.value);
   };
 
-  if (isLoading) return <div>로딩</div>;
+  if (isLoading)
+    return (
+      <S.LoadLayout>
+        <CircularProgress size="x-large" />
+      </S.LoadLayout>
+    );
 
   const {
     data: { schoolName },

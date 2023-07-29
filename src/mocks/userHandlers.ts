@@ -14,6 +14,6 @@ const userResponse = {
 
 export const userHandlers = [
   rest.get('/user/info', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(userResponse), ctx.delay(0));
+    return res(ctx.status(200), ctx.json(userResponse), ctx.delay(1000));
   }),
 ];
