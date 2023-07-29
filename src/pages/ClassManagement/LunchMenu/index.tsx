@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import useMe from '@Hooks/api/useMe';
 
-import Board from './Board/Board';
+import Board from './Board';
 import RegisterShoolButton from './RegisterShoolButton/RegisterShoolButton';
 
 function LunchMenu() {
