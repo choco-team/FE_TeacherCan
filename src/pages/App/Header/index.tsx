@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import useFetch from '@Hooks/useFetch';
+import useFetch from '@Hooks/api/useFetch';
 
 import route from '@Utils/route';
 

@@ -5,7 +5,7 @@ const userResponse = {
   data: {
     userId: 'string',
     nickName: 'KHD',
-    schoolName: 'string',
+    schoolName: '서원주초등학교',
     schoolCode: 'string',
     areaCode: 'string',
   },
