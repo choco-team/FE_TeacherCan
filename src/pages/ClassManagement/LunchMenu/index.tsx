@@ -59,6 +59,8 @@ const SchoolName = styled.div`
   padding: 8px 12px;
   border-radius: 3px;
 
+  font-size: 2rem;
+
   background-color: ${(props) => props.theme.background.primary};
   color: ${(props) => props.theme.primaryText};
 `;
