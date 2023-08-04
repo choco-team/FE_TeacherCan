@@ -4,10 +4,12 @@ const darkTheme = {
   ...theme,
   text: theme.color.gray[100],
   primaryText: theme.color.gray[800],
-  subText: theme.color.gray[400],
+  subText: theme.color.gray[600],
+  grayText: theme.color.gray[500],
   accentText: theme.color.primary[500],
   shadow: `0rem 0.2rem 1.5rem ${theme.color.gray[950]}`,
   pageBackground: theme.color.gray[900],
+  sectionBackground: theme.color.gray[800],
   background: {
     primary: theme.color.primary[500],
     secondary: theme.color.secondary[500],
@@ -30,6 +32,7 @@ const darkTheme = {
   hoverBackground: {
     primary: theme.color.primary[300],
     secondary: theme.color.secondary[300],
+    gray: theme.color.gray[900],
     success: theme.color.success[400],
     warning: theme.color.warning[300],
     error: theme.color.error[300],
@@ -38,10 +41,14 @@ const darkTheme = {
   activeBackground: {
     primary: theme.color.primary[800],
     secondary: theme.color.secondary[800],
+    gray: theme.color.gray[800],
     success: theme.color.success[900],
     warning: theme.color.warning[800],
     error: theme.color.error[800],
     orange: theme.color.orange[700],
+  },
+  selectionBackground: {
+    primary: theme.color.primary[800],
   },
   hoverBorder: {
     gray: theme.color.gray[300],
