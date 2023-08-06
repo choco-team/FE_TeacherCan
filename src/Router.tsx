@@ -6,6 +6,7 @@ import App from '@Pages/App';
 import Auth from '@Pages/Auth';
 import SignIn from '@Pages/Auth/SignIn';
 import SignUp from '@Pages/Auth/SignUp';
+import LunchMenu from '@Pages/ClassManagement/LunchMenu';
 import Home from '@Pages/Home';
 import StudentManagement from '@Pages/StudentManagement';
 import StudentRegister from '@Pages/StudentManagement/StudentRegister';
@@ -42,9 +43,11 @@ const router = createBrowserRouter([
         children: [
           {
             path: ROUTE_PATH.schedule,
+            element: <div>스케쥴</div>,
           },
           {
             path: ROUTE_PATH.lunchMenu,
+            element: <LunchMenu />,
           },
           {
             path: ROUTE_PATH.roles,

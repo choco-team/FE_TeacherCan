@@ -20,6 +20,6 @@ const lunchMenuResponse = {
 
 export const schoolHandlers = [
   rest.get('/school/lunch-menu', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(lunchMenuResponse), ctx.delay(200));
+    return res(ctx.status(200), ctx.json(lunchMenuResponse), ctx.delay(1000));
   }),
 ];

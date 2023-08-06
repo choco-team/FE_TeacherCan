@@ -37,7 +37,7 @@
             "position": "before"
           },
           {
-            "pattern": "@Hooks/*",
+            "pattern": "@Hooks/**/*",
             "group": "internal",
             "position": "after"
           },

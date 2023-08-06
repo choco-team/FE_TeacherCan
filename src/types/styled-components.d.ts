@@ -14,6 +14,7 @@ declare module 'styled-components' {
     accentText: string;
     pageBackground: string;
     sectionBackground: string;
+    modalBackground: string;
     shadow: string;
     background: Partial<Record<Variant, string>> & {
       disabled?: string;
