@@ -5,6 +5,7 @@ type Button = {
   className?: string;
   variant?: Variant;
   concept?: 'text' | 'contained' | 'outlined';
+  size?: 'sm' | 'md' | 'lg' | 'narrow' | 'wide';
   width?: string;
   fullWidth?: boolean;
   minWidth?: string;
@@ -16,11 +17,12 @@ type Button = {
   color?: string;
   fontSize?: string;
   fontWeight?: string;
-} & Pick<ButtonHTMLAttributes<HTMLButtonElement>, 'name' | 'type' | 'disabled'>;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 type StyledButton = {
   variant: Variant;
   concept: 'text' | 'contained' | 'outlined';
+  size: 'sm' | 'md' | 'lg' | 'narrow' | 'wide';
   width: string;
   fullWidth: boolean;
   minWidth: string;

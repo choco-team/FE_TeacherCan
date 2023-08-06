@@ -8,6 +8,8 @@ import SignIn from '@Pages/Auth/SignIn';
 import SignUp from '@Pages/Auth/SignUp';
 import LunchMenu from '@Pages/ClassManagement/LunchMenu';
 import Home from '@Pages/Home';
+import StudentManagement from '@Pages/StudentManagement';
+import StudentRegister from '@Pages/StudentManagement/StudentRegister';
 
 const router = createBrowserRouter([
   {
@@ -67,12 +69,14 @@ const router = createBrowserRouter([
       {
         // 학생관리
         path: ROUTE_PATH.studentManagement,
+        element: <StudentManagement />,
         children: [
           {
             path: ROUTE_PATH.studentInfo,
           },
           {
             path: ROUTE_PATH.studentRegister,
+            element: <StudentRegister />,
           },
         ],
       },

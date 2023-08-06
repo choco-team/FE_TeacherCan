@@ -6,18 +6,20 @@ function Button({
   name,
   variant = 'primary',
   concept = 'contained',
+  size = 'md',
   type = 'button',
   disabled = false,
   handleClick,
   width = 'auto',
   fullWidth = false,
   minWidth = '6.4rem',
-  borderRadius = '3px',
+  borderRadius = '5px',
   padding = '0.8rem 1.2rem',
   margin = '0',
   children,
   fontSize = '1.6rem',
   fontWeight = '600',
+  ...props
 }: React.PropsWithChildren<Button>) {
   return (
     <S.Button
@@ -25,6 +27,7 @@ function Button({
       name={name}
       variant={variant}
       concept={concept}
+      size={size}
       type={type}
       disabled={disabled}
       onClick={handleClick}
@@ -36,6 +39,7 @@ function Button({
       margin={margin}
       fontSize={fontSize}
       fontWeight={fontWeight}
+      {...props}
     >
       {children}
     </S.Button>
