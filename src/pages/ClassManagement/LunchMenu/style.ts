@@ -14,9 +14,9 @@ export const Layout = styled.div`
   grid-template-rows: auto 1fr;
   align-items: center;
   justify-items: start;
-  row-gap: 40px;
+  row-gap: 20px;
 
-  padding: 60px;
+  padding: 24px;
 
   min-height: 100%;
 
@@ -28,6 +28,7 @@ export const SchoolName = styled.div`
   border-radius: 3px;
 
   font-size: 2rem;
+  font-weight: 700;
 
   color: ${(props) => props.theme.accentText};
 `;
