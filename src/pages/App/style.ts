@@ -18,7 +18,7 @@ export const PageWrapper = styled.div`
 `;
 
 export const ThemeToggleButton = styled(Button)`
-  position: absolute;
+  position: fixed;
   left: 16px;
   bottom: 16px;
   ${flexCustom('row', 'center', 'center')}

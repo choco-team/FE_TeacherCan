@@ -6,6 +6,7 @@ import App from '@Pages/App';
 import Auth from '@Pages/Auth';
 import SignIn from '@Pages/Auth/SignIn';
 import SignUp from '@Pages/Auth/SignUp';
+import LunchMenu from '@Pages/ClassManagement/LunchMenu';
 import Home from '@Pages/Home';
 
 const router = createBrowserRouter([
@@ -44,6 +45,7 @@ const router = createBrowserRouter([
           },
           {
             path: ROUTE_PATH.lunchMenu,
+            element: <LunchMenu />,
           },
           {
             path: ROUTE_PATH.roles,

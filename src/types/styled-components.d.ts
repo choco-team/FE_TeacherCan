@@ -12,6 +12,7 @@ declare module 'styled-components' {
     subText: string;
     accentText: string;
     pageBackground: string;
+    modalBackground: string;
     shadow: string;
     background: Partial<Record<Variant, string>> & {
       disabled?: string;
