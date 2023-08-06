@@ -10,9 +10,10 @@ type LoadingProps = {
 export const Layout = styled.div<LoadingProps>`
   display: ${(props) => (props.isLoading ? 'flex' : 'grid')};
   flex-direction: column;
-  row-gap: 40px;
+  justify-items: start;
+  row-gap: 20px;
 
-  padding: 40px;
+  padding: 20px;
   border-radius: 12px;
 
   background-color: ${theme.color.gray[50]};

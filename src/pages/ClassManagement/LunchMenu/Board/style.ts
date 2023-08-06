@@ -8,10 +8,10 @@ export const Layout = styled.div`
   justify-self: stretch;
 
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  column-gap: 60px;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 20px;
 
-  padding: 40px;
+  padding: 20px;
   border-radius: 12px;
 
   background-color: ${theme.color.primary[100]};

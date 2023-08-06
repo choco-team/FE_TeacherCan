@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Button from '@Components/Button';
 import Input from '@Components/Input';
 
-function RegisterShoolButton() {
+function RegisterSchoolButton() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onClickBackdrop = () => {
@@ -43,7 +43,7 @@ function RegisterShoolButton() {
   );
 }
 
-export default RegisterShoolButton;
+export default RegisterSchoolButton;
 
 const ModalLayout = styled.div`
   position: fixed;

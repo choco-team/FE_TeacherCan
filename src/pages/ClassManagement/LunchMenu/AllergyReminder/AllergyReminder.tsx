@@ -24,6 +24,7 @@ function AllergyReminder() {
             </S.StudentWrapper>
           );
         })}
+        <div>알러지를 보여주는 방식을 모달로 해주면 어떨까요?</div>
       </S.Students>
     </S.Layout>
   );

@@ -29,8 +29,7 @@ export const SchoolName = styled.div`
 
   font-size: 2rem;
 
-  background-color: ${(props) => props.theme.background.primary};
-  color: ${(props) => props.theme.primaryText};
+  color: ${(props) => props.theme.accentText};
 `;
 
 export const StandardDate = styled.input`
@@ -45,7 +44,9 @@ export const IconWrapper = styled.div`
   width: 100%;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 
   svg {
     width: 500px;
