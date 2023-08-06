@@ -41,6 +41,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: ROUTE_PATH.schedule,
+            element: <div>스케쥴</div>,
           },
           {
             path: ROUTE_PATH.lunchMenu,
