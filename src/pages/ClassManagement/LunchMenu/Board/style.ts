@@ -4,8 +4,8 @@ import theme from '@Styles/theme';
 
 export const Layout = styled.div`
   grid-column: 1 / -1;
+  width: 100%;
   align-self: stretch;
-  justify-self: stretch;
 
   display: grid;
   grid-template-columns: repeat(5, 1fr);
