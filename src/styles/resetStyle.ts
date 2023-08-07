@@ -57,6 +57,18 @@ const resetStyle = css`
     -webkit-user-select: auto;
   }
 
+  /* input[type='number'] 화살표 버튼 제거: Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* input[type='number'] 화살표 버튼 제거: Firefox  */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
   /* revert the 'white-space' property for textarea elements on Safari */
   textarea {
     white-space: revert;

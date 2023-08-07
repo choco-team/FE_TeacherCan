@@ -10,16 +10,20 @@ declare module 'styled-components' {
     text: string;
     primaryText: string;
     subText: string;
+    grayText: string;
     accentText: string;
     pageBackground: string;
+    sectionBackground: string;
+    modalBackground: string;
     shadow: string;
     background: Partial<Record<Variant, string>> & {
       disabled?: string;
       orange?: string;
     };
     border: Partial<Record<Variant, string>>;
-    activeBackground: Partial<Record<Variant, string>>;
     hoverBackground: Partial<Record<Variant, string>>;
+    activeBackground: Partial<Record<Variant, string>>;
+    selectionBackground: Partial<Record<Variant, string>>;
     hoverBorder: Partial<Record<Variant, string>>;
   }
 }

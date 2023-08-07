@@ -22,11 +22,14 @@
   "dependencies": {
     "-": "^0.0.1",
     "D": "^1.0.0",
+    "ag-grid-community": "^30.0.5",
+    "ag-grid-react": "^30.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.12.1",
-    "styled-components": "^5.3.9"
+    "styled-components": "^5.3.9",
+    "xlsx-js-style": "^1.2.0"
   },
   "devDependencies": {
     "@storybook/addon-controls": "^7.0.7",

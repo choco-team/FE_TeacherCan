@@ -1,4 +1,4 @@
-import useLunchMenu from '@Hooks/useLunchMenu';
+import useLunchMenu from '@Hooks/api/useLunchMenu';
 
 import SummaryList from '@Components/SummaryList';
 

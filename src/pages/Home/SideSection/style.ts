@@ -8,7 +8,7 @@ export const SideSection = styled.div`
 
   display: grid;
   align-items: flex-start;
-  row-gap: 2rem;
+  row-gap: 20px;
 
-  padding: 10rem 2rem 2rem;
+  padding: 20px;
 `;
