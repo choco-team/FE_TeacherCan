@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { LuLogOut } from 'react-icons/lu';
+// import { useNavigate } from 'react-router-dom';
 
 import SaveConditionButton from '@Pages/RandomPick/RandomSelect/SaveConditionButton';
 
@@ -18,6 +19,15 @@ function RandomPick() {
   };
   const toggleWhiteBackground = () => {
     setIsWoodBackground(false);
+  };
+
+  // const navigate = useNavigate();
+  // const resultToSelect = () => {
+  //   navigate('/random-drawing');
+  // };
+
+  const handleClick = () => {
+    console.log('click!');
   };
 
   useEffect(() => {
@@ -75,6 +85,7 @@ function RandomPick() {
             Icon={AiOutlineUserAdd}
             String="조건설정"
             marginLeft="10px"
+            handleClick={() => console.log('Temporary onClick')}
           />
         </S.UpDownWrapper>
       </S.RandomResult>

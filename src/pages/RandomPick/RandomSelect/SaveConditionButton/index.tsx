@@ -1,8 +1,9 @@
+import { Button } from '@Components/Button/type';
 import { IconType } from 'react-icons';
 
 import * as S from './style';
 
-interface SaveConditionButtonProps {
+interface SaveConditionButtonProps extends Button {
   Icon: IconType;
   String: string;
   marginRight?: string;

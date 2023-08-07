@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+// import { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
 import Button from '@Components/Button';
@@ -15,8 +15,7 @@ export const IconWrapper = styled.div`
   margin-right: 1rem;
 `;
 
-interface SaveConditionButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface SaveConditionButtonProps extends Button {
   marginRight?: string;
   marginLeft?: string;
 }
@@ -24,10 +23,6 @@ interface SaveConditionButtonProps
 export const SaveConditionButton = styled(Button)<SaveConditionButtonProps>`
   ${flexCustom('row', 'center', 'space-between')}
 
-  &:hover {
-    background-color: ${(props) =>
-      props.theme.background[props.variant || 'primary']};
-  }
   min-width: 140px;
   min-height: 50px;
   box-shadow: 2px 2px ${(props) => props.theme.color.gray[400]};
