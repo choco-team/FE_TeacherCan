@@ -4,7 +4,7 @@ import { IconType } from 'react-icons';
 import * as S from './style';
 
 interface SaveConditionButtonProps extends Button {
-  Icon: IconType;
+  Icon?: IconType;
   String: string;
   marginRight?: string;
   marginLeft?: string;

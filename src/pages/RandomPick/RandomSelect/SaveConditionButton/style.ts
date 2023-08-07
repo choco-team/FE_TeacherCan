@@ -1,4 +1,5 @@
 // import { ButtonHTMLAttributes } from 'react';
+import { IconType } from 'react-icons';
 import styled from 'styled-components';
 
 import Button from '@Components/Button';
@@ -15,9 +16,11 @@ export const IconWrapper = styled.div`
   margin-right: 1rem;
 `;
 
-interface SaveConditionButtonProps extends Button {
+interface SaveConditionButtonProps {
   marginRight?: string;
   marginLeft?: string;
+  Icon?: IconType;
+  String?: string;
 }
 
 export const SaveConditionButton = styled(Button)<SaveConditionButtonProps>`

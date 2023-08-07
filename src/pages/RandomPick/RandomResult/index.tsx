@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { LuLogOut } from 'react-icons/lu';
-// import { useNavigate } from 'react-router-dom';
 
+// import { useNavigate } from 'react-router-dom';
 import SaveConditionButton from '@Pages/RandomPick/RandomSelect/SaveConditionButton';
 
 import whitebackground from '@Assets/image/background/random-whitebg.png';
@@ -85,7 +85,7 @@ function RandomPick() {
             Icon={AiOutlineUserAdd}
             String="조건설정"
             marginLeft="10px"
-            handleClick={() => console.log('Temporary onClick')}
+            onClick={() => console.log('Temporary onClick')}
           />
         </S.UpDownWrapper>
       </S.RandomResult>
