@@ -6,9 +6,9 @@ import Button from '@Components/Button';
 import { flexCustom } from '@Styles/common';
 import theme from '@Styles/theme';
 
-interface RandomResultLayoutProps {
+type RandomResultLayoutProps = {
   backgroundImage: string;
-}
+};
 
 export const Layout = styled.div`
   ${flexCustom('column', 'center', 'center')}
@@ -40,15 +40,15 @@ export const ChoosedComponentsContainer = styled.div`
   padding: 16px;
 `;
 
-interface UpDownWrapperProps extends HTMLAttributes<HTMLDivElement> {
+type UpDownWrapperProps = HTMLAttributes<HTMLDivElement> & {
   alignItems?: string;
   justifyContent?: string;
   children?: ReactNode;
-}
+};
 
-interface ResultWrapperProps {
+type ResultWrapperProps = {
   color: string;
-}
+};
 
 export const UpDownWrapper = styled.div<UpDownWrapperProps>`
   display: flex;

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { LuLogOut } from 'react-icons/lu';
+import { useNavigate } from 'react-router-dom';
 
-// import { useNavigate } from 'react-router-dom';
 import SaveConditionButton from '@Pages/RandomPick/RandomSelect/SaveConditionButton';
 
 import whitebackground from '@Assets/image/background/random-whitebg.png';
@@ -21,13 +21,9 @@ function RandomPick() {
     setIsWoodBackground(false);
   };
 
-  // const navigate = useNavigate();
-  // const resultToSelect = () => {
-  //   navigate('/random-drawing');
-  // };
-
-  const handleClick = () => {
-    console.log('click!');
+  const navigate = useNavigate();
+  const fromResultToSelect = () => {
+    navigate('/tools/random-drawing');
   };
 
   useEffect(() => {
@@ -73,19 +69,19 @@ function RandomPick() {
         <S.UpDownWrapper justifyContent="flex-end">
           <SaveConditionButton
             Icon={AiOutlineUserAdd}
-            String="뽑기"
+            string="뽑기"
             marginLeft="10px"
           />
           <SaveConditionButton
             Icon={AiOutlineUserAdd}
-            String="한 번 더"
+            string="한 번 더"
             marginLeft="10px"
           />
           <SaveConditionButton
             Icon={AiOutlineUserAdd}
-            String="조건설정"
+            string="조건설정"
             marginLeft="10px"
-            onClick={() => console.log('Temporary onClick')}
+            onClick={fromResultToSelect}
           />
         </S.UpDownWrapper>
       </S.RandomResult>

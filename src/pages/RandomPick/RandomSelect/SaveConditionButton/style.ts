@@ -16,19 +16,19 @@ export const IconWrapper = styled.div`
   margin-right: 1rem;
 `;
 
-interface SaveConditionButtonProps {
+type SaveConditionButtonProps = {
   marginRight?: string;
   marginLeft?: string;
   Icon?: IconType;
-  String?: string;
-}
+  string?: string;
+};
 
 export const SaveConditionButton = styled(Button)<SaveConditionButtonProps>`
   ${flexCustom('row', 'center', 'space-between')}
 
   min-width: 140px;
   min-height: 50px;
-  box-shadow: 2px 2px ${(props) => props.theme.color.gray[400]};
+  box-shadow: 2px 2px ${(props) => props.theme.color.gray[500]};
   font-size: 1.8rem;
   margin-right: ${(props) => props.marginRight};
   margin-left: ${(props) => props.marginLeft};

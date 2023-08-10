@@ -2,12 +2,12 @@ import { IconType } from 'react-icons';
 
 import * as S from './style';
 
-interface SelectBoxProps {
+type SelectBoxProps = {
   Icon: IconType;
   String: string;
   marginRight?: string;
   marginLeft?: string;
-}
+};
 
 function SelectBox({ Icon, String, marginRight, marginLeft }: SelectBoxProps) {
   return (

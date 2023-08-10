@@ -12,18 +12,18 @@ export const IconWrapper = styled.div`
   margin-right: 1rem;
 `;
 
-interface SelectBoxProps {
+type SelectBoxProps = {
   marginRight?: string;
   marginLeft?: string;
-}
+};
 
 export const SelectBox = styled.div<SelectBoxProps>`
   ${flexCustom('row', 'center', 'space-between')}
 
-  background-color:${(props) => props.theme.color.gray[300]};
+  background-color:${(props) => props.theme.color.gray[400]};
   min-width: 140px;
   min-height: 50px;
-  box-shadow: 2px 2px ${(props) => props.theme.color.gray[400]};
+  box-shadow: 2px 2px ${(props) => props.theme.color.gray[500]};
   margin-right: ${(props) => props.marginRight};
   margin-left: ${(props) => props.marginLeft};
   border-radius: 3px;

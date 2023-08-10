@@ -1,27 +1,30 @@
 import { Button } from '@Components/Button/type';
+import { MouseEventHandler } from 'react';
 import { IconType } from 'react-icons';
 
 import * as S from './style';
 
-interface SaveConditionButtonProps extends Button {
+type SaveConditionButtonProps = Button & {
   Icon?: IconType;
-  String: string;
+  string: string;
   marginRight?: string;
   marginLeft?: string;
-}
+  onClick?: MouseEventHandler;
+};
 
 function SaveConditionButton({
   Icon,
-  String,
+  string,
   marginRight,
   marginLeft,
+  onClick,
 }: SaveConditionButtonProps) {
   return (
-    <S.Layout>
+    <S.Layout onClick={onClick}>
       <S.SaveConditionButton marginRight={marginRight} marginLeft={marginLeft}>
         <S.Layout>
           <S.IconWrapper>{Icon && <Icon size="2.2rem" />}</S.IconWrapper>
-          {String}
+          {string}
         </S.Layout>
       </S.SaveConditionButton>
     </S.Layout>

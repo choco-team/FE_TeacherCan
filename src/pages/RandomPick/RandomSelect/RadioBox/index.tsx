@@ -1,29 +1,46 @@
 import { useState } from 'react';
 
+import check from '@Assets/image/checked/check.png';
+
 import * as S from './style';
 
-interface RadioBoxProps {
+type RadioBoxProps = {
   name: string;
-  children: React.ReactNode;
-}
+  childrenOne?: React.ReactNode;
+  childrenTwo?: React.ReactNode;
+  imgSrc?: string;
+};
 
-function RadioBox({ name, children }: RadioBoxProps) {
-  const [isClicked, setIsClicked] = useState(false);
-  const handleRadioboxChange = () => {
-    setIsClicked(!isClicked);
+function RadioBox({ name, childrenOne, childrenTwo }: RadioBoxProps) {
+  const [isSelected, setisSelected] = useState(true);
+  const [isNonSelected, setIsNonSelected] = useState(false);
+  const handleRadioBoxChange = () => {
+    setisSelected(!isSelected);
+    setIsNonSelected(!isNonSelected);
+    console.log('clicked!');
   };
 
   return (
     <S.Layout>
       <S.Label>
-        <S.RadioBox
-          type="radio"
-          name={name}
-          onChange={handleRadioboxChange}
-          style={{ marginRight: '8px' }}
-        />
-
-        {children}
+        <S.RadioBox type="radio" name={name} onClick={handleRadioBoxChange} />
+        <S.IconContainer>
+          <img
+            src={isSelected ? check : 'emptybox'}
+            alt={childrenOne as string}
+          />
+          {childrenOne}
+        </S.IconContainer>
+      </S.Label>
+      <S.Label>
+        <S.RadioBox type="radio" name={name} onClick={handleRadioBoxChange} />
+        <S.IconContainer>
+          <img
+            src={isNonSelected ? check : 'emptybox'}
+            alt={childrenTwo as string}
+          />
+          {childrenTwo}
+        </S.IconContainer>
       </S.Label>
     </S.Layout>
   );

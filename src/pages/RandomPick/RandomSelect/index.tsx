@@ -24,8 +24,11 @@ function RandomSelect() {
             marginLeft="-48px"
             marginRight="48px"
           />
-          <RadioBox name="list">기존 명단</RadioBox>
-          <RadioBox name="list">새로운 명단</RadioBox>
+          <RadioBox
+            name="list"
+            childrenOne="기존명단"
+            childrenTwo="새로운 명단"
+          />
         </ChoosedComponentsContainer>
         <ChoosedComponentsContainer>
           <SelectBox
@@ -34,23 +37,33 @@ function RandomSelect() {
             marginLeft="-48px"
             marginRight="48px"
           />
+          <RadioBox
+            name="method"
+            childrenOne="한 명 뽑기"
+            childrenTwo="줄 세우기"
+          />
 
-          <RadioBox name="method">한 명 뽑기</RadioBox>
-          <RadioBox name="method">줄 세우기</RadioBox>
+          {/* <RadioBox name="method">한 명 뽑기</RadioBox>
+          <RadioBox name="method">줄 세우기</RadioBox> */}
         </ChoosedComponentsContainer>
         <ChoosedComponentsContainer>
           <SelectBox
             Icon={BsEye}
-            String="대상 설정"
+            String="인원"
             marginLeft="-48px"
             marginRight="48px"
           />
+          <RadioBox
+            name="target"
+            childrenOne="인원 설정"
+            childrenTwo="전체 랜덤"
+          />
 
-          <RadioBox name="target">인원 설정</RadioBox>
-          <RadioBox name="target">전체 랜덤</RadioBox>
+          {/* <RadioBox name="target">인원 설정</RadioBox>
+          <RadioBox name="target">전체 랜덤</RadioBox> */}
         </ChoosedComponentsContainer>
         <UpDownWrapper justifyContent="flex-end">
-          <SaveConditionButton Icon={AiOutlineUserAdd} String="조건저장" />
+          <SaveConditionButton Icon={AiOutlineUserAdd} string="조건저장" />
         </UpDownWrapper>
       </S.RandomSelectContainer>
     </S.Layout>
