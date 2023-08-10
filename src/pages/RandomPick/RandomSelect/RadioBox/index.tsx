@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import check from '@Assets/image/checked/check.png';
+import emptybox from '@Assets/image/checked/empty.png';
 
 import * as S from './style';
 
@@ -8,7 +9,6 @@ type RadioBoxProps = {
   name: string;
   childrenOne?: React.ReactNode;
   childrenTwo?: React.ReactNode;
-  imgSrc?: string;
 };
 
 function RadioBox({ name, childrenOne, childrenTwo }: RadioBoxProps) {
@@ -26,7 +26,7 @@ function RadioBox({ name, childrenOne, childrenTwo }: RadioBoxProps) {
         <S.RadioBox type="radio" name={name} onClick={handleRadioBoxChange} />
         <S.IconContainer>
           <img
-            src={isSelected ? check : 'emptybox'}
+            src={isSelected ? check : emptybox}
             alt={childrenOne as string}
           />
           {childrenOne}
@@ -36,7 +36,7 @@ function RadioBox({ name, childrenOne, childrenTwo }: RadioBoxProps) {
         <S.RadioBox type="radio" name={name} onClick={handleRadioBoxChange} />
         <S.IconContainer>
           <img
-            src={isNonSelected ? check : 'emptybox'}
+            src={isNonSelected ? check : emptybox}
             alt={childrenTwo as string}
           />
           {childrenTwo}

@@ -31,6 +31,6 @@ export const IconContainer = styled.span`
   img {
     width: 48px;
     height: 48px;
-    margin-top: 8px;
+    margin: 8px;
   }
 `;
