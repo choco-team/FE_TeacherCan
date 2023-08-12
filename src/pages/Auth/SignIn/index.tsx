@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import route from '@Utils/route';
 import { checkIsAllTextFilled } from '@Utils/validation';
@@ -29,9 +30,15 @@ const SIGN_IN_INPUTS = [
 ] as const;
 
 function SignIn() {
+  const navigate = useNavigate();
+
+  const { state } = useLocation() as {
+    state: null | { email: string; password: string };
+  };
+
   const [inputValue, setInputValue] = useState({
-    email: '',
-    password: '',
+    email: state ? state.email : '',
+    password: state ? state.password : '',
   });
 
   const isValid = checkIsAllTextFilled(Object.values(inputValue));
@@ -43,8 +50,31 @@ function SignIn() {
     setInputValue((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmitLoginForm = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitLoginForm = async (
+    event: React.FormEvent<HTMLFormElement>,
+  ) => {
     event.preventDefault();
+
+    const { email, password } = inputValue;
+
+    const response = await fetch('/auth/signin', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const { result, token } = (await response.json()) as {
+      result: boolean;
+      message: string;
+      token: string;
+    };
+
+    if (result) {
+      localStorage.setItem('token', token);
+      navigate(route.calculatePath([ROUTE_PATH.main]));
+    }
   };
 
   return (
