@@ -7,7 +7,10 @@ export const Layout = styled.div`
 
   ${flexCustom('column', 'stretch', 'flex-start')}
 
+  background-color: ${(props) => props.theme.background.gray};
+
   min-width: 25rem;
   padding: 10rem 3rem 3rem;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 4px 0px;
+
+  border-right: 1px solid ${(props) => props.theme.primaryText};
 `;
