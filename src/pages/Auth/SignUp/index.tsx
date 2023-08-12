@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import useAuth from '@Hooks/api/useAuth';
+
 import route from '@Utils/route';
 
 import { ROUTE_PATH } from '@Constant/routePath';
@@ -71,6 +73,9 @@ const validate = (inputValue: Record<string, string>) => {
 function SignUp() {
   const navigate = useNavigate();
 
+  const { signUp, isLoading } = useAuth();
+  console.log(isLoading);
+
   const [inputValue, setInputValue] = useState({
     email: '',
     password: '',
@@ -88,20 +93,14 @@ function SignUp() {
     setInputValue((prev) => ({ ...prev, [name]: value }));
   };
 
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitSignUpForm = async (
+    event: React.FormEvent<HTMLFormElement>,
+  ) => {
     event.preventDefault();
 
     const { email, password, nickname } = inputValue;
 
-    const response = await fetch('/auth/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password, nickname }),
-    });
-
-    if (!response.ok) throw Error('오류가 발생했습니다.');
+    await signUp(email, password, nickname);
 
     navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]), {
       state: { email, password },
@@ -113,7 +112,7 @@ function SignUp() {
       <S.Heading>반가워요, 선생님.</S.Heading>
       <S.Description>회원가입에 필요한 정보를 입력해 주세요.</S.Description>
 
-      <S.Form onSubmit={onSubmit}>
+      <S.Form onSubmit={handleSubmitSignUpForm}>
         {SIGN_UP_INPUTS.map(
           ({
             name,

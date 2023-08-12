@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import useAuth from '@Hooks/api/useAuth';
+
 import route from '@Utils/route';
 import { checkIsAllTextFilled } from '@Utils/validation';
 
@@ -32,6 +34,8 @@ const SIGN_IN_INPUTS = [
 function SignIn() {
   const navigate = useNavigate();
 
+  const { isLoading, signIn } = useAuth();
+
   const { state } = useLocation() as {
     state: null | { email: string; password: string };
   };
@@ -50,26 +54,14 @@ function SignIn() {
     setInputValue((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmitLoginForm = async (
+  const handleSubmitSignInForm = async (
     event: React.FormEvent<HTMLFormElement>,
   ) => {
     event.preventDefault();
 
     const { email, password } = inputValue;
 
-    const response = await fetch('/auth/signin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    });
-
-    const { result, token } = (await response.json()) as {
-      result: boolean;
-      message: string;
-      token: string;
-    };
+    const { result, token } = await signIn(email, password);
 
     if (result) {
       localStorage.setItem('token', token);
@@ -79,7 +71,7 @@ function SignIn() {
 
   return (
     <S.Layout>
-      <S.Form onSubmit={handleSubmitLoginForm}>
+      <S.Form onSubmit={handleSubmitSignInForm}>
         {SIGN_IN_INPUTS.map(
           ({ name, type, label, placeholder, autocomplete }) => (
             <AuthInput
