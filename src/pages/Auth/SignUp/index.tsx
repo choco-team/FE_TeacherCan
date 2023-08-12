@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import React, { useState } from 'react';
 
 import route from '@Utils/route';
@@ -11,12 +12,12 @@ import AuthInput from '../AuthInput';
 
 const SIGN_UP_INPUTS = [
   {
-    name: 'id',
+    name: 'email',
     type: 'text',
-    label: '아이디',
+    label: '이메일',
     placeholder: '아이디를 입력하세요.',
     autocomplete: 'off',
-    validationMessage: '영어(숫자 포함 가능) 6~15자로 입력해주세요.',
+    validationMessage: '이메일 형식으로 입력해주세요.',
   },
   {
     name: 'password',
@@ -47,7 +48,7 @@ const SIGN_UP_INPUTS = [
 const validate = (inputValue: Record<string, string>) => {
   const regExp = {
     // 아이디: 영어 1글자 포함 영어/숫자 6~15자
-    id: /^(?=.*[a-zA-Z])[a-zA-Z0-9]{6,15}$/,
+    email: /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     // 비밀번호: 영어 대소문자+숫자+특수문자 8~20자
     password:
       /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*#?&])[a-zA-Z\d@$!%*#?&]{8,20}$/,
@@ -55,10 +56,10 @@ const validate = (inputValue: Record<string, string>) => {
     userName: /^[가-힣a-zA-Z0-9]{2,10}$/,
   } as const;
 
-  const { id, password, passwordConfirmation, userName } = inputValue;
+  const { email, password, passwordConfirmation, userName } = inputValue;
 
   return {
-    id: regExp.id.test(id),
+    email: regExp.email.test(email),
     password: regExp.password.test(password),
     passwordConfirmation:
       !!passwordConfirmation && password === passwordConfirmation,
@@ -68,7 +69,7 @@ const validate = (inputValue: Record<string, string>) => {
 
 function SignUp() {
   const [inputValue, setInputValue] = useState({
-    id: '',
+    email: '',
     password: '',
     passwordConfirmation: '',
     userName: '',

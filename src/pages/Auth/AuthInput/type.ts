@@ -1,7 +1,7 @@
 import React from 'react';
 
 export type AuthInput = {
-  name: 'userName' | 'id' | 'password' | 'passwordConfirmation';
+  name: 'userName' | 'id' | 'password' | 'passwordConfirmation' | 'email';
   type?: 'text' | 'password';
   label: string;
   value: string;

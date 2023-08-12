@@ -13,9 +13,9 @@ import AuthInput from '../AuthInput';
 
 const SIGN_IN_INPUTS = [
   {
-    name: 'id',
+    name: 'email',
     type: 'text',
-    label: '아이디',
+    label: '이메일',
     placeholder: '아이디를 입력하세요.',
     autocomplete: 'on',
   },
@@ -30,7 +30,7 @@ const SIGN_IN_INPUTS = [
 
 function SignIn() {
   const [inputValue, setInputValue] = useState({
-    id: '',
+    email: '',
     password: '',
   });
 
@@ -43,13 +43,13 @@ function SignIn() {
     setInputValue((prev) => ({ ...prev, [name]: value }));
   };
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitLoginForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
 
   return (
     <S.Layout>
-      <S.Form onSubmit={onSubmit}>
+      <S.Form onSubmit={handleSubmitLoginForm}>
         {SIGN_IN_INPUTS.map(
           ({ name, type, label, placeholder, autocomplete }) => (
             <AuthInput
