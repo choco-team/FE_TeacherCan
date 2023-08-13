@@ -13,12 +13,15 @@ import SelectBox from '../RandomSelect/SelectBox';
 
 function RandomPick() {
   const [chosenStudents, setChosenStudents] = useState<string[]>([]);
-  const [isWoodBackground, setIsWoodBackground] = useState(true);
+  // const [isWoodBackground, setIsWoodBackground] = useState(true);
+  const [isWoodBackground, setIsWoodBackground] = useState<'wood' | 'white'>(
+    'wood',
+  );
   const toggleWoodBackground = () => {
-    setIsWoodBackground(true);
+    setIsWoodBackground('wood');
   };
   const toggleWhiteBackground = () => {
-    setIsWoodBackground(false);
+    setIsWoodBackground('white');
   };
 
   const navigate = useNavigate();
@@ -39,7 +42,9 @@ function RandomPick() {
   return (
     <S.Layout>
       <S.RandomResult
-        backgroundImage={isWoodBackground ? woodbackground : whitebackground}
+        backgroundImage={
+          isWoodBackground == 'wood' ? woodbackground : whitebackground
+        }
       >
         <S.UpDownWrapper justifyContent="space-between">
           <SelectBox Icon={LuLogOut} String="랜덤뽑기" marginLeft="-8px" />
@@ -56,7 +61,7 @@ function RandomPick() {
             />
           </S.BackgroundButtonContainer>
         </S.UpDownWrapper>
-        <S.ResultWrapper color={isWoodBackground ? 'white' : 'black'}>
+        <S.ResultWrapper color={isWoodBackground == 'wood' ? 'white' : 'black'}>
           {chosenStudents.length > 0 ? (
             <p>
               뽑힌 학생은{' '}
