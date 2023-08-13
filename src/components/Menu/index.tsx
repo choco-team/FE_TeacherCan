@@ -5,21 +5,33 @@ import {
   useRef,
   useState,
 } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import MenuItem from './MenuItem';
 
+const MENU_LIST_POSITION = {
+  left: css`
+    left: 0;
+    text-align: start;
+  `,
+
+  right: css`
+    right: 0;
+    text-align: end;
+  `,
+} as const;
+
 type Menu = {
   trigger: ReactNode;
-  positions: 'left' | 'right';
+  position?: 'left' | 'right';
 };
 
 function Menu({
   children,
   trigger,
-  positions = 'left',
+  position = 'left',
 }: PropsWithChildren<Menu>) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -40,9 +52,9 @@ function Menu({
   }, [ref]);
 
   return (
-    <Layout ref={ref}>
+    <Layout position={position} ref={ref}>
       <Trigger onClick={handleClickTrigger}>{trigger}</Trigger>
-      {isOpen && <MenuList>{children}</MenuList>}
+      {isOpen && <MenuList position={position}>{children}</MenuList>}
     </Layout>
   );
 }
@@ -51,8 +63,11 @@ Menu.Item = MenuItem;
 
 export default Menu;
 
-const Layout = styled.div`
+const Layout = styled.div<Required<Pick<Menu, 'position'>>>`
+  position: relative;
   width: fit-content;
+
+  margin: ${(props) => props.position === 'right' && '0 0 0 auto'};
 `;
 
 const Trigger = styled.div`
@@ -61,11 +76,13 @@ const Trigger = styled.div`
   cursor: pointer;
 `;
 
-const MenuList = styled.ul`
+const MenuList = styled.ul<Required<Pick<Menu, 'position'>>>`
+  position: absolute;
+
   display: grid;
   row-gap: 6px;
 
-  width: fit-content;
+  width: max-content;
 
   padding: 10px 0px;
   border-radius: 5px;
@@ -75,7 +92,7 @@ const MenuList = styled.ul`
   background-color: ${(props) => props.theme.background.gray};
 
   li {
-    padding: 3px 10px;
+    padding: 8px 10px;
 
     transition: background-color 0.2s ease;
 
@@ -85,4 +102,6 @@ const MenuList = styled.ul`
       background-color: ${(props) => props.theme.hoverBackground.gray};
     }
   }
+
+  ${(props) => MENU_LIST_POSITION[props.position]}
 `;
