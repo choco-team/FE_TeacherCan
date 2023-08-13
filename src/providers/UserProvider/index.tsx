@@ -13,15 +13,9 @@ import route from '@Utils/route';
 
 import { ROUTE_PATH } from '@Constant/routePath';
 
-type UserInfoContext = {
-  email: string;
-  nickname: string;
-  school: {
-    code: string;
-    areaCode: string;
-    name: string;
-  };
-} | null;
+import { UserInfo } from '@Types/user';
+
+type UserInfoContext = UserInfo | null;
 
 type UserInfoActionsContext = {
   signIn: (userInfo: UserInfoContext) => void;

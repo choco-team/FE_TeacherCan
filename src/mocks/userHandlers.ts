@@ -1,6 +1,8 @@
 import { rest } from 'msw';
 
-const userResponse = {
+import { UserInfo } from '@Types/user';
+
+const userResponse: UserInfo = {
   email: 'teachercan@gmail.com',
   nickname: '티처캔',
   school: {
