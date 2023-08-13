@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-import { Menu } from './type';
+import { MenuProps } from './type';
 
 import { MENU_LIST_POSITION } from '.';
 
-export const Layout = styled.div<Required<Pick<Menu, 'position'>>>`
+export const Layout = styled.div<Required<Pick<MenuProps, 'position'>>>`
   position: relative;
   width: fit-content;
 
@@ -12,13 +12,12 @@ export const Layout = styled.div<Required<Pick<Menu, 'position'>>>`
 `;
 
 export const Trigger = styled.div`
-  margin-bottom: 10px;
-
   cursor: pointer;
 `;
 
-export const MenuList = styled.ul<Required<Pick<Menu, 'position'>>>`
+export const MenuList = styled.ul<Required<Pick<MenuProps, 'position'>>>`
   position: absolute;
+  top: 40px;
 
   display: grid;
   row-gap: 6px;
@@ -28,14 +27,16 @@ export const MenuList = styled.ul<Required<Pick<Menu, 'position'>>>`
   padding: 10px 0px;
   border-radius: 5px;
 
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: ${(props) => props.theme.modalBackground};
 
   background-color: ${(props) => props.theme.background.gray};
 
   li {
-    padding: 8px 10px;
+    padding: 8px 20px;
 
     transition: background-color 0.2s ease;
+    color: ${(props) => props.theme.accentText};
+    font-size: 1.5rem;
 
     cursor: pointer;
 

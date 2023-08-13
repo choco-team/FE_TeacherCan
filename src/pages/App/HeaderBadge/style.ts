@@ -55,3 +55,15 @@ export const LoadingText = styled.div`
   color: transparent;
   font-size: 2rem;
 `;
+
+export const MenuItemLayout = styled.div`
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 5px;
+
+  align-items: center;
+
+  svg {
+    font-size: 1.6rem;
+  }
+`;
