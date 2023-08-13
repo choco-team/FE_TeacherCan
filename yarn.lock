@@ -3329,15 +3329,15 @@ adler-32@~1.3.0:
   resolved "https://registry.yarnpkg.com/adler-32/-/adler-32-1.3.1.tgz#1dbf0b36dda0012189a32b3679061932df1821e2"
   integrity sha512-ynZ4w/nUUv5rrsR8UUGoe1VC9hZj6V5hU9Qw1HlMDJGEJw5S7TfTErWTjMys6M7vr0YWcPqs3qAr4ss0nDfP+A==
 
-ag-grid-community@^30.0.5:
-  version "30.0.5"
-  resolved "https://registry.yarnpkg.com/ag-grid-community/-/ag-grid-community-30.0.5.tgz#284623c0af46f87bf0db84975caf7ae7461de59b"
-  integrity sha512-3AXrNx5hnH0/c4QNgNv5ub1Kna3wVPecCFq2ddMYQ6b7Ob8JhU4bMwcBf+GOiDepVc6I+Df6Bop6rGrc4O8OZw==
+ag-grid-community@^30.0.6:
+  version "30.0.6"
+  resolved "https://registry.yarnpkg.com/ag-grid-community/-/ag-grid-community-30.0.6.tgz#886996d9edcfea0eb80135adbb4aa8a79be93a8f"
+  integrity sha512-aMTJNXFDC00QxMaI0/V6M0GTzAtsXUvuxuld97S1Kqb4LvFNsycZlQ3/IcHW7JangRQZxAcwmSpBQBV/lcWoEg==
 
-ag-grid-react@^30.0.5:
-  version "30.0.5"
-  resolved "https://registry.yarnpkg.com/ag-grid-react/-/ag-grid-react-30.0.5.tgz#12c10bf2e977a785f1142062ae8957dd82b2b2cb"
-  integrity sha512-CmO2T52M4DDBXUJJO3R+7GTNFCBSWh5eDBQWdble9W7LhggLcEiQjaGHc7ZZlZbY1mUW9ov0EACbSB4N0qMDPw==
+ag-grid-react@^30.0.6:
+  version "30.0.6"
+  resolved "https://registry.yarnpkg.com/ag-grid-react/-/ag-grid-react-30.0.6.tgz#1767438a821ffe9408112b5379e24204dc7410ff"
+  integrity sha512-fWvf4DIyMihbuhvVlhO6pewXyOirEDgM73Pv6s9V1Ay4xp61Y/kdv2JFmkIwCV0NSpA5CKUeu1JFa5vmA/HVMw==
   dependencies:
     prop-types "^15.8.1"
 
