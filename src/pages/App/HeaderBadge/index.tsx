@@ -1,8 +1,5 @@
 import { HiOutlineBell, HiUserCircle } from 'react-icons/hi';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
-
-import route from '@Utils/route';
 
 import Button from '@Components/Button';
 
@@ -10,15 +7,8 @@ import * as S from './style';
 import type { HeaderBadge } from './type';
 
 function HeaderBadge({ username, alarm = false, isLoading }: HeaderBadge) {
-  const navigate = useNavigate();
-
   const handleClickHeaderBadge = () => {
     if (username) something();
-    else moveToSignInPage();
-  };
-
-  const moveToSignInPage = () => {
-    navigate(route.calculatePath(['auth', 'signin']));
   };
 
   const something = () => {
@@ -49,18 +39,9 @@ function HeaderBadge({ username, alarm = false, isLoading }: HeaderBadge) {
         fontWeight="400"
       >
         <S.UserNameWrapper>
-          {username ? (
-            <>
-              <HiUserCircle />
-              <S.UserName>{username}</S.UserName>
-              <MdKeyboardArrowDown />
-            </>
-          ) : (
-            <>
-              <HiUserCircle />
-              <S.UserName>Sign In</S.UserName>
-            </>
-          )}
+          <HiUserCircle />
+          <S.UserName>{username}</S.UserName>
+          <MdKeyboardArrowDown />
         </S.UserNameWrapper>
       </Button>
     </S.Layout>

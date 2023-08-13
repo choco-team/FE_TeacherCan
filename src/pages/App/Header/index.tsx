@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-
-import useFetch from '@Hooks/api/useFetch';
+import { useUserInfo } from 'src/providers/UserProvider';
 
 import route from '@Utils/route';
 
@@ -12,19 +11,8 @@ import * as S from './style';
 import HeaderBadge from '../HeaderBadge';
 import NavigationLink from '../NavigationLink';
 
-type User = {
-  statusCode: number;
-  data: {
-    userId: string;
-    nickName: string;
-    schoolName: string;
-    schoolCode: string;
-    areaCode: string;
-  };
-};
-
 function Header({ pathname }: { pathname: string }) {
-  const { data, isLoading } = useFetch<User>('/user/info');
+  const { data, isLoading } = useUserInfo();
 
   const mainCategories = route.getMainCategories();
   const mainCategoriesCount = mainCategories.length;
@@ -48,7 +36,7 @@ function Header({ pathname }: { pathname: string }) {
           />
         ))}
       </S.LinkList>
-      <HeaderBadge username={data?.data.nickName} alarm isLoading={isLoading} />
+      <HeaderBadge username={data?.nickname} alarm isLoading={isLoading} />
     </S.Layout>
   );
 }
