@@ -1,11 +1,18 @@
 import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { css } from 'styled-components';
+
+import useAuth from '@Hooks/api/useAuth';
 
 import route from '@Utils/route';
 import { checkIsAllTextFilled } from '@Utils/validation';
 
 import { ROUTE_PATH } from '@Constant/routePath';
 
+import CircularProgress from '@Components/CircularProgress';
 import LinkText from '@Components/LinkText';
+
+import theme from '@Styles/theme';
 
 import SocialSignIn from './SocialSignIn';
 import * as S from './style';
@@ -13,10 +20,10 @@ import AuthInput from '../AuthInput';
 
 const SIGN_IN_INPUTS = [
   {
-    name: 'id',
+    name: 'email',
     type: 'text',
-    label: '아이디',
-    placeholder: '아이디를 입력하세요.',
+    label: '이메일',
+    placeholder: '이메일을 입력하세요.',
     autocomplete: 'on',
   },
   {
@@ -29,9 +36,17 @@ const SIGN_IN_INPUTS = [
 ] as const;
 
 function SignIn() {
+  const navigate = useNavigate();
+
+  const { isLoading, signIn } = useAuth();
+
+  const { state } = useLocation() as {
+    state: null | { email: string; password: string };
+  };
+
   const [inputValue, setInputValue] = useState({
-    id: '',
-    password: '',
+    email: state ? state.email : '',
+    password: state ? state.password : '',
   });
 
   const isValid = checkIsAllTextFilled(Object.values(inputValue));
@@ -43,13 +58,24 @@ function SignIn() {
     setInputValue((prev) => ({ ...prev, [name]: value }));
   };
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitSignInForm = async (
+    event: React.FormEvent<HTMLFormElement>,
+  ) => {
     event.preventDefault();
+
+    const { email, password } = inputValue;
+
+    const { result, token } = await signIn(email, password);
+
+    if (result) {
+      localStorage.setItem('token', token);
+      navigate(route.calculatePath([ROUTE_PATH.main]));
+    }
   };
 
   return (
     <S.Layout>
-      <S.Form onSubmit={onSubmit}>
+      <S.Form onSubmit={handleSubmitSignInForm}>
         {SIGN_IN_INPUTS.map(
           ({ name, type, label, placeholder, autocomplete }) => (
             <AuthInput
@@ -70,7 +96,17 @@ function SignIn() {
           fullWidth
           disabled={!isValid}
         >
-          로그인
+          {isLoading ? (
+            <CircularProgress
+              $style={css`
+                border: 2px solid ${theme.color.white};
+                border-color: ${theme.color.white} transparent transparent
+                  transparent;
+              `}
+            />
+          ) : (
+            '로그인'
+          )}
         </S.SubmitButton>
       </S.Form>
 

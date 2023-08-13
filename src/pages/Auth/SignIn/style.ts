@@ -20,6 +20,8 @@ export const Form = styled.form`
 export const SubmitButton = styled(Button)`
   padding: 16px;
   border-radius: calc((1.6rem + 16px));
+
+  height: 53px;
 `;
 
 export const LinkContainer = styled.div`

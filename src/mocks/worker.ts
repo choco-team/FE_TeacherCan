@@ -1,11 +1,11 @@
 import { setupWorker } from 'msw';
 
-import { randomPickHandlers } from './randomPickHandlers';
+import { authHandlers } from './authHandlers';
 import { schoolHandlers } from './schoolHandlers';
 import { userHandlers } from './userHandlers';
 
 export const worker = setupWorker(
   ...userHandlers,
   ...schoolHandlers,
-  ...randomPickHandlers,
+  ...authHandlers,
 );

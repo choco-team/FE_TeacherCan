@@ -33,4 +33,6 @@ export const SubmitButton = styled(Button)`
   padding: 16px;
   margin-bottom: 16px;
   border-radius: calc((1.6rem + 16px));
+
+  height: 53px;
 `;

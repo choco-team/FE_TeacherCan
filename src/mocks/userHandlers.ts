@@ -1,14 +1,14 @@
 import { rest } from 'msw';
 
-const userResponse = {
-  statusCode: 200,
-  data: {
-    userId: 'string',
-    nickName: 'KHD',
-    // schoolName: '서원주초등학교',
-    schoolName: undefined,
-    schoolCode: 'string',
+import { UserInfo } from '@Types/user';
+
+const userResponse: UserInfo = {
+  email: 'teachercan@gmail.com',
+  nickname: '티처캔',
+  school: {
+    code: 'string',
     areaCode: 'string',
+    name: '서원주초등학교',
   },
 };
 

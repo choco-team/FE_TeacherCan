@@ -13,10 +13,16 @@ import StudentManagement from '@Pages/StudentManagement';
 import StudentRegister from '@Pages/StudentManagement/StudentRegister';
 import RandomPick from '@Pages/Tools/RandomPick';
 
+import UserProvider from './providers/UserProvider';
+
 const router = createBrowserRouter([
   {
     path: ROUTE_PATH.main,
-    element: <App />,
+    element: (
+      <UserProvider>
+        <App />
+      </UserProvider>
+    ),
     errorElement: <div>Not Found</div>,
     children: [
       {

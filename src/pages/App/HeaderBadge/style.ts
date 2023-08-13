@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { flexCustom } from '@Styles/common';
 
 export const Layout = styled.div`
+  position: relative;
+
   grid-column: -1 / -3;
   justify-self: flex-end;
 
@@ -52,4 +54,16 @@ export const UserName = styled.div``;
 export const LoadingText = styled.div`
   color: transparent;
   font-size: 2rem;
+`;
+
+export const MenuItemLayout = styled.div`
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: 5px;
+
+  align-items: center;
+
+  svg {
+    font-size: 1.6rem;
+  }
 `;

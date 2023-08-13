@@ -1,22 +1,30 @@
+/* eslint-disable no-useless-escape */
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { css } from 'styled-components';
+
+import useAuth from '@Hooks/api/useAuth';
 
 import route from '@Utils/route';
 
 import { ROUTE_PATH } from '@Constant/routePath';
 
+import CircularProgress from '@Components/CircularProgress';
 import LinkText from '@Components/LinkText';
+
+import theme from '@Styles/theme';
 
 import * as S from './style';
 import AuthInput from '../AuthInput';
 
 const SIGN_UP_INPUTS = [
   {
-    name: 'id',
+    name: 'email',
     type: 'text',
-    label: '아이디',
-    placeholder: '아이디를 입력하세요.',
+    label: '이메일',
+    placeholder: '이메일을 입력하세요.',
     autocomplete: 'off',
-    validationMessage: '영어(숫자 포함 가능) 6~15자로 입력해주세요.',
+    validationMessage: '이메일 형식으로 입력해주세요.',
   },
   {
     name: 'password',
@@ -35,7 +43,7 @@ const SIGN_UP_INPUTS = [
     validationMessage: '동일한 비밀번호를 입력해주세요.',
   },
   {
-    name: 'userName',
+    name: 'nickname',
     type: 'text',
     label: '이름(닉네임)',
     placeholder: '멋진 이름을 지어주세요.',
@@ -47,31 +55,35 @@ const SIGN_UP_INPUTS = [
 const validate = (inputValue: Record<string, string>) => {
   const regExp = {
     // 아이디: 영어 1글자 포함 영어/숫자 6~15자
-    id: /^(?=.*[a-zA-Z])[a-zA-Z0-9]{6,15}$/,
+    email: /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     // 비밀번호: 영어 대소문자+숫자+특수문자 8~20자
     password:
       /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*#?&])[a-zA-Z\d@$!%*#?&]{8,20}$/,
     // 닉네임: 한글/영어/숫자 2~10자
-    userName: /^[가-힣a-zA-Z0-9]{2,10}$/,
+    nickname: /^[가-힣a-zA-Z0-9]{2,10}$/,
   } as const;
 
-  const { id, password, passwordConfirmation, userName } = inputValue;
+  const { email, password, passwordConfirmation, nickname } = inputValue;
 
   return {
-    id: regExp.id.test(id),
+    email: regExp.email.test(email),
     password: regExp.password.test(password),
     passwordConfirmation:
       !!passwordConfirmation && password === passwordConfirmation,
-    userName: regExp.userName.test(userName),
+    nickname: regExp.nickname.test(nickname),
   };
 };
 
 function SignUp() {
+  const navigate = useNavigate();
+
+  const { signUp, isLoading } = useAuth();
+
   const [inputValue, setInputValue] = useState({
-    id: '',
+    email: '',
     password: '',
     passwordConfirmation: '',
-    userName: '',
+    nickname: '',
   });
 
   const validation = validate(inputValue);
@@ -84,9 +96,18 @@ function SignUp() {
     setInputValue((prev) => ({ ...prev, [name]: value }));
   };
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmitSignUpForm = async (
+    event: React.FormEvent<HTMLFormElement>,
+  ) => {
     event.preventDefault();
-    return inputValue;
+
+    const { email, password, nickname } = inputValue;
+
+    await signUp(email, password, nickname);
+
+    navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]), {
+      state: { email, password },
+    });
   };
 
   return (
@@ -94,7 +115,7 @@ function SignUp() {
       <S.Heading>반가워요, 선생님.</S.Heading>
       <S.Description>회원가입에 필요한 정보를 입력해 주세요.</S.Description>
 
-      <S.Form onSubmit={onSubmit}>
+      <S.Form onSubmit={handleSubmitSignUpForm}>
         {SIGN_UP_INPUTS.map(
           ({
             name,
@@ -125,7 +146,17 @@ function SignUp() {
           disabled={!isAllValid}
           fullWidth
         >
-          회원가입
+          {isLoading ? (
+            <CircularProgress
+              $style={css`
+                border: 2px solid ${theme.color.white};
+                border-color: ${theme.color.white} transparent transparent
+                  transparent;
+              `}
+            />
+          ) : (
+            '회원가입'
+          )}
         </S.SubmitButton>
       </S.Form>
 
