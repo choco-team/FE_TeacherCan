@@ -43,7 +43,8 @@ export const MIDDLE_CATEGORIES = [
 
   // tools
   { name: 'timer', path: 'timer' },
-  { name: 'randomDrawing', path: 'random-drawing' },
+  { name: 'randomPick', path: 'random-pick' },
+  { name: 'randomResult', path: 'random-result' },
   { name: 'changeSeats', path: 'change-seats' },
   { name: 'setOrder', path: 'set-order' },
   { name: 'qrCode', path: 'qr-code' },
@@ -91,7 +92,8 @@ export const CATEGORIES: Categories = [
     firstChildPath: 'timer',
     children: [
       'timer',
-      'randomDrawing',
+      'randomPick',
+      'randomResult',
       'changeSeats',
       'setOrder',
       'qrCode',
@@ -187,10 +189,10 @@ export const CATEGORIES: Categories = [
     Icon: BiTimer,
   },
   {
-    key: 'randomDrawing',
+    key: 'randomPick',
     category: 'middle',
     name: '랜덤뽑기',
-    path: 'random-drawing',
+    path: 'random-pick',
     Icon: GiCardRandom,
   },
   {
@@ -289,7 +291,8 @@ export const ROUTE_PATH: RoutePath = {
 
   // tools
   timer: 'timer',
-  randomDrawing: 'random-drawing',
+  randomPick: 'random-pick',
+  randomResult: 'random-result',
   changeSeats: 'change-seats',
   setOrder: 'set-order',
   qrCode: 'qr-code',
