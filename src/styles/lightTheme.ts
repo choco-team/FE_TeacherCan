@@ -33,7 +33,7 @@ const lightTheme = {
   hoverBackground: {
     primary: theme.color.primary[700],
     secondary: theme.color.secondary[300],
-    gray: theme.color.gray[50],
+    gray: theme.color.gray[300],
     success: theme.color.success[300],
     warning: theme.color.warning[300],
     error: theme.color.error[300],
