@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { HiOutlineBell, HiUserCircle } from 'react-icons/hi';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 
@@ -7,12 +8,10 @@ import * as S from './style';
 import type { HeaderBadge } from './type';
 
 function HeaderBadge({ username, alarm = false, isLoading }: HeaderBadge) {
-  const handleClickHeaderBadge = () => {
-    if (username) something();
-  };
+  const [isVisibleUserMenu, setIsVisibleUserMenu] = useState(false);
 
-  const something = () => {
-    alert('something...');
+  const handleClickHeaderBadge = () => {
+    setIsVisibleUserMenu(true);
   };
 
   if (isLoading)
@@ -26,12 +25,10 @@ function HeaderBadge({ username, alarm = false, isLoading }: HeaderBadge) {
 
   return (
     <S.Layout>
-      {username && (
-        <S.AlarmContainer>
-          <HiOutlineBell />
-          <S.AlarmDot>{alarm && <S.Dot></S.Dot>}</S.AlarmDot>
-        </S.AlarmContainer>
-      )}
+      <S.AlarmContainer>
+        <HiOutlineBell />
+        <S.AlarmDot>{alarm && <S.Dot></S.Dot>}</S.AlarmDot>
+      </S.AlarmContainer>
       <Button
         borderRadius="20px"
         padding="5px 10px"

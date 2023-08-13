@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { flexCustom } from '@Styles/common';
 
 export const Layout = styled.div`
+  position: relative;
+
   grid-column: -1 / -3;
   justify-self: flex-end;
 

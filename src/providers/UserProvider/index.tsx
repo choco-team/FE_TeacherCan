@@ -41,6 +41,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
 
       signOut: () => {
         setUserInfo(null);
+        localStorage.removeItem('token');
         navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
       },
     }),
