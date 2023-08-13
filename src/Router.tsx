@@ -9,9 +9,9 @@ import SignUp from '@Pages/Auth/SignUp';
 import LunchMenu from '@Pages/ClassManagement/LunchMenu';
 import Home from '@Pages/Home';
 import RandomResult from '@Pages/RandomPick/RandomResult';
-import RandomPick from '@Pages/RandomPick/RandomSelect';
 import StudentManagement from '@Pages/StudentManagement';
 import StudentRegister from '@Pages/StudentManagement/StudentRegister';
+import RandomPick from '@Pages/Tools/RandomPick';
 
 const router = createBrowserRouter([
   {
@@ -90,12 +90,8 @@ const router = createBrowserRouter([
             path: ROUTE_PATH.timer,
           },
           {
-            path: ROUTE_PATH.randomDrawing,
+            path: ROUTE_PATH.randomPick,
             element: <RandomPick />,
-          },
-          {
-            path: ROUTE_PATH.randomResult,
-            element: <RandomResult />,
           },
           {
             path: ROUTE_PATH.changeSeats,

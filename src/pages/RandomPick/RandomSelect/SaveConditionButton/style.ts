@@ -28,7 +28,6 @@ export const SaveConditionButton = styled(Button)<SaveConditionButtonProps>`
 
   min-width: 140px;
   min-height: 50px;
-  box-shadow: 2px 2px ${(props) => props.theme.color.gray[500]};
   font-size: 1.8rem;
   margin-right: ${(props) => props.marginRight};
   margin-left: ${(props) => props.marginLeft};
