@@ -1,10 +1,8 @@
 import { PropsWithChildren } from 'react';
 
-type MenuItem = {
-  onClickMenu: () => void;
-};
+import type { MenuItemProps } from './type';
 
-function MenuItem({ children, onClickMenu }: PropsWithChildren<MenuItem>) {
+function MenuItem({ children, onClickMenu }: PropsWithChildren<MenuItemProps>) {
   const handleClickItem = () => {
     onClickMenu();
   };
