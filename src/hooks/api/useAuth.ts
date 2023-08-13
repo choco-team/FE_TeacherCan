@@ -20,6 +20,8 @@ const useAuth = () => {
   };
 
   const signIn = async (email: string, password: string) => {
+    setIsLoading(true);
+
     const response = await fetch('/auth/signin', {
       method: 'POST',
       headers: {
@@ -27,6 +29,8 @@ const useAuth = () => {
       },
       body: JSON.stringify({ email, password }),
     });
+
+    setIsLoading(false);
 
     return (await response.json()) as {
       result: boolean;

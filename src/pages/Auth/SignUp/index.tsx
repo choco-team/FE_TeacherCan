@@ -1,6 +1,7 @@
 /* eslint-disable no-useless-escape */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { css } from 'styled-components';
 
 import useAuth from '@Hooks/api/useAuth';
 
@@ -8,7 +9,10 @@ import route from '@Utils/route';
 
 import { ROUTE_PATH } from '@Constant/routePath';
 
+import CircularProgress from '@Components/CircularProgress';
 import LinkText from '@Components/LinkText';
+
+import theme from '@Styles/theme';
 
 import * as S from './style';
 import AuthInput from '../AuthInput';
@@ -18,7 +22,7 @@ const SIGN_UP_INPUTS = [
     name: 'email',
     type: 'text',
     label: '이메일',
-    placeholder: '아이디를 입력하세요.',
+    placeholder: '이메일을 입력하세요.',
     autocomplete: 'off',
     validationMessage: '이메일 형식으로 입력해주세요.',
   },
@@ -74,7 +78,6 @@ function SignUp() {
   const navigate = useNavigate();
 
   const { signUp, isLoading } = useAuth();
-  console.log(isLoading);
 
   const [inputValue, setInputValue] = useState({
     email: '',
@@ -143,7 +146,17 @@ function SignUp() {
           disabled={!isAllValid}
           fullWidth
         >
-          회원가입
+          {isLoading ? (
+            <CircularProgress
+              $style={css`
+                border: 2px solid ${theme.color.white};
+                border-color: ${theme.color.white} transparent transparent
+                  transparent;
+              `}
+            />
+          ) : (
+            '회원가입'
+          )}
         </S.SubmitButton>
       </S.Form>
 

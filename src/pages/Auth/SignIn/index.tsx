@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { css } from 'styled-components';
 
 import useAuth from '@Hooks/api/useAuth';
 
@@ -8,7 +9,10 @@ import { checkIsAllTextFilled } from '@Utils/validation';
 
 import { ROUTE_PATH } from '@Constant/routePath';
 
+import CircularProgress from '@Components/CircularProgress';
 import LinkText from '@Components/LinkText';
+
+import theme from '@Styles/theme';
 
 import SocialSignIn from './SocialSignIn';
 import * as S from './style';
@@ -19,7 +23,7 @@ const SIGN_IN_INPUTS = [
     name: 'email',
     type: 'text',
     label: '이메일',
-    placeholder: '아이디를 입력하세요.',
+    placeholder: '이메일을 입력하세요.',
     autocomplete: 'on',
   },
   {
@@ -92,7 +96,17 @@ function SignIn() {
           fullWidth
           disabled={!isValid}
         >
-          로그인
+          {isLoading ? (
+            <CircularProgress
+              $style={css`
+                border: 2px solid ${theme.color.white};
+                border-color: ${theme.color.white} transparent transparent
+                  transparent;
+              `}
+            />
+          ) : (
+            '로그인'
+          )}
         </S.SubmitButton>
       </S.Form>
 
