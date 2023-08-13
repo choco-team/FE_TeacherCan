@@ -22,7 +22,7 @@ function Menu({
   trigger,
   position = 'left',
 }: PropsWithChildren<MenuProps>) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const ref = useRef<HTMLDivElement>(null);
 
