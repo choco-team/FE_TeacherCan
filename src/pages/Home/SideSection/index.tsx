@@ -7,7 +7,9 @@ import HomeMemo from '../HomeMemo';
 import VacationDate from '../VacationDate';
 
 function SideSection() {
-  const { lunchMenu, isLoading } = useLunchMenu();
+  const { isLoading, lunchMenu } = useLunchMenu(new Date(), 'day');
+
+  const menus = lunchMenu ? lunchMenu[0].menu.map((item) => item.name) : [];
 
   return (
     <S.SideSection>
@@ -15,8 +17,13 @@ function SideSection() {
       <HomeMemo />
       <SummaryList
         title="오늘의 급식 메뉴"
-        list={lunchMenu?.map((item) => item.menu)}
+        list={menus}
         isLoading={isLoading}
+        guideMessage={
+          !lunchMenu
+            ? '프로필에서 학교를 등록해보세요.'
+            : '오늘은 급식이 없어요.'
+        }
       />
     </S.SideSection>
   );

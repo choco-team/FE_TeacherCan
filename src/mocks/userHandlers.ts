@@ -8,7 +8,7 @@ const userResponse: UserInfo = {
   school: {
     code: 'string',
     areaCode: 'string',
-    name: undefined,
+    name: 'string',
   },
 };
 

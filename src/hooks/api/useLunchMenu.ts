@@ -1,34 +1,48 @@
-import { useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useCallback, useEffect, useState } from 'react';
 
-type LunchMenu = {
-  statusCode: number;
-  data: {
-    lunchMenu: { menu: string; allergy: number[] }[];
-    origins: { ingredient: string; origin: string }[];
-  };
-};
+import { useUserInfo } from '@Hooks/useUserInfo';
 
-const useLunchMenu = () => {
-  const [lunchMenu, setLunchMenu] = useState<
-    undefined | { menu: string; allergy: number[] }[]
-  >();
-  const [isLoading, setIsLoading] = useState(false);
+import { LunchMenu, LunchMenus } from '@Types/lunchMenu';
 
-  const getLunchMenu = async () => {
-    setIsLoading(true);
+const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
+  const { data } = useUserInfo();
+  const [isLoading, setIsLoading] = useState(true);
+  const [lunchMenu, setLunchMenu] = useState<LunchMenu[] | null>(null);
 
-    const response = await fetch(
-      '/school/lunch-menu?areaCode=T10&schoolCode=9290083&date=230706',
-    );
-    const result = (await response.json()) as LunchMenu;
+  const fetchLunchMenu = useCallback(
+    async (areaCode: string, code: string) => {
+      setIsLoading(true);
 
-    setIsLoading(false);
-    setLunchMenu(result?.data.lunchMenu);
-  };
+      const token = localStorage.getItem('token');
+
+      const response = await fetch(
+        `/school/lunch-menu?areaCode=${areaCode}&schoolCode=${code}&date=${date}&type=${type}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      const { lunchMenu } = (await response.json()) as LunchMenus;
+      setLunchMenu(lunchMenu);
+      setIsLoading(false);
+    },
+    [date, type],
+  );
 
   useEffect(() => {
-    getLunchMenu();
-  }, []);
+    if (!data) return;
+
+    if (!data.school) {
+      setIsLoading(false);
+      return;
+    }
+
+    const { areaCode, code } = data.school;
+    fetchLunchMenu(areaCode, code);
+  }, [data]);
 
   return { lunchMenu, isLoading };
 };
