@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 
+import { useUserInfo } from '@Hooks/useUserInfo';
+
 import route from '@Utils/route';
 
 import { ROUTE_PATH } from '@Constant/routePath';
-
-import { useUserInfo } from '@Providers/UserProvider';
 
 import logo from '@Assets/image/icon/logo.png';
 
@@ -13,7 +13,8 @@ import HeaderBadge from '../HeaderBadge';
 import NavigationLink from '../NavigationLink';
 
 function Header({ pathname }: { pathname: string }) {
-  const { data, isLoading } = useUserInfo();
+  const { data } = useUserInfo();
+  const isLoading = !data;
 
   const mainCategories = route.getMainCategories();
   const mainCategoriesCount = mainCategories.length;

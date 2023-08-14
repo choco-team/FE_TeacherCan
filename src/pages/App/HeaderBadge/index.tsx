@@ -1,7 +1,8 @@
 import { HiOutlineBell, HiUserCircle } from 'react-icons/hi';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
-import { useUserInfoAction } from 'src/providers/UserProvider';
+
+import { useUserInfoAction } from '@Hooks/useUserInfoAction';
 
 import Button from '@Components/Button';
 import Menu from '@Components/Menu';

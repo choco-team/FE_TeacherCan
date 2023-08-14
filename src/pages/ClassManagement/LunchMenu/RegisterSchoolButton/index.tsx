@@ -1,6 +1,6 @@
-import { useModal } from 'src/providers/ModalProvider';
-
 import Button from '@Components/Button';
+
+import { useModal } from '@Providers/ModalProvider';
 
 import RegisterSchoolModal from '../RegisterSchoolModal';
 

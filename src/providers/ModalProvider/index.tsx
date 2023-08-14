@@ -13,7 +13,7 @@ type ModalContext = {
   closeModal: () => void;
 } | null;
 
-const ModalContext = createContext<ModalContext>(null);
+export const ModalContext = createContext<ModalContext>(null);
 
 const ModalProvider = ({ children }: PropsWithChildren) => {
   const [currentModal, setCurrentModal] = useState<ReactNode | null>(null);

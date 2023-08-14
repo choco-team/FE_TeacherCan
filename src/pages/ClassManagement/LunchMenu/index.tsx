@@ -1,11 +1,11 @@
 import TeacherCanWarningIcon from '@Components/Icon/TeacherCanWarningIcon';
 import { ChangeEvent, useState } from 'react';
 
+import { useUserInfo } from '@Hooks/useUserInfo';
+
 import dateFunctions from '@Utils/date';
 
 import CircularProgress from '@Components/CircularProgress';
-
-import { useUserInfo } from '@Providers/UserProvider';
 
 import Board from './Board';
 import RegisterSchoolButton from './RegisterSchoolButton';
@@ -27,41 +27,32 @@ function LunchMenu() {
       </S.LoadLayout>
     );
 
-  const {
-    school: { name: schoolName },
-  } = data;
+  const { school } = data;
 
   return (
     <S.Layout>
       <div>
-        {schoolName ? (
-          <S.SchoolName>{schoolName} 급식</S.SchoolName>
+        {school?.name ? (
+          <S.SchoolName>{school.name} 급식</S.SchoolName>
         ) : (
           <RegisterSchoolButton />
         )}
       </div>
-      {schoolName ? (
+      {school?.name ? (
         <S.StandardDate
           type="date"
           value={standardDate}
           onChange={changeStandardDate}
-          disabled={!schoolName}
+          disabled={!school.name}
         />
       ) : (
         <div></div>
       )}
-      {schoolName ? (
+      {school?.name ? (
         <Board />
       ) : (
         <S.IconWrapper>
           <TeacherCanWarningIcon />
-          <div>
-            학교 등록을 하라고하는 티처캔 아이콘 만들어 주세요. svg로요. 혹은
-            data가 없을 경우에 일관적으로 보여지는 무언가가 필요합니다.
-            텍스트인지? 아니면 아이콘인지 통일하는건 어떨까요?
-            <div>1. 아이콘 + 텍스트</div>
-            <div>2. 텍스트</div>
-          </div>
         </S.IconWrapper>
       )}
     </S.Layout>
