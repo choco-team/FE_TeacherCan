@@ -1,18 +1,19 @@
 import TeacherCanWarningIcon from '@Components/Icon/TeacherCanWarningIcon';
 import { ChangeEvent, useState } from 'react';
 
-import useMe from '@Hooks/api/useMe';
-
 import dateFunctions from '@Utils/date';
 
 import CircularProgress from '@Components/CircularProgress';
+
+import { useUserInfo } from '@Providers/UserProvider';
 
 import Board from './Board';
 import RegisterSchoolButton from './RegisterSchoolButton';
 import * as S from './style';
 
 function LunchMenu() {
-  const { data, isLoading } = useMe();
+  const { data } = useUserInfo();
+  const isLoading = !data;
   const [standardDate, setStandardDate] = useState(dateFunctions.getToday());
 
   const changeStandardDate = (event: ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +28,7 @@ function LunchMenu() {
     );
 
   const {
-    data: { schoolName },
+    school: { name: schoolName },
   } = data;
 
   return (
