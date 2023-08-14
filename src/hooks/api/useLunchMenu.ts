@@ -42,7 +42,7 @@ const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
 
     const { areaCode, code } = data.school;
     fetchLunchMenu(areaCode, code);
-  }, [data]);
+  }, [data, date]);
 
   return { lunchMenu, isLoading };
 };

@@ -8,7 +8,7 @@ const userResponse: UserInfo = {
   school: {
     code: 'string',
     areaCode: 'string',
-    name: 'string',
+    name: '티처캔초등학교',
   },
 };
 

@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-export const LoadLayout = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 100%;
-`;
-
 export const Layout = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
@@ -39,6 +31,19 @@ export const StandardDate = styled.input`
   &::-webkit-calendar-picker-indicator {
     cursor: pointer;
   }
+`;
+
+export const BoardLayout = styled.div`
+  grid-column: 1 / -1;
+  width: 100%;
+  align-self: stretch;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 20px;
+
+  padding: 20px;
+  border-radius: 12px;
 `;
 
 export const IconWrapper = styled.div`

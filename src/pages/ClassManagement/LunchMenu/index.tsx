@@ -1,44 +1,39 @@
-import TeacherCanWarningIcon from '@Components/Icon/TeacherCanWarningIcon';
 import { ChangeEvent, useState } from 'react';
 
 import { useUserInfo } from '@Hooks/useUserInfo';
 
 import dateFunctions from '@Utils/date';
 
-import CircularProgress from '@Components/CircularProgress';
+import PageLoading from '@Components/PageLoading';
 
-import Board from './Board';
+import Menus from './Menus';
 import RegisterSchoolButton from './RegisterSchoolButton';
 import * as S from './style';
 
 function LunchMenu() {
   const { data } = useUserInfo();
   const isLoading = !data;
+
   const [standardDate, setStandardDate] = useState(dateFunctions.getToday());
 
   const changeStandardDate = (event: ChangeEvent<HTMLInputElement>) => {
     setStandardDate(event.target.value);
   };
 
-  if (isLoading)
-    return (
-      <S.LoadLayout>
-        <CircularProgress size="x-large" />
-      </S.LoadLayout>
-    );
+  if (isLoading) return <PageLoading />;
 
   const { school } = data;
 
   return (
     <S.Layout>
       <div>
-        {school?.name ? (
+        {school ? (
           <S.SchoolName>{school.name} 급식</S.SchoolName>
         ) : (
           <RegisterSchoolButton />
         )}
       </div>
-      {school?.name ? (
+      {school ? (
         <S.StandardDate
           type="date"
           value={standardDate}
@@ -48,13 +43,9 @@ function LunchMenu() {
       ) : (
         <div></div>
       )}
-      {school?.name ? (
-        <Board />
-      ) : (
-        <S.IconWrapper>
-          <TeacherCanWarningIcon />
-        </S.IconWrapper>
-      )}
+      <S.BoardLayout>
+        {school ? <Menus date={new Date(standardDate)} /> : <div></div>}
+      </S.BoardLayout>
     </S.Layout>
   );
 }

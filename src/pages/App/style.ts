@@ -12,6 +12,8 @@ export const DefaultPageLayout = styled.div`
 `;
 
 export const PageWrapper = styled.div`
+  position: relative;
+
   grid-column: 3 / -1;
 
   margin-top: calc(2rem + 34px);
