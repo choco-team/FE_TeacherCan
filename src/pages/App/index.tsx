@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { PiSunBold, PiMoonStarsBold } from 'react-icons/pi';
 import { Outlet, useLocation } from 'react-router-dom';
-import ModalProvider from 'src/providers/ModalProvider';
 import { ThemeProvider } from 'styled-components';
 
 import route from '@Utils/route';
 
 import { ROUTE_PATH } from '@Constant/routePath';
+
+import ModalProvider from '@Providers/ModalProvider';
 
 import GlobalStyle from '@Styles/GlobalStyle';
 import darkTheme from '@Styles/darkTheme';

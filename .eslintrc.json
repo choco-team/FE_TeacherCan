@@ -63,6 +63,11 @@
             "position": "after"
           },
           {
+            "pattern": "@Providers/**/*",
+            "group": "internal",
+            "position": "after"
+          },
+          {
             "pattern": "@Assets/**/*",
             "group": "internal",
             "position": "after"

@@ -13,7 +13,7 @@ import StudentManagement from '@Pages/StudentManagement';
 import StudentRegister from '@Pages/StudentManagement/StudentRegister';
 import RandomPick from '@Pages/Tools/RandomPick';
 
-import UserProvider from './providers/UserProvider';
+import UserProvider from '@Providers/UserProvider';
 
 const router = createBrowserRouter([
   {

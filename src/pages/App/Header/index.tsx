@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useUserInfo } from 'src/providers/UserProvider';
 
 import route from '@Utils/route';
 
 import { ROUTE_PATH } from '@Constant/routePath';
+
+import { useUserInfo } from '@Providers/UserProvider';
 
 import logo from '@Assets/image/icon/logo.png';
 
