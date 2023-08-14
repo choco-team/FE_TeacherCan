@@ -3,11 +3,12 @@ import useLunchMenu from '@Hooks/api/useLunchMenu';
 import SummaryList from '@Components/SummaryList';
 
 import * as S from './style';
+import { SideSectionProps } from './type';
 import HomeMemo from '../HomeMemo';
 import VacationDate from '../VacationDate';
 
-function SideSection() {
-  const { isLoading, lunchMenu } = useLunchMenu(new Date(), 'day');
+function SideSection({ today }: SideSectionProps) {
+  const { isLoading, lunchMenu } = useLunchMenu(today, 'day');
 
   const menus = lunchMenu ? lunchMenu[0].menu.map((item) => item.name) : [];
 
