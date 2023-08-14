@@ -27,7 +27,7 @@ export const MenuList = styled.ul<Required<Pick<MenuProps, 'position'>>>`
   padding: 10px 0px;
   border-radius: 5px;
 
-  box-shadow: ${(props) => props.theme.modalBackground};
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
   background-color: ${(props) => props.theme.background.gray};
 
