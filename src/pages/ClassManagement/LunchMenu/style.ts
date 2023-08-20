@@ -42,7 +42,6 @@ export const BoardLayout = styled.div`
   grid-template-columns: repeat(5, 1fr);
   column-gap: 20px;
 
-  padding: 20px;
   border-radius: 12px;
 `;
 
