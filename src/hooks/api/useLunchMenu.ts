@@ -9,6 +9,7 @@ const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
   const { data } = useUserInfo();
   const [isLoading, setIsLoading] = useState(true);
   const [lunchMenu, setLunchMenu] = useState<LunchMenu[] | null>(null);
+  const [origins, setOrigins] = useState<[string, string][] | null>(null);
 
   const fetchLunchMenu = useCallback(
     async (areaCode: string, code: string) => {
@@ -26,6 +27,17 @@ const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
       );
 
       const { lunchMenu } = (await response.json()) as LunchMenus;
+
+      const originsMap = new Map();
+      lunchMenu
+        .flatMap((item) => item.origin)
+        .forEach(({ ingredient, place }) => {
+          originsMap.set(ingredient, place);
+        });
+
+      const originsObject = Object.fromEntries(originsMap.entries());
+      setOrigins(Object.entries<string>(originsObject));
+
       setLunchMenu(lunchMenu);
       setIsLoading(false);
     },
@@ -44,7 +56,7 @@ const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
     fetchLunchMenu(areaCode, code);
   }, [data, date]);
 
-  return { lunchMenu, isLoading };
+  return { lunchMenu, origins, isLoading };
 };
 
 export default useLunchMenu;

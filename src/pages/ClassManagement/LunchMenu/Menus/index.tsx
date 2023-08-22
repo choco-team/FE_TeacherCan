@@ -6,9 +6,10 @@ import PageLoading from '@Components/PageLoading';
 
 import * as S from './style';
 import { MenuProps } from './type';
+import MenusInformation from '../MenusInformation/MenusInformation';
 
 function Menus({ date }: MenuProps) {
-  const { lunchMenu, isLoading } = useLunchMenu(date, 'weekend');
+  const { lunchMenu, origins, isLoading } = useLunchMenu(date, 'weekend');
 
   if (isLoading) {
     return <PageLoading />;
@@ -35,6 +36,7 @@ function Menus({ date }: MenuProps) {
           </S.Layout>
         );
       })}
+      <MenusInformation origins={origins} />
     </>
   );
 }

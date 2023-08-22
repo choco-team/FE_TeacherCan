@@ -12,9 +12,9 @@ const lunchMenuResponse = {
         { dish: '쇠불고기', allergy: [5, 6, 13, 16] },
         { dish: '오징어파전', allergy: [1, 5, 6, 13, 17] },
       ],
-      origins: [
-        { ingredient: '배추', origin: '국내산' },
-        { ingredient: '명태', origin: '러시아산' },
+      origin: [
+        { ingredient: '배추', place: '국내산' },
+        { ingredient: '명태', place: '러시아산' },
       ],
     },
     {
@@ -27,11 +27,11 @@ const lunchMenuResponse = {
         { dish: '오징어파전', allergy: [1, 5, 6, 13, 17] },
         { dish: '배추김치', allergy: [9, 13] },
       ],
-      origins: [
-        { ingredient: '쌀', origin: '국내산' },
-        { ingredient: '쇠고기', origin: '국내산' },
-        { ingredient: '오리고기', origin: '국내산' },
-        { ingredient: '돼지고기', origin: '국내산' },
+      origin: [
+        { ingredient: '쌀', place: '국내산' },
+        { ingredient: '쇠고기', place: '국내산' },
+        { ingredient: '오리고기', place: '국내산' },
+        { ingredient: '돼지고기', place: '국내산' },
       ],
     },
     {
@@ -44,9 +44,9 @@ const lunchMenuResponse = {
         { dish: '배추김치', allergy: [9, 13] },
         { dish: '멜론', allergy: [1, 5, 6, 13, 17] },
       ],
-      origins: [
-        { ingredient: '배추', origin: '국내산' },
-        { ingredient: '명태', origin: '러시아산' },
+      origin: [
+        { ingredient: '배추', place: '국내산' },
+        { ingredient: '명태', place: '러시아산' },
       ],
     },
     {
@@ -58,11 +58,10 @@ const lunchMenuResponse = {
         { dish: '돼지갈비감자찜', allergy: [5, 6, 10, 13] },
         { dish: '유채나물된장무침', allergy: [5, 6] },
         { dish: '배추김치', allergy: [9, 13] },
-        { dish: '사과', allergy: [] },
       ],
-      origins: [
-        { ingredient: '배추', origin: '국내산' },
-        { ingredient: '명태', origin: '러시아산' },
+      origin: [
+        { ingredient: '배추', place: '국내산' },
+        { ingredient: '명태', place: '러시아산' },
       ],
     },
     {
@@ -75,9 +74,9 @@ const lunchMenuResponse = {
         { dish: '배추김치', allergy: [1, 5, 6, 13] },
         { dish: '귤', allergy: [] },
       ],
-      origins: [
-        { ingredient: '배추', origin: '국내산' },
-        { ingredient: '명태', origin: '러시아산' },
+      origin: [
+        { ingredient: '배추', place: '국내산' },
+        { ingredient: '명태', place: '러시아산' },
       ],
     },
   ],
