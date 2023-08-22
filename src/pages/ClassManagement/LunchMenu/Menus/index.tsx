@@ -1,5 +1,7 @@
 import useLunchMenu from '@Hooks/api/useLunchMenu';
 
+import dateFunctions from '@Utils/date';
+
 import PageLoading from '@Components/PageLoading';
 
 import * as S from './style';
@@ -14,18 +16,22 @@ function Menus({ date }: MenuProps) {
 
   return (
     <>
-      {lunchMenu?.map((item, index) => {
+      {lunchMenu?.map(({ menu, date }, index) => {
         return (
           <S.Layout key={index}>
-            <div>08.07</div>
-            {item.menu?.map(({ name, allergy }) => {
-              return (
-                <S.Menu key={name}>
-                  <S.Name>{name}</S.Name>
-                  <S.Allergies>{allergy.join(' ')}</S.Allergies>
-                </S.Menu>
-              );
-            })}
+            <S.Date isToday={dateFunctions.isToday(new Date(date))}>
+              {dateFunctions.getMonthDateDay(new Date(date))}
+            </S.Date>
+            <S.MenuContainer>
+              {menu?.map(({ name, allergy }) => {
+                return (
+                  <S.Menu key={name}>
+                    <S.Name>{name}</S.Name>
+                    <S.Allergies>{allergy.join(' ')}</S.Allergies>
+                  </S.Menu>
+                );
+              })}
+            </S.MenuContainer>
           </S.Layout>
         );
       })}

@@ -8,13 +8,31 @@ type LoadingProps = {
 };
 
 export const Layout = styled.div<LoadingProps>`
-  display: ${(props) => (props.isLoading ? 'flex' : 'grid')};
+  display: flex;
   flex-direction: column;
-  justify-items: start;
-  row-gap: 20px;
 
-  padding: 20px;
-  border-radius: 12px;
+  gap: 10px;
+`;
+
+type DateProps = {
+  isToday: boolean;
+};
+
+export const Date = styled.div<DateProps>`
+  color: ${(props) =>
+    props.isToday ? props.theme.accentText : props.theme.color};
+  font-weight: 600;
+`;
+
+export const MenuContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+  padding: 40px;
+  border-radius: 8px;
+
+  box-shadow: ${(props) => props.theme.shadow};
 
   background-color: ${theme.color.gray[50]};
 `;
@@ -22,11 +40,12 @@ export const Layout = styled.div<LoadingProps>`
 export const Menu = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+
+  gap: 5px;
 `;
 
 export const Name = styled.div<LoadingProps>`
-  font-size: 2.4rem;
+  font-size: 2rem;
 
   ${(props) => props.isLoading && TextSkeletonStyle}
 `;

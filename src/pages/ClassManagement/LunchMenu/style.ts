@@ -36,11 +36,11 @@ export const StandardDate = styled.input`
 export const BoardLayout = styled.div`
   grid-column: 1 / -1;
   width: 100%;
-  align-self: stretch;
+  align-self: flex-start;
 
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  column-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
 
   border-radius: 12px;
 `;
