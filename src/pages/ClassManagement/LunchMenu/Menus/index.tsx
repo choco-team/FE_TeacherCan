@@ -23,10 +23,10 @@ function Menus({ date }: MenuProps) {
               {dateFunctions.getMonthDateDay(new Date(date))}
             </S.Date>
             <S.MenuContainer>
-              {menu?.map(({ name, allergy }) => {
+              {menu?.map(({ dish, allergy }) => {
                 return (
-                  <S.Menu key={name}>
-                    <S.Name>{name}</S.Name>
+                  <S.Menu key={dish}>
+                    <S.Name>{dish}</S.Name>
                     <S.Allergies>{allergy.join(' ')}</S.Allergies>
                   </S.Menu>
                 );

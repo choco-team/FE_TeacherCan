@@ -3,13 +3,13 @@ export type LunchMenus = {
 };
 
 export type LunchMenu = {
-  date: Date;
+  date: string;
   menu: {
-    name: string;
+    dish: string;
     allergy: number[];
   }[];
   origin: {
     ingredient: string;
-    origin: string;
+    place: string;
   }[];
 };
