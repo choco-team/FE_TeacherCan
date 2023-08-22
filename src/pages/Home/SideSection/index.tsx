@@ -10,7 +10,7 @@ import VacationDate from '../VacationDate';
 function SideSection({ today }: SideSectionProps) {
   const { isLoading, lunchMenu } = useLunchMenu(today, 'day');
 
-  const menus = lunchMenu ? lunchMenu[0].menu.map((item) => item.name) : [];
+  const menus = lunchMenu ? lunchMenu[0].menu.map((item) => item.dish) : [];
 
   return (
     <S.SideSection>
