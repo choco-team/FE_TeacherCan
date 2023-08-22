@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-
 import Button from '@Components/Button';
 
 import { useModal } from '@Providers/ModalProvider';
+
+import * as S from './style';
 
 const allergyList = [
   [1, '난류'],
@@ -29,49 +29,22 @@ function AllergyModal() {
   const { closeModal } = useModal();
 
   return (
-    <Layout>
-      <Title>알러지 정보 확인</Title>
-      <SubTitle>
+    <S.Layout>
+      <S.Title>알러지 정보 확인</S.Title>
+      <S.SubTitle>
         요리명에 표시된 번호는 알러지를 유발할수 있는 식재료에요.
-      </SubTitle>
-      <AllergyList>
+      </S.SubTitle>
+      <S.AllergyList>
         {allergyList.map(([number, ingredient]) => (
           <div key={number}>
             <span>{number}: </span>
             <span>{ingredient}</span>
           </div>
         ))}
-      </AllergyList>
+      </S.AllergyList>
       <Button onClick={closeModal}>확인</Button>
-    </Layout>
+    </S.Layout>
   );
 }
 
 export default AllergyModal;
-
-const Layout = styled.div`
-  display: grid;
-  row-gap: 20px;
-
-  button {
-    justify-self: flex-end;
-  }
-`;
-
-const Title = styled.h3`
-  text-align: center;
-
-  font-size: 1.8rem;
-  color: ${(props) => props.theme.accentText};
-  font-weight: 600;
-`;
-
-const SubTitle = styled.h4`
-  color: ${(props) => props.theme.grayText};
-`;
-
-const AllergyList = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-`;
