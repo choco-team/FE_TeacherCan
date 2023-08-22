@@ -6,7 +6,7 @@ import PageLoading from '@Components/PageLoading';
 
 import * as S from './style';
 import { MenuProps } from './type';
-import MenusInformation from '../MenusInformation/MenusInformation';
+import MenusInformation from '../MenusInformation';
 
 function Menus({ date }: MenuProps) {
   const { lunchMenu, origins, isLoading } = useLunchMenu(date, 'weekend');

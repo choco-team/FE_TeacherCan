@@ -1,4 +1,3 @@
-import { MdOutlinePlace } from 'react-icons/md';
 import { TbMoodKid } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -9,12 +8,15 @@ import { ROUTE_PATH } from '@Constant/routePath';
 
 import Button from '@Components/Button';
 
+import { useModal } from '@Providers/ModalProvider';
+
 import AllergyIcon from '@Assets/image/icon/AllergyIcon';
 import OriginPlaceIcon from '@Assets/image/icon/OriginPlaceIcon';
 
 import theme from '@Styles/theme';
 
 import { LUNCH_MENU_GUIDES } from './constant';
+import OriginPlaceModal from '../OriginPlaceModal';
 
 type MenusInformationProps = {
   origins: [string, string][] | null;
@@ -22,6 +24,7 @@ type MenusInformationProps = {
 
 function MenusInformation({ origins }: MenusInformationProps) {
   const navigate = useNavigate();
+  const { openModal } = useModal();
 
   const lunchMenuButtons = [
     {
@@ -40,7 +43,7 @@ function MenusInformation({ origins }: MenusInformationProps) {
       name: '원산지 정보 확인',
       Icon: <OriginPlaceIcon color={theme.color.white} />,
       onClick: () => {
-        alert('원산지 보여주기');
+        openModal(<OriginPlaceModal origins={origins} />);
       },
     },
     {
