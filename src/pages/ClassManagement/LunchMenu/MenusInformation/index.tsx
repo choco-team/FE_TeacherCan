@@ -16,6 +16,7 @@ import OriginPlaceIcon from '@Assets/image/icon/OriginPlaceIcon';
 import theme from '@Styles/theme';
 
 import { LUNCH_MENU_GUIDES } from './constant';
+import AllergyModal from '../AllergyModal';
 import OriginPlaceModal from '../OriginPlaceModal';
 
 type MenusInformationProps = {
@@ -50,7 +51,7 @@ function MenusInformation({ origins }: MenusInformationProps) {
       name: '알러지 정보 확인',
       Icon: <AllergyIcon color={theme.color.white} />,
       onClick: () => {
-        alert('알러지 보여주기');
+        openModal(<AllergyModal />);
       },
     },
   ];
