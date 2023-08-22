@@ -16,7 +16,7 @@ export const Layout = styled.div`
 `;
 
 export const SchoolName = styled.div`
-  padding: 8px 12px;
+  padding: 8px 0px;
   border-radius: 3px;
 
   font-size: 2rem;
