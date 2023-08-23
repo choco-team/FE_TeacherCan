@@ -15,7 +15,10 @@ declare module 'styled-components' {
     pageBackground: string;
     sectionBackground: string;
     modalBackground: string;
-    shadow: string;
+    shadow: {
+      100: string;
+      200: string;
+    };
     background: Partial<Record<Variant, string>> & {
       disabled?: string;
       orange?: string;

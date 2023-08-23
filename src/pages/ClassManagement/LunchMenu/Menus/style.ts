@@ -32,7 +32,7 @@ export const MenuContainer = styled.div`
   padding: 40px;
   border-radius: 8px;
 
-  box-shadow: ${(props) => props.theme.shadow};
+  box-shadow: ${(props) => props.theme.shadow[100]};
 
   background-color: ${theme.color.gray[50]};
 `;
