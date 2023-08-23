@@ -1,36 +1,66 @@
-import { useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useCallback, useEffect, useState } from 'react';
 
-type LunchMenu = {
-  statusCode: number;
-  data: {
-    lunchMenu: { menu: string; allergy: number[] }[];
-    origins: { ingredient: string; origin: string }[];
+import useUserInfo from '@Hooks/useUserInfo';
+
+import { LunchMenu, LunchMenus } from '@Types/classManagement/lunchMenu';
+
+const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
+  const { userInfo } = useUserInfo();
+  const [isLoading, setIsLoading] = useState(true);
+  const [lunchMenu, setLunchMenu] = useState<LunchMenu[] | null>(null);
+
+  const getOrigins = () => {
+    if (!lunchMenu) return null;
+
+    const originsMap = new Map();
+    lunchMenu
+      .flatMap((item) => item.origin)
+      .forEach(({ ingredient, place }) => {
+        originsMap.set(ingredient, place);
+      });
+
+    const originsObject = Object.fromEntries(originsMap.entries());
+
+    return Object.entries<string>(originsObject);
   };
-};
 
-const useLunchMenu = () => {
-  const [lunchMenu, setLunchMenu] = useState<
-    undefined | { menu: string; allergy: number[] }[]
-  >();
-  const [isLoading, setIsLoading] = useState(false);
+  const fetchLunchMenu = useCallback(
+    async (areaCode: string, code: string) => {
+      setIsLoading(true);
 
-  const getLunchMenu = async () => {
-    setIsLoading(true);
+      const token = sessionStorage.getItem('token');
 
-    const response = await fetch(
-      '/school/lunch-menu?areaCode=T10&schoolCode=9290083&date=230706',
-    );
-    const result = (await response.json()) as LunchMenu;
+      const response = await fetch(
+        `/school/lunch-menu?areaCode=${areaCode}&schoolCode=${code}&date=${date}&type=${type}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
 
-    setIsLoading(false);
-    setLunchMenu(result?.data.lunchMenu);
-  };
+      const data = (await response.json()) as LunchMenus;
+
+      setLunchMenu(data.lunchMenu);
+      setIsLoading(false);
+    },
+    [date, type],
+  );
 
   useEffect(() => {
-    getLunchMenu();
-  }, []);
+    if (!userInfo) return;
 
-  return { lunchMenu, isLoading };
+    if (!userInfo.school) {
+      setIsLoading(false);
+      return;
+    }
+
+    const { areaCode, code } = userInfo.school;
+    fetchLunchMenu(areaCode, code);
+  }, [userInfo, date]);
+
+  return { lunchMenu, origins: getOrigins(), isLoading };
 };
 
 export default useLunchMenu;

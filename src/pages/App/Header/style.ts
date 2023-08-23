@@ -10,7 +10,7 @@ export const Layout = styled.div`
   grid-template-columns: repeat(12, 1fr);
 
   background-color: ${(props) => props.theme.background.gray};
-  border-bottom: 1px solid ${(props) => props.theme.primaryText};
+  border-bottom: 1px solid ${(props) => props.theme.sectionBackground};
 
   z-index: 1;
 `;

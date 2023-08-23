@@ -1,7 +1,7 @@
 export type UserInfo = {
   email: string;
   nickname: string;
-  school: {
+  school?: {
     code: string;
     areaCode: string;
     name: string;

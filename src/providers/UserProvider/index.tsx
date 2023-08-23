@@ -2,7 +2,6 @@ import {
   PropsWithChildren,
   createContext,
   useCallback,
-  useContext,
   useEffect,
   useMemo,
   useState,
@@ -22,9 +21,10 @@ type UserInfoActionsContext = {
   signOut: () => void;
 } | null;
 
-const UserInfoContext = createContext<UserInfoContext>(null);
+export const UserInfoContext = createContext<UserInfoContext>(null);
 
-const UserInfoActionsContext = createContext<UserInfoActionsContext>(null);
+export const UserInfoActionsContext =
+  createContext<UserInfoActionsContext>(null);
 
 const UserProvider = ({ children }: PropsWithChildren) => {
   const { pathname } = useLocation();
@@ -33,7 +33,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   const [userInfo, setUserInfo] = useState<UserInfoContext>(null);
 
   const [main] = route.getPathnames(pathname);
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
 
   const actions: UserInfoActionsContext = useMemo(
     () => ({
@@ -41,7 +41,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
 
       signOut: () => {
         setUserInfo(null);
-        localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
         navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
       },
     }),
@@ -84,28 +84,3 @@ const UserProvider = ({ children }: PropsWithChildren) => {
 };
 
 export default UserProvider;
-
-export const useUserInfo = () => {
-  const value = useContext(UserInfoContext);
-
-  if (value === null) {
-    return {
-      isLoading: true,
-    };
-  }
-
-  return {
-    data: value,
-    isLoading: false,
-  };
-};
-
-export const useUserInfoAction = () => {
-  const value = useContext(UserInfoActionsContext);
-
-  if (value === null) {
-    throw new Error('UserInfoActionsContext 에러');
-  }
-
-  return value;
-};

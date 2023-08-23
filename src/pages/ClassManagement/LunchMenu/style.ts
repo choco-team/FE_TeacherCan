@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-export const LoadLayout = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 100%;
-`;
-
 export const Layout = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
@@ -24,7 +16,7 @@ export const Layout = styled.div`
 `;
 
 export const SchoolName = styled.div`
-  padding: 8px 12px;
+  padding: 8px 0px;
   border-radius: 3px;
 
   font-size: 2rem;
@@ -39,6 +31,18 @@ export const StandardDate = styled.input`
   &::-webkit-calendar-picker-indicator {
     cursor: pointer;
   }
+`;
+
+export const BoardLayout = styled.div`
+  grid-column: 1 / -1;
+  width: 100%;
+  align-self: flex-start;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+
+  border-radius: 12px;
 `;
 
 export const IconWrapper = styled.div`

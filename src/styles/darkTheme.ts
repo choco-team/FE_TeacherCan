@@ -7,10 +7,13 @@ const darkTheme = {
   subText: theme.color.gray[600],
   grayText: theme.color.gray[500],
   accentText: theme.color.primary[500],
-  shadow: `0rem 0.2rem 1.5rem ${theme.color.gray[950]}`,
   pageBackground: theme.color.gray[900],
   sectionBackground: theme.color.gray[800],
   modalBackground: 'rgba(255, 255, 255, 0.3)',
+  shadow: {
+    100: 'rgba(198, 198, 198, 0.25) 0rem 2px 1.5px',
+    200: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;',
+  },
   background: {
     primary: theme.color.primary[500],
     secondary: theme.color.secondary[500],

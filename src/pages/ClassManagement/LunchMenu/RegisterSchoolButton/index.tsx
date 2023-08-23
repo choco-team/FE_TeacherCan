@@ -1,4 +1,4 @@
-import { useModal } from 'src/providers/ModalProvider';
+import useModal from '@Hooks/useModal';
 
 import Button from '@Components/Button';
 

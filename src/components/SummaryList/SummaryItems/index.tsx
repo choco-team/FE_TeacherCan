@@ -18,7 +18,7 @@ function SummaryItems({
     );
   }
 
-  if (!list) {
+  if (!list || list.length === 0) {
     return (
       <S.NoSummaryItem>
         <S.NoSummaryMessage>정보가 없습니다.</S.NoSummaryMessage>

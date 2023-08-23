@@ -68,7 +68,7 @@ function SignIn() {
     const { result, token } = await signIn(email, password);
 
     if (result) {
-      localStorage.setItem('token', token);
+      sessionStorage.setItem('token', token);
       navigate(route.calculatePath([ROUTE_PATH.main]));
     }
   };

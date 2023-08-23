@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useUserInfo } from 'src/providers/UserProvider';
+
+import useUserInfo from '@Hooks/useUserInfo';
 
 import route from '@Utils/route';
 
@@ -12,7 +13,8 @@ import HeaderBadge from '../HeaderBadge';
 import NavigationLink from '../NavigationLink';
 
 function Header({ pathname }: { pathname: string }) {
-  const { data, isLoading } = useUserInfo();
+  const { userInfo } = useUserInfo();
+  const isLoading = !userInfo;
 
   const mainCategories = route.getMainCategories();
   const mainCategoriesCount = mainCategories.length;
@@ -36,7 +38,7 @@ function Header({ pathname }: { pathname: string }) {
           />
         ))}
       </S.LinkList>
-      <HeaderBadge username={data?.nickname} alarm isLoading={isLoading} />
+      <HeaderBadge username={userInfo?.nickname} alarm isLoading={isLoading} />
     </S.Layout>
   );
 }

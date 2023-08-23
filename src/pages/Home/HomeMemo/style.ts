@@ -9,7 +9,7 @@ export const Layout = styled.div`
   row-gap: 16px;
   padding: 1.5rem;
   border-radius: 0.5rem;
-  box-shadow: ${(props) => props.theme.shadow};
+  box-shadow: ${(props) => props.theme.shadow[100]};
 `;
 
 export const Label = styled.span`

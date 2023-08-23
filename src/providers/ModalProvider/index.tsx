@@ -3,7 +3,6 @@ import {
   PropsWithChildren,
   ReactNode,
   createContext,
-  useContext,
   useState,
 } from 'react';
 import styled from 'styled-components';
@@ -13,7 +12,7 @@ type ModalContext = {
   closeModal: () => void;
 } | null;
 
-const ModalContext = createContext<ModalContext>(null);
+export const ModalContext = createContext<ModalContext>(null);
 
 const ModalProvider = ({ children }: PropsWithChildren) => {
   const [currentModal, setCurrentModal] = useState<ReactNode | null>(null);
@@ -37,17 +36,6 @@ const ModalProvider = ({ children }: PropsWithChildren) => {
 };
 
 export default ModalProvider;
-
-// 전역에서 모달을 열고 닫을 수 있는 custom Hook
-export const useModal = () => {
-  const value = useContext(ModalContext);
-
-  if (value === null) {
-    throw new Error('Modal 에러');
-  }
-
-  return value;
-};
 
 type ModalProps = {
   closeModal: () => void;
