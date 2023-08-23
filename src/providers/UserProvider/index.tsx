@@ -33,7 +33,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   const [userInfo, setUserInfo] = useState<UserInfoContext>(null);
 
   const [main] = route.getPathnames(pathname);
-  const token = localStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
 
   const actions: UserInfoActionsContext = useMemo(
     () => ({
@@ -41,7 +41,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
 
       signOut: () => {
         setUserInfo(null);
-        localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
         navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
       },
     }),

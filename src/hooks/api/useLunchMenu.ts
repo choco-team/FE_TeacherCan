@@ -29,7 +29,7 @@ const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
     async (areaCode: string, code: string) => {
       setIsLoading(true);
 
-      const token = localStorage.getItem('token');
+      const token = sessionStorage.getItem('token');
 
       const response = await fetch(
         `/school/lunch-menu?areaCode=${areaCode}&schoolCode=${code}&date=${date}&type=${type}`,
