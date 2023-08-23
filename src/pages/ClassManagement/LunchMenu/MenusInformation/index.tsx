@@ -1,13 +1,13 @@
 import { TbMoodKid } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
 
+import useModal from '@Hooks/useModal';
+
 import route from '@Utils/route';
 
 import { ROUTE_PATH } from '@Constant/routePath';
 
 import Button from '@Components/Button';
-
-import { useModal } from '@Providers/ModalProvider';
 
 import AllergyIcon from '@Assets/image/icon/AllergyIcon';
 import OriginPlaceIcon from '@Assets/image/icon/OriginPlaceIcon';

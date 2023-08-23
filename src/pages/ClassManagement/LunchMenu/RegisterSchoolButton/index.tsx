@@ -1,6 +1,6 @@
-import Button from '@Components/Button';
+import useModal from '@Hooks/useModal';
 
-import { useModal } from '@Providers/ModalProvider';
+import Button from '@Components/Button';
 
 import RegisterSchoolModal from '../RegisterSchoolModal';
 

@@ -2,12 +2,14 @@ import { useContext } from 'react';
 
 import { UserInfoActionsContext } from '@Providers/UserProvider';
 
-export const useUserInfoAction = () => {
-  const value = useContext(UserInfoActionsContext);
+const useUserInfoAction = () => {
+  const userInfoActionsContext = useContext(UserInfoActionsContext);
 
-  if (value === null) {
+  if (userInfoActionsContext === null) {
     throw new Error('UserInfoActionsContext 에러');
   }
 
-  return value;
+  return userInfoActionsContext;
 };
+
+export default useUserInfoAction;
