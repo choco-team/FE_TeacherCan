@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 
 import useUserInfo from '@Hooks/useUserInfo';
 
-import { LunchMenu, LunchMenus } from '@Types/lunchMenu';
+import { LunchMenu, LunchMenus } from '@Types/classManagement/lunchMenu';
 
 const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
   const { userInfo } = useUserInfo();
