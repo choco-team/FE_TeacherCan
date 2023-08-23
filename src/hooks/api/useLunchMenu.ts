@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useEffect, useState } from 'react';
 
-import { useUserInfo } from '@Hooks/useUserInfo';
+import useUserInfo from '@Hooks/useUserInfo';
 
 import { LunchMenu, LunchMenus } from '@Types/lunchMenu';
 
 const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
-  const { data } = useUserInfo();
+  const { userInfo } = useUserInfo();
   const [isLoading, setIsLoading] = useState(true);
   const [lunchMenu, setLunchMenu] = useState<LunchMenu[] | null>(null);
   const [origins, setOrigins] = useState<[string, string][] | null>(null);
@@ -45,16 +45,16 @@ const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
   );
 
   useEffect(() => {
-    if (!data) return;
+    if (!userInfo) return;
 
-    if (!data.school) {
+    if (!userInfo.school) {
       setIsLoading(false);
       return;
     }
 
-    const { areaCode, code } = data.school;
+    const { areaCode, code } = userInfo.school;
     fetchLunchMenu(areaCode, code);
-  }, [data, date]);
+  }, [userInfo, date]);
 
   return { lunchMenu, origins, isLoading };
 };

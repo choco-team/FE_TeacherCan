@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 
-import { useUserInfo } from '@Hooks/useUserInfo';
+import useUserInfo from '@Hooks/useUserInfo';
 
 import dateFunctions from '@Utils/date';
 
@@ -11,8 +11,8 @@ import RegisterSchoolButton from './RegisterSchoolButton';
 import * as S from './style';
 
 function LunchMenu() {
-  const { data } = useUserInfo();
-  const isLoading = !data;
+  const { userInfo } = useUserInfo();
+  const isLoading = !userInfo;
 
   const [standardDate, setStandardDate] = useState(dateFunctions.getToday());
 
@@ -22,7 +22,7 @@ function LunchMenu() {
 
   if (isLoading) return <PageLoading />;
 
-  const { school } = data;
+  const { school } = userInfo;
 
   return (
     <S.Layout>
