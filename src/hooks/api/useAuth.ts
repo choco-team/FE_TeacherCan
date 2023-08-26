@@ -6,7 +6,7 @@ const useAuth = () => {
   const signUp = async (email: string, password: string, nickname: string) => {
     setIsLoading(true);
 
-    const response = await fetch('/auth/signup', {
+    const response = await fetch('http://13.124.68.20/api/auth/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,6 +29,8 @@ const useAuth = () => {
       },
       body: JSON.stringify({ email, password }),
     });
+
+    if (!response.ok) throw Error('오류가 발생했습니다.');
 
     setIsLoading(false);
 
