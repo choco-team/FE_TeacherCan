@@ -25,28 +25,25 @@ const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
     return Object.entries<string>(originsObject);
   };
 
-  const fetchLunchMenu = useCallback(
-    async (areaCode: string, code: string) => {
-      setIsLoading(true);
+  const fetchLunchMenu = useCallback(async () => {
+    setIsLoading(true);
 
-      const token = sessionStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
 
-      const response = await fetch(
-        `/school/lunch-menu?areaCode=${areaCode}&schoolCode=${code}&date=${date}&type=${type}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+    const response = await fetch(
+      `/school/lunch-menu?date=${date}&type=${type}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-      );
+      },
+    );
 
-      const data = (await response.json()) as LunchMenus;
+    const data = (await response.json()) as LunchMenus;
 
-      setLunchMenu(data.lunchMenu);
-      setIsLoading(false);
-    },
-    [date, type],
-  );
+    setLunchMenu(data.lunchMenu);
+    setIsLoading(false);
+  }, [date, type]);
 
   useEffect(() => {
     if (!userInfo) return;
@@ -56,8 +53,7 @@ const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
       return;
     }
 
-    const { areaCode, code } = userInfo.school;
-    fetchLunchMenu(areaCode, code);
+    fetchLunchMenu();
   }, [userInfo, date]);
 
   return { lunchMenu, origins: getOrigins(), isLoading };

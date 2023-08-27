@@ -83,10 +83,7 @@ const lunchMenuResponse = {
 };
 
 export const schoolHandlers = [
-  rest.get(
-    '/school/lunch-menu?areaCode=123&schoolCode=123}&date=123&type=123',
-    (req, res, ctx) => {
-      return res(ctx.status(200), ctx.json(lunchMenuResponse), ctx.delay(1000));
-    },
-  ),
+  rest.get('/school/lunch-menu', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(lunchMenuResponse), ctx.delay(1000));
+  }),
 ];
