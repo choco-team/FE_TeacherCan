@@ -24,4 +24,10 @@ export const SearchResult = styled.ul`
     margin-left: 2rem;
     list-style-type: disc;
   }
+
+  svg {
+    width: 100%;
+    margin: 30px auto;
+    font-size: 16rem;
+  }
 `;
