@@ -46,7 +46,7 @@ function AuthInput({
           onChange={handleChange}
         />
         {type === 'password' && (
-          <S.EyeButton onClick={togglePasswordVisible}>
+          <S.EyeButton type="button" onClick={togglePasswordVisible}>
             {isPasswordVisible ? <BsEyeSlashFill /> : <BsEyeFill />}
           </S.EyeButton>
         )}
