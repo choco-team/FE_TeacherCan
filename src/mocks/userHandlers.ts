@@ -5,11 +5,11 @@ import { UserInfo } from '@Types/user';
 const userResponse: UserInfo = {
   email: 'teachercan@gmail.com',
   nickname: '티처캔',
-  school: {
-    code: 'string',
-    areaCode: 'string',
-    name: '티처캔초등학교',
-  },
+  // school: {
+  //   code: 'string',
+  //   areaCode: 'string',
+  //   name: '티처캔초등학교',
+  // },
 };
 
 export const userHandlers = [
