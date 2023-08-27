@@ -30,7 +30,15 @@ const useAuth = () => {
       body: JSON.stringify({ email, password }),
     });
 
-    if (!response.ok) throw Error('오류가 발생했습니다.');
+    if (response.status === 400) {
+      setIsLoading(false);
+      throw Error('이메일 또는 비밀번호를 다시 확인해 주세요.');
+    }
+
+    if (!response.ok) {
+      setIsLoading(false);
+      throw Error('오류가 발생했습니다.');
+    }
 
     setIsLoading(false);
 
