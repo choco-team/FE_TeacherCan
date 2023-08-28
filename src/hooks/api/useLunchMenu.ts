@@ -3,6 +3,8 @@ import { useCallback, useEffect, useState } from 'react';
 
 import useUserInfo from '@Hooks/useUserInfo';
 
+import dateFunctions from '@Utils/date';
+
 import { LunchMenu, LunchMenus } from '@Types/classManagement/lunchMenu';
 
 const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
@@ -31,7 +33,9 @@ const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
     const token = sessionStorage.getItem('token');
 
     const response = await fetch(
-      `/school/lunch-menu?date=${date}&type=${type}`,
+      `http://13.124.68.20/api/school/lunch-menu?date=${dateFunctions.getToday(
+        date,
+      )}&type=${type}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -39,9 +43,16 @@ const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
       },
     );
 
+    if (!response.ok) {
+      setIsLoading(false);
+      setLunchMenu(null);
+      console.log(response);
+      return;
+    }
+
     const data = (await response.json()) as LunchMenus;
 
-    setLunchMenu(data.lunchMenu);
+    setLunchMenu(data);
     setIsLoading(false);
   }, [date, type]);
 

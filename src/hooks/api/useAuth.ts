@@ -22,7 +22,7 @@ const useAuth = () => {
   const signIn = async (email: string, password: string) => {
     setIsLoading(true);
 
-    const response = await fetch('/auth/signin', {
+    const response = await fetch('http://13.124.68.20/api/auth/signin', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -30,17 +30,12 @@ const useAuth = () => {
       body: JSON.stringify({ email, password }),
     });
 
-    if (response.status === 400) {
-      setIsLoading(false);
-      throw Error('이메일 또는 비밀번호를 다시 확인해 주세요.');
-    }
-
-    if (!response.ok) {
-      setIsLoading(false);
-      throw Error('오류가 발생했습니다.');
-    }
-
     setIsLoading(false);
+
+    if (response.status === 400)
+      throw Error('이메일 또는 비밀번호를 다시 확인해 주세요.');
+
+    if (!response.ok) throw Error('오류가 발생했습니다.');
 
     return (await response.json()) as {
       result: boolean;

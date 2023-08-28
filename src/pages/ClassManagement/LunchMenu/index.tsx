@@ -1,9 +1,11 @@
 import { ChangeEvent, useState } from 'react';
 
 import useUserInfo from '@Hooks/useUserInfo';
+import useUserInfoAction from '@Hooks/useUserInfoAction';
 
 import dateFunctions from '@Utils/date';
 
+import Button from '@Components/Button';
 import PageLoading from '@Components/PageLoading';
 
 import Menus from './Menus';
@@ -12,6 +14,7 @@ import * as S from './style';
 
 function LunchMenu() {
   const { userInfo } = useUserInfo();
+  const { updateUser } = useUserInfoAction();
   const isLoading = !userInfo;
 
   const [standardDate, setStandardDate] = useState(dateFunctions.getToday());
@@ -28,7 +31,19 @@ function LunchMenu() {
     <S.Layout>
       <div>
         {school ? (
-          <S.SchoolName>{school.name} 급식</S.SchoolName>
+          <>
+            <S.SchoolName>{school.name} 급식</S.SchoolName>
+
+            <Button
+              onClick={() => {
+                updateUser({
+                  schoolCode: null,
+                });
+              }}
+            >
+              학교 삭제
+            </Button>
+          </>
         ) : (
           <RegisterSchoolButton />
         )}

@@ -1,6 +1,4 @@
-export type LunchMenus = {
-  lunchMenu: LunchMenu[];
-};
+export type LunchMenus = LunchMenu[];
 
 export type LunchMenu = {
   date: string;

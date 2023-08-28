@@ -24,7 +24,7 @@ function SideSection({ today }: SideSectionProps) {
         isLoading={isLoading}
         guideMessage={
           !userInfo?.school
-            ? '프로필에서 학교를 등록해보세요.'
+            ? '학급운영 → 식단표에서 학교를 등록해보세요.'
             : '오늘은 급식이 없어요.'
         }
       />

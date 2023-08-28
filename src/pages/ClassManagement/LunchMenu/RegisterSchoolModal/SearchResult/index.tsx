@@ -1,3 +1,6 @@
+import useModal from '@Hooks/useModal';
+import useUserInfoAction from '@Hooks/useUserInfoAction';
+
 import Button from '@Components/Button';
 import PageLoading from '@Components/PageLoading';
 
@@ -18,7 +21,15 @@ const NOT_FOUND_RESULT = [
 ];
 
 function SearchResult({ isLoading, schoolList }: SearchResultProps) {
-  if (isLoading) return <PageLoading />;
+  const { updateUser, isActionLoading } = useUserInfoAction();
+  const { closeModal } = useModal();
+
+  const updateSchool = async (schoolCode: string) => {
+    await updateUser({ schoolCode });
+    closeModal();
+  };
+
+  if (isLoading || isActionLoading) return <PageLoading />;
 
   if (!schoolList)
     return (
@@ -41,17 +52,23 @@ function SearchResult({ isLoading, schoolList }: SearchResultProps) {
   if (schoolList)
     return (
       <S.SchoolList>
-        {schoolList.schoolList.map((item) => {
-          return (
-            <S.SchoolItem key={item.schoolCode}>
-              <span>{item.schoolName}</span>
-              <Button concept="outlined" size="sm">
-                등록
-              </Button>
-              <S.SchoolAddress>{item.schoolAddress}</S.SchoolAddress>
-            </S.SchoolItem>
-          );
-        })}
+        {schoolList.schoolList.map(
+          ({ schoolAddress, schoolCode, schoolName }) => {
+            return (
+              <S.SchoolItem key={schoolCode}>
+                <span>{schoolName}</span>
+                <Button
+                  concept="outlined"
+                  size="sm"
+                  onClick={() => updateSchool(schoolCode)}
+                >
+                  등록
+                </Button>
+                <S.SchoolAddress>{schoolAddress}</S.SchoolAddress>
+              </S.SchoolItem>
+            );
+          },
+        )}
       </S.SchoolList>
     );
 

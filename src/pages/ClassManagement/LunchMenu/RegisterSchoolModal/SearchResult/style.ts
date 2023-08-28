@@ -17,6 +17,7 @@ export const SchoolItem = styled.li`
   display: grid;
   grid-template-columns: 1fr auto;
 
+  margin-left: 0rem;
   color: ${(props) => props.theme.text};
 
   button {
