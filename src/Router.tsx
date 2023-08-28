@@ -8,7 +8,6 @@ import SignIn from '@Pages/Auth/SignIn';
 import SignUp from '@Pages/Auth/SignUp';
 import LunchMenu from '@Pages/ClassManagement/LunchMenu';
 import Home from '@Pages/Home';
-import RandomResult from '@Pages/RandomPick/RandomResult';
 import StudentManagement from '@Pages/StudentManagement';
 import StudentRegister from '@Pages/StudentManagement/StudentRegister';
 import RandomPick from '@Pages/Tools/RandomPick';

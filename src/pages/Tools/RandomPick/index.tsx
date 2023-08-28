@@ -1,31 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { AiOutlineUserAdd, AiFillSetting } from 'react-icons/ai';
-import { useNavigate } from 'react-router-dom';
 
 import Button from '@Components/Button';
 
 import whitebackground from '@Assets/image/background/random-whitebg.png';
 import woodbackground from '@Assets/image/background/random-woodbg.png';
 
+import RandomPickModal from './RandomPickModal';
 import * as S from './style';
 
 // server api 통신으로 불러올 학생 명렬표.
 const MOCK_STUDENTS = [
-  '김학생',
-  '이학생',
-  '박학생',
-  '우학생',
-  '최학생',
-  '조학생',
-  '장학생',
-  '나학생',
-  '다학생',
-  '가학생',
+  { number: 1, name: '김학생' },
+  { number: 2, name: '이학생' },
+  { number: 3, name: '박학생' },
+  { number: 4, name: '우학생' },
+  { number: 5, name: '최학생' },
+  { number: 6, name: '조학생' },
+  { number: 7, name: '장학생' },
+  { number: 8, name: '나학생' },
+  { number: 9, name: '다학생' },
+  { number: 10, name: '가학생' },
 ];
 
 function RandomPick() {
-  const navigate = useNavigate();
-
   const [chosenStudents, setChosenStudents] = useState<string[]>([]);
   const [background, setbackground] = useState<'wood' | 'white'>('wood');
 
@@ -34,10 +32,6 @@ function RandomPick() {
   };
   const toggleWhiteBackground = () => {
     setbackground('white');
-  };
-
-  const fromResultToSelect = () => {
-    navigate('/tools/random-drawing');
   };
 
   const handleClickChoiceButton = () => {
@@ -57,19 +51,6 @@ function RandomPick() {
       MOCK_STUDENTS.filter((_, index) => randomNumbers.includes(index)),
     );
   };
-
-  useEffect(() => {
-    // api가 완성이 되지 않았어요.
-    // msw 기능을 사용하는데, msw -> 명세가 필요해요.
-    // 나중에 학생 명렬표를 불러오는 api가 생기면 그것을 이용해서 명단을 가져오는 것.
-    // fetch('/randompick/result')
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     const studentNames = Object.values(data.data) as string[];
-    //     setChosenStudents(studentNames);
-    //   })
-    //   .catch((error) => console.error('Error:', error));
-  }, []);
 
   return (
     <S.Layout>
@@ -107,10 +88,10 @@ function RandomPick() {
             <AiOutlineUserAdd />
             <div>뽑기</div>
           </Button>
-          <Button size="lg">
+          <RandomPickModal>
             <AiFillSetting />
             <div>설정</div>
-          </Button>
+          </RandomPickModal>
         </S.ButtonWrapper>
       </S.RandomResult>
     </S.Layout>
