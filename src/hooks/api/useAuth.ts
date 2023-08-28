@@ -44,7 +44,27 @@ const useAuth = () => {
     };
   };
 
-  return { isLoading, signUp, signIn };
+  const isEmailPossible = async (email: string) => {
+    setIsLoading(true);
+
+    const response = await fetch(
+      'http://13.124.68.20/api/auth/signup/validation',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      },
+    );
+
+    setIsLoading(false);
+
+    if (!response.ok) return false;
+    return true;
+  };
+
+  return { isLoading, signUp, signIn, isEmailPossible };
 };
 
 export default useAuth;

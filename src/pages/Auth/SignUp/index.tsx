@@ -95,6 +95,9 @@ function SignUp() {
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const { name, value } = event.target;
+
+    if (name === 'email') setIsCheckedEmail(false);
+
     setInputValue((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -138,6 +141,7 @@ function SignUp() {
               isValid={validation[name]}
               validationMessage={validationMessage}
               isCheckedEmail={isCheckedEmail}
+              isSignup
               setIsCheckedEmail={setIsCheckedEmail}
               required
               handleChange={handleChangeInputValue}

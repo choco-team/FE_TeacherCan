@@ -3,6 +3,8 @@ import { BiCheck, BiX } from 'react-icons/bi';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import { css } from 'styled-components';
 
+import useAuth from '@Hooks/api/useAuth';
+
 import CircularProgress from '@Components/CircularProgress';
 
 import * as S from './style';
@@ -17,13 +19,28 @@ function AuthInput({
   value,
   required = false,
   isValid,
+  isSignup,
   validationMessage,
   isCheckedEmail,
+  setIsCheckedEmail,
   handleChange,
 }: T.AuthInput) {
+  const { isLoading, isEmailPossible } = useAuth();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const togglePasswordVisible = () => setIsPasswordVisible((prev) => !prev);
+
+  const handleClickDoubleCheckEmail = async () => {
+    if (!setIsCheckedEmail || isCheckedEmail) return;
+
+    const emailRegExp = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    if (!emailRegExp.test(value)) return;
+
+    const result = await isEmailPossible(value);
+
+    if (result) setIsCheckedEmail(true);
+    else alert('이메일이 이미 존재해요.');
+  };
 
   return (
     <S.Label>
@@ -55,9 +72,9 @@ function AuthInput({
             {isPasswordVisible ? <BsEyeSlashFill /> : <BsEyeFill />}
           </S.EyeButton>
         )}
-        {name === 'email' && (
-          <S.DoubleCheckEmail>
-            {true ? (
+        {name === 'email' && isSignup && (
+          <S.DoubleCheckEmail onClick={handleClickDoubleCheckEmail}>
+            {isLoading ? (
               <CircularProgress
                 size="x-small"
                 $style={css`
