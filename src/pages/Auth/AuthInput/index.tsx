@@ -36,8 +36,6 @@ function AuthInput({
     const emailRegExp = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
     if (!emailRegExp.test(value)) return;
 
-    console.log(value);
-
     const result = await isEmailPossible(value);
 
     if (result.ok) setIsCheckedEmail(true);
