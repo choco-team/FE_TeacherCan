@@ -14,16 +14,18 @@ function SideNavLink({ pathname }: { pathname: string }) {
 
   return (
     <S.Layout>
-      {middleCategory.map((category) => (
-        <NavigationLink
-          key={category.key}
-          category={category.category}
-          name={category.name}
-          Icon={category.Icon}
-          path={route.calculatePath([mainPath, category.path])}
-          isSelected={subPath === category.path}
-        />
-      ))}
+      <S.LinkContainer>
+        {middleCategory.map((category) => (
+          <NavigationLink
+            key={category.key}
+            category={category.category}
+            name={category.name}
+            Icon={category.Icon}
+            path={route.calculatePath([mainPath, category.path])}
+            isSelected={subPath === category.path}
+          />
+        ))}
+      </S.LinkContainer>
     </S.Layout>
   );
 }

@@ -6,9 +6,9 @@ const userResponse: UserInfo = {
   email: 'teachercan@gmail.com',
   nickname: '티처캔',
   school: {
-    code: 'string',
-    areaCode: 'string',
-    name: '티처캔초등학교',
+    code: '7822086',
+    areaCode: 'K10',
+    name: '서원주초등학교',
   },
 };
 

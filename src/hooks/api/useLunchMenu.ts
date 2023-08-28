@@ -3,6 +3,8 @@ import { useCallback, useEffect, useState } from 'react';
 
 import useUserInfo from '@Hooks/useUserInfo';
 
+import dateFunctions from '@Utils/date';
+
 import { LunchMenu, LunchMenus } from '@Types/classManagement/lunchMenu';
 
 const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
@@ -25,28 +27,33 @@ const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
     return Object.entries<string>(originsObject);
   };
 
-  const fetchLunchMenu = useCallback(
-    async (areaCode: string, code: string) => {
-      setIsLoading(true);
+  const fetchLunchMenu = useCallback(async () => {
+    setIsLoading(true);
 
-      const token = sessionStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
 
-      const response = await fetch(
-        `/school/lunch-menu?areaCode=${areaCode}&schoolCode=${code}&date=${date}&type=${type}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+    const response = await fetch(
+      `http://13.124.68.20/api/school/lunch-menu?date=${dateFunctions.getToday(
+        date,
+      )}&type=${type}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-      );
+      },
+    );
 
-      const data = (await response.json()) as LunchMenus;
-
-      setLunchMenu(data.lunchMenu);
+    if (!response.ok) {
       setIsLoading(false);
-    },
-    [date, type],
-  );
+      setLunchMenu(null);
+      return;
+    }
+
+    const data = (await response.json()) as LunchMenus;
+
+    setLunchMenu(data);
+    setIsLoading(false);
+  }, [date, type]);
 
   useEffect(() => {
     if (!userInfo) return;
@@ -56,8 +63,7 @@ const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
       return;
     }
 
-    const { areaCode, code } = userInfo.school;
-    fetchLunchMenu(areaCode, code);
+    fetchLunchMenu();
   }, [userInfo, date]);
 
   return { lunchMenu, origins: getOrigins(), isLoading };

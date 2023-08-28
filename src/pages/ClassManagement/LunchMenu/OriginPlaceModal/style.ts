@@ -25,4 +25,6 @@ export const Origins = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
+
+  overflow-y: scroll;
 `;

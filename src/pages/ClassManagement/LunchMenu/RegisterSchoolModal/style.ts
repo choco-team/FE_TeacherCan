@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const SearchSchoolLayout = styled.div`
   display: grid;
   row-gap: 20px;
+
+  align-items: flex-start;
 `;
 
 export const SearchSchoolForm = styled.form`
@@ -14,7 +16,6 @@ export const SearchSchoolForm = styled.form`
   }
 `;
 
-export const SearchResult = styled.div`
-  min-height: 300px;
-  overflow: auto;
+export const SearchResult = styled.ul`
+  min-height: 260px;
 `;

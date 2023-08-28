@@ -65,7 +65,7 @@ export const CATEGORIES: Categories = [
     category: 'main',
     name: '학급운영',
     path: 'class-management',
-    firstChildPath: 'schedule',
+    firstChildPath: 'lunch-menu',
     children: [
       'schedule',
       'lunchMenu',
@@ -89,7 +89,7 @@ export const CATEGORIES: Categories = [
     category: 'main',
     name: '편의도구',
     path: 'tools',
-    firstChildPath: 'timer',
+    firstChildPath: 'random-pick',
     children: [
       'timer',
       'randomPick',
@@ -114,13 +114,13 @@ export const CATEGORIES: Categories = [
   // middle category
 
   // classManagement
-  {
-    key: 'schedule',
-    category: 'middle',
-    name: '시간표',
-    path: 'schedule',
-    Icon: CiViewTimeline,
-  },
+  // {
+  //   key: 'schedule',
+  //   category: 'middle',
+  //   name: '시간표',
+  //   path: 'schedule',
+  //   Icon: CiViewTimeline,
+  // },
   {
     key: 'lunchMenu',
     category: 'middle',
@@ -128,41 +128,41 @@ export const CATEGORIES: Categories = [
     path: 'lunch-menu',
     Icon: BiBowlRice,
   },
-  {
-    key: 'roles',
-    category: 'middle',
-    name: '1인1역',
-    path: 'roles',
-    Icon: FaPeopleCarry,
-  },
-  {
-    key: 'writing',
-    category: 'middle',
-    name: '판서',
-    path: 'writing',
-    Icon: TbWriting,
-  },
-  {
-    key: 'toDos',
-    category: 'middle',
-    name: '할일',
-    path: 'to-dos',
-    Icon: RiCalendarTodoLine,
-  },
-  {
-    key: 'dDay',
-    category: 'middle',
-    name: '디데이',
-    path: 'd-day',
-    Icon: BsCalendarWeek,
-  },
-  {
-    key: 'stickyNote',
-    category: 'middle',
-    name: '스티커 메모',
-    path: 'sticky-note',
-    Icon: BsSticky,
-  },
+  // {
+  //   key: 'roles',
+  //   category: 'middle',
+  //   name: '1인1역',
+  //   path: 'roles',
+  //   Icon: FaPeopleCarry,
+  // },
+  // {
+  //   key: 'writing',
+  //   category: 'middle',
+  //   name: '판서',
+  //   path: 'writing',
+  //   Icon: TbWriting,
+  // },
+  // {
+  //   key: 'toDos',
+  //   category: 'middle',
+  //   name: '할일',
+  //   path: 'to-dos',
+  //   Icon: RiCalendarTodoLine,
+  // },
+  // {
+  //   key: 'dDay',
+  //   category: 'middle',
+  //   name: '디데이',
+  //   path: 'd-day',
+  //   Icon: BsCalendarWeek,
+  // },
+  // {
+  //   key: 'stickyNote',
+  //   category: 'middle',
+  //   name: '스티커 메모',
+  //   path: 'sticky-note',
+  //   Icon: BsSticky,
+  // },
 
   // studentManagement
   {
@@ -181,13 +181,13 @@ export const CATEGORIES: Categories = [
   },
 
   // tools
-  {
-    key: 'timer',
-    category: 'middle',
-    name: '타이머',
-    path: 'timer',
-    Icon: BiTimer,
-  },
+  // {
+  //   key: 'timer',
+  //   category: 'middle',
+  //   name: '타이머',
+  //   path: 'timer',
+  //   Icon: BiTimer,
+  // },
   {
     key: 'randomPick',
     category: 'middle',
@@ -195,71 +195,71 @@ export const CATEGORIES: Categories = [
     path: 'random-pick',
     Icon: GiCardRandom,
   },
-  {
-    key: 'changeSeats',
-    category: 'middle',
-    name: '자리바꾸기',
-    path: 'change-seats',
-    Icon: TbExchange,
-  },
-  {
-    key: 'setOrder',
-    category: 'middle',
-    name: '순서정하기',
-    path: 'set-order',
-    Icon: CgReorder,
-  },
-  {
-    key: 'qrCode',
-    category: 'middle',
-    name: 'QR코드',
-    path: 'qr-code',
-    Icon: BsQrCodeScan,
-  },
-  {
-    key: 'favorites',
-    category: 'middle',
-    name: '즐겨찾기',
-    path: 'favorites',
-    Icon: MdOutlineFavoriteBorder,
-  },
-  {
-    key: 'news',
-    category: 'middle',
-    name: '뉴스',
-    path: 'news',
-    Icon: BsNewspaper,
-  },
-  {
-    key: 'weather',
-    category: 'middle',
-    name: '날씨',
-    path: 'weather',
-    Icon: TiWeatherWindyCloudy,
-  },
+  // {
+  //   key: 'changeSeats',
+  //   category: 'middle',
+  //   name: '자리바꾸기',
+  //   path: 'change-seats',
+  //   Icon: TbExchange,
+  // },
+  // {
+  //   key: 'setOrder',
+  //   category: 'middle',
+  //   name: '순서정하기',
+  //   path: 'set-order',
+  //   Icon: CgReorder,
+  // },
+  // {
+  //   key: 'qrCode',
+  //   category: 'middle',
+  //   name: 'QR코드',
+  //   path: 'qr-code',
+  //   Icon: BsQrCodeScan,
+  // },
+  // {
+  //   key: 'favorites',
+  //   category: 'middle',
+  //   name: '즐겨찾기',
+  //   path: 'favorites',
+  //   Icon: MdOutlineFavoriteBorder,
+  // },
+  // {
+  //   key: 'news',
+  //   category: 'middle',
+  //   name: '뉴스',
+  //   path: 'news',
+  //   Icon: BsNewspaper,
+  // },
+  // {
+  //   key: 'weather',
+  //   category: 'middle',
+  //   name: '날씨',
+  //   path: 'weather',
+  //   Icon: TiWeatherWindyCloudy,
+  // },
 
   // support
-  {
-    key: 'information',
-    category: 'middle',
-    name: '티처캔안내',
-    path: 'information',
-    Icon: IoInformationCircleOutline,
-  },
-  {
-    key: 'termsOfUse',
-    category: 'middle',
-    name: '이용약관',
-    path: 'terms-of-use',
-    Icon: GoReport,
-  },
-  {
-    key: 'inquiry',
-    category: 'middle',
-    name: '문의사항',
-    path: 'inquiry',
-    Icon: VscSymbolProperty,
-  },
+  // {
+  //   key: 'information',
+  //   category: 'middle',
+  //   name: '티처캔안내',
+  //   path: 'information',
+  //   Icon: IoInformationCircleOutline,
+  // },
+  // {
+  //   key: 'termsOfUse',
+  //   category: 'middle',
+  //   name: '이용약관',
+  //   path: 'terms-of-use',
+  //   Icon: GoReport,
+  // },
+  // {
+  //   key: 'inquiry',
+  //   category: 'middle',
+  //   name: '문의사항',
+  //   path: 'inquiry',
+  //   Icon: VscSymbolProperty,
+  // },
 ];
 
 export const ROUTE_PATH: RoutePath = {

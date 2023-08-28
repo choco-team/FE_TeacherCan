@@ -29,7 +29,7 @@ export const MenuContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 
-  padding: 40px;
+  padding: 25px;
   border-radius: 8px;
 
   box-shadow: ${(props) => props.theme.shadow[100]};
@@ -45,11 +45,15 @@ export const Menu = styled.div`
 `;
 
 export const Name = styled.div<LoadingProps>`
-  font-size: 2rem;
+  font-size: 1.8rem;
 
   ${(props) => props.isLoading && TextSkeletonStyle}
 `;
 
 export const Allergies = styled.div`
   color: ${theme.color.gray[400]};
+`;
+
+export const NoLunch = styled.span`
+  color: ${(props) => props.theme.grayText};
 `;

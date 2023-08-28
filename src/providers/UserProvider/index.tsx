@@ -19,6 +19,10 @@ type UserInfoContext = UserInfo | null;
 type UserInfoActionsContext = {
   signIn: (userInfo: UserInfoContext) => void;
   signOut: () => void;
+  updateUser: (
+    updateFiled: Record<string, string | number | null>,
+  ) => Promise<void>;
+  isActionLoading: boolean;
 } | null;
 
 export const UserInfoContext = createContext<UserInfoContext>(null);
@@ -31,9 +35,38 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   const navigate = useNavigate();
 
   const [userInfo, setUserInfo] = useState<UserInfoContext>(null);
+  const [isActionLoading, setActionIsLoading] = useState(false);
 
   const [main] = route.getPathnames(pathname);
   const token = sessionStorage.getItem('token');
+
+  const updateUser = useCallback(
+    async (updateFiled: Record<string, string | number | null>) => {
+      if (!userInfo) throw Error('잘못된 접근입니다.');
+
+      setActionIsLoading(true);
+
+      const token = sessionStorage.getItem('token');
+
+      const response = await fetch('http://13.124.68.20/api/user/info', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          ...userInfo,
+          ...updateFiled,
+        }),
+      });
+
+      const user = (await response.json()) as UserInfoContext;
+
+      setUserInfo(user);
+      setActionIsLoading(false);
+    },
+    [userInfo],
+  );
 
   const actions: UserInfoActionsContext = useMemo(
     () => ({
@@ -44,12 +77,15 @@ const UserProvider = ({ children }: PropsWithChildren) => {
         sessionStorage.removeItem('token');
         navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
       },
+
+      updateUser,
+      isActionLoading,
     }),
-    [navigate],
+    [isActionLoading, navigate, updateUser],
   );
 
   const fetchUserInfo = useCallback(async () => {
-    const response = await fetch('/user/info', {
+    const response = await fetch('http://13.124.68.20/api/user/info', {
       headers: {
         Authorization: `Bearer ${token}`,
       },

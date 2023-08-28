@@ -11,7 +11,7 @@ function RegisterSchoolButton() {
   };
   return (
     <>
-      <Button fontSize="2rem" handleClick={handleClickButton}>
+      <Button size="md" handleClick={handleClickButton}>
         학교 등록하기
       </Button>
     </>
