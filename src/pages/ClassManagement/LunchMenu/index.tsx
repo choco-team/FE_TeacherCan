@@ -31,21 +31,26 @@ function LunchMenu() {
     <S.Layout>
       <div>
         {school ? (
-          <>
+          <S.TitleContainer>
             <S.SchoolName>{school.name} 급식</S.SchoolName>
-
             <Button
               onClick={() => {
                 updateUser({
                   schoolCode: null,
                 });
               }}
+              concept="outlined"
             >
-              학교 삭제
+              학교 정보 삭제
             </Button>
-          </>
+          </S.TitleContainer>
         ) : (
-          <RegisterSchoolButton />
+          <>
+            <RegisterSchoolButton />
+            <S.NoSchool>
+              등록된 학교가 없어요. 학교 등록하기를 통해 학교를 등록해 보세요.
+            </S.NoSchool>
+          </>
         )}
       </div>
       {school ? (

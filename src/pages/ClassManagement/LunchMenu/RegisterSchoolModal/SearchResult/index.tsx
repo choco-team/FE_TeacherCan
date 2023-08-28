@@ -33,20 +33,20 @@ function SearchResult({ isLoading, schoolList }: SearchResultProps) {
 
   if (!schoolList)
     return (
-      <>
+      <S.SearchResult>
         {SEARCH_GUIDE.map((list, index) => (
           <li key={index}>{list}</li>
         ))}
-      </>
+      </S.SearchResult>
     );
 
   if (schoolList === 'notFound')
     return (
-      <>
+      <S.SearchResult>
         {NOT_FOUND_RESULT.map((list, index) => (
           <li key={index}>{list}</li>
         ))}
-      </>
+      </S.SearchResult>
     );
 
   if (schoolList)

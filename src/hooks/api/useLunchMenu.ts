@@ -46,7 +46,6 @@ const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
     if (!response.ok) {
       setIsLoading(false);
       setLunchMenu(null);
-      console.log(response);
       return;
     }
 

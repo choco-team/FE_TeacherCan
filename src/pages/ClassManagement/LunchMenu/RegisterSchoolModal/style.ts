@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const SearchSchoolLayout = styled.div`
   display: grid;
   row-gap: 20px;
+
+  align-items: flex-start;
 `;
 
 export const SearchSchoolForm = styled.form`
@@ -15,14 +17,5 @@ export const SearchSchoolForm = styled.form`
 `;
 
 export const SearchResult = styled.ul`
-  min-height: 360px;
-  overflow: auto;
-  line-height: 160%;
-
-  color: ${(props) => props.theme.grayText};
-
-  li {
-    margin-left: 2rem;
-    list-style-type: disc;
-  }
+  min-height: 260px;
 `;

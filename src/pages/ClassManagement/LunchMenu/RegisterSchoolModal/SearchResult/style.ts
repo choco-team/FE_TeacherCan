@@ -1,23 +1,28 @@
 import styled from 'styled-components';
 
-export const SchoolList = styled.div`
-  max-height: 360px;
-  overflow: auto;
+export const SearchResult = styled.ul`
+  line-height: 160%;
 
-  display: grid;
-  row-gap: 10px;
+  color: ${(props) => props.theme.grayText};
 
   li {
-    margin-left: 0rem;
-    list-style-type: none;
+    margin-left: 2rem;
+    list-style-type: disc;
   }
+`;
+
+export const SchoolList = styled.div`
+  display: grid;
+  row-gap: 10px;
+  align-items: flex-start;
+
+  overflow: auto;
 `;
 
 export const SchoolItem = styled.li`
   display: grid;
   grid-template-columns: 1fr auto;
 
-  margin-left: 0rem;
   color: ${(props) => props.theme.text};
 
   button {
