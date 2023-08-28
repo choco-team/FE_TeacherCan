@@ -1,4 +1,5 @@
 import useLunchMenu from '@Hooks/api/useLunchMenu';
+import useUserInfo from '@Hooks/useUserInfo';
 
 import SummaryList from '@Components/SummaryList';
 
@@ -9,6 +10,7 @@ import VacationDate from '../VacationDate';
 
 function SideSection({ today }: SideSectionProps) {
   const { isLoading, lunchMenu } = useLunchMenu(today, 'day');
+  const { userInfo } = useUserInfo();
 
   const menus = lunchMenu ? lunchMenu[0].menu.map((item) => item.dish) : [];
 
@@ -21,7 +23,7 @@ function SideSection({ today }: SideSectionProps) {
         list={menus}
         isLoading={isLoading}
         guideMessage={
-          !lunchMenu
+          !userInfo?.school
             ? '프로필에서 학교를 등록해보세요.'
             : '오늘은 급식이 없어요.'
         }
