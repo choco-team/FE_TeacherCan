@@ -60,8 +60,23 @@ const useAuth = () => {
 
     setIsLoading(false);
 
-    if (!response.ok) return false;
-    return true;
+    if (response.status === 400)
+      return {
+        ok: false,
+        message: '이메일이 이미 존재해요.',
+      };
+
+    if (response.status === 422) {
+      return {
+        ok: false,
+        message:
+          '이메일 검증에 실패했어요. 이메일이 옳바른 형식인지 다시 확인해 주세요.',
+      };
+    }
+
+    return {
+      ok: true,
+    };
   };
 
   return { isLoading, signUp, signIn, isEmailPossible };

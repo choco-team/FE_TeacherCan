@@ -36,10 +36,12 @@ function AuthInput({
     const emailRegExp = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
     if (!emailRegExp.test(value)) return;
 
+    console.log(value);
+
     const result = await isEmailPossible(value);
 
-    if (result) setIsCheckedEmail(true);
-    else alert('이메일이 이미 존재해요.');
+    if (result.ok) setIsCheckedEmail(true);
+    else alert(result.message);
   };
 
   return (
