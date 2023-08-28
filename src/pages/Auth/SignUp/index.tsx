@@ -85,9 +85,11 @@ function SignUp() {
     passwordConfirmation: '',
     nickname: '',
   });
+  const [isCheckedEmail, setIsCheckedEmail] = useState(false);
 
   const validation = validate(inputValue);
-  const isAllValid = Object.values(validation).every((isValid) => isValid);
+  const isAllValid =
+    Object.values(validation).every((isValid) => isValid) && isCheckedEmail;
 
   const handleChangeInputValue = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -135,6 +137,8 @@ function SignUp() {
               value={inputValue[name]}
               isValid={validation[name]}
               validationMessage={validationMessage}
+              isCheckedEmail={isCheckedEmail}
+              setIsCheckedEmail={setIsCheckedEmail}
               required
               handleChange={handleChangeInputValue}
             />

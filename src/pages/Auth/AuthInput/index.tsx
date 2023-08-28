@@ -1,5 +1,9 @@
 import { useState } from 'react';
+import { BiCheck, BiX } from 'react-icons/bi';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
+import { css } from 'styled-components';
+
+import CircularProgress from '@Components/CircularProgress';
 
 import * as S from './style';
 import * as T from './type';
@@ -14,6 +18,7 @@ function AuthInput({
   required = false,
   isValid,
   validationMessage,
+  isCheckedEmail,
   handleChange,
 }: T.AuthInput) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -49,6 +54,25 @@ function AuthInput({
           <S.EyeButton type="button" onClick={togglePasswordVisible}>
             {isPasswordVisible ? <BsEyeSlashFill /> : <BsEyeFill />}
           </S.EyeButton>
+        )}
+        {name === 'email' && (
+          <S.DoubleCheckEmail>
+            {true ? (
+              <CircularProgress
+                size="x-small"
+                $style={css`
+                  margin-right: 20px;
+                `}
+              />
+            ) : (
+              <>
+                {!isCheckedEmail && '중복확인'}
+                <S.DoubleCheckIcon isCheckedEmail={isCheckedEmail}>
+                  {isCheckedEmail ? <BiCheck /> : <BiX />}
+                </S.DoubleCheckIcon>
+              </>
+            )}
+          </S.DoubleCheckEmail>
         )}
       </S.InputWrapper>
     </S.Label>
