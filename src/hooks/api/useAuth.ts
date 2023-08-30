@@ -54,7 +54,7 @@ const useAuth = () => {
     setIsLoading(true);
 
     const response = await fetch(
-      'http://13.124.68.20/api/auth/signup/validation',
+      'https://teachercan.ssambox.com/api/auth/signup/validation',
       {
         method: 'POST',
         headers: {
