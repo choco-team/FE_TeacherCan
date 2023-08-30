@@ -6,13 +6,16 @@ const useAuth = () => {
   const signUp = async (email: string, password: string, nickname: string) => {
     setIsLoading(true);
 
-    const response = await fetch('http://13.124.68.20/api/auth/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const response = await fetch(
+      'https://teachercan.ssambox.com/api/auth/signup',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password, nickname }),
       },
-      body: JSON.stringify({ email, password, nickname }),
-    });
+    );
 
     if (!response.ok) throw Error('오류가 발생했습니다.');
 
@@ -22,13 +25,16 @@ const useAuth = () => {
   const signIn = async (email: string, password: string) => {
     setIsLoading(true);
 
-    const response = await fetch('http://13.124.68.20/api/auth/signin', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const response = await fetch(
+      'https://teachercan.ssambox.com/api/auth/signin',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
       },
-      body: JSON.stringify({ email, password }),
-    });
+    );
 
     setIsLoading(false);
 
