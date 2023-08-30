@@ -85,14 +85,19 @@ function SignUp() {
     passwordConfirmation: '',
     nickname: '',
   });
+  const [isCheckedEmail, setIsCheckedEmail] = useState(false);
 
   const validation = validate(inputValue);
-  const isAllValid = Object.values(validation).every((isValid) => isValid);
+  const isAllValid =
+    Object.values(validation).every((isValid) => isValid) && isCheckedEmail;
 
   const handleChangeInputValue = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const { name, value } = event.target;
+
+    if (name === 'email') setIsCheckedEmail(false);
+
     setInputValue((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -135,6 +140,9 @@ function SignUp() {
               value={inputValue[name]}
               isValid={validation[name]}
               validationMessage={validationMessage}
+              isCheckedEmail={isCheckedEmail}
+              isSignup
+              setIsCheckedEmail={setIsCheckedEmail}
               required
               handleChange={handleChangeInputValue}
             />

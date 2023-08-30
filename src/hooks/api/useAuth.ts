@@ -44,7 +44,42 @@ const useAuth = () => {
     };
   };
 
-  return { isLoading, signUp, signIn };
+  const isEmailPossible = async (email: string) => {
+    setIsLoading(true);
+
+    const response = await fetch(
+      'http://13.124.68.20/api/auth/signup/validation',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      },
+    );
+
+    setIsLoading(false);
+
+    if (response.status === 400)
+      return {
+        ok: false,
+        message: '이메일이 이미 존재해요.',
+      };
+
+    if (response.status === 422) {
+      return {
+        ok: false,
+        message:
+          '이메일 검증에 실패했어요. 이메일이 옳바른 형식인지 다시 확인해 주세요.',
+      };
+    }
+
+    return {
+      ok: true,
+    };
+  };
+
+  return { isLoading, signUp, signIn, isEmailPossible };
 };
 
 export default useAuth;
