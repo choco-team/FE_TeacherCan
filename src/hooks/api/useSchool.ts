@@ -18,7 +18,7 @@ const useSchool = () => {
     setIsLoading(true);
 
     const response = await fetch(
-      `http://13.124.68.20/api/school/list?schoolName=${schoolName}&pageNumber=${page}&dataSize=6`,
+      `https://teachercan.ssambox.com/api/school/list?schoolName=${schoolName}&pageNumber=${page}&dataSize=6`,
     );
 
     if (response.status === 404) {

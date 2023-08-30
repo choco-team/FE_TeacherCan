@@ -12,6 +12,8 @@ const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
   const [isLoading, setIsLoading] = useState(true);
   const [lunchMenu, setLunchMenu] = useState<LunchMenu[] | null>(null);
 
+  console.log(lunchMenu);
+
   const getOrigins = () => {
     if (!lunchMenu) return null;
 
@@ -33,7 +35,7 @@ const useLunchMenu = (date: Date, type: 'weekend' | 'day') => {
     const token = sessionStorage.getItem('token');
 
     const response = await fetch(
-      `http://13.124.68.20/api/school/lunch-menu?date=${dateFunctions.getToday(
+      `https://teachercan.ssambox.com/api/school/lunch-menu?date=${dateFunctions.getToday(
         date,
       )}&type=${type}`,
       {

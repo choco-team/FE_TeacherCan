@@ -48,17 +48,20 @@ const UserProvider = ({ children }: PropsWithChildren) => {
 
       const token = sessionStorage.getItem('token');
 
-      const response = await fetch('http://13.124.68.20/api/user/info', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+      const response = await fetch(
+        'https://teachercan.ssambox.com/api/user/info',
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            ...userInfo,
+            ...updateFiled,
+          }),
         },
-        body: JSON.stringify({
-          ...userInfo,
-          ...updateFiled,
-        }),
-      });
+      );
 
       const user = (await response.json()) as UserInfoContext;
 
@@ -85,11 +88,14 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   );
 
   const fetchUserInfo = useCallback(async () => {
-    const response = await fetch('http://13.124.68.20/api/user/info', {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    const response = await fetch(
+      'https://teachercan.ssambox.com/api/user/info',
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    });
+    );
 
     if (!response.ok) throw Error('로그인 정보가 없습니다.');
 
