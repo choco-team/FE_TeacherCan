@@ -1,3 +1,5 @@
+import { AiFillSetting } from 'react-icons/ai';
+
 import useModal from '@Hooks/useModal';
 
 import Button from '@Components/Button';
@@ -7,15 +9,20 @@ type RandomPickModalProps = {
 };
 
 function RandomPickModal({ children }: RandomPickModalProps) {
-  const { openModal, closeModal } = useModal();
+  const { openModal } = useModal();
 
   return (
-    <Button
-      size="lg"
-      onClick={() => {
-        openModal(children);
-      }}
-    ></Button>
+    <>
+      <Button
+        size="lg"
+        onClick={() => {
+          openModal(children);
+        }}
+      >
+        <AiFillSetting />
+        <div>설정</div>
+      </Button>
+    </>
   );
 }
 

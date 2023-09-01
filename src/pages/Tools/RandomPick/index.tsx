@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AiOutlineUserAdd, AiFillSetting } from 'react-icons/ai';
+import { AiOutlineUserAdd } from 'react-icons/ai';
 
 import Button from '@Components/Button';
 
@@ -23,9 +23,24 @@ const MOCK_STUDENTS = [
   { number: 10, name: '가학생' },
 ];
 
+const SECOND_STUDENTS = [
+  { number: 1, name: '김나라' },
+  { number: 2, name: '이나라' },
+  { number: 3, name: '박나라' },
+  { number: 4, name: '우나라' },
+  { number: 5, name: '최나라' },
+  { number: 6, name: '조나라' },
+  { number: 7, name: '장나라' },
+  { number: 8, name: '나나라' },
+  { number: 9, name: '다나라' },
+  { number: 10, name: '가나라' },
+];
+
 function RandomPick() {
   const [chosenStudents, setChosenStudents] = useState<string[]>([]);
   const [background, setbackground] = useState<'wood' | 'white'>('wood');
+  const [studentsList, setStudentsList] = useState('');
+  const STUDENTS_LIST = ['MOCK_STUDENTS', 'SECOND_STUDENTS'];
 
   const toggleWoodBackground = () => {
     setbackground('wood');
@@ -34,22 +49,13 @@ function RandomPick() {
     setbackground('white');
   };
 
+  const handleListName = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const listName = event.currentTarget.innerText;
+    setStudentsList(listName);
+  };
+
   const handleClickChoiceButton = () => {
     // 랜덤으로 섞는 로직
-    const randomNumbers: number[] = [];
-
-    while (randomNumbers.length < 3) {
-      const randomNumber = Math.floor(Math.random() * MOCK_STUDENTS.length);
-
-      if (!randomNumbers.includes(randomNumber)) {
-        randomNumbers.push(randomNumber);
-      }
-    }
-
-    // 뽑힌 학생을 chosenStudents 상태에 집어 넣는 로직
-    setChosenStudents(
-      MOCK_STUDENTS.filter((_, index) => randomNumbers.includes(index)),
-    );
   };
 
   return (
@@ -89,8 +95,20 @@ function RandomPick() {
             <div>뽑기</div>
           </Button>
           <RandomPickModal>
-            <AiFillSetting />
-            <div>설정</div>
+            <S.ModalContainer>
+              명렬표:
+              {STUDENTS_LIST.map((listName, index) => (
+                <S.SmallButton key={index} onClick={handleListName}>
+                  {listName}
+                </S.SmallButton>
+              ))}
+            </S.ModalContainer>
+            <S.ModalContainer>인원</S.ModalContainer>
+            <S.ModalContainer>중복 허용</S.ModalContainer>
+            <S.SmallButtonWrapper>
+              <Button>저장</Button>
+              <Button>닫기</Button>
+            </S.SmallButtonWrapper>
           </RandomPickModal>
         </S.ButtonWrapper>
       </S.RandomResult>

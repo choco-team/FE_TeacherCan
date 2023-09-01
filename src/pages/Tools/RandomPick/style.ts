@@ -121,3 +121,26 @@ export const ButtonWrapper = styled.div`
     gap: 10px;
   }
 `;
+
+export const ModalContainer = styled.div`
+  padding: 5px;
+`;
+
+export const SmallButtonWrapper = styled.div`
+  display: flex;
+  padding: 0;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  button {
+    margin-right: 5px;
+  }
+`;
+
+export const SmallButton = styled.button`
+  background-color: grey;
+  border: black;
+  border-radius: 2px;
+  margin: 3px;
+  padding: 3px;
+`;
