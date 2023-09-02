@@ -1,4 +1,7 @@
-export type LunchMenus = LunchMenu[];
+export type LunchMenuListRequest = {
+  date: string;
+  type: 'weekend' | 'day';
+};
 
 export type LunchMenu = {
   date: string;

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
 
-import useAuth from '@Hooks/api/useAuth';
+import useAuth from '@Hooks/query/auth/useAuth';
 
 import route from '@Utils/route';
 import { checkIsAllTextFilled } from '@Utils/validation';

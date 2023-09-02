@@ -13,6 +13,7 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths(), svgrPlugin()],
   resolve: {
     alias: {
+      '@Api': path.resolve(__dirname, './src/api'),
       '@Assets': path.resolve(__dirname, './src/assets'),
       '@Components': path.resolve(__dirname, './src/components'),
       '@Constant': path.resolve(__dirname, './src/constant'),

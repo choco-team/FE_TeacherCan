@@ -1,5 +1,7 @@
-import useLunchMenu from '@Hooks/api/useLunchMenu';
+import { useLunchMenuList } from '@Hooks/query/school/useLunchMenu';
 import useUserInfo from '@Hooks/useUserInfo';
+
+import dateFunctions from '@Utils/date';
 
 import SummaryList from '@Components/SummaryList';
 
@@ -9,10 +11,15 @@ import HomeMemo from '../HomeMemo';
 import VacationDate from '../VacationDate';
 
 function SideSection({ today }: SideSectionProps) {
-  const { isLoading, lunchMenu } = useLunchMenu(today, 'day');
+  const { isLoading, lunchMenuList } = useLunchMenuList({
+    date: dateFunctions.getToday(today),
+    type: 'day',
+  });
   const { userInfo } = useUserInfo();
 
-  const menus = lunchMenu ? lunchMenu[0].menu.map((item) => item.dish) : [];
+  const menus = lunchMenuList
+    ? lunchMenuList[0].menu.map((item) => item.dish)
+    : [];
 
   return (
     <S.SideSection>
