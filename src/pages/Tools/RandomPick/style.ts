@@ -140,7 +140,16 @@ export const SmallButtonWrapper = styled.div`
 export const SmallButton = styled.button`
   background-color: grey;
   border: black;
+  color: white;
   border-radius: 2px;
-  margin: 3px;
+  margin: 5px;
   padding: 3px;
+`;
+
+export const PersonInput = styled.input`
+  margin: 5px;
+  padding: 3px;
+  background-color: grey;
+  color: white;
+  max-width: 50px;
 `;
