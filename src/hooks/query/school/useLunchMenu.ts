@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { getLunchMenuList } from '@Api/school/lunchMenu';
 import { useQuery } from '@tanstack/react-query';
 
