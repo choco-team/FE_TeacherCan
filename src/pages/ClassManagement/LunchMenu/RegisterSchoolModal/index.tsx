@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEventHandler } from 'react';
 
-import useSchool from '@Hooks/api/useSchool';
+import useSchool from '@Hooks/query/school/useSchool';
 
 import Button from '@Components/Button';
 import Input from '@Components/Input';

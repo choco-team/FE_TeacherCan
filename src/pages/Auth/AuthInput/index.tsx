@@ -3,7 +3,7 @@ import { BiCheck, BiX } from 'react-icons/bi';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import { css } from 'styled-components';
 
-import useAuth from '@Hooks/api/useAuth';
+import useAuth from '@Hooks/query/auth/useAuth';
 
 import CircularProgress from '@Components/CircularProgress';
 
