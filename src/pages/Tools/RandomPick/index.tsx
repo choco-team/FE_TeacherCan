@@ -44,8 +44,8 @@ function RandomPick() {
   const [studentsList, setStudentsList] = useState<
     { number: number; name: string }[]
   >([]);
-  const [personNumber, setPersonNumber] = useState(0);
-  const [maxNumber, setMaxNumber] = useState(0);
+  const [newValue, setNewValue] = useState(0);
+  const [duplication, setDuplication] = useState(false);
 
   const toggleWoodBackground = () => {
     setbackground('wood');
@@ -57,26 +57,43 @@ function RandomPick() {
 
   const handleListName = (listName: string) => {
     setStudentsList(STUDENTS_LISTS[listName]);
-    setMaxNumber(studentsList.length);
   };
 
-  useEffect(() => {
-    console.log(studentsList);
-    console.log(maxNumber);
-  }, [studentsList, maxNumber]);
+  localStorage.setItem('studentsList', JSON.stringify(studentsList));
 
   const handlePersonNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = parseInt(e.target.value);
-    if (!isNaN(newValue) && newValue >= 1 && newValue <= studentsList.length) {
-      setPersonNumber(newValue);
-    }
-    console.log(newValue);
-    console.log(maxNumber);
+    setNewValue(parseInt(e.currentTarget.value));
   };
 
-  const handleClickChoiceButton = () => {
-    // 랜덤으로 섞는 로직
+  localStorage.setItem('newValue', newValue.toString());
+
+  const handleDuplicationYes = () => {
+    setDuplication(true);
   };
+
+  const handleDuplicationNo = () => {
+    setDuplication(false);
+  };
+
+  localStorage.setItem('duplication', duplication.toString());
+
+  const handleClickSaveButton = () => {
+    setStudentsList(
+      JSON.parse(localStorage.getItem('studentsList') || '[]') as {
+        number: number;
+        name: string;
+      }[],
+    );
+    setNewValue(parseInt(localStorage.getItem('newValue') || '0'));
+    setDuplication(localStorage.getItem('duplication') === 'true');
+    console.log(studentsList, newValue, duplication);
+  };
+
+  // useEffect(() => {
+  //   localStorage.setItem('studentsList', JSON.stringify(studentsList));
+  //   localStorage.setItem('newValue', newValue.toString());
+  //   localStorage.setItem('duplication', duplication.toString());
+  // }, [studentsList, newValue, duplication]);
 
   return (
     <S.Layout>
@@ -110,7 +127,7 @@ function RandomPick() {
           )}
         </S.ResultWrapper>
         <S.ButtonWrapper>
-          <Button size="lg" onClick={handleClickChoiceButton}>
+          <Button size="lg">
             <AiOutlineUserAdd />
             <div>뽑기</div>
           </Button>
@@ -130,16 +147,18 @@ function RandomPick() {
               <label htmlFor="theInputNumber">인원</label>
               <S.PersonInput
                 id="theInputNumber"
-                value={personNumber}
                 min={0}
-                max={maxNumber}
                 step={1}
                 onChange={handlePersonNumber}
               ></S.PersonInput>
             </S.ModalContainer>
-            <S.ModalContainer>중복 허용</S.ModalContainer>
+            <S.ModalContainer>
+              중복 허용
+              <S.SmallButton onClick={handleDuplicationYes}>YES</S.SmallButton>
+              <S.SmallButton onClick={handleDuplicationNo}>NO</S.SmallButton>
+            </S.ModalContainer>
             <S.SmallButtonWrapper>
-              <Button>저장</Button>
+              <Button onClick={handleClickSaveButton}>저장</Button>
               <Button>닫기</Button>
             </S.SmallButtonWrapper>
           </RandomPickModal>
