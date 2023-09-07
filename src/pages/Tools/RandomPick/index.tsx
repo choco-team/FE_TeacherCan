@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 
 import Button from '@Components/Button';
@@ -41,11 +41,7 @@ const STUDENTS_LISTS: { [key: string]: { number: number; name: string }[] } = {
 function RandomPick() {
   const [chosenStudents, setChosenStudents] = useState<string[]>([]);
   const [background, setbackground] = useState<'wood' | 'white'>('wood');
-  const [studentsList, setStudentsList] = useState<
-    { number: number; name: string }[]
-  >([]);
-  const [newValue, setNewValue] = useState(0);
-  const [duplication, setDuplication] = useState(false);
+  const [studentsNumber, setStudentsNumber] = useState(0);
 
   const toggleWoodBackground = () => {
     setbackground('wood');
@@ -56,44 +52,48 @@ function RandomPick() {
   };
 
   const handleListName = (listName: string) => {
-    setStudentsList(STUDENTS_LISTS[listName]);
+    localStorage.setItem(
+      'studentsList',
+      JSON.stringify(STUDENTS_LISTS[listName]),
+    );
   };
-
-  localStorage.setItem('studentsList', JSON.stringify(studentsList));
 
   const handlePersonNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewValue(parseInt(e.currentTarget.value));
+    const newValue = e.currentTarget.value;
+    localStorage.setItem('newValue', newValue.toString());
   };
 
-  localStorage.setItem('newValue', newValue.toString());
-
   const handleDuplicationYes = () => {
-    setDuplication(true);
+    localStorage.setItem('duplication', true.toString());
   };
 
   const handleDuplicationNo = () => {
-    setDuplication(false);
+    localStorage.setItem('duplication', false.toString());
   };
 
-  localStorage.setItem('duplication', duplication.toString());
+  const handlePick = () => {
+    const storedStudentsList = JSON.parse(
+      localStorage.getItem('studentsList') || '[]',
+    ) as {
+      number: number;
+      name: string;
+    }[];
+    const storedDuplication = localStorage.getItem('duplication') ?? 'false';
+    setStudentsNumber(parseInt(localStorage.getItem('newValue') || '0'));
 
-  const handleClickSaveButton = () => {
-    setStudentsList(
-      JSON.parse(localStorage.getItem('studentsList') || '[]') as {
-        number: number;
-        name: string;
-      }[],
-    );
-    setNewValue(parseInt(localStorage.getItem('newValue') || '0'));
-    setDuplication(localStorage.getItem('duplication') === 'true');
-    console.log(studentsList, newValue, duplication);
+    // 중복 허용
+    if (storedDuplication === 'true') {
+      for (let i = storedStudentsList.length - 1; i >= 0; i--) {
+        const randomIndex = Math.floor(Math.random() * (i + 1));
+        [storedStudentsList[i], storedStudentsList[randomIndex]] = [
+          storedStudentsList[randomIndex],
+          storedStudentsList[i],
+        ];
+      }
+    }
+
+    setChosenStudents(storedStudentsList.map((student) => student.name));
   };
-
-  // useEffect(() => {
-  //   localStorage.setItem('studentsList', JSON.stringify(studentsList));
-  //   localStorage.setItem('newValue', newValue.toString());
-  //   localStorage.setItem('duplication', duplication.toString());
-  // }, [studentsList, newValue, duplication]);
 
   return (
     <S.Layout>
@@ -119,8 +119,7 @@ function RandomPick() {
         <S.ResultWrapper color={background == 'wood' ? 'white' : 'black'}>
           {chosenStudents.length > 0 ? (
             <p>
-              뽑힌 학생은{' '}
-              <S.ResultSpan>{chosenStudents.join('    ')}</S.ResultSpan> 입니다.
+              <S.ResultSpan>{chosenStudents.join('    ')}</S.ResultSpan>
             </p>
           ) : (
             <p>아직 선정이 완료되지 않았습니다.</p>
@@ -129,7 +128,7 @@ function RandomPick() {
         <S.ButtonWrapper>
           <Button size="lg">
             <AiOutlineUserAdd />
-            <div>뽑기</div>
+            <div onClick={handlePick}>뽑기</div>
           </Button>
           <RandomPickModal>
             <S.ModalContainer>
@@ -158,7 +157,6 @@ function RandomPick() {
               <S.SmallButton onClick={handleDuplicationNo}>NO</S.SmallButton>
             </S.ModalContainer>
             <S.SmallButtonWrapper>
-              <Button onClick={handleClickSaveButton}>저장</Button>
               <Button>닫기</Button>
             </S.SmallButtonWrapper>
           </RandomPickModal>
