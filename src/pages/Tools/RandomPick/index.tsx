@@ -39,9 +39,14 @@ const STUDENTS_LISTS: { [key: string]: { number: number; name: string }[] } = {
 };
 
 function RandomPick() {
-  const [chosenStudents, setChosenStudents] = useState<string[]>([]);
+  // 뒤섞인 학생 명단
+  const [shuffledStudents, setShuffledStudents] = useState<string[]>([]);
   const [background, setbackground] = useState<'wood' | 'white'>('wood');
   const [studentsNumber, setStudentsNumber] = useState(0);
+  // 뽑힌 학생 명단
+  const [pickedStudents, setPickedStudents] = useState<string[]>([]);
+  // 중복 금지일 때 제외되는 학생 명단
+  const [excludedStudents, setExcludedStudents] = useState<string[]>([]);
 
   const toggleWoodBackground = () => {
     setbackground('wood');
@@ -56,19 +61,31 @@ function RandomPick() {
       'studentsList',
       JSON.stringify(STUDENTS_LISTS[listName]),
     );
+    setExcludedStudents([]);
+    setStudentsNumber(parseInt(localStorage.getItem('newValue') || '0'));
   };
 
   const handlePersonNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.currentTarget.value;
     localStorage.setItem('newValue', newValue.toString());
+    setExcludedStudents([]);
+    setStudentsNumber(parseInt(localStorage.getItem('newValue') || '0'));
   };
 
   const handleDuplicationYes = () => {
     localStorage.setItem('duplication', true.toString());
+    setExcludedStudents([]);
+    setStudentsNumber(parseInt(localStorage.getItem('newValue') || '0'));
   };
 
   const handleDuplicationNo = () => {
     localStorage.setItem('duplication', false.toString());
+    setExcludedStudents([]);
+    setStudentsNumber(parseInt(localStorage.getItem('newValue') || '0'));
+  };
+
+  const handleReload = () => {
+    setExcludedStudents([]);
   };
 
   const handlePick = () => {
@@ -78,21 +95,30 @@ function RandomPick() {
       number: number;
       name: string;
     }[];
-    const storedDuplication = localStorage.getItem('duplication') ?? 'false';
-    setStudentsNumber(parseInt(localStorage.getItem('newValue') || '0'));
 
-    // 중복 허용
-    if (storedDuplication === 'true') {
-      for (let i = storedStudentsList.length - 1; i >= 0; i--) {
-        const randomIndex = Math.floor(Math.random() * (i + 1));
-        [storedStudentsList[i], storedStudentsList[randomIndex]] = [
-          storedStudentsList[randomIndex],
-          storedStudentsList[i],
-        ];
-      }
+    const storedDuplication = localStorage.getItem('duplication') ?? 'false';
+
+    for (let i = storedStudentsList.length - 1; i >= 0; i--) {
+      const randomIndex = Math.floor(Math.random() * (i + 1));
+      [storedStudentsList[i], storedStudentsList[randomIndex]] = [
+        storedStudentsList[randomIndex],
+        storedStudentsList[i],
+      ];
     }
 
-    setChosenStudents(storedStudentsList.map((student) => student.name));
+    setShuffledStudents(storedStudentsList.map((student) => student.name));
+
+    // 중복 허용과 비허용
+    if (storedDuplication === 'true') {
+      setPickedStudents(shuffledStudents.slice(0, studentsNumber));
+    } else {
+      const remainingStudents = shuffledStudents.filter(
+        (item) => !excludedStudents.includes(item),
+      );
+      const newlyPickedStudents = remainingStudents.slice(0, studentsNumber);
+      setPickedStudents(newlyPickedStudents);
+      setExcludedStudents((prev) => [...prev, ...newlyPickedStudents]);
+    }
   };
 
   return (
@@ -117,15 +143,20 @@ function RandomPick() {
           </S.BackgroundButtonContainer>
         </S.SelectBackgroundButtonWrapper>
         <S.ResultWrapper color={background == 'wood' ? 'white' : 'black'}>
-          {chosenStudents.length > 0 ? (
+          {shuffledStudents.length > 0 ||
+          excludedStudents.length < shuffledStudents.length ? (
             <p>
-              <S.ResultSpan>{chosenStudents.join('    ')}</S.ResultSpan>
+              <S.ResultSpan>{pickedStudents.join('    ')}</S.ResultSpan>
             </p>
           ) : (
-            <p>아직 선정이 완료되지 않았습니다.</p>
+            <p>선정할 학생이 없습니다.</p>
           )}
         </S.ResultWrapper>
         <S.ButtonWrapper>
+          <Button size="lg">
+            <AiOutlineUserAdd />
+            <div onClick={handleReload}>중복학생 지우기</div>
+          </Button>
           <Button size="lg">
             <AiOutlineUserAdd />
             <div onClick={handlePick}>뽑기</div>
@@ -157,7 +188,7 @@ function RandomPick() {
               <S.SmallButton onClick={handleDuplicationNo}>NO</S.SmallButton>
             </S.ModalContainer>
             <S.SmallButtonWrapper>
-              <Button>닫기</Button>
+              <Button>저장</Button>
             </S.SmallButtonWrapper>
           </RandomPickModal>
         </S.ButtonWrapper>
