@@ -17,8 +17,8 @@ function SideSection({ today }: SideSectionProps) {
   });
   const { userInfo } = useUserInfo();
 
-  const menus = lunchMenuList
-    ? lunchMenuList[0].menu.map((item) => item.dish)
+  const menus = lunchMenuList.length
+    ? lunchMenuList[0].menu?.map((item) => item.dish)
     : [];
 
   return (
