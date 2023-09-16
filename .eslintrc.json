@@ -81,6 +81,11 @@
             "pattern": "@Types/**/*",
             "group": "internal",
             "position": "after"
+          },
+          {
+            "pattern": "@Api/**/*",
+            "group": "internal",
+            "position": "after"
           }
         ],
         "pathGroupsExcludedImportTypes": [],

@@ -3,7 +3,7 @@ import { BiCheck, BiX } from 'react-icons/bi';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import { css } from 'styled-components';
 
-import useAuth from '@Hooks/query/auth/useAuth';
+import { useValidateEmail } from '@Hooks/query/auth/useAuth';
 
 import CircularProgress from '@Components/CircularProgress';
 
@@ -25,21 +25,23 @@ function AuthInput({
   setIsCheckedEmail,
   handleChange,
 }: T.AuthInput) {
-  const { isLoading, isEmailPossible } = useAuth();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const { validateEmail, isLoading } = useValidateEmail({
+    onSuccess: () => {
+      if (setIsCheckedEmail) setIsCheckedEmail(true);
+    },
+  });
 
   const togglePasswordVisible = () => setIsPasswordVisible((prev) => !prev);
 
-  const handleClickDoubleCheckEmail = async () => {
+  const handleClickDoubleCheckEmail = () => {
     if (!setIsCheckedEmail || isCheckedEmail) return;
 
     const emailRegExp = /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
     if (!emailRegExp.test(value)) return;
 
-    const result = await isEmailPossible(value);
-
-    if (result.ok) setIsCheckedEmail(true);
-    else alert(result.message);
+    validateEmail({ email: value });
   };
 
   return (
