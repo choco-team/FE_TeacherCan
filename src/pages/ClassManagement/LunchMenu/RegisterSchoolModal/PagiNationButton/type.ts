@@ -1,9 +1,9 @@
-import { SearchSchoolList } from '@Types/classManagement/school';
+import { SearchSchoolListResult } from '@Types/classManagement/school';
 
 export type PagiNationButtonProps = {
   hasPage: boolean;
-  schoolList: SearchSchoolList;
-  searchSchool: (page: number) => void;
+  schoolList: SearchSchoolListResult;
+  pagiNationSearchSchool: (pageNumber: number) => void;
 };
 
 export type LayoutProps = {

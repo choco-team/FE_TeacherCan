@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEventHandler } from 'react';
+import { ChangeEvent, FormEventHandler, useState } from 'react';
 
 import useSchool from '@Hooks/query/school/useSchool';
 
@@ -10,14 +10,9 @@ import SearchResult from './SearchResult';
 import * as S from './style';
 
 function RegisterSchoolModal() {
-  const {
-    schoolName,
-    schoolList,
-    hasPage,
-    searchSchool,
-    setSchoolName,
-    isLoading,
-  } = useSchool();
+  const [schoolName, setSchoolName] = useState('');
+
+  const { schoolList, hasPage, searchSchool, isLoading } = useSchool();
 
   const handleSubmitSearchSchoolForm: FormEventHandler = (event) => {
     event.preventDefault();
@@ -27,8 +22,11 @@ function RegisterSchoolModal() {
       return;
     }
 
-    searchSchool();
+    searchSchool({ schoolName, pageNumber: 2 });
   };
+
+  const pagiNationSearchSchool = (pageNumber: number) =>
+    searchSchool({ schoolName, pageNumber });
 
   return (
     <S.SearchSchoolLayout>
@@ -49,7 +47,7 @@ function RegisterSchoolModal() {
       <PagiNationButton
         hasPage={hasPage}
         schoolList={schoolList}
-        searchSchool={searchSchool}
+        pagiNationSearchSchool={pagiNationSearchSchool}
       />
     </S.SearchSchoolLayout>
   );

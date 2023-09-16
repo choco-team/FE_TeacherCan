@@ -6,7 +6,7 @@ import { PagiNationButtonProps } from './type';
 function PagiNationButton({
   hasPage,
   schoolList,
-  searchSchool,
+  pagiNationSearchSchool,
 }: PagiNationButtonProps) {
   const handleClickPagiNationButton = (type: 'next' | 'prev') => {
     if (!hasPage) return;
@@ -28,8 +28,8 @@ function PagiNationButton({
       alert('마지막 페이지이에요.');
       return;
     }
-
-    searchSchool(searchPageNumber);
+    console.log(searchPageNumber);
+    pagiNationSearchSchool(searchPageNumber);
   };
 
   return (

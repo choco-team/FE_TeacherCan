@@ -1,46 +1,42 @@
+import { useMutation } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 import { useState } from 'react';
 
-import { SearchSchoolList } from '@Types/classManagement/school';
+import { SearchSchoolListResult } from '@Types/classManagement/school';
+
+import { SearchSchoolRequest, requestGetSchoolData } from '@Api/school/search';
 
 const useSchool = () => {
-  const [schoolName, setSchoolName] = useState<string>('');
-  const [schoolList, setSchoolList] = useState<
-    SearchSchoolList | null | 'notFound'
-  >(null);
+  const [schoolList, setSchoolList] = useState<SearchSchoolListResult>(null);
+
   const hasPage =
     (schoolList !== 'notFound' &&
       schoolList &&
       schoolList.pagination.totalPageNumber > 1) ||
     false;
 
-  const [isLoading, setIsLoading] = useState(false);
-  const searchSchool = async (page = 1) => {
-    setIsLoading(true);
+  const { mutate, isLoading } = useMutation({
+    mutationKey: ['searchSchool'],
+    mutationFn: (params: SearchSchoolRequest) =>
+      requestGetSchoolData(params).then((response) => response.data),
+    onError: (error) => {
+      if (error instanceof AxiosError) {
+        const status = error.response?.status;
+        if (status === 404) setSchoolList('notFound');
+      }
+    },
+    onSuccess: (data) => {
+      setSchoolList(data);
+    },
+  });
 
-    const response = await fetch(
-      `https://teachercan.ssambox.com/api/school/list?schoolName=${schoolName}&pageNumber=${page}&dataSize=6`,
-    );
-
-    if (response.status === 404) {
-      setIsLoading(false);
-      setSchoolList('notFound');
-
-      return;
-    }
-
-    const data = (await response.json()) as SearchSchoolList;
-
-    setIsLoading(false);
-    setSchoolList(data);
-  };
+  console.log(schoolList);
 
   return {
-    schoolName,
     schoolList,
     hasPage,
     isLoading,
-    searchSchool,
-    setSchoolName,
+    searchSchool: mutate,
   };
 };
 
