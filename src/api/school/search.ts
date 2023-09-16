@@ -4,6 +4,8 @@ import { SchoolList } from '@Types/classManagement/school';
 
 import { axiosInstance, headerToken, queryParams } from '../common';
 
+const SEARCH_SCHOOL_LIST_URL = '/school/list';
+
 export type SearchSchoolRequest = {
   schoolName: string;
   pageNumber: number;
@@ -15,7 +17,7 @@ export const requestGetSchoolData = ({
   schoolName,
   pageNumber,
 }: SearchSchoolRequest): Promise<AxiosResponse<SearchSchoolResponse>> =>
-  axiosInstance.get('/school/list', {
+  axiosInstance.get(SEARCH_SCHOOL_LIST_URL, {
     ...queryParams({ schoolName, pageNumber, dataSize: 6 }),
     ...headerToken,
   });
