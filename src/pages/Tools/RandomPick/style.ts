@@ -96,8 +96,12 @@ export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
 `;
 
 export const ResultSpan = styled.span`
+  display: inline-block;
+  text-align: center;
   font-size: 3.6rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, gold 50%);
+  max-width: 840px;
+  word-break: break-all;
+  /* background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, gold 50%); */
 `;
 
 export const ButtonWrapper = styled.div`

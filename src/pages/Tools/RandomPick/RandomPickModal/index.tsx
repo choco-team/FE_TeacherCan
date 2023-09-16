@@ -36,6 +36,12 @@ const STUDENTS_LISTS: { [key: string]: { number: number; name: string }[] } = {
     { number: 8, name: '나학생' },
     { number: 9, name: '다학생' },
     { number: 10, name: '가학생' },
+    { number: 11, name: '고학생' },
+    { number: 12, name: '라학생' },
+    { number: 13, name: '마학생' },
+    { number: 14, name: '바학생' },
+    { number: 15, name: '사학생' },
+    { number: 16, name: '아하학생' },
   ],
 
   SECOND_STUDENTS: [
@@ -92,7 +98,6 @@ function RandomPickModal({
     //   localStorage.setItem('newValue', studentsNumber.toString());
     //   localStorage.setItem('duplication', duplication.toString());
     setExcludedStudents([]);
-    setStudentsNumber(parseInt(localStorage.getItem('newValue') || '0'));
   };
 
   return (
