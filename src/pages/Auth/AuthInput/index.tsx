@@ -19,7 +19,7 @@ function AuthInput({
   value,
   required = false,
   isValid,
-  isSignup,
+  isSignUp,
   validationMessage,
   isCheckedEmail,
   setIsCheckedEmail,
@@ -74,7 +74,7 @@ function AuthInput({
             {isPasswordVisible ? <BsEyeSlashFill /> : <BsEyeFill />}
           </S.EyeButton>
         )}
-        {name === 'email' && isSignup && (
+        {name === 'email' && isSignUp && (
           <S.DoubleCheckEmail onClick={handleClickDoubleCheckEmail}>
             {isLoading ? (
               <CircularProgress

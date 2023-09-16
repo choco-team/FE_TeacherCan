@@ -141,7 +141,7 @@ function SignUp() {
               isValid={validation[name]}
               validationMessage={validationMessage}
               isCheckedEmail={isCheckedEmail}
-              isSignup
+              isSignUp
               setIsCheckedEmail={setIsCheckedEmail}
               required
               handleChange={handleChangeInputValue}
