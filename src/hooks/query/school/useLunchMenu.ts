@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import type { LunchMenuListRequest } from '@Types/classManagement/lunchMenu';
 
-import { getLunchMenuList } from '@Api/school/lunchMenu';
+import { getLunchMenuList } from '@Api/lunchMenu/lunchMenu';
 
 export const useLunchMenuList = (
   lunchMenuListRequest: LunchMenuListRequest,
