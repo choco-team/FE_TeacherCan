@@ -22,7 +22,7 @@ function RegisterSchoolModal() {
       return;
     }
 
-    searchSchool({ schoolName, pageNumber: 2 });
+    searchSchool({ schoolName, pageNumber: 1 });
   };
 
   const pagiNationSearchSchool = (pageNumber: number) =>
