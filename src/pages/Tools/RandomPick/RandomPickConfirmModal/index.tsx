@@ -1,3 +1,5 @@
+import Button from '@Components/Button';
+
 import * as S from './style';
 
 type CustomModalProps = {
@@ -14,12 +16,12 @@ export const CustomModal = ({
   onConfirm,
 }: CustomModalProps) => {
   return (
-    <S.ModalOverlay visible={isVisible}>
+    <S.ModalWrapper visible={isVisible}>
       <S.ModalContent>
         <p>{message}</p>
-        <S.Button onClick={onConfirm}>Confirm</S.Button>
-        <S.Button onClick={onClose}>Cancel</S.Button>
+        <Button onClick={onConfirm}>확인</Button>
+        <Button onClick={onClose}>취소</Button>
       </S.ModalContent>
-    </S.ModalOverlay>
+    </S.ModalWrapper>
   );
 };

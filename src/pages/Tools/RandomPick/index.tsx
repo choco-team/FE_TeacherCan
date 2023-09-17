@@ -12,8 +12,6 @@ import { CustomModal } from './RandomPickConfirmModal';
 import RandomPickModal from './RandomPickModal';
 import * as S from './style';
 
-// server api 통신으로 불러올 학생 명렬표.
-
 function RandomPick() {
   //처음에 선택한 학생 리스트
   const [studentsList, setStudentsList] = useState<
@@ -33,7 +31,7 @@ function RandomPick() {
   // 중복 금지일 때 제외되는 학생 명단
   const [excludedStudents, setExcludedStudents] = useState<string[]>([]);
   const { openModal } = useModal();
-  const [background, setbackground] = useState<'wood' | 'white'>('wood');
+  const [background, setbackground] = useState<'wood' | 'white'>('white');
   // 중복 금지인 상태에서 모두 뽑았을 때 popup되는 모달
   const [showModal, setShowModal] = useState(false);
 
@@ -72,15 +70,10 @@ function RandomPick() {
     if (storedDuplication === 'true') {
       setPickedStudents(shuffledStudents.slice(0, storedStudentsNumber));
     } else {
-      // if (excludedStudents.length === storedStudentsList.length) {
-      //   const result = confirm(
-      //     '모든 학생을 선정했습니다. 확인을 누르면 처음부터 다시 선정할 수 있습니다.',
-      //   );
+      if (excludedStudents.length === storedStudentsList.length) {
+        setShowModal(true);
+      }
 
-      //   if (result) {
-      //     setExcludedStudents([]);
-      //   }
-      // }
       const remainingStudents = shuffledStudents.filter(
         (item) => !excludedStudents.includes(item),
       );
@@ -94,7 +87,6 @@ function RandomPick() {
   };
 
   const handleConfirm = () => {
-    // Handle your confirm action here
     setExcludedStudents([]);
     setShowModal(false);
   };
@@ -121,14 +113,12 @@ function RandomPick() {
           </S.BackgroundButtonContainer>
         </S.SelectBackgroundButtonWrapper>
         <S.ResultWrapper color={background == 'wood' ? 'white' : 'black'}>
-          {excludedStudents.length === storedStudentsList.length && (
-            <CustomModal
-              message="모든 학생을 선정했습니다. 확인을 누르면 처음부터 다시 선정할 수 있습니다."
-              isVisible={showModal}
-              onClose={() => setShowModal(false)}
-              onConfirm={handleConfirm}
-            />
-          )}
+          <CustomModal
+            message="모든 학생을 선정했습니다. 확인을 누르면 처음부터 다시 선정할 수 있습니다."
+            isVisible={showModal}
+            onClose={() => setShowModal(false)}
+            onConfirm={handleConfirm}
+          />
 
           {JSON.parse(localStorage.getItem('studentsList') || '[]').length !==
           0 ? (
