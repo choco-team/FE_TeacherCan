@@ -61,13 +61,6 @@ export const SelectBackgroundButtonWrapper = styled.div<SelectBackgroundButtonWr
   justify-content: flex-end;
 `;
 
-export const ResultWrapper = styled.div<ResultWrapperProps>`
-  color: ${(props) => props.color};
-  font-weight: bold;
-  font-size: 3rem;
-  margin-bottom: 16px;
-`;
-
 export const BackgroundButtonContainer = styled.div`
   ${flexCustom('row', 'center', 'center')}
 `;
@@ -93,6 +86,14 @@ export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
   &:active {
     background-color: ${(props) => props.hoverBackground};
   }
+`;
+
+export const ResultWrapper = styled.div<ResultWrapperProps>`
+  color: ${(props) => props.color};
+  font-weight: bold;
+  font-size: 3rem;
+  margin-bottom: 16px;
+  text-align: center;
 `;
 
 export const ResultSpan = styled.span`

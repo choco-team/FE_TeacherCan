@@ -8,7 +8,6 @@ import Button from '@Components/Button';
 import whitebackground from '@Assets/image/background/random-whitebg.png';
 import woodbackground from '@Assets/image/background/random-woodbg.png';
 
-import { CustomModal } from './RandomPickConfirmModal';
 import RandomPickModal from './RandomPickModal';
 import * as S from './style';
 
@@ -32,8 +31,6 @@ function RandomPick() {
   const [excludedStudents, setExcludedStudents] = useState<string[]>([]);
   const { openModal } = useModal();
   const [background, setbackground] = useState<'wood' | 'white'>('white');
-  // 중복 금지인 상태에서 모두 뽑았을 때 popup되는 모달
-  const [showModal, setShowModal] = useState(false);
 
   const toggleWoodBackground = () => {
     setbackground('wood');
@@ -70,10 +67,6 @@ function RandomPick() {
     if (storedDuplication === 'true') {
       setPickedStudents(shuffledStudents.slice(0, storedStudentsNumber));
     } else {
-      if (excludedStudents.length === storedStudentsList.length) {
-        setShowModal(true);
-      }
-
       const remainingStudents = shuffledStudents.filter(
         (item) => !excludedStudents.includes(item),
       );
@@ -84,11 +77,15 @@ function RandomPick() {
       setPickedStudents(newlyPickedStudents);
       setExcludedStudents((prev) => [...prev, ...newlyPickedStudents]);
     }
+
+    if (excludedStudents.length === storedStudentsList.length) {
+      const end = '종료';
+      setExcludedStudents((prev) => [...prev, ...end]);
+    }
   };
 
   const handleConfirm = () => {
     setExcludedStudents([]);
-    setShowModal(false);
   };
 
   return (
@@ -113,13 +110,6 @@ function RandomPick() {
           </S.BackgroundButtonContainer>
         </S.SelectBackgroundButtonWrapper>
         <S.ResultWrapper color={background == 'wood' ? 'white' : 'black'}>
-          <CustomModal
-            message="모든 학생을 선정했습니다. 확인을 누르면 처음부터 다시 선정할 수 있습니다."
-            isVisible={showModal}
-            onClose={() => setShowModal(false)}
-            onConfirm={handleConfirm}
-          />
-
           {JSON.parse(localStorage.getItem('studentsList') || '[]').length !==
           0 ? (
             <p>
@@ -127,6 +117,19 @@ function RandomPick() {
             </p>
           ) : (
             <p>학생 목록을 선택하세요</p>
+          )}
+
+          {excludedStudents.length > storedStudentsList.length && (
+            <>
+              <p>
+                모든 학생을 선정했습니다. 확인을 누르면 처음부터 다시 선정할 수
+                있습니다.
+              </p>
+
+              <Button onClick={handleConfirm} margin="20px">
+                확인
+              </Button>
+            </>
           )}
         </S.ResultWrapper>
         <S.ButtonWrapper>
