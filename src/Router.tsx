@@ -12,16 +12,10 @@ import StudentManagement from '@Pages/StudentManagement';
 import StudentRegister from '@Pages/StudentManagement/StudentRegister';
 import RandomPick from '@Pages/Tools/RandomPick';
 
-import UserProvider from '@Providers/UserProvider';
-
 const router = createBrowserRouter([
   {
     path: ROUTE_PATH.main,
-    element: (
-      <UserProvider>
-        <App />
-      </UserProvider>
-    ),
+    element: <App />,
     errorElement: <div>예기치 못한 상황이 발생했어요.</div>,
     children: [
       {

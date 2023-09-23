@@ -17,6 +17,8 @@ function LunchMenu() {
   const { updateUser } = useUserInfoAction();
   const isLoading = !userInfo;
 
+  console.log(userInfo);
+
   const [standardDate, setStandardDate] = useState(dateFunctions.getToday());
 
   const changeStandardDate = (event: ChangeEvent<HTMLInputElement>) => {

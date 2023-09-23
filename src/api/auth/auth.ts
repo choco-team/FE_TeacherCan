@@ -21,6 +21,7 @@ export type SignInResponse = {
   token: string;
 };
 
+// request 접두사 제거
 export const requestPostSignUp = ({
   email,
   password,

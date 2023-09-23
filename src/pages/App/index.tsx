@@ -10,6 +10,7 @@ import route from '@Utils/route';
 import { ROUTE_PATH } from '@Constant/routePath';
 
 import ModalProvider from '@Providers/ModalProvider';
+import UserProvider from '@Providers/UserProvider';
 
 import GlobalStyle from '@Styles/GlobalStyle';
 import darkTheme from '@Styles/darkTheme';
@@ -19,13 +20,13 @@ import Header from './Header';
 import SideNavLink from './SideNavLink';
 import * as S from './style';
 
+export const queryClient = new QueryClient();
+
 function App() {
   const [isLightTheme, setIsLightTheme] = useState(true);
 
   const { pathname } = useLocation();
   const [main] = route.getPathnames(pathname);
-
-  const queryClient = new QueryClient();
 
   const toggleTheme = () => setIsLightTheme((prev) => !prev);
 
@@ -34,24 +35,26 @@ function App() {
       <GlobalStyle />
       <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
         <QueryClientProvider client={queryClient}>
-          {main === 'auth' ? (
-            <Outlet />
-          ) : (
-            <ModalProvider>
-              <Header pathname={pathname} />
-              <S.DefaultPageLayout>
-                {pathname !== route.calculatePath([ROUTE_PATH.main]) && (
-                  <SideNavLink pathname={pathname} />
-                )}
-                <S.PageWrapper>
-                  <Outlet />
-                </S.PageWrapper>
-                <S.ThemeToggleButton handleClick={toggleTheme}>
-                  {isLightTheme ? <PiSunBold /> : <PiMoonStarsBold />}
-                </S.ThemeToggleButton>
-              </S.DefaultPageLayout>
-            </ModalProvider>
-          )}
+          <UserProvider>
+            {main === 'auth' ? (
+              <Outlet />
+            ) : (
+              <ModalProvider>
+                <Header pathname={pathname} />
+                <S.DefaultPageLayout>
+                  {pathname !== route.calculatePath([ROUTE_PATH.main]) && (
+                    <SideNavLink pathname={pathname} />
+                  )}
+                  <S.PageWrapper>
+                    <Outlet />
+                  </S.PageWrapper>
+                  <S.ThemeToggleButton handleClick={toggleTheme}>
+                    {isLightTheme ? <PiSunBold /> : <PiMoonStarsBold />}
+                  </S.ThemeToggleButton>
+                </S.DefaultPageLayout>
+              </ModalProvider>
+            )}
+          </UserProvider>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </ThemeProvider>

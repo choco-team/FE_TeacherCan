@@ -21,15 +21,15 @@ const NOT_FOUND_RESULT = [
 ];
 
 function SearchResult({ isLoading, schoolList }: SearchResultProps) {
-  const { updateUser, isActionLoading } = useUserInfoAction();
+  const { updateUser, isLoading: actionLoading } = useUserInfoAction();
   const { closeModal } = useModal();
 
-  const updateSchool = async (schoolCode: string) => {
-    await updateUser({ schoolCode });
+  const updateSchool = (schoolCode: string) => {
+    updateUser({ schoolCode });
     closeModal();
   };
 
-  if (isLoading || isActionLoading) return <PageLoading />;
+  if (isLoading || actionLoading) return <PageLoading />;
 
   if (!schoolList)
     return (

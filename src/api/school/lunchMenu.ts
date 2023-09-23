@@ -1,5 +1,7 @@
 import { AxiosResponse } from 'axios';
 
+import { LunchMenu } from '@Types/classManagement/lunchMenu';
+
 import { axiosInstance, headerToken, queryParams } from '../common';
 
 const LUNCH_MENU_API = '/school/lunch-menu';
@@ -9,17 +11,7 @@ export type LunchMenuListRequest = {
   type: 'weekend' | 'day';
 };
 
-export type LunchMenuResponse = {
-  date: string;
-  menu: {
-    dish: string;
-    allergy: number[];
-  }[];
-  origin: {
-    ingredient: string;
-    place: string;
-  }[];
-};
+export type LunchMenuResponse = LunchMenu;
 
 export const getLunchMenuList = ({
   date,

@@ -1,8 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import type { LunchMenuListRequest } from '@Types/classManagement/lunchMenu';
-
-import { getLunchMenuList } from '@Api/school/lunchMenu';
+import { LunchMenuListRequest, getLunchMenuList } from '@Api/school/lunchMenu';
 
 export const useLunchMenuList = (
   lunchMenuListRequest: LunchMenuListRequest,
@@ -13,6 +11,7 @@ export const useLunchMenuList = (
       getLunchMenuList(lunchMenuListRequest).then((response) => response.data),
     retry: 1,
     refetchOnWindowFocus: false,
+    refetchOnMount: true,
   });
 
   const getOrigins = () => {

@@ -7,6 +7,8 @@ import { SearchSchoolListResult } from '@Types/classManagement/school';
 import { SearchSchoolRequest, requestGetSchoolData } from '@Api/school/search';
 
 const useSchool = () => {
+  // 상태 수정
+
   const [schoolList, setSchoolList] = useState<SearchSchoolListResult>(null);
 
   const hasPage =
@@ -29,8 +31,6 @@ const useSchool = () => {
       setSchoolList(data);
     },
   });
-
-  console.log(schoolList);
 
   return {
     schoolList,
