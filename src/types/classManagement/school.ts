@@ -1,4 +1,4 @@
-type Pagination = {
+export type Pagination = {
   pageNumber: number;
   totalPageNumber: number;
   dataSize: number;
@@ -16,4 +16,4 @@ export type SchoolList = {
   schoolList: School[];
 };
 
-export type SearchSchoolListResult = SchoolList | null | 'notFound';
+export type SearchSchoolListResult = SchoolList | null;

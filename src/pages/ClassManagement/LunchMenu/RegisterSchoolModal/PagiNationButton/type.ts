@@ -1,8 +1,8 @@
-import { SearchSchoolListResult } from '@Types/classManagement/school';
+import { Pagination } from '@Types/classManagement/school';
 
 export type PagiNationButtonProps = {
   hasPage: boolean;
-  schoolList: SearchSchoolListResult;
+  pagination: Pagination | null;
   pagiNationSearchSchool: (pageNumber: number) => void;
 };
 

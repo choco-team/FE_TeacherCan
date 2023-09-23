@@ -5,30 +5,24 @@ import { PagiNationButtonProps } from './type';
 
 function PagiNationButton({
   hasPage,
-  schoolList,
+  pagination,
   pagiNationSearchSchool,
 }: PagiNationButtonProps) {
   const handleClickPagiNationButton = (type: 'next' | 'prev') => {
-    if (!hasPage) return;
+    if (!hasPage || !pagination) return;
 
-    if (!schoolList || schoolList === 'notFound') return;
-
-    const {
-      pagination: { pageNumber: currentPage, totalPageNumber },
-    } = schoolList;
-
-    const searchPageNumber = currentPage + (type === 'next' ? +1 : -1);
+    const searchPageNumber =
+      pagination.pageNumber + (type === 'next' ? +1 : -1);
 
     if (searchPageNumber < 1) {
       alert('첫 페이지이에요.');
       return;
     }
 
-    if (searchPageNumber > totalPageNumber) {
+    if (searchPageNumber > pagination.totalPageNumber) {
       alert('마지막 페이지이에요.');
       return;
     }
-    console.log(searchPageNumber);
     pagiNationSearchSchool(searchPageNumber);
   };
 

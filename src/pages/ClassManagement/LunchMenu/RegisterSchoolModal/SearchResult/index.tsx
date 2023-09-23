@@ -40,7 +40,7 @@ function SearchResult({ isLoading, schoolList }: SearchResultProps) {
       </S.SearchResult>
     );
 
-  if (schoolList === 'notFound')
+  if (schoolList.length === 0)
     return (
       <S.SearchResult>
         {NOT_FOUND_RESULT.map((list, index) => (
@@ -52,23 +52,21 @@ function SearchResult({ isLoading, schoolList }: SearchResultProps) {
   if (schoolList)
     return (
       <S.SchoolList>
-        {schoolList.schoolList.map(
-          ({ schoolAddress, schoolCode, schoolName }) => {
-            return (
-              <S.SchoolItem key={schoolCode}>
-                <span>{schoolName}</span>
-                <Button
-                  concept="outlined"
-                  size="sm"
-                  onClick={() => updateSchool(schoolCode)}
-                >
-                  등록
-                </Button>
-                <S.SchoolAddress>{schoolAddress}</S.SchoolAddress>
-              </S.SchoolItem>
-            );
-          },
-        )}
+        {schoolList.map(({ schoolAddress, schoolCode, schoolName }) => {
+          return (
+            <S.SchoolItem key={schoolCode}>
+              <span>{schoolName}</span>
+              <Button
+                concept="outlined"
+                size="sm"
+                onClick={() => updateSchool(schoolCode)}
+              >
+                등록
+              </Button>
+              <S.SchoolAddress>{schoolAddress}</S.SchoolAddress>
+            </S.SchoolItem>
+          );
+        })}
       </S.SchoolList>
     );
 

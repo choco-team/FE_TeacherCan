@@ -2,20 +2,15 @@ import { useMutation } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { useState } from 'react';
 
-import { SearchSchoolListResult } from '@Types/classManagement/school';
+import { Pagination, School } from '@Types/classManagement/school';
 
 import { SearchSchoolRequest, getSchoolData } from '@Api/school/search';
 
 const useSchool = () => {
-  // 상태 수정
+  const [schoolList, setSchoolList] = useState<School[]>([]);
+  const [pagination, setPagination] = useState<Pagination | null>(null);
 
-  const [schoolList, setSchoolList] = useState<SearchSchoolListResult>(null);
-
-  const hasPage =
-    (schoolList !== 'notFound' &&
-      schoolList &&
-      schoolList.pagination.totalPageNumber > 1) ||
-    false;
+  const hasPage = pagination ? pagination.totalPageNumber > 1 : false;
 
   const { mutate, isLoading } = useMutation({
     mutationKey: ['searchSchool'],
@@ -24,17 +19,22 @@ const useSchool = () => {
     onError: (error) => {
       if (error instanceof AxiosError) {
         const status = error.response?.status;
-        if (status === 404) setSchoolList('notFound');
+        if (status === 404) {
+          setSchoolList([]);
+          setPagination(null);
+        }
       }
     },
     onSuccess: (data) => {
-      setSchoolList(data);
+      setSchoolList(data.schoolList);
+      setPagination(data.pagination);
     },
   });
 
   return {
     schoolList,
     hasPage,
+    pagination,
     isLoading,
     searchSchool: mutate,
   };

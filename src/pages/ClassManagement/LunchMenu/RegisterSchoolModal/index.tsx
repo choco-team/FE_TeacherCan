@@ -12,7 +12,8 @@ import * as S from './style';
 function RegisterSchoolModal() {
   const [schoolName, setSchoolName] = useState('');
 
-  const { schoolList, hasPage, searchSchool, isLoading } = useSchool();
+  const { schoolList, pagination, hasPage, searchSchool, isLoading } =
+    useSchool();
 
   const handleSubmitSearchSchoolForm: FormEventHandler = (event) => {
     event.preventDefault();
@@ -46,7 +47,7 @@ function RegisterSchoolModal() {
       </S.SearchResult>
       <PagiNationButton
         hasPage={hasPage}
-        schoolList={schoolList}
+        pagination={pagination}
         pagiNationSearchSchool={pagiNationSearchSchool}
       />
     </S.SearchSchoolLayout>
