@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { SearchSchoolListResult } from '@Types/classManagement/school';
 
-import { SearchSchoolRequest, requestGetSchoolData } from '@Api/school/search';
+import { SearchSchoolRequest, getSchoolData } from '@Api/school/search';
 
 const useSchool = () => {
   // 상태 수정
@@ -20,7 +20,7 @@ const useSchool = () => {
   const { mutate, isLoading } = useMutation({
     mutationKey: ['searchSchool'],
     mutationFn: (params: SearchSchoolRequest) =>
-      requestGetSchoolData(params).then((response) => response.data),
+      getSchoolData(params).then((response) => response.data),
     onError: (error) => {
       if (error instanceof AxiosError) {
         const status = error.response?.status;

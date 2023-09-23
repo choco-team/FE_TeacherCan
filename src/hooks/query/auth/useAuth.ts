@@ -6,14 +6,14 @@ import {
   SignInResponse,
   SignUpRequest,
   ValidationEmailRequest,
-  requestPostEmailValidation,
-  requestPostSignIn,
-  requestPostSignUp,
+  postEmailValidation,
+  postSignIn,
+  postSignUp,
 } from '@Api/auth/auth';
 
 export const useSignUp = ({ onSuccess }: { onSuccess: () => void }) => {
   const { mutate, isLoading } = useMutation({
-    mutationFn: (params: SignUpRequest) => requestPostSignUp(params),
+    mutationFn: (params: SignUpRequest) => postSignUp(params),
     onSuccess,
   });
 
@@ -27,7 +27,7 @@ export const useSignIn = ({
 }) => {
   const { mutate, isLoading } = useMutation({
     mutationFn: (params: SignInRequest) =>
-      requestPostSignIn(params).then((response) => response.data),
+      postSignIn(params).then((response) => response.data),
     onSuccess: (data) => onSuccess(data),
     // ErrorBoundary로 이동할 로직
     onError: (error) => {
@@ -43,8 +43,7 @@ export const useSignIn = ({
 
 export const useValidateEmail = ({ onSuccess }: { onSuccess: () => void }) => {
   const { mutate, isLoading } = useMutation({
-    mutationFn: (params: ValidationEmailRequest) =>
-      requestPostEmailValidation(params),
+    mutationFn: (params: ValidationEmailRequest) => postEmailValidation(params),
     onSuccess,
     // ErrorBoundary로 이동할 로직
     onError: (error) => {

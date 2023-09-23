@@ -22,18 +22,14 @@ export type SignInResponse = {
 };
 
 // request 접두사 제거
-export const requestPostSignUp = ({
-  email,
-  password,
-  nickname,
-}: SignUpRequest) =>
+export const postSignUp = ({ email, password, nickname }: SignUpRequest) =>
   axiosInstance.post(SIGN_UP_API, { email, password, nickname });
 
-export const requestPostSignIn = ({
+export const postSignIn = ({
   email,
   password,
 }: SignInRequest): Promise<AxiosResponse<SignInResponse>> =>
   axiosInstance.post(SIGN_IN_API, { email, password });
 
-export const requestPostEmailValidation = ({ email }: ValidationEmailRequest) =>
+export const postEmailValidation = ({ email }: ValidationEmailRequest) =>
   axiosInstance.post(EMAIL_VALIDATION_API, { email });

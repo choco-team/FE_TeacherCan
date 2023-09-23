@@ -13,7 +13,7 @@ export type SearchSchoolRequest = {
 
 type SearchSchoolResponse = SchoolList;
 
-export const requestGetSchoolData = ({
+export const getSchoolData = ({
   schoolName,
   pageNumber,
 }: SearchSchoolRequest): Promise<AxiosResponse<SearchSchoolResponse>> =>
