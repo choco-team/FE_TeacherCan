@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
 
-import useAuth from '@Hooks/query/auth/useAuth';
+import { useSignUp } from '@Hooks/query/auth/useAuth';
 
 import route from '@Utils/route';
 
@@ -77,7 +77,15 @@ const validate = (inputValue: Record<string, string>) => {
 function SignUp() {
   const navigate = useNavigate();
 
-  const { signUp, isLoading } = useAuth();
+  const { signUp, isLoading } = useSignUp({
+    onSuccess: () => {
+      const { email, password } = inputValue;
+
+      navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]), {
+        state: { email, password },
+      });
+    },
+  });
 
   const [inputValue, setInputValue] = useState({
     email: '',
@@ -101,18 +109,10 @@ function SignUp() {
     setInputValue((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmitSignUpForm = async (
-    event: React.FormEvent<HTMLFormElement>,
-  ) => {
+  const handleSubmitSignUpForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const { email, password, nickname } = inputValue;
-
-    await signUp(email, password, nickname);
-
-    navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]), {
-      state: { email, password },
-    });
+    signUp(inputValue);
   };
 
   return (
@@ -141,7 +141,7 @@ function SignUp() {
               isValid={validation[name]}
               validationMessage={validationMessage}
               isCheckedEmail={isCheckedEmail}
-              isSignup
+              isSignUp
               setIsCheckedEmail={setIsCheckedEmail}
               required
               handleChange={handleChangeInputValue}

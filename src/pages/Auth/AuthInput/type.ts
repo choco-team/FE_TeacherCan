@@ -8,7 +8,7 @@ export type AuthInput = {
   required?: boolean;
   isValid?: boolean;
   validationMessage?: string;
-  isSignup?: boolean;
+  isSignUp?: boolean;
   isCheckedEmail?: boolean;
   setIsCheckedEmail?: React.Dispatch<SetStateAction<boolean>>;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;

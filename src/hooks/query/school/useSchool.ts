@@ -1,46 +1,42 @@
+import { useMutation } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 import { useState } from 'react';
 
-import { SearchSchoolList } from '@Types/classManagement/school';
+import { Pagination, School } from '@Types/classManagement/school';
+
+import { SearchSchoolRequest, getSchoolData } from '@Api/school/search';
 
 const useSchool = () => {
-  const [schoolName, setSchoolName] = useState<string>('');
-  const [schoolList, setSchoolList] = useState<
-    SearchSchoolList | null | 'notFound'
-  >(null);
-  const hasPage =
-    (schoolList !== 'notFound' &&
-      schoolList &&
-      schoolList.pagination.totalPageNumber > 1) ||
-    false;
+  const [schoolList, setSchoolList] = useState<School[]>([]);
+  const [pagination, setPagination] = useState<Pagination | null>(null);
 
-  const [isLoading, setIsLoading] = useState(false);
-  const searchSchool = async (page = 1) => {
-    setIsLoading(true);
+  const hasPage = pagination ? pagination.totalPageNumber > 1 : false;
 
-    const response = await fetch(
-      `https://teachercan.ssambox.com/api/school/list?schoolName=${schoolName}&pageNumber=${page}&dataSize=6`,
-    );
-
-    if (response.status === 404) {
-      setIsLoading(false);
-      setSchoolList('notFound');
-
-      return;
-    }
-
-    const data = (await response.json()) as SearchSchoolList;
-
-    setIsLoading(false);
-    setSchoolList(data);
-  };
+  const { mutate, isLoading } = useMutation({
+    mutationKey: ['searchSchool'],
+    mutationFn: (params: SearchSchoolRequest) =>
+      getSchoolData(params).then((response) => response.data),
+    onError: (error) => {
+      if (error instanceof AxiosError) {
+        const status = error.response?.status;
+        if (status === 404) {
+          setSchoolList([]);
+          setPagination(null);
+        }
+      }
+    },
+    onSuccess: (data) => {
+      setSchoolList(data.schoolList);
+      setPagination(data.pagination);
+    },
+  });
 
   return {
-    schoolName,
     schoolList,
     hasPage,
+    pagination,
     isLoading,
-    searchSchool,
-    setSchoolName,
+    searchSchool: mutate,
   };
 };
 

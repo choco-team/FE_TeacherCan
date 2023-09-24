@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
 
-import useAuth from '@Hooks/query/auth/useAuth';
+import { useSignIn } from '@Hooks/query/auth/useAuth';
 
 import route from '@Utils/route';
 import { checkIsAllTextFilled } from '@Utils/validation';
@@ -38,7 +38,12 @@ const SIGN_IN_INPUTS = [
 function SignIn() {
   const navigate = useNavigate();
 
-  const { isLoading, signIn } = useAuth();
+  const { isLoading, signIn } = useSignIn({
+    onSuccess: ({ token }) => {
+      sessionStorage.setItem('token', token);
+      navigate(route.calculatePath([ROUTE_PATH.main]));
+    },
+  });
 
   const { state } = useLocation() as {
     state: null | { email: string; password: string };
@@ -63,14 +68,7 @@ function SignIn() {
   ) => {
     event.preventDefault();
 
-    const { email, password } = inputValue;
-
-    const { result, token } = await signIn(email, password);
-
-    if (result) {
-      sessionStorage.setItem('token', token);
-      navigate(route.calculatePath([ROUTE_PATH.main]));
-    }
+    signIn(inputValue);
   };
 
   return (
