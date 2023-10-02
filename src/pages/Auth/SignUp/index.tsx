@@ -32,7 +32,7 @@ const SIGN_UP_INPUTS = [
     label: '비밀번호',
     placeholder: '영어, 숫자, 특수문자 포함 8자 이상',
     autocomplete: 'new-password',
-    validationMessage: '영어, 숫자, 특수문자 포함 8~20자로 입력해주세요.',
+    validationMessage: '영어, 숫자, 특수문자 포함 8자 이상 입력해주세요.',
   },
   {
     name: 'passwordConfirmation',
@@ -56,9 +56,9 @@ const validate = (inputValue: Record<string, string>) => {
   const regExp = {
     // 아이디: 영어 1글자 포함 영어/숫자 6~15자
     email: /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    // 비밀번호: 영어 대소문자+숫자+특수문자 8~20자
+    // 비밀번호: 영어 대소문자+숫자+특수문자 8자 이상
     password:
-      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*#?&])[a-zA-Z\d@$!%*#?&]{8,20}$/,
+      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[\[\]\{\}\/\(\)\.\?\<\>!@#$%^&*])[a-zA-Z\d\[\]\{\}\/\(\)\.\?\<\>!@#$%^&*]{8,}$/,
     // 닉네임: 한글/영어/숫자 2~10자
     nickname: /^[가-힣a-zA-Z0-9]{2,10}$/,
   } as const;
