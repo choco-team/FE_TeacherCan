@@ -10,5 +10,5 @@ export const SideSection = styled.div`
   align-items: flex-start;
   row-gap: 20px;
 
-  padding: 20px;
+  padding-left: 20px;
 `;
