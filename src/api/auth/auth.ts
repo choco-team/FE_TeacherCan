@@ -17,8 +17,11 @@ export type SignInRequest = Omit<AuthRequest, 'nickname'>;
 export type ValidationEmailRequest = Omit<AuthRequest, 'nickname' | 'password'>;
 
 export type SignInResponse = {
+  code: number;
   result: boolean;
-  token: string;
+  data: {
+    token: string;
+  };
 };
 
 // request 접두사 제거
