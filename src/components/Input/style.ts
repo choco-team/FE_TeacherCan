@@ -29,21 +29,16 @@ export const Input = styled.input<T.StyledInput>`
     color: ${({ theme }) => theme.hoverBorder.gray};
   }
 
-  &:read-only,
-  &:disabled {
-    &:hover {
-      border: ${({ theme, border = `1px solid ${theme.border.gray}` }) =>
-        border};
-    }
-
-    &:focus {
-      border: ${({ theme, border = `1px solid ${theme.border.gray}` }) =>
-        border};
-    }
-  }
-
   &:disabled {
     background-color: ${({ theme }) => theme.background.disabled};
     color: ${({ theme }) => theme.subText};
+  }
+
+  &:read-only,
+  &:disabled {
+    &:hover,
+    &:focus {
+      border-color: ${({ theme }) => theme.border.gray};
+    }
   }
 `;
