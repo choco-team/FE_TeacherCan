@@ -39,8 +39,8 @@ function SignIn() {
   const navigate = useNavigate();
 
   const { isLoading, signIn } = useSignIn({
-    onSuccess: ({ token }) => {
-      sessionStorage.setItem('token', token);
+    onSuccess: ({ data }) => {
+      sessionStorage.setItem('token', data.token);
       navigate(route.calculatePath([ROUTE_PATH.main]));
     },
   });

@@ -10,5 +10,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <RouterProvider router={router}></RouterProvider>,
+  <React.StrictMode>
+    <RouterProvider router={router}></RouterProvider>
+  </React.StrictMode>,
 );
