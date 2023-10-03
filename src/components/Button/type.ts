@@ -13,10 +13,10 @@ type Button = {
   border?: string;
   borderRadius?: string;
   padding?: string;
-  handleClick?: () => void;
   color?: string;
   fontSize?: string;
   fontWeight?: string;
+  handleClick?: HTMLButtonElement['onclick'];
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 type StyledButton = {

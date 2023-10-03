@@ -1,6 +1,6 @@
+import { STUDENT_INFO_KEY_NAME } from '@Constant/studentManagement/studentInfo';
 import { read, utils, writeFile } from 'xlsx';
 
-import { STUDENT_INFO_KEY_NAME } from '@Pages/StudentManagement/StudentRegister/constant';
 import type { StudentBaseInfo } from '@Pages/StudentManagement/StudentRegister/type';
 
 const useExcelRegister = ({

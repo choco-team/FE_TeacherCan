@@ -1,3 +1,4 @@
+import { STUDENT_INFO_KEY_NAME } from '@Constant/studentManagement/studentInfo';
 import type { GridOptions } from 'ag-grid-community';
 import type { AgGridReact } from 'ag-grid-react';
 import { type ChangeEvent, type MouseEvent, useRef, useState } from 'react';
@@ -13,11 +14,7 @@ import Button from '@Components/Button';
 import Input from '@Components/Input';
 import TextArea from '@Components/TextArea';
 
-import {
-  CREATE_TYPE,
-  STUDENT_INFO_KEY_NAME,
-  STUDENT_REGISTER_GUIDES,
-} from './constant';
+import { CREATE_TYPE, STUDENT_REGISTER_GUIDES } from './constant';
 import * as S from './style';
 import * as T from './type';
 
@@ -92,13 +89,11 @@ const StudentRegister = () => {
     },
     editType: 'fullRow',
     stopEditingWhenCellsLoseFocus: true,
-    suppressDragLeaveHidesColumns: true,
     rowSelection: 'multiple',
     suppressRowClickSelection: true,
     rowDragManaged: true,
     rowDragMultiRow: true,
     rowDragEntireRow: true,
-    animateRows: true,
     overlayNoRowsTemplate:
       '<div style="padding: 16px; color: gray;">엑셀 파일을 업로드하거나 학생 수를 직접 입력하여 명렬표를 생성해 주세요.</div>',
   };
@@ -117,6 +112,7 @@ const StudentRegister = () => {
   };
 
   const handleCreate = () => {
+    // TODO: 필수값 체크 - 제목, 번호, 이름, 성별
     console.log(studentList);
   };
 

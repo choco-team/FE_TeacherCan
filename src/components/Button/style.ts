@@ -28,7 +28,9 @@ export const Button = styled.button<StyledButton>`
   text-align: center;
   font-size: ${(props) => props.fontSize};
   font-weight: ${(props) => props.fontWeight};
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 
   ${({ size }) =>
     (size === 'sm' &&
@@ -49,31 +51,27 @@ export const Button = styled.button<StyledButton>`
     `)}
 
   &:hover {
-    background-color: ${(props) =>
-      (props.concept === 'contained' &&
-        props.theme.hoverBackground[props.variant]) ||
-      (props.concept === 'outlined' &&
-        `${props.theme.color.gray[500]}${getHexOpacity(0.05)}`)};
-    border-color: ${(props) =>
-      props.concept === 'outlined' &&
-      props.theme.hoverBackground[props.variant]};
-    color: ${(props) =>
-      props.concept === 'outlined' &&
-      props.theme.hoverBackground[props.variant]};
+    background-color: ${({ theme, concept, variant }) =>
+      (concept === 'contained' && theme.hoverBackground[variant]) ||
+      ((concept === 'outlined' || concept === 'text') &&
+        `${theme.color.gray[500]}${getHexOpacity(0.05)}`)};
+    border-color: ${({ theme, concept, variant }) =>
+      concept === 'outlined' && theme.hoverBackground[variant]};
+    color: ${({ theme, concept, variant }) =>
+      (concept === 'outlined' || concept === 'text') &&
+      theme.hoverBackground[variant]};
   }
 
   &:active {
-    background-color: ${(props) =>
-      (props.concept === 'contained' &&
-        props.theme.activeBackground[props.variant]) ||
-      (props.concept === 'outlined' &&
-        `${props.theme.color.gray[500]}${getHexOpacity(0.1)}`)};
-    border-color: ${(props) =>
-      props.concept === 'outlined' &&
-      props.theme.activeBackground[props.variant]};
-    color: ${(props) =>
-      props.concept === 'outlined' &&
-      props.theme.activeBackground[props.variant]};
+    background-color: ${({ theme, concept, variant }) =>
+      (concept === 'contained' && theme.activeBackground[variant]) ||
+      ((concept === 'outlined' || concept === 'text') &&
+        `${theme.color.gray[500]}${getHexOpacity(0.1)}`)};
+    border-color: ${({ theme, concept, variant }) =>
+      concept === 'outlined' && theme.activeBackground[variant]};
+    color: ${({ theme, concept, variant }) =>
+      (concept === 'outlined' || concept === 'text') &&
+      theme.activeBackground[variant]};
   }
 
   &:disabled {
