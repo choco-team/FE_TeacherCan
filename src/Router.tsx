@@ -9,20 +9,15 @@ import SignUp from '@Pages/Auth/SignUp';
 import LunchMenu from '@Pages/ClassManagement/LunchMenu';
 import Home from '@Pages/Home';
 import StudentManagement from '@Pages/StudentManagement';
+import StudentInfo from '@Pages/StudentManagement/StudentInfo';
 import StudentRegister from '@Pages/StudentManagement/StudentRegister';
 import RandomPick from '@Pages/Tools/RandomPick';
-
-import UserProvider from '@Providers/UserProvider';
 
 const router = createBrowserRouter([
   {
     path: ROUTE_PATH.main,
-    element: (
-      <UserProvider>
-        <App />
-      </UserProvider>
-    ),
-    errorElement: <div>Not Found</div>,
+    element: <App />,
+    errorElement: <div>예기치 못한 상황이 발생했어요.</div>,
     children: [
       {
         index: true,
@@ -80,6 +75,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: ROUTE_PATH.studentInfo,
+            element: <StudentInfo />,
           },
           {
             path: ROUTE_PATH.studentRegister,

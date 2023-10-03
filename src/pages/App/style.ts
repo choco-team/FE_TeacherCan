@@ -17,6 +17,8 @@ export const PageWrapper = styled.div`
   grid-column: 3 / -1;
 
   margin-top: calc(2rem + 34px);
+  padding: 32px;
+  color: ${({ theme }) => theme.text};
 `;
 
 export const ThemeToggleButton = styled(Button)`

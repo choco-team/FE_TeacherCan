@@ -1,3 +1,3 @@
 export type MenusInformationProps = {
-  origins: [string, string][] | null;
+  origins: [string, string][];
 };

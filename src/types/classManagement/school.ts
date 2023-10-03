@@ -1,4 +1,4 @@
-type Pagination = {
+export type Pagination = {
   pageNumber: number;
   totalPageNumber: number;
   dataSize: number;
@@ -11,10 +11,9 @@ export type School = {
   areaCode: string;
 };
 
-export type SearchSchoolList =
-  | {
-      pagination: Pagination;
-      schoolList: School[];
-    }
-  | null
-  | 'notFound';
+export type SchoolList = {
+  pagination: Pagination;
+  schoolList: School[];
+};
+
+export type SearchSchoolListResult = SchoolList | null;

@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, MouseEventHandler } from 'react';
 import { Variant } from 'src/types/style';
 
 type Button = {
@@ -13,10 +13,10 @@ type Button = {
   border?: string;
   borderRadius?: string;
   padding?: string;
-  handleClick?: () => void;
   color?: string;
   fontSize?: string;
   fontWeight?: string;
+  handleClick?: MouseEventHandler<HTMLButtonElement>;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 type StyledButton = {

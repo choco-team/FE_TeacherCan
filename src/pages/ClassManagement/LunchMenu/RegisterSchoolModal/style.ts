@@ -17,5 +17,5 @@ export const SearchSchoolForm = styled.form`
 `;
 
 export const SearchResult = styled.ul`
-  min-height: 260px;
+  min-height: 280px;
 `;
