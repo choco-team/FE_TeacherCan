@@ -9,6 +9,7 @@ export const AgGridWrapper = styled.div<{
   width: 100%;
   height: ${({ fullHeight }) => (fullHeight ? '100%' : undefined)};
   min-height: ${({ minHeight }) => `${minHeight}px`};
+  font-family: inherit;
 
   --ag-row-hover-color: ${({ theme }) =>
     `${theme.selectionBackground.primary}${getHexOpacity(0.5)}`};
