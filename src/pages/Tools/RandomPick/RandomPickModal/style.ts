@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import theme from '@Styles/theme';
+
 export const ModalContainer = styled.div`
   padding: 5px;
 `;
@@ -15,8 +17,9 @@ export const SmallButtonWrapper = styled.div`
   }
 `;
 
-export const SmallButton = styled.button`
-  background-color: grey;
+export const SmallButton = styled.button<{ isOnClick?: boolean }>`
+  background-color: ${({ isOnClick }) =>
+    isOnClick ? theme.color.primary[500] : 'grey'};
   border: black;
   color: white;
   border-radius: 2px;

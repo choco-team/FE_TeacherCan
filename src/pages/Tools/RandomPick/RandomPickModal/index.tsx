@@ -1,114 +1,79 @@
+import { useState } from 'react';
+
 import useModal from '@Hooks/useModal';
 
 import Button from '@Components/Button';
 
 import * as S from './style';
+import { MOCK_STUDENTS_LISTS } from '../mock';
 
 type RandomPickModalProps = {
-  studentsList: {
-    number: number;
-    name: string;
-  }[];
-  setStudentsList: React.Dispatch<
-    React.SetStateAction<
-      {
-        number: number;
-        name: string;
-      }[]
-    >
-  >;
   setExcludedStudents: React.Dispatch<React.SetStateAction<string[]>>;
-  studentsNumber: number;
-  setStudentsNumber: React.Dispatch<React.SetStateAction<number>>;
-  duplication: boolean;
-  setDuplication: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const STUDENTS_LISTS: { [key: string]: { number: number; name: string }[] } = {
-  MOCK_STUDENTS: [
-    { number: 1, name: '김학생' },
-    { number: 2, name: '이학생' },
-    { number: 3, name: '박학생' },
-    { number: 4, name: '우학생' },
-    { number: 5, name: '최학생' },
-    { number: 6, name: '조학생' },
-    { number: 7, name: '장학생' },
-    { number: 8, name: '나학생' },
-    { number: 9, name: '다학생' },
-    { number: 10, name: '가학생' },
-    { number: 11, name: '고학생' },
-    { number: 12, name: '라학생' },
-    { number: 13, name: '마학생' },
-    { number: 14, name: '바학생' },
-    { number: 15, name: '사학생' },
-    { number: 16, name: '아하학생' },
-  ],
-
-  SECOND_STUDENTS: [
-    { number: 1, name: '김나라' },
-    { number: 2, name: '이나라' },
-    { number: 3, name: '박나라' },
-    { number: 4, name: '우나라' },
-    { number: 5, name: '최나라' },
-    { number: 6, name: '조나라' },
-    { number: 7, name: '장나라' },
-    { number: 8, name: '나나라' },
-    { number: 9, name: '다나라' },
-    { number: 10, name: '가나라' },
-  ],
-};
-
-function RandomPickModal({
-  studentsList,
-  setStudentsList,
-  studentsNumber,
-  setExcludedStudents,
-  setStudentsNumber,
-  duplication,
-  setDuplication,
-}: RandomPickModalProps) {
+function RandomPickModal({ setExcludedStudents }: RandomPickModalProps) {
+  //뽑을 학생 리스트
+  const [studentsListId, setStudentsListId] = useState(0);
+  //뽑을 학생 숫자
+  const [studentsCount, setStudentsCount] = useState(0);
+  //중복 선정 상태
+  const [isAllowDuplication, setIsAllowDuplication] = useState(false);
   const { closeModal } = useModal();
 
-  const handleListName = (listName: string) => {
-    // setStudentsList(STUDENTS_LISTS[listName]);
-    localStorage.setItem(
-      'studentsList',
-      JSON.stringify(STUDENTS_LISTS[listName]),
-    );
+  const handleChangeStudentsListId = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {
+    const { value } = event.currentTarget;
+    setStudentsListId(Number(value));
   };
 
-  const handlePersonNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.currentTarget.value;
-    // setStudentsNumber(parseInt(newValue));
-    localStorage.setItem('newValue', newValue.toString());
+  const handleChangeStudentsCount = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const { value } = event.currentTarget;
+    setStudentsCount(Number(value));
   };
 
-  const handleDuplicationYes = () => {
-    // setDuplication(true);
-    localStorage.setItem('duplication', true.toString());
+  const handleClickDuplication = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    const { value } = event.currentTarget;
+    setIsAllowDuplication(value === 'YES');
   };
 
-  const handleDuplicationNo = () => {
-    // setDuplication(false);
-    localStorage.setItem('duplication', false.toString());
-  };
+  const handleSaveConditions = () => {
+    if (!studentsListId) {
+      alert('명렬표를 선택해주세요.');
+      return;
+    }
 
-  const saveConditions = () => {
-    //   localStorage.setItem('studentsList', JSON.stringify(studentsList));
-    //   localStorage.setItem('newValue', studentsNumber.toString());
-    //   localStorage.setItem('duplication', duplication.toString());
+    if (!studentsCount) {
+      alert('뽑을 학생 수를 선택해주세요.');
+      return;
+    }
+
+    const setting = {
+      studentsListId,
+      studentsCount,
+      isAllowDuplication,
+    };
+    localStorage.setItem('random-pick-setting', JSON.stringify(setting));
     setExcludedStudents([]);
+    closeModal();
   };
 
   return (
     <>
       <S.ModalContainer>
         명렬표
-        {Object.keys(STUDENTS_LISTS).map((listName, index) => (
-          <S.SmallButton key={index} onClick={() => handleListName(listName)}>
-            {listName}
-          </S.SmallButton>
-        ))}
+        <select onChange={handleChangeStudentsListId}>
+          <option value={0}>선택</option>
+          {MOCK_STUDENTS_LISTS.map(({ id, name }) => (
+            <option key={id} value={id}>
+              {name}
+            </option>
+          ))}
+        </select>
       </S.ModalContainer>
       <S.ModalContainer>
         <label htmlFor="theInputNumber">인원</label>
@@ -116,23 +81,28 @@ function RandomPickModal({
           id="theInputNumber"
           min={0}
           step={1}
-          onChange={handlePersonNumber}
+          onChange={handleChangeStudentsCount}
         ></S.PersonInput>
       </S.ModalContainer>
       <S.ModalContainer>
         중복 허용
-        <S.SmallButton onClick={handleDuplicationYes}>YES</S.SmallButton>
-        <S.SmallButton onClick={handleDuplicationNo}>NO</S.SmallButton>
+        <S.SmallButton
+          value="YES"
+          isOnClick={isAllowDuplication}
+          onClick={handleClickDuplication}
+        >
+          YES
+        </S.SmallButton>
+        <S.SmallButton
+          value="NO"
+          isOnClick={!isAllowDuplication}
+          onClick={handleClickDuplication}
+        >
+          NO
+        </S.SmallButton>
       </S.ModalContainer>
       <S.SmallButtonWrapper>
-        <Button
-          onClick={() => {
-            saveConditions();
-            closeModal();
-          }}
-        >
-          저장
-        </Button>
+        <Button onClick={handleSaveConditions}>저장</Button>
       </S.SmallButtonWrapper>
     </>
   );

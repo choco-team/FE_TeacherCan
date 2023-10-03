@@ -8,6 +8,7 @@ import {
 import styled from 'styled-components';
 
 type ModalContext = {
+  isOpen: boolean;
   openModal: (model: ReactNode) => void;
   closeModal: () => void;
 } | null;
@@ -23,6 +24,7 @@ const ModalProvider = ({ children }: PropsWithChildren) => {
   const closeModal = () => setCurrentModal(null);
 
   const value = {
+    isOpen,
     openModal,
     closeModal,
   };

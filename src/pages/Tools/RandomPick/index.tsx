@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiOutlineUserAdd, AiFillSetting } from 'react-icons/ai';
 
 import useModal from '@Hooks/useModal';
@@ -9,27 +9,32 @@ import whitebackground from '@Assets/image/background/random-whitebg.png';
 import woodbackground from '@Assets/image/background/random-woodbg.png';
 
 import RandomPickModal from './RandomPickModal';
+import { MOCK_STUDENTS_LISTS } from './mock';
 import * as S from './style';
 
+type RandomPickSetting = {
+  studentsListId: number | undefined;
+  studentsCount: number | undefined;
+  isAllowDuplication: boolean | undefined;
+};
+
 function RandomPick() {
-  //처음에 선택한 학생 리스트
-  const [studentsList, setStudentsList] = useState<
+  const [randomPickSetting, setRandomPickSetting] = useState<RandomPickSetting>(
     {
-      number: number;
-      name: string;
-    }[]
-  >([]);
+      studentsListId: undefined,
+      studentsCount: undefined,
+      isAllowDuplication: undefined,
+    },
+  );
+  //학생 명단
+  const [studentsList, setStudentsList] = useState<string[]>([]);
   // 뒤섞인 학생 명단
   const [shuffledStudents, setShuffledStudents] = useState<string[]>([]);
-  //뽑을 학생 숫자
-  const [studentsNumber, setStudentsNumber] = useState(0);
-  //중복 선정 상태
-  const [duplication, setDuplication] = useState(false);
   // 뽑힌 학생 명단
   const [pickedStudents, setPickedStudents] = useState<string[]>([]);
   // 중복 금지일 때 제외되는 학생 명단
   const [excludedStudents, setExcludedStudents] = useState<string[]>([]);
-  const { openModal } = useModal();
+  const { isOpen, openModal } = useModal();
   const [background, setbackground] = useState<'wood' | 'white'>('white');
 
   const toggleWoodBackground = () => {
@@ -60,6 +65,7 @@ function RandomPick() {
         storedStudentsList[i],
       ];
     }
+    console.log(storedStudentsList);
 
     setShuffledStudents(storedStudentsList.map((student) => student.name));
 
@@ -82,11 +88,28 @@ function RandomPick() {
       const end = '종료';
       setExcludedStudents((prev) => [...prev, ...end]);
     }
+    console.log(excludedStudents);
   };
 
   const handleConfirm = () => {
     setExcludedStudents([]);
   };
+
+  useEffect(() => {
+    if (isOpen) return;
+    const setting = localStorage.getItem('random-pick-setting');
+    if (setting) setRandomPickSetting(JSON.parse(setting));
+  }, [isOpen]);
+
+  useEffect(() => {
+    const fetchedStudentsList = MOCK_STUDENTS_LISTS.find(
+      ({ id }) => id === randomPickSetting.studentsListId,
+    )?.students;
+    if (fetchedStudentsList)
+      setStudentsList(fetchedStudentsList.map(({ name }) => name));
+  }, [randomPickSetting.studentsListId]);
+
+  console.log(randomPickSetting.studentsListId, studentsList);
 
   return (
     <S.Layout>
@@ -141,15 +164,7 @@ function RandomPick() {
             size="lg"
             onClick={() => {
               openModal(
-                <RandomPickModal
-                  studentsList={studentsList}
-                  setStudentsList={setStudentsList}
-                  setExcludedStudents={setExcludedStudents}
-                  setStudentsNumber={setStudentsNumber}
-                  studentsNumber={studentsNumber}
-                  duplication={duplication}
-                  setDuplication={setDuplication}
-                />,
+                <RandomPickModal setExcludedStudents={setExcludedStudents} />,
               );
             }}
           >
