@@ -7,11 +7,7 @@ import Button from '@Components/Button';
 import * as S from './style';
 import { MOCK_STUDENTS_LISTS } from '../mock';
 
-type RandomPickModalProps = {
-  setExcludedStudents: React.Dispatch<React.SetStateAction<string[]>>;
-};
-
-function RandomPickModal({ setExcludedStudents }: RandomPickModalProps) {
+function RandomPickModal() {
   //뽑을 학생 리스트
   const [studentsListId, setStudentsListId] = useState(0);
   //뽑을 학생 숫자
@@ -58,7 +54,6 @@ function RandomPickModal({ setExcludedStudents }: RandomPickModalProps) {
       isAllowDuplication,
     };
     localStorage.setItem('random-pick-setting', JSON.stringify(setting));
-    setExcludedStudents([]);
     closeModal();
   };
 

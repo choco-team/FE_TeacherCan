@@ -28,12 +28,13 @@ function RandomPick() {
   );
   //학생 명단
   const [studentsList, setStudentsList] = useState<string[]>([]);
-  // 뒤섞인 학생 명단
-  const [shuffledStudents, setShuffledStudents] = useState<string[]>([]);
+  //뽑을 학생 수
+  const [count, setCount] = useState(0);
+  //중복 여부
+  const [duplication, setDuplication] = useState(Boolean);
   // 뽑힌 학생 명단
   const [pickedStudents, setPickedStudents] = useState<string[]>([]);
-  // 중복 금지일 때 제외되는 학생 명단
-  const [excludedStudents, setExcludedStudents] = useState<string[]>([]);
+
   const { isOpen, openModal } = useModal();
   const [background, setbackground] = useState<'wood' | 'white'>('white');
 
@@ -45,56 +46,36 @@ function RandomPick() {
     setbackground('white');
   };
 
-  const storedStudentsNumber = parseInt(
-    localStorage.getItem('newValue') || '0',
-  );
-  const storedStudentsList = JSON.parse(
-    localStorage.getItem('studentsList') || '[]',
-  ) as {
-    number: number;
-    name: string;
-  }[];
-
-  const storedDuplication = localStorage.getItem('duplication') ?? 'false';
-
   const handlePick = () => {
-    for (let i = storedStudentsList.length - 1; i >= 0; i--) {
+    //학생 명단 셔플하기
+    console.log(studentsList);
+    for (let i = studentsList.length - 1; i >= 0; i--) {
       const randomIndex = Math.floor(Math.random() * (i + 1));
-      [storedStudentsList[i], storedStudentsList[randomIndex]] = [
-        storedStudentsList[randomIndex],
-        storedStudentsList[i],
+      [studentsList[i], studentsList[randomIndex]] = [
+        studentsList[randomIndex],
+        studentsList[i],
       ];
     }
-    console.log(storedStudentsList);
-
-    setShuffledStudents(storedStudentsList.map((student) => student.name));
+    setPickedStudents(studentsList.slice(0, count));
 
     // 중복 허용과 비허용
-    if (storedDuplication === 'true') {
-      setPickedStudents(shuffledStudents.slice(0, storedStudentsNumber));
-    } else {
-      const remainingStudents = shuffledStudents.filter(
-        (item) => !excludedStudents.includes(item),
+    if (duplication === false) {
+      console.log(pickedStudents);
+      setStudentsList(
+        studentsList.filter((student) => !pickedStudents.includes(student)),
       );
-      const newlyPickedStudents = remainingStudents.slice(
-        0,
-        storedStudentsNumber,
-      );
-      setPickedStudents(newlyPickedStudents);
-      setExcludedStudents((prev) => [...prev, ...newlyPickedStudents]);
     }
-
-    if (excludedStudents.length === storedStudentsList.length) {
-      const end = '종료';
-      setExcludedStudents((prev) => [...prev, ...end]);
-    }
-    console.log(excludedStudents);
   };
 
   const handleConfirm = () => {
-    setExcludedStudents([]);
+    const fetchedStudentsList = MOCK_STUDENTS_LISTS.find(
+      ({ id }) => id === randomPickSetting.studentsListId,
+    )?.students;
+    if (fetchedStudentsList)
+      setStudentsList(fetchedStudentsList.map(({ name }) => name));
   };
 
+  //modal에서 선택했던 학생 명단, 수, 중복여부 가져오기
   useEffect(() => {
     if (isOpen) return;
     const setting = localStorage.getItem('random-pick-setting');
@@ -105,11 +86,21 @@ function RandomPick() {
     const fetchedStudentsList = MOCK_STUDENTS_LISTS.find(
       ({ id }) => id === randomPickSetting.studentsListId,
     )?.students;
+    const fetchedStudentsCount = randomPickSetting.studentsCount;
+    const fetchedIsAllowDuplication = randomPickSetting.isAllowDuplication;
     if (fetchedStudentsList)
       setStudentsList(fetchedStudentsList.map(({ name }) => name));
-  }, [randomPickSetting.studentsListId]);
-
-  console.log(randomPickSetting.studentsListId, studentsList);
+    if (fetchedStudentsCount) {
+      setCount(fetchedStudentsCount);
+    }
+    if (fetchedIsAllowDuplication) {
+      setDuplication(fetchedIsAllowDuplication);
+    }
+  }, [
+    randomPickSetting.studentsListId,
+    randomPickSetting.studentsCount,
+    randomPickSetting.isAllowDuplication,
+  ]);
 
   return (
     <S.Layout>
@@ -133,8 +124,7 @@ function RandomPick() {
           </S.BackgroundButtonContainer>
         </S.SelectBackgroundButtonWrapper>
         <S.ResultWrapper color={background == 'wood' ? 'white' : 'black'}>
-          {JSON.parse(localStorage.getItem('studentsList') || '[]').length !==
-          0 ? (
+          {studentsList.length > 0 ? (
             <p>
               <S.ResultSpan>{pickedStudents.join('    ')}</S.ResultSpan>
             </p>
@@ -142,7 +132,7 @@ function RandomPick() {
             <p>학생 목록을 선택하세요</p>
           )}
 
-          {excludedStudents.length > storedStudentsList.length && (
+          {studentsList.length === 0 && (
             <>
               <p>
                 모든 학생을 선정했습니다. 확인을 누르면 처음부터 다시 선정할 수
@@ -163,9 +153,7 @@ function RandomPick() {
           <Button
             size="lg"
             onClick={() => {
-              openModal(
-                <RandomPickModal setExcludedStudents={setExcludedStudents} />,
-              );
+              openModal(<RandomPickModal />);
             }}
           >
             <AiFillSetting />

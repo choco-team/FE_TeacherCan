@@ -19,7 +19,7 @@ export const MOCK_STUDENTS_LISTS = [
       { number: 14, name: '바학생' },
       { number: 15, name: '사학생' },
       { number: 16, name: '아하학생' },
-      { number: 16, name: '하하학생' },
+      { number: 17, name: '하하학생' },
     ],
   },
   {
