@@ -31,9 +31,12 @@ function RandomPick() {
   //뽑을 학생 수
   const [count, setCount] = useState(0);
   //중복 여부
-  const [duplication, setDuplication] = useState(Boolean);
+  const [duplication, setDuplication] = useState<undefined | boolean>(
+    undefined,
+  );
   // 뽑힌 학생 명단
   const [pickedStudents, setPickedStudents] = useState<string[]>([]);
+  // 중복 금지일 때 제외할 학생 명단
 
   const { isOpen, openModal } = useModal();
   const [background, setbackground] = useState<'wood' | 'white'>('white');
@@ -48,7 +51,7 @@ function RandomPick() {
 
   const handlePick = () => {
     //학생 명단 셔플하기
-    console.log(studentsList);
+
     for (let i = studentsList.length - 1; i >= 0; i--) {
       const randomIndex = Math.floor(Math.random() * (i + 1));
       [studentsList[i], studentsList[randomIndex]] = [
@@ -56,11 +59,11 @@ function RandomPick() {
         studentsList[i],
       ];
     }
+
     setPickedStudents(studentsList.slice(0, count));
 
     // 중복 허용과 비허용
-    if (duplication === false) {
-      console.log(pickedStudents);
+    if (duplication !== true) {
       setStudentsList(
         studentsList.filter((student) => !pickedStudents.includes(student)),
       );
@@ -73,6 +76,7 @@ function RandomPick() {
     )?.students;
     if (fetchedStudentsList)
       setStudentsList(fetchedStudentsList.map(({ name }) => name));
+    setPickedStudents([]);
   };
 
   //modal에서 선택했던 학생 명단, 수, 중복여부 가져오기
@@ -93,9 +97,8 @@ function RandomPick() {
     if (fetchedStudentsCount) {
       setCount(fetchedStudentsCount);
     }
-    if (fetchedIsAllowDuplication) {
-      setDuplication(fetchedIsAllowDuplication);
-    }
+
+    setDuplication(fetchedIsAllowDuplication);
   }, [
     randomPickSetting.studentsListId,
     randomPickSetting.studentsCount,
@@ -127,6 +130,8 @@ function RandomPick() {
           {studentsList.length > 0 ? (
             <p>
               <S.ResultSpan>{pickedStudents.join('    ')}</S.ResultSpan>
+              <p>메롱</p>
+              <S.ResultSpan>{studentsList.join('    ')}</S.ResultSpan>
             </p>
           ) : (
             <p>학생 목록을 선택하세요</p>
