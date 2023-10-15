@@ -1,13 +1,5 @@
 import { rest } from 'msw';
 
-const successResponse = {
-  result: true,
-  code: 2000,
-  token: {
-    token: 'token',
-  },
-};
-
 const userEmail = 'teachercan@gmail.com';
 const userPassword = 'teachercan123!@#';
 
@@ -30,7 +22,17 @@ export const authHandlers = [
         ctx.delay(1000),
       );
 
-    return res(ctx.status(200), ctx.json(successResponse), ctx.delay(1000));
+    return res(
+      ctx.status(200),
+      ctx.json({
+        result: true,
+        code: 2000,
+        data: {
+          token: 'token',
+        },
+      }),
+      ctx.delay(1000),
+    );
   }),
 
   // 회원가입
@@ -61,7 +63,14 @@ export const authHandlers = [
   rest.post('/api/auth/signup/validation', (req, res, ctx) => {
     const { email } = req.body as { email: string };
 
-    if (email !== 'teachercan@gamil.com')
+    if (email === 'teachercan@gmail.comm')
+      return res(
+        ctx.status(422),
+        ctx.json({ message: '이메일 형식이 올바르지 않아요.', code: 1101 }),
+        ctx.delay(1000),
+      );
+
+    if (email !== 'teachercan@gmail.com')
       return res(
         ctx.status(409),
         ctx.json({
@@ -71,6 +80,6 @@ export const authHandlers = [
         ctx.delay(1000),
       );
 
-    return res(ctx.status(200), ctx.json(successResponse), ctx.delay(1000));
+    return res(ctx.status(200), ctx.delay(1000));
   }),
 ];
