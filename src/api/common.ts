@@ -3,12 +3,12 @@ import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 const BASE_URL = 'https://teachercan.ssambox.com/api';
 const LOCAL_URL = 'http://localhost:3000/api';
 
-type ResponseAPIError = {
+export type ResponseAPIError = {
   code: number;
   message: string;
 };
 
-class APIError extends Error {
+export class APIError extends Error {
   code: number;
   config: InternalAxiosRequestConfig;
 
@@ -38,8 +38,8 @@ class UnknownError extends Error {
   }
 }
 
-const isAPIError = (data: object): data is ResponseAPIError => {
-  return 'code' in data && 'message' in data;
+const isResponseAPIError = (data: object): data is ResponseAPIError => {
+  return 'code' in data && data.code !== 2000;
 };
 
 export const axiosInstance = axios.create({
@@ -51,12 +51,12 @@ export const axiosInstance = axios.create({
 
 axiosInstance.interceptors.response.use(
   (response) => {
-    throw response;
+    return response;
   },
   (error: AxiosError) => {
     if (!error.response || !error.response.data) return;
 
-    if (isAPIError(error.response.data)) {
+    if (isResponseAPIError(error.response.data)) {
       const { code, message } = error.response.data;
       const config = error.response.config;
 
