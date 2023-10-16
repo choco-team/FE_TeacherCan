@@ -1,7 +1,7 @@
 export const MOCK_STUDENTS_LISTS = [
   {
     id: 1,
-    name: '2023 9월 명단',
+    name: '2023년 9월 명단',
     students: [
       { number: 1, name: '김학생' },
       { number: 2, name: '이학생' },
@@ -24,7 +24,7 @@ export const MOCK_STUDENTS_LISTS = [
   },
   {
     id: 2,
-    name: '2023 10월 명단',
+    name: '2023년 10월 명단',
     students: [
       { number: 1, name: '김나라' },
       { number: 2, name: '이나라' },

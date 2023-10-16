@@ -60,15 +60,15 @@ function RandomPickModal() {
   return (
     <>
       <S.ModalContainer>
-        명렬표
-        <select onChange={handleChangeStudentsListId}>
+        <S.ListSpan>명렬표</S.ListSpan>
+        <S.ListSelect onChange={handleChangeStudentsListId}>
           <option value={0}>선택</option>
           {MOCK_STUDENTS_LISTS.map(({ id, name }) => (
             <option key={id} value={id}>
               {name}
             </option>
           ))}
-        </select>
+        </S.ListSelect>
       </S.ModalContainer>
       <S.ModalContainer>
         <label htmlFor="theInputNumber">인원</label>
