@@ -51,7 +51,6 @@ function RandomPick() {
 
   const handlePick = () => {
     //학생 명단 셔플하기
-
     for (let i = studentsList.length - 1; i >= 0; i--) {
       const randomIndex = Math.floor(Math.random() * (i + 1));
       [studentsList[i], studentsList[randomIndex]] = [
@@ -60,14 +59,10 @@ function RandomPick() {
       ];
     }
 
-    setPickedStudents(studentsList.slice(0, count));
-
-    // 중복 허용과 비허용
-    if (duplication !== true) {
-      setStudentsList(
-        studentsList.filter((student) => !pickedStudents.includes(student)),
-      );
-    }
+    //학생 뽑기
+    if (studentsList.length >= count) {
+      setPickedStudents(studentsList.slice(0, count));
+    } else setPickedStudents(studentsList);
   };
 
   const handleConfirm = () => {
@@ -78,6 +73,15 @@ function RandomPick() {
       setStudentsList(fetchedStudentsList.map(({ name }) => name));
     setPickedStudents([]);
   };
+
+  //StudentsList 업데이트하기
+  useEffect(() => {
+    if (duplication !== true) {
+      setStudentsList(
+        studentsList.filter((student) => !pickedStudents.includes(student)),
+      );
+    }
+  }, [studentsList, pickedStudents, duplication]);
 
   //modal에서 선택했던 학생 명단, 수, 중복여부 가져오기
   useEffect(() => {
@@ -127,13 +131,13 @@ function RandomPick() {
           </S.BackgroundButtonContainer>
         </S.SelectBackgroundButtonWrapper>
         <S.ResultWrapper color={background == 'wood' ? 'white' : 'black'}>
-          {studentsList.length > 0 ? (
+          {pickedStudents.length !== 0 && (
             <p>
               <S.ResultSpan>{pickedStudents.join('    ')}</S.ResultSpan>
-              <p>메롱</p>
-              <S.ResultSpan>{studentsList.join('    ')}</S.ResultSpan>
             </p>
-          ) : (
+          )}
+
+          {!localStorage.getItem('random-pick-setting') && (
             <p>학생 목록을 선택하세요</p>
           )}
 
