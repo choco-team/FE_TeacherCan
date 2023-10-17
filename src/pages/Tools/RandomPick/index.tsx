@@ -141,18 +141,19 @@ function RandomPick() {
             <p>학생 목록을 선택하세요</p>
           )}
 
-          {studentsList.length === 0 && (
-            <>
-              <p>
-                모든 학생을 선정했습니다. 확인을 누르면 처음부터 다시 선정할 수
-                있습니다.
-              </p>
+          {studentsList.length === 0 &&
+            localStorage.getItem('random-pick-setting') && (
+              <>
+                <p>
+                  모든 학생을 선정했습니다. 확인을 누르면 처음부터 다시 선정할
+                  수 있습니다.
+                </p>
 
-              <Button onClick={handleConfirm} margin="20px">
-                확인
-              </Button>
-            </>
-          )}
+                <Button onClick={handleConfirm} margin="20px">
+                  확인
+                </Button>
+              </>
+            )}
         </S.ResultWrapper>
         <S.ButtonWrapper>
           <Button size="lg">

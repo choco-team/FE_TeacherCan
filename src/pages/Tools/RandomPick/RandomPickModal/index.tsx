@@ -7,13 +7,28 @@ import Button from '@Components/Button';
 import * as S from './style';
 import { MOCK_STUDENTS_LISTS } from '../mock';
 
+const settingString = localStorage.getItem('random-pick-setting');
+
 function RandomPickModal() {
+  const initialSetting = settingString
+    ? JSON.parse(settingString)
+    : {
+        studentsListId: undefined,
+        studentsCount: undefined,
+        isAllowDuplication: undefined,
+      };
   //뽑을 학생 리스트
-  const [studentsListId, setStudentsListId] = useState(0);
+  const [studentsListId, setStudentsListId] = useState(
+    initialSetting.studentsListId,
+  );
   //뽑을 학생 숫자
-  const [studentsCount, setStudentsCount] = useState(0);
+  const [studentsCount, setStudentsCount] = useState(
+    initialSetting.studentsCount,
+  );
   //중복 선정 상태
-  const [isAllowDuplication, setIsAllowDuplication] = useState(false);
+  const [isAllowDuplication, setIsAllowDuplication] = useState(
+    initialSetting.isAllowDuplication,
+  );
   const { closeModal } = useModal();
 
   const handleChangeStudentsListId = (
