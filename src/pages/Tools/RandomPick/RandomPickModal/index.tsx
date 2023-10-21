@@ -7,9 +7,9 @@ import Button from '@Components/Button';
 import * as S from './style';
 import { MOCK_STUDENTS_LISTS } from '../mock';
 
-const settingString = localStorage.getItem('random-pick-setting');
-
 function RandomPickModal() {
+  const settingString = localStorage.getItem('random-pick-setting');
+
   const initialSetting = settingString
     ? JSON.parse(settingString)
     : {
