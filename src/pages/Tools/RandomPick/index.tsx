@@ -8,15 +8,9 @@ import Button from '@Components/Button';
 import whitebackground from '@Assets/image/background/random-whitebg.png';
 import woodbackground from '@Assets/image/background/random-woodbg.png';
 
-import RandomPickModal from './RandomPickModal';
+import RandomPickModal, { RandomPickSetting } from './RandomPickModal';
 import { MOCK_STUDENTS_LISTS } from './mock';
 import * as S from './style';
-
-type RandomPickSetting = {
-  studentsListId: number | undefined;
-  studentsCount: number | undefined;
-  isAllowDuplication: boolean | undefined;
-};
 
 function RandomPick() {
   const [randomPickSetting, setRandomPickSetting] = useState<RandomPickSetting>(
@@ -163,7 +157,9 @@ function RandomPick() {
           <Button
             size="lg"
             onClick={() => {
-              openModal(<RandomPickModal />);
+              openModal(
+                <RandomPickModal randomPickSetting={randomPickSetting} />,
+              );
             }}
           >
             <AiFillSetting />

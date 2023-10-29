@@ -7,16 +7,22 @@ import Button from '@Components/Button';
 import * as S from './style';
 import { MOCK_STUDENTS_LISTS } from '../mock';
 
-function RandomPickModal() {
-  const settingString = localStorage.getItem('random-pick-setting');
+export type RandomPickSetting = {
+  studentsListId: number | undefined;
+  studentsCount: number | undefined;
+  isAllowDuplication: boolean | undefined;
+};
 
-  const initialSetting = settingString
-    ? JSON.parse(settingString)
-    : {
-        studentsListId: undefined,
-        studentsCount: undefined,
-        isAllowDuplication: undefined,
-      };
+type RandomPickModalProps = {
+  randomPickSetting: RandomPickSetting;
+};
+
+function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
+  const initialSetting = randomPickSetting ?? {
+    studentsListId: undefined,
+    studentsCount: undefined,
+    isAllowDuplication: undefined,
+  };
   //뽑을 학생 리스트
   const [studentsListId, setStudentsListId] = useState(
     initialSetting.studentsListId,
@@ -72,11 +78,15 @@ function RandomPickModal() {
     closeModal();
   };
 
+  console.log(studentsListId);
   return (
     <>
       <S.ModalContainer>
         <S.ListSpan>명렬표</S.ListSpan>
-        <S.ListSelect onChange={handleChangeStudentsListId}>
+        <S.ListSelect
+          value={studentsListId}
+          onChange={handleChangeStudentsListId}
+        >
           <option value={0}>선택</option>
           {MOCK_STUDENTS_LISTS.map(({ id, name }) => (
             <option key={id} value={id}>
@@ -86,13 +96,15 @@ function RandomPickModal() {
         </S.ListSelect>
       </S.ModalContainer>
       <S.ModalContainer>
-        <label htmlFor="theInputNumber">인원</label>
-        <S.PersonInput
-          id="theInputNumber"
-          min={0}
-          step={1}
-          onChange={handleChangeStudentsCount}
-        ></S.PersonInput>
+        <label>
+          인원
+          <S.PersonInput
+            min={0}
+            step={1}
+            value={studentsCount}
+            onChange={handleChangeStudentsCount}
+          />
+        </label>
       </S.ModalContainer>
       <S.ModalContainer>
         중복 허용
