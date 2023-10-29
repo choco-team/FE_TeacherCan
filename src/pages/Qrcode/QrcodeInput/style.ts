@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+// import Button from '@Components/Button';
+// import theme from '@Styles/theme';
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -34,7 +37,7 @@ export const ButtonContainer = styled.div`
   margin-top: 20px;
 `;
 
-export const Button = styled.button`
+export const Button = styled.div`
   padding: 10px 20px;
   font-size: 14px;
   background-color: #f48d8d;
