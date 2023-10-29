@@ -22,38 +22,42 @@ export const ColumnContainer = styled.div<{
   height: ${({ height }) => height};
 `;
 
-export const AccordionContainer = styled.div`
-  ${flexCustom('row', 'flex-start', 'flex-start', '0.5rem')}
-  margin-bottom: 0.5rem;
+export const TabContainer = styled.div`
+  ${flexCustom('row', 'flex-start', 'center', '8px')}
+  width: 100%;
 `;
 
-export const AccordionToggleButton = styled(Button)<{
-  $isOpenAccordion: boolean;
-}>`
+export const ScrollTabButton = styled(Button)`
   ${flexCustom('row', 'center', 'center')}
-  width: 2.4rem;
-  min-width: 2.4rem;
-  height: 2.4rem;
+  margin-top: 0.25rem;
+  width: 2rem;
+  min-width: 2rem;
+  height: 2rem;
   padding: 0;
   border-radius: 50%;
-  transform: ${({ $isOpenAccordion }) => $isOpenAccordion && 'rotate(-180deg)'};
-
-  -webkit-transition: transform 0.3s ease;
-  transition: transform 0.3s ease;
 `;
 
-export const StudentListTitleContainer = styled.div<{
-  $isOpenAccordion: boolean;
-}>`
-  --title-button-line-height: 1.8rem;
+export const ScrollBox = styled.div`
+  width: 100%;
+  padding-bottom: 5px;
+  margin-bottom: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
 
-  ${flexCustom('row', 'flex-start', 'flex-start', '1rem')}
-  row-gap: 0.5rem;
-  flex-wrap: wrap;
-  height: ${({ $isOpenAccordion }) =>
-    $isOpenAccordion
-      ? 'auto'
-      : 'calc(var(--title-button-line-height) + 0.4rem * 2)'};
+  &::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.border.gray};
+    border-radius: 10px;
+  }
+`;
+
+export const StudentListTitleContainer = styled.div`
+  display: flex;
+  column-gap: 0.5rem;
+  width: max-content;
 `;
 
 export const StudentListTitleButton = styled(Button)<{

@@ -1,7 +1,7 @@
 export const MOCK_STUDENT_LISTS = [
   {
     id: 1,
-    name: '3월 6학년 1반 명렬표',
+    name: '3월 6학년 1반 명렬표명렬표명렬표명렬표명렬표',
     isMain: false,
     createdAt: '2023-10-02T11:51:26.815Z',
     updatedAt: '2023-10-02T11:51:26.815Z',

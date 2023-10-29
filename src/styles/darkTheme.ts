@@ -4,7 +4,7 @@ const darkTheme = {
   ...theme,
   text: theme.color.gray[100],
   primaryText: theme.color.gray[800],
-  subText: theme.color.gray[600],
+  subText: theme.color.gray[400],
   grayText: theme.color.gray[500],
   accentText: theme.color.primary[500],
   pageBackground: theme.color.gray[900],
