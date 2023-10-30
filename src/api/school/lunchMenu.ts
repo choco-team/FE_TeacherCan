@@ -11,12 +11,16 @@ export type LunchMenuListRequest = {
   type: 'weekend' | 'day';
 };
 
-export type LunchMenuResponse = LunchMenu;
+export type LunchMenuResponse = {
+  code: number;
+  result: boolean;
+  data: LunchMenu[];
+};
 
 export const getLunchMenuList = ({
   date,
   type,
-}: LunchMenuListRequest): Promise<AxiosResponse<LunchMenuResponse[]>> =>
+}: LunchMenuListRequest): Promise<AxiosResponse<LunchMenuResponse>> =>
   axiosInstance.get(LUNCH_MENU_API, {
     ...queryParams({
       date,

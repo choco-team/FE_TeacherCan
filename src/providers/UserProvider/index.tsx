@@ -22,7 +22,6 @@ import type { PutUpdateUserRequest } from '@Api/user/user';
 type UserInfoContext = UserInfo | null;
 
 type UserInfoActionsContext = {
-  signIn: (userInfo: UserInfoContext) => void;
   signOut: () => void;
   updateUser: (updateFiled: PutUpdateUserRequest) => void;
   isLoading: boolean;
@@ -42,24 +41,23 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   const [main] = route.getPathnames(pathname);
   const token = sessionStorage.getItem('token');
 
-  const { data } = useQuery({
+  const { data, isError } = useQuery({
     queryKey: ['user'],
-    queryFn: () => getUser().then((response) => response.data),
+    queryFn: () => getUser().then((response) => response.data.data),
     enabled: main !== ROUTE_PATH.auth,
   });
 
   const { mutate, isLoading } = useMutation({
     mutationFn: (updateFiled: PutUpdateUserRequest) =>
       putUpdateUser({ ...userInfo, ...updateFiled }).then(
-        (response) => response.data.data,
+        (response) => response.data,
       ),
-    onSuccess: (data) => queryClient.setQueryData<UserInfo>(['user'], data),
+    onSuccess: (data) =>
+      queryClient.setQueryData<UserInfo>(['user'], data.data),
   });
 
   const actions: UserInfoActionsContext = useMemo(
     () => ({
-      signIn: (userInfo: UserInfoContext) => setUserInfo(userInfo),
-
       signOut: () => {
         setUserInfo(null);
         sessionStorage.removeItem('token');
@@ -73,11 +71,11 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   );
 
   useEffect(() => {
-    if (!data) return;
+    if (isError)
+      navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
 
-    if (data.result) actions.signIn(data.data);
-    else navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
-  }, [actions, data, navigate]);
+    if (data) setUserInfo(data);
+  }, [data, isError, navigate]);
 
   useEffect(() => {
     if (!token) {

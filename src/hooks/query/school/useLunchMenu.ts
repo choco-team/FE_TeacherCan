@@ -15,7 +15,7 @@ export const useLunchMenuList = (
     if (!lunchMenuList) return [];
 
     const originsMap = new Map();
-    lunchMenuList
+    lunchMenuList.data
       .flatMap((item) => item.origin)
       .forEach(({ ingredient, place }) => {
         originsMap.set(ingredient, place);
@@ -27,7 +27,7 @@ export const useLunchMenuList = (
   };
 
   return {
-    lunchMenuList: lunchMenuList || [],
+    lunchMenuList: lunchMenuList?.data || [],
     origins: getOrigins(),
     isLoading,
   };
