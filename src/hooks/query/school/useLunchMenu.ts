@@ -9,9 +9,6 @@ export const useLunchMenuList = (
     queryKey: ['lunchMenuList', lunchMenuListRequest],
     queryFn: () =>
       getLunchMenuList(lunchMenuListRequest).then((response) => response.data),
-    retry: 1,
-    refetchOnWindowFocus: false,
-    refetchOnMount: true,
   });
 
   const getOrigins = () => {

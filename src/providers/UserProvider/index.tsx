@@ -12,7 +12,7 @@ import route from '@Utils/route';
 
 import { ROUTE_PATH } from '@Constant/routePath';
 
-import { queryClient } from '@Pages/App';
+import { queryClient } from '@Providers/QueryProvider';
 
 import { UserInfo } from '@Types/user';
 
@@ -46,7 +46,6 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     queryKey: ['user'],
     queryFn: () => getUser().then((response) => response.data),
     enabled: main !== ROUTE_PATH.auth,
-    retry: 0,
   });
 
   const { mutate, isLoading } = useMutation({

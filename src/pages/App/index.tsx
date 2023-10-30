@@ -1,4 +1,3 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useState } from 'react';
 import { PiSunBold, PiMoonStarsBold } from 'react-icons/pi';
@@ -10,6 +9,7 @@ import route from '@Utils/route';
 import { ROUTE_PATH } from '@Constant/routePath';
 
 import ModalProvider from '@Providers/ModalProvider';
+import QueryProvider from '@Providers/QueryProvider';
 import UserProvider from '@Providers/UserProvider';
 
 import GlobalStyle from '@Styles/GlobalStyle';
@@ -19,8 +19,6 @@ import lightTheme from '@Styles/lightTheme';
 import Header from './Header';
 import SideNavLink from './SideNavLink';
 import * as S from './style';
-
-export const queryClient = new QueryClient();
 
 function App() {
   const [isLightTheme, setIsLightTheme] = useState(true);
@@ -34,7 +32,7 @@ function App() {
     <>
       <GlobalStyle />
       <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
-        <QueryClientProvider client={queryClient}>
+        <QueryProvider>
           <UserProvider>
             {main === 'auth' ? (
               <Outlet />
@@ -56,7 +54,7 @@ function App() {
             )}
           </UserProvider>
           <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
+        </QueryProvider>
       </ThemeProvider>
     </>
   );
