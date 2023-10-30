@@ -16,11 +16,8 @@ import { queryClient } from '@Pages/App';
 
 import { UserInfo } from '@Types/user';
 
-import {
-  PutUpdateUserRequest,
-  requestGetUser,
-  requestPutUpdateUser,
-} from '@Api/user/user';
+import { getUser, putUpdateUser } from '@Api/user/user';
+import type { PutUpdateUserRequest } from '@Api/user/user';
 
 type UserInfoContext = UserInfo | null;
 
@@ -47,20 +44,15 @@ const UserProvider = ({ children }: PropsWithChildren) => {
 
   const { data } = useQuery({
     queryKey: ['user'],
-    queryFn: () => requestGetUser().then((response) => response.data),
+    queryFn: () => getUser().then((response) => response.data),
     enabled: main !== ROUTE_PATH.auth,
-    // ErrorBoundary로 이동해야 할까?
-    onError: () => {
-      if (main === ROUTE_PATH.auth) return;
-      navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
-      throw Error('로그인 정보가 없습니다.');
-    },
+    retry: 0,
   });
 
   const { mutate, isLoading } = useMutation({
     mutationFn: (updateFiled: PutUpdateUserRequest) =>
-      requestPutUpdateUser({ ...userInfo, ...updateFiled }).then(
-        (response) => response.data,
+      putUpdateUser({ ...userInfo, ...updateFiled }).then(
+        (response) => response.data.data,
       ),
     onSuccess: (data) => queryClient.setQueryData<UserInfo>(['user'], data),
   });
@@ -82,8 +74,11 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   );
 
   useEffect(() => {
-    if (data) actions.signIn(data);
-  }, [actions, data]);
+    if (!data) return;
+
+    if (data.result) actions.signIn(data.data);
+    else navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
+  }, [actions, data, navigate]);
 
   useEffect(() => {
     if (!token) {

@@ -8,14 +8,19 @@ const USER_URL = '/user/info';
 
 export type PutUpdateUserRequest = Record<string, unknown>;
 
-type UserResponse = UserInfo;
+type UserResponse = {
+  result: boolean;
+  code: number;
+  message: string;
+  data: UserInfo;
+};
 
-export const requestGetUser = (): Promise<AxiosResponse<UserResponse>> =>
+export const getUser = (): Promise<AxiosResponse<UserResponse>> =>
   axiosInstance.get(USER_URL, {
     ...headerToken(),
   });
 
-export const requestPutUpdateUser = (
+export const putUpdateUser = (
   updateFiled: PutUpdateUserRequest,
 ): Promise<AxiosResponse<UserResponse>> =>
   axiosInstance.put(USER_URL, updateFiled, headerToken());

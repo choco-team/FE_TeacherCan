@@ -17,7 +17,6 @@ const router = createBrowserRouter([
   {
     path: ROUTE_PATH.main,
     element: <App />,
-    errorElement: <div>예기치 못한 상황이 발생했어요.</div>,
     children: [
       {
         index: true,
