@@ -27,15 +27,6 @@ export const SmallButton = styled.button<{ isOnClick?: boolean }>`
   padding: 4px;
 `;
 
-export const PersonInput = styled.input`
-  margin: 5px;
-  padding: 4px;
-  background-color: grey;
-  color: white;
-  max-width: 50px;
-  border-radius: 2px;
-`;
-
 export const ListSpan = styled.span`
   margin-right: 5px;
 `;

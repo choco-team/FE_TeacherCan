@@ -3,6 +3,7 @@ import { useState } from 'react';
 import useModal from '@Hooks/useModal';
 
 import Button from '@Components/Button';
+import Input from '@Components/Input';
 
 import * as S from './style';
 import { MOCK_STUDENTS_LISTS } from '../mock';
@@ -97,7 +98,9 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
       <S.ModalContainer>
         <label>
           인원
-          <S.PersonInput
+          <Input
+            size="sm"
+            margin="5px"
             min={0}
             step={1}
             value={studentsCount}
