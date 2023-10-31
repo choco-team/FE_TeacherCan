@@ -78,7 +78,6 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
     closeModal();
   };
 
-  console.log(studentsListId);
   return (
     <>
       <S.ModalContainer>
@@ -126,6 +125,7 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
       <S.SmallButtonWrapper>
         <Button onClick={handleSaveConditions}>저장</Button>
       </S.SmallButtonWrapper>
+      <p>명렬표와 중복 여부를 수정하면 처음부터 다시 학생을 뽑게 됩니다</p>
     </>
   );
 }

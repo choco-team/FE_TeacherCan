@@ -75,7 +75,7 @@ function RandomPick() {
         studentsList.filter((student) => !pickedStudents.includes(student)),
       );
     }
-  }, [studentsList, pickedStudents, duplication]);
+  }, [duplication, pickedStudents]);
 
   //modal에서 선택했던 학생 명단, 수, 중복여부 가져오기
   useEffect(() => {
@@ -88,20 +88,20 @@ function RandomPick() {
     const fetchedStudentsList = MOCK_STUDENTS_LISTS.find(
       ({ id }) => id === randomPickSetting.studentsListId,
     )?.students;
-    const fetchedStudentsCount = randomPickSetting.studentsCount;
     const fetchedIsAllowDuplication = randomPickSetting.isAllowDuplication;
     if (fetchedStudentsList)
       setStudentsList(fetchedStudentsList.map(({ name }) => name));
+
+    setDuplication(fetchedIsAllowDuplication);
+    setPickedStudents([]);
+  }, [randomPickSetting.studentsListId, randomPickSetting.isAllowDuplication]);
+
+  useEffect(() => {
+    const fetchedStudentsCount = randomPickSetting.studentsCount;
     if (fetchedStudentsCount) {
       setCount(fetchedStudentsCount);
     }
-
-    setDuplication(fetchedIsAllowDuplication);
-  }, [
-    randomPickSetting.studentsListId,
-    randomPickSetting.studentsCount,
-    randomPickSetting.isAllowDuplication,
-  ]);
+  }, [randomPickSetting.studentsCount]);
 
   return (
     <S.Layout>
