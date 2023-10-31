@@ -24,58 +24,61 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
     studentsCount: undefined,
     isAllowDuplication: undefined,
   };
-  //뽑을 학생 리스트
-  const [studentsListId, setStudentsListId] = useState(
-    initialSetting.studentsListId,
-  );
-  //뽑을 학생 숫자
-  const [studentsCount, setStudentsCount] = useState(
-    initialSetting.studentsCount,
-  );
-  //중복 선정 상태
-  const [isAllowDuplication, setIsAllowDuplication] = useState(
-    initialSetting.isAllowDuplication,
-  );
+
+  const [settings, setSettings] = useState({
+    studentsListId: initialSetting.studentsListId,
+    studentsCount: initialSetting.studentsCount,
+    isAllowDuplication: initialSetting.isAllowDuplication,
+  });
+
   const { closeModal } = useModal();
 
   const handleChangeStudentsListId = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
     const { value } = event.currentTarget;
-    setStudentsListId(Number(value));
+    setSettings((prevSettings) => ({
+      ...prevSettings,
+      studentsListId: Number(value),
+    }));
   };
 
   const handleChangeStudentsCount = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const { value } = event.currentTarget;
-    setStudentsCount(Number(value));
+    setSettings((prevSettings) => ({
+      ...prevSettings,
+      studentsCount: Number(value),
+    }));
   };
 
   const handleClickDuplication = (
     event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     const { value } = event.currentTarget;
-    setIsAllowDuplication(value === 'YES');
+    setSettings((prevSettings) => ({
+      ...prevSettings,
+      isAllowDuplication: value == 'YES',
+    }));
   };
 
-  const handleSaveConditions = () => {
-    if (!studentsListId) {
+  const handleSaveBtn = () => {
+    if (!settings.studentsListId) {
       alert('명렬표를 선택해주세요.');
       return;
     }
 
-    if (!studentsCount) {
+    if (!settings.studentsCount) {
       alert('뽑을 학생 수를 선택해주세요.');
       return;
     }
 
-    const setting = {
-      studentsListId,
-      studentsCount,
-      isAllowDuplication,
-    };
-    localStorage.setItem('random-pick-setting', JSON.stringify(setting));
+    localStorage.setItem('random-pick-setting', JSON.stringify(settings));
+    closeModal();
+  };
+
+  const handleCancelBtn = () => {
     closeModal();
   };
 
@@ -84,7 +87,7 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
       <S.ModalContainer>
         <S.ListSpan>명렬표</S.ListSpan>
         <S.ListSelect
-          value={studentsListId}
+          value={settings.studentsListId}
           onChange={handleChangeStudentsListId}
         >
           <option value={0}>선택</option>
@@ -103,7 +106,7 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
             margin="5px"
             min={0}
             step={1}
-            value={studentsCount}
+            value={settings.studentsCount}
             onChange={handleChangeStudentsCount}
           />
         </label>
@@ -112,21 +115,22 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
         중복 허용
         <S.SmallButton
           value="YES"
-          isOnClick={isAllowDuplication}
+          isOnClick={settings.isAllowDuplication}
           onClick={handleClickDuplication}
         >
           YES
         </S.SmallButton>
         <S.SmallButton
           value="NO"
-          isOnClick={!isAllowDuplication}
+          isOnClick={!settings.isAllowDuplication}
           onClick={handleClickDuplication}
         >
           NO
         </S.SmallButton>
       </S.ModalContainer>
       <S.SmallButtonWrapper>
-        <Button onClick={handleSaveConditions}>저장</Button>
+        <Button onClick={handleCancelBtn}>취소</Button>
+        <Button onClick={handleSaveBtn}>저장</Button>
       </S.SmallButtonWrapper>
       <p>명렬표와 중복 여부를 수정하면 처음부터 다시 학생을 뽑게 됩니다</p>
     </>
