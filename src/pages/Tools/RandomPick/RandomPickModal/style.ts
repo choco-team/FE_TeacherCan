@@ -9,7 +9,7 @@ export const ModalContainer = styled.div`
 export const SmallButtonWrapper = styled.div`
   display: flex;
   padding: 0;
-  margin-top: 20px;
+  margin-top: 24px;
   justify-content: center;
   align-items: center;
   button {

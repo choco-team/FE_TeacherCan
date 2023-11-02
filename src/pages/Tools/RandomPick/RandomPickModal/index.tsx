@@ -85,12 +85,11 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
   return (
     <>
       <S.ModalContainer>
-        <S.ListSpan>명렬표</S.ListSpan>
         <S.ListSelect
           value={settings.studentsListId}
           onChange={handleChangeStudentsListId}
         >
-          <option value={0}>선택</option>
+          <option value={0}>명렬표 선택</option>
           {MOCK_STUDENTS_LISTS.map(({ id, name }) => (
             <option key={id} value={id}>
               {name}
@@ -100,32 +99,32 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
       </S.ModalContainer>
       <S.ModalContainer>
         <label>
-          인원
           <Input
             size="sm"
             margin="5px"
             min={0}
             step={1}
+            width="24px"
             value={settings.studentsCount}
             onChange={handleChangeStudentsCount}
           />
+          명
         </label>
       </S.ModalContainer>
       <S.ModalContainer>
-        중복 허용
         <S.SmallButton
           value="YES"
           isOnClick={settings.isAllowDuplication}
           onClick={handleClickDuplication}
         >
-          YES
+          학생 중복뽑기
         </S.SmallButton>
         <S.SmallButton
           value="NO"
           isOnClick={!settings.isAllowDuplication}
           onClick={handleClickDuplication}
         >
-          NO
+          뽑힌 학생 제외하기
         </S.SmallButton>
       </S.ModalContainer>
       <S.SmallButtonWrapper>
