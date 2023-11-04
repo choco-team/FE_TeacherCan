@@ -12,14 +12,14 @@ export const authHandlers = [
       return res(
         ctx.status(404),
         ctx.json({ message: '이메일을 다시 확인해주세요.', code: 1104 }),
-        ctx.delay(1000),
+        ctx.delay(300),
       );
 
     if (userPassword !== password)
       return res(
         ctx.status(401),
         ctx.json({ message: '비밀번호를 다시 확인해주세요.', code: 1105 }),
-        ctx.delay(1000),
+        ctx.delay(300),
       );
 
     return res(
@@ -31,7 +31,7 @@ export const authHandlers = [
           token: 'token',
         },
       }),
-      ctx.delay(1000),
+      ctx.delay(300),
     );
   }),
 
@@ -43,7 +43,7 @@ export const authHandlers = [
       return res(
         ctx.status(422),
         ctx.json({ message: '이메일 형식이 올바르지 않아요.', code: 1101 }),
-        ctx.delay(1000),
+        ctx.delay(300),
       );
 
     if (password.length < 8)
@@ -53,10 +53,10 @@ export const authHandlers = [
           message: '비밀번호는 8자 보다 적거나, 너무 일반적인 단어는 안 돼요.',
           code: 1103,
         }),
-        ctx.delay(1000),
+        ctx.delay(300),
       );
 
-    return res(ctx.status(201), ctx.delay(1000));
+    return res(ctx.status(201), ctx.delay(300));
   }),
 
   // 이메일 중복검사
@@ -67,7 +67,7 @@ export const authHandlers = [
       return res(
         ctx.status(422),
         ctx.json({ message: '이메일 형식이 올바르지 않아요.', code: 1101 }),
-        ctx.delay(1000),
+        ctx.delay(300),
       );
 
     if (email !== 'teachercan@gmail.com')
@@ -77,9 +77,9 @@ export const authHandlers = [
           message: '이메일이 이미 존재해요.',
           code: 1102,
         }),
-        ctx.delay(1000),
+        ctx.delay(300),
       );
 
-    return res(ctx.status(200), ctx.delay(1000));
+    return res(ctx.status(200), ctx.delay(300));
   }),
 ];

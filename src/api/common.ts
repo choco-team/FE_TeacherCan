@@ -1,7 +1,7 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 
 const BASE_URL = 'https://teachercan.ssambox.com/api';
-const LOCAL_URL = 'http://localhost:3000/api';
+const LOCAL_URL = 'https://teachercan.ssambox.com/api';
 
 export type ResponseAPIError = {
   code: number;
@@ -38,7 +38,7 @@ class UnknownError extends Error {
   }
 }
 
-const isResponseAPIError = (data: object): data is ResponseAPIError => {
+export const isResponseAPIError = (data: object): data is ResponseAPIError => {
   return 'code' in data && data.code !== 2000;
 };
 
