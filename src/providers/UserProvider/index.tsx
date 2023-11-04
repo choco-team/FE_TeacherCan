@@ -39,12 +39,12 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   const [userInfo, setUserInfo] = useState<UserInfoContext>(null);
 
   const [main] = route.getPathnames(pathname);
-  const token = sessionStorage.getItem('token');
 
-  const { data, isError } = useQuery({
+  const { data } = useQuery({
     queryKey: ['user'],
     queryFn: () => getUser().then((response) => response.data.data),
     enabled: main !== ROUTE_PATH.auth,
+    useErrorBoundary: true,
   });
 
   const { mutate, isLoading } = useMutation({
@@ -54,6 +54,7 @@ const UserProvider = ({ children }: PropsWithChildren) => {
       ),
     onSuccess: (data) =>
       queryClient.setQueryData<UserInfo>(['user'], data.data),
+    useErrorBoundary: true,
   });
 
   const actions: UserInfoActionsContext = useMemo(
@@ -71,18 +72,8 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   );
 
   useEffect(() => {
-    if (isError)
-      navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
-
     if (data) setUserInfo(data);
-  }, [data, isError, navigate]);
-
-  useEffect(() => {
-    if (!token) {
-      navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
-      return;
-    }
-  }, [navigate, token]);
+  }, [data]);
 
   return (
     <UserInfoContext.Provider value={userInfo}>

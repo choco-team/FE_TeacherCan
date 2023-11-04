@@ -1,3 +1,4 @@
+import AuthErrorBoundary from '@Components/ErrorBoundary/AuthErrorBoundary';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useState } from 'react';
 import { PiSunBold, PiMoonStarsBold } from 'react-icons/pi';
@@ -33,26 +34,28 @@ function App() {
       <GlobalStyle />
       <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
         <QueryProvider>
-          <UserProvider>
-            {main === 'auth' ? (
-              <Outlet />
-            ) : (
-              <ModalProvider>
-                <Header pathname={pathname} />
-                <S.DefaultPageLayout>
-                  {pathname !== route.calculatePath([ROUTE_PATH.main]) && (
-                    <SideNavLink pathname={pathname} />
-                  )}
-                  <S.PageWrapper>
-                    <Outlet />
-                  </S.PageWrapper>
-                  <S.ThemeToggleButton handleClick={toggleTheme}>
-                    {isLightTheme ? <PiSunBold /> : <PiMoonStarsBold />}
-                  </S.ThemeToggleButton>
-                </S.DefaultPageLayout>
-              </ModalProvider>
-            )}
-          </UserProvider>
+          <AuthErrorBoundary>
+            <UserProvider>
+              {main === 'auth' ? (
+                <Outlet />
+              ) : (
+                <ModalProvider>
+                  <Header pathname={pathname} />
+                  <S.DefaultPageLayout>
+                    {pathname !== route.calculatePath([ROUTE_PATH.main]) && (
+                      <SideNavLink pathname={pathname} />
+                    )}
+                    <S.PageWrapper>
+                      <Outlet />
+                    </S.PageWrapper>
+                    <S.ThemeToggleButton handleClick={toggleTheme}>
+                      {isLightTheme ? <PiSunBold /> : <PiMoonStarsBold />}
+                    </S.ThemeToggleButton>
+                  </S.DefaultPageLayout>
+                </ModalProvider>
+              )}
+            </UserProvider>
+          </AuthErrorBoundary>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryProvider>
       </ThemeProvider>
