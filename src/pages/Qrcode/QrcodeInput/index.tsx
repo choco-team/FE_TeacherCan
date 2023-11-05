@@ -9,6 +9,9 @@ function QrcodeInput() {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
+  const handleClearClick = () => {
+    setInputValue('');
+  };
 
   const handlePrint = () => {
     // 인쇄 기능 구현 로직 추가
@@ -22,18 +25,24 @@ function QrcodeInput() {
     // 저장 기능 구현 로직 추가
   };
 
-  const isButtonVisible = inputValue.trim() !== ''; // 입력값이 있는지 여부를 판단
+  const isButtonVisible = inputValue.trim() !== '';
 
   return (
     <S.Container>
+      <S.StorageButton onClick={handlePrint}>보관함</S.StorageButton>
+
       <h1>URL 주소를 입력해주세요.</h1>
-      <S.Input
-        type="url"
-        placeholder="www.teachercan.com"
-        value={inputValue}
-        onChange={handleInputChange}
-      />
-      {isButtonVisible && <QRCode value={inputValue} />}
+      <S.InputContainer>
+        <S.Input
+          type="url"
+          placeholder="www.teachercan.com"
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+        <S.ClearButton onClick={handleClearClick}>새QR생성</S.ClearButton>
+      </S.InputContainer>
+
+      {isButtonVisible && <QRCode value={inputValue} size={400} />}
       {isButtonVisible && (
         <S.ButtonContainer>
           <S.Button onClick={handlePrint}>인쇄하기</S.Button>
