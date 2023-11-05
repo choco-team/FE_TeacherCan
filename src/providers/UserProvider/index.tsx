@@ -43,18 +43,18 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   const [userInfo, setUserInfo] = useState<UserInfoContext>(null);
 
   const [main] = route.getPathnames(pathname);
-  // const token = sessionStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
 
   const { data } = useQuery({
     queryKey: ['user'],
     queryFn: () => requestGetUser().then((response) => response.data),
     enabled: main !== ROUTE_PATH.auth,
     // ErrorBoundary로 이동해야 할까?
-    // onError: () => {
-    //   if (main === ROUTE_PATH.auth) return;
-    //   navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
-    //   throw Error('로그인 정보가 없습니다.');
-    // },
+    onError: () => {
+      if (main === ROUTE_PATH.auth) return;
+      navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
+      throw Error('로그인 정보가 없습니다.');
+    },
   });
 
   const { mutate, isLoading } = useMutation({
@@ -85,12 +85,12 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     if (data) actions.signIn(data);
   }, [actions, data]);
 
-  // useEffect(() => {
-  //   if (!token) {
-  //     navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
-  //     return;
-  //   }
-  // }, [navigate, token]);
+  useEffect(() => {
+    if (!token) {
+      navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
+      return;
+    }
+  }, [navigate, token]);
 
   return (
     <UserInfoContext.Provider value={userInfo}>
