@@ -15,10 +15,12 @@ export const InputContainer = styled.div`
   display: flex;
   cursor: pointer;
   align-items: center;
+  width: 100%;
+  justify-content: center;
 `;
 
 export const Input = styled.input`
-  width: auto;
+  width: 60%;
   margin: 20px;
   padding: 10px;
   font-size: 16px;
