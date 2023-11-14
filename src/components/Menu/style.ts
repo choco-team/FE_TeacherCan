@@ -40,7 +40,7 @@ export const MenuList = styled.ul<Required<Pick<MenuProps, 'position'>>>`
 
     cursor: pointer;
 
-    :hover {
+    &:hover {
       background-color: ${(props) => props.theme.hoverBackground.gray};
     }
   }

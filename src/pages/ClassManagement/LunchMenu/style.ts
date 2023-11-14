@@ -10,8 +10,6 @@ export const Layout = styled.div`
   justify-items: start;
   row-gap: 20px;
 
-  padding: 24px;
-
   min-height: 100%;
 
   color: ${(props) => props.theme.text};

@@ -12,20 +12,16 @@ import route from '@Utils/route';
 
 import { ROUTE_PATH } from '@Constant/routePath';
 
-import { queryClient } from '@Pages/App';
+import { queryClient } from '@Providers/QueryProvider';
 
 import { UserInfo } from '@Types/user';
 
-import {
-  PutUpdateUserRequest,
-  requestGetUser,
-  requestPutUpdateUser,
-} from '@Api/user/user';
+import { getUser, putUpdateUser } from '@Api/user/user';
+import type { PutUpdateUserRequest } from '@Api/user/user';
 
 type UserInfoContext = UserInfo | null;
 
 type UserInfoActionsContext = {
-  signIn: (userInfo: UserInfoContext) => void;
   signOut: () => void;
   updateUser: (updateFiled: PutUpdateUserRequest) => void;
   isLoading: boolean;
@@ -43,32 +39,26 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   const [userInfo, setUserInfo] = useState<UserInfoContext>(null);
 
   const [main] = route.getPathnames(pathname);
-  const token = sessionStorage.getItem('token');
 
   const { data } = useQuery({
     queryKey: ['user'],
-    queryFn: () => requestGetUser().then((response) => response.data),
+    queryFn: () => getUser().then((response) => response.data.data),
     enabled: main !== ROUTE_PATH.auth,
-    // ErrorBoundary로 이동해야 할까?
-    onError: () => {
-      if (main === ROUTE_PATH.auth) return;
-      navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
-      throw Error('로그인 정보가 없습니다.');
-    },
+    useErrorBoundary: true,
   });
 
   const { mutate, isLoading } = useMutation({
     mutationFn: (updateFiled: PutUpdateUserRequest) =>
-      requestPutUpdateUser({ ...userInfo, ...updateFiled }).then(
+      putUpdateUser({ ...userInfo, ...updateFiled }).then(
         (response) => response.data,
       ),
-    onSuccess: (data) => queryClient.setQueryData<UserInfo>(['user'], data),
+    onSuccess: (data) =>
+      queryClient.setQueryData<UserInfo>(['user'], data.data),
+    useErrorBoundary: true,
   });
 
   const actions: UserInfoActionsContext = useMemo(
     () => ({
-      signIn: (userInfo: UserInfoContext) => setUserInfo(userInfo),
-
       signOut: () => {
         setUserInfo(null);
         sessionStorage.removeItem('token');
@@ -82,15 +72,8 @@ const UserProvider = ({ children }: PropsWithChildren) => {
   );
 
   useEffect(() => {
-    if (data) actions.signIn(data);
-  }, [actions, data]);
-
-  useEffect(() => {
-    if (!token) {
-      navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
-      return;
-    }
-  }, [navigate, token]);
+    if (data) setUserInfo(data);
+  }, [data]);
 
   return (
     <UserInfoContext.Provider value={userInfo}>
