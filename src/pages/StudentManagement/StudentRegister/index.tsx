@@ -158,7 +158,7 @@ const StudentRegister = () => {
           </S.ColumnContainer>
 
           <S.ColumnContainer gap="8px">
-            <S.RowContainer gap="8px">
+            <S.RowContainer alignItems="stretch" gap="8px">
               {[
                 { tabValue: CREATE_TYPE.xlsx, tabName: '엑셀 파일 업로드' },
                 { tabValue: CREATE_TYPE.manual, tabName: '직접 입력' },

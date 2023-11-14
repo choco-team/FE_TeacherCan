@@ -1,26 +1,8 @@
-import { type CSSProperties } from 'react';
 import styled from 'styled-components';
 
 import Button from '@Components/Button';
 
 import { flexCustom } from '@Styles/common';
-
-export const Layout = styled.div`
-  ${flexCustom('column', 'initial', 'initial')}
-  height: 100%;
-`;
-
-export const ColumnContainer = styled.div<{
-  gap?: CSSProperties['gap'];
-  flex?: CSSProperties['flex'];
-  height?: CSSProperties['height'];
-}>`
-  ${flexCustom('column', 'flex-start', 'flex-start')}
-  gap: ${({ gap = '16px' }) => gap};
-  flex: ${({ flex }) => flex};
-  width: 100%;
-  height: ${({ height }) => height};
-`;
 
 export const TabContainer = styled.div`
   ${flexCustom('row', 'flex-start', 'center', '8px')}
@@ -54,13 +36,13 @@ export const ScrollBox = styled.div`
   }
 `;
 
-export const StudentListTitleContainer = styled.div`
+export const ListContainer = styled.div`
   display: flex;
   column-gap: 0.5rem;
   width: max-content;
 `;
 
-export const StudentListTitleButton = styled(Button)<{
+export const ListButton = styled(Button)<{
   $isSelected: boolean;
 }>`
   ${flexCustom('row', 'center', 'center', '0.25rem')}

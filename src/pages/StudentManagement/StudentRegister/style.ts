@@ -74,6 +74,7 @@ export const TabButton = styled(Button)<{ isOnFocus: boolean }>`
   border-bottom: 2px solid transparent;
   border-color: ${({ isOnFocus, theme }) =>
     isOnFocus ? theme.border.primary : 'transparent'};
+  font-size: 1.6rem;
 
   &:hover,
   &:active {

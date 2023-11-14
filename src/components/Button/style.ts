@@ -28,6 +28,7 @@ export const Button = styled.button<StyledButton>`
   text-align: center;
   font-size: ${(props) => props.fontSize};
   font-weight: ${(props) => props.fontWeight};
+  word-break: keep-all;
   transition:
     background-color 0.3s ease,
     border-color 0.3s ease;
