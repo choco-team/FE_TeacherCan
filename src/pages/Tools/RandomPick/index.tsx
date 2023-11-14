@@ -1,75 +1,107 @@
 import { useEffect, useState } from 'react';
 import { AiOutlineUserAdd, AiFillSetting } from 'react-icons/ai';
-import { useNavigate } from 'react-router-dom';
+
+import useModal from '@Hooks/useModal';
 
 import Button from '@Components/Button';
 
 import whitebackground from '@Assets/image/background/random-whitebg.png';
 import woodbackground from '@Assets/image/background/random-woodbg.png';
 
+import RandomPickModal, { RandomPickSetting } from './RandomPickModal';
+import { MOCK_STUDENTS_LISTS } from './mock';
 import * as S from './style';
 
-// server api 통신으로 불러올 학생 명렬표.
-const MOCK_STUDENTS = [
-  '김학생',
-  '이학생',
-  '박학생',
-  '우학생',
-  '최학생',
-  '조학생',
-  '장학생',
-  '나학생',
-  '다학생',
-  '가학생',
-];
-
 function RandomPick() {
-  const navigate = useNavigate();
+  const [randomPickSetting, setRandomPickSetting] = useState<RandomPickSetting>(
+    {
+      studentsListId: undefined,
+      studentsCount: undefined,
+      isAllowDuplication: undefined,
+    },
+  );
+  //학생 명단
+  const [studentsList, setStudentsList] = useState<string[]>([]);
+  //뽑을 학생 수
+  const [count, setCount] = useState(0);
+  //중복 여부
+  const [duplication, setDuplication] = useState<undefined | boolean>(
+    undefined,
+  );
+  // 뽑힌 학생 명단
+  const [pickedStudents, setPickedStudents] = useState<string[]>([]);
+  // 중복 금지일 때 제외할 학생 명단
 
-  const [chosenStudents, setChosenStudents] = useState<string[]>([]);
-  const [background, setbackground] = useState<'wood' | 'white'>('wood');
+  const { isOpen, openModal } = useModal();
+  const [background, setbackground] = useState<'wood' | 'white'>('white');
 
   const toggleWoodBackground = () => {
     setbackground('wood');
   };
+
   const toggleWhiteBackground = () => {
     setbackground('white');
   };
 
-  const fromResultToSelect = () => {
-    navigate('/tools/random-drawing');
-  };
-
-  const handleClickChoiceButton = () => {
-    // 랜덤으로 섞는 로직
-    const randomNumbers: number[] = [];
-
-    while (randomNumbers.length < 3) {
-      const randomNumber = Math.floor(Math.random() * MOCK_STUDENTS.length);
-
-      if (!randomNumbers.includes(randomNumber)) {
-        randomNumbers.push(randomNumber);
-      }
+  const handlePick = () => {
+    //학생 명단 셔플하기
+    for (let i = studentsList.length - 1; i >= 0; i--) {
+      const randomIndex = Math.floor(Math.random() * (i + 1));
+      [studentsList[i], studentsList[randomIndex]] = [
+        studentsList[randomIndex],
+        studentsList[i],
+      ];
     }
 
-    // 뽑힌 학생을 chosenStudents 상태에 집어 넣는 로직
-    setChosenStudents(
-      MOCK_STUDENTS.filter((_, index) => randomNumbers.includes(index)),
-    );
+    //학생 뽑기
+    if (studentsList.length >= count) {
+      setPickedStudents(studentsList.slice(0, count));
+    } else setPickedStudents(studentsList);
   };
 
+  const handleConfirm = () => {
+    const fetchedStudentsList = MOCK_STUDENTS_LISTS.find(
+      ({ id }) => id === randomPickSetting.studentsListId,
+    )?.students;
+    if (fetchedStudentsList)
+      setStudentsList(fetchedStudentsList.map(({ name }) => name));
+    setPickedStudents([]);
+  };
+
+  //StudentsList 업데이트하기
   useEffect(() => {
-    // api가 완성이 되지 않았어요.
-    // msw 기능을 사용하는데, msw -> 명세가 필요해요.
-    // 나중에 학생 명렬표를 불러오는 api가 생기면 그것을 이용해서 명단을 가져오는 것.
-    // fetch('/randompick/result')
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     const studentNames = Object.values(data.data) as string[];
-    //     setChosenStudents(studentNames);
-    //   })
-    //   .catch((error) => console.error('Error:', error));
-  }, []);
+    if (duplication !== true) {
+      setStudentsList(
+        studentsList.filter((student) => !pickedStudents.includes(student)),
+      );
+    }
+  }, [duplication, pickedStudents]);
+
+  //modal에서 선택했던 학생 명단, 수, 중복여부 가져오기
+  useEffect(() => {
+    if (isOpen) return;
+    const setting = localStorage.getItem('random-pick-setting');
+    if (setting) setRandomPickSetting(JSON.parse(setting));
+  }, [isOpen]);
+
+  useEffect(() => {
+    const fetchedStudentsList = MOCK_STUDENTS_LISTS.find(
+      ({ id }) => id === randomPickSetting.studentsListId,
+    )?.students;
+    const fetchedIsAllowDuplication = randomPickSetting.isAllowDuplication;
+    if (fetchedStudentsList)
+      setStudentsList(fetchedStudentsList.map(({ name }) => name));
+
+    setDuplication(fetchedIsAllowDuplication);
+    setPickedStudents([]);
+  }, [randomPickSetting.studentsListId, randomPickSetting.isAllowDuplication]);
+
+  useEffect(() => {
+    const fetchedStudentsCount = randomPickSetting.studentsCount;
+    if (fetchedStudentsCount) {
+      setCount(fetchedStudentsCount);
+    }
+  }, [randomPickSetting.studentsCount]);
 
   return (
     <S.Layout>
@@ -93,21 +125,43 @@ function RandomPick() {
           </S.BackgroundButtonContainer>
         </S.SelectBackgroundButtonWrapper>
         <S.ResultWrapper color={background == 'wood' ? 'white' : 'black'}>
-          {chosenStudents.length > 0 ? (
+          {pickedStudents.length !== 0 && (
             <p>
-              뽑힌 학생은{' '}
-              <S.ResultSpan>{chosenStudents.join('    ')}</S.ResultSpan> 입니다.
+              <S.ResultSpan>{pickedStudents.join('    ')}</S.ResultSpan>
             </p>
-          ) : (
-            <p>아직 선정이 완료되지 않았습니다.</p>
           )}
+
+          {!localStorage.getItem('random-pick-setting') && (
+            <p>학생 목록을 선택하세요</p>
+          )}
+
+          {studentsList.length === 0 &&
+            localStorage.getItem('random-pick-setting') && (
+              <>
+                <p>
+                  모든 학생을 선정했습니다. 확인을 누르면 처음부터 다시 선정할
+                  수 있습니다.
+                </p>
+
+                <Button onClick={handleConfirm} margin="20px">
+                  확인
+                </Button>
+              </>
+            )}
         </S.ResultWrapper>
         <S.ButtonWrapper>
-          <Button size="lg" onClick={handleClickChoiceButton}>
-            <AiOutlineUserAdd />
-            <div>뽑기</div>
-          </Button>
           <Button size="lg">
+            <AiOutlineUserAdd />
+            <div onClick={handlePick}>뽑기</div>
+          </Button>
+          <Button
+            size="lg"
+            onClick={() => {
+              openModal(
+                <RandomPickModal randomPickSetting={randomPickSetting} />,
+              );
+            }}
+          >
             <AiFillSetting />
             <div>설정</div>
           </Button>
