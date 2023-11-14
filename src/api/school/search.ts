@@ -11,7 +11,11 @@ export type SearchSchoolRequest = {
   pageNumber: number;
 };
 
-type SearchSchoolResponse = SchoolList;
+type SearchSchoolResponse = {
+  code: number;
+  result: boolean;
+  data: SchoolList;
+};
 
 export const getSchoolData = ({
   schoolName,

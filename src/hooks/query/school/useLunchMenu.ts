@@ -9,16 +9,13 @@ export const useLunchMenuList = (
     queryKey: ['lunchMenuList', lunchMenuListRequest],
     queryFn: () =>
       getLunchMenuList(lunchMenuListRequest).then((response) => response.data),
-    retry: 1,
-    refetchOnWindowFocus: false,
-    refetchOnMount: true,
   });
 
   const getOrigins = () => {
     if (!lunchMenuList) return [];
 
     const originsMap = new Map();
-    lunchMenuList
+    lunchMenuList.data
       .flatMap((item) => item.origin)
       .forEach(({ ingredient, place }) => {
         originsMap.set(ingredient, place);
@@ -30,7 +27,7 @@ export const useLunchMenuList = (
   };
 
   return {
-    lunchMenuList: lunchMenuList || [],
+    lunchMenuList: lunchMenuList?.data || [],
     origins: getOrigins(),
     isLoading,
   };

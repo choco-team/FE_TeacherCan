@@ -24,7 +24,6 @@ export type SignInResponse = {
   };
 };
 
-// request 접두사 제거
 export const postSignUp = ({ email, password, nickname }: SignUpRequest) =>
   axiosInstance.post(SIGN_UP_API, { email, password, nickname });
 
