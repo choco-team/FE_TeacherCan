@@ -28,6 +28,7 @@ const theme = {
       900: '#B35900',
     },
     primary: {
+      50: '#fff2f2',
       100: '#ffe3e3',
       300: '#ec9f9f',
       500: '#f48d8d',

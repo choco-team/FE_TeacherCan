@@ -1,26 +1,33 @@
-import { ChangeEvent, useState } from 'react';
+import { DatePicker } from 'calendar-in-react';
+import { useState } from 'react';
+import { BsCalendarCheck } from 'react-icons/bs';
+import styled from 'styled-components';
 
 import useUserInfo from '@Hooks/useUserInfo';
 import useUserInfoAction from '@Hooks/useUserInfoAction';
 
-import dateFunctions from '@Utils/date';
+import format from '@Utils/format';
 
 import Button from '@Components/Button';
 import PageLoading from '@Components/PageLoading';
+
+import theme from '@Styles/theme';
 
 import Menus from './Menus';
 import RegisterSchoolButton from './RegisterSchoolButton';
 import * as S from './style';
 
 function LunchMenu() {
+  const [isOpenDatePicker, setIsOpenDatePicker] = useState(false);
+  const [pickDate, setPickDate] = useState(new Date());
+
   const { userInfo } = useUserInfo();
   const { updateUser } = useUserInfoAction();
   const isLoading = !userInfo;
 
-  const [standardDate, setStandardDate] = useState(dateFunctions.getToday());
-
-  const changeStandardDate = (event: ChangeEvent<HTMLInputElement>) => {
-    setStandardDate(event.target.value);
+  const changeStandardDate = (date: Date) => {
+    setPickDate(date);
+    setIsOpenDatePicker(false);
   };
 
   if (isLoading) return <PageLoading />;
@@ -54,20 +61,55 @@ function LunchMenu() {
         )}
       </div>
       {school ? (
-        <S.StandardDate
-          type="date"
-          value={standardDate}
-          onChange={changeStandardDate}
-          disabled={!school.name}
-        />
+        <>
+          <SearchDateLayout>
+            <span>{format.date(pickDate, '-')}</span>
+            <BsCalendarCheck onClick={() => setIsOpenDatePicker(true)} />
+            {isOpenDatePicker && (
+              <DatePickerLayout>
+                <DatePicker
+                  startDate={pickDate}
+                  onChangeDate={(date) => {
+                    if (!date) return;
+                    changeStandardDate(date);
+                  }}
+                  isOnlyOneDay={true}
+                  themeColor={{
+                    pick: theme.color.primary[100],
+                    hover: theme.color.primary[50],
+                  }}
+                />
+              </DatePickerLayout>
+            )}
+          </SearchDateLayout>
+        </>
       ) : (
         <div></div>
       )}
       <S.BoardLayout>
-        {school ? <Menus date={new Date(standardDate)} /> : <div></div>}
+        {school ? <Menus date={pickDate} /> : <div></div>}
       </S.BoardLayout>
     </S.Layout>
   );
 }
 
 export default LunchMenu;
+
+const SearchDateLayout = styled.div`
+  position: relative;
+
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  svg {
+    cursor: pointer;
+  }
+`;
+
+const DatePickerLayout = styled.div`
+  position: absolute;
+
+  top: 30px;
+  right: 0;
+`;
