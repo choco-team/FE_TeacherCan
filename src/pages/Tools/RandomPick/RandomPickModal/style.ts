@@ -1,42 +1,63 @@
+import { BsShieldExclamation } from 'react-icons/bs';
 import styled from 'styled-components';
 
 import theme from '@Styles/theme';
 
 export const ModalContainer = styled.div`
   padding: 5px;
+  display: flex; /* Use flexbox */
+  align-items: center; /* Align items vertically */
 `;
 
 export const SmallButtonWrapper = styled.div`
   display: flex;
   padding: 0;
   margin-top: 24px;
-  justify-content: center;
-  align-items: center;
+  justify-content: right;
   button {
     margin-right: 5px;
   }
 `;
 
 export const SmallButton = styled.button<{ isOnClick?: boolean }>`
-  background-color: ${({ isOnClick }) =>
-    isOnClick ? theme.color.primary[500] : 'grey'};
+  /* background-color: ${({ isOnClick }) =>
+    isOnClick ? theme.color.gray[500] : 'white'}; */
   border: black;
-  color: white;
+  /* color: ${({ isOnClick }) =>
+    isOnClick ? 'white' : theme.color.gray[500]}; */
+  color: black;
   border-radius: 2px;
-  margin: 5px;
-  padding: 4px;
+  margin-right: 8px;
+  /* padding: 4px; */
 `;
 
 export const ListSpan = styled.span`
-  margin-right: 5px;
+  margin: 5px;
+
+  border-radius: 2px;
+  min-height: 24px;
+  min-width: 96px;
+  padding: 8px;
+  color: black;
 `;
 
 export const ListSelect = styled.select`
-  background-color: grey;
+  border: 1px solid ${theme.color.gray[300]};
   border-radius: 2px;
-  min-height: 24px;
-  color: white;
+  min-height: 32px;
+  color: black;
   align-items: center;
   text-align: center;
   padding: 4px;
+`;
+
+export const BigBsShield = styled(BsShieldExclamation)`
+  width: 20px;
+  height: 20px;
+  margin: 4px;
+  color: #cc0000;
+`;
+
+export const WarningSpan = styled.span`
+  color: #cc0000;
 `;
