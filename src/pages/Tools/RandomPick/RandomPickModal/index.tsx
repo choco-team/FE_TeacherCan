@@ -85,11 +85,17 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
   return (
     <>
       <S.ModalContainer>
+        <S.BigBsShield />
+        <S.WarningSpan>
+          명렬표 또는 중복 여부를 바꾸면 뽑기가 초기화됩니다
+        </S.WarningSpan>
+      </S.ModalContainer>
+      <S.ModalContainer>
         <S.ListSelect
           value={settings.studentsListId}
           onChange={handleChangeStudentsListId}
         >
-          <option value={0}>명렬표 선택</option>
+          <option value={0}>클릭하여 명렬표 선택</option>
           {MOCK_STUDENTS_LISTS.map(({ id, name }) => (
             <option key={id} value={id}>
               {name}
@@ -128,10 +134,14 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
         </S.SmallButton>
       </S.ModalContainer>
       <S.SmallButtonWrapper>
-        <Button onClick={handleCancelBtn}>취소</Button>
-        <Button onClick={handleSaveBtn}>저장</Button>
+        <Button variant={'error'} onClick={handleCancelBtn}>
+          취소
+        </Button>
+        <Button variant={'success'} onClick={handleSaveBtn}>
+          저장
+        </Button>
       </S.SmallButtonWrapper>
-      <p>명렬표와 중복 여부를 수정하면 처음부터 다시 학생을 뽑게 됩니다</p>
+      {/* <p>명렬표와 중복 여부를 수정하면 처음부터 다시 학생을 뽑게 됩니다</p> */}
     </>
   );
 }
