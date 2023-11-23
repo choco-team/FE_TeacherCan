@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BsBrightnessHighFill } from 'react-icons/bs';
 
 import useModal from '@Hooks/useModal';
 
@@ -121,20 +122,25 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
       </S.ModalContainer>
       <S.ModalContainer>
         <S.ListSpan>중복 여부</S.ListSpan>
-        <S.BigBsShield />
+
         <S.SmallButton
           value="YES"
           isOnClick={settings.isAllowDuplication}
           onClick={handleClickDuplication}
         >
+          <S.IconWrapper>
+            <BsBrightnessHighFill />
+          </S.IconWrapper>
           학생 중복뽑기
         </S.SmallButton>
-        <S.BigBsShield />
         <S.SmallButton
           value="NO"
           isOnClick={!settings.isAllowDuplication}
           onClick={handleClickDuplication}
         >
+          <S.IconWrapper>
+            <BsBrightnessHighFill />
+          </S.IconWrapper>
           뽑힌 학생 제외하기
         </S.SmallButton>
       </S.ModalContainer>

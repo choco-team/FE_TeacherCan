@@ -20,6 +20,7 @@ export const SmallButtonWrapper = styled.div`
 `;
 
 export const SmallButton = styled.button<{ isOnClick?: boolean }>`
+  display: flex;
   /* background-color: ${({ isOnClick }) =>
     isOnClick ? theme.color.gray[500] : 'white'}; */
   border: black;
@@ -28,7 +29,12 @@ export const SmallButton = styled.button<{ isOnClick?: boolean }>`
   color: black;
   border-radius: 2px;
   margin-right: 8px;
-  /* padding: 4px; */
+`;
+
+export const IconWrapper = styled.span`
+  display: flex;
+  margin-right: 2px; /* Adjust the margin as needed */
+  align-items: center;
 `;
 
 export const ListSpan = styled.span`
