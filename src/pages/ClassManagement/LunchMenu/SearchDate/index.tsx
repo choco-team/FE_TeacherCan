@@ -1,21 +1,17 @@
-/* eslint-disable no-unused-vars */
 import { DatePicker } from 'calendar-in-react';
 import { useState } from 'react';
 import { BsCalendarCheck } from 'react-icons/bs';
-import styled from 'styled-components';
 
 import format from '@Utils/format';
 
 import theme from '@Styles/theme';
 
+import * as S from './style';
+import { SearchDateProps } from './type';
+
 const datePickerThemeColor = {
   pick: theme.color.primary[100],
   hover: theme.color.primary[50],
-};
-
-type SearchDateProps = {
-  pickDate: Date;
-  changeStandardDate: (date: Date) => void;
 };
 
 function SearchDate({ pickDate, changeStandardDate }: SearchDateProps) {
@@ -32,40 +28,21 @@ function SearchDate({ pickDate, changeStandardDate }: SearchDateProps) {
   const displayDate = format.date(pickDate, '-');
 
   return (
-    <SearchDateLayout>
+    <S.Layout>
       <span>{displayDate}</span>
       <BsCalendarCheck onClick={handleClickCalendarIcon} />
       {isOpenDatePicker && (
-        <DatePickerLayout>
+        <S.DatePickerLayout>
           <DatePicker
             startDate={pickDate}
             onChangeDate={handleChangeDate}
             isOnlyOneDay={true}
             themeColor={datePickerThemeColor}
           />
-        </DatePickerLayout>
+        </S.DatePickerLayout>
       )}
-    </SearchDateLayout>
+    </S.Layout>
   );
 }
 
 export default SearchDate;
-
-const SearchDateLayout = styled.div`
-  position: relative;
-
-  display: flex;
-  gap: 20px;
-  align-items: center;
-
-  svg {
-    cursor: pointer;
-  }
-`;
-
-const DatePickerLayout = styled.div`
-  position: absolute;
-
-  top: 30px;
-  right: 0;
-`;
