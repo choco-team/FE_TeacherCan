@@ -1,4 +1,5 @@
 import { BsShieldExclamation } from 'react-icons/bs';
+import { IoEllipse } from 'react-icons/io5';
 import styled from 'styled-components';
 
 import theme from '@Styles/theme';
@@ -21,15 +22,27 @@ export const SmallButtonWrapper = styled.div`
 
 export const SmallButton = styled.button<{ isOnClick?: boolean }>`
   display: flex;
-  /* background-color: ${({ isOnClick }) =>
-    isOnClick ? theme.color.gray[500] : 'white'}; */
-  border: black;
-  /* color: ${({ isOnClick }) =>
-    isOnClick ? 'white' : theme.color.gray[500]}; */
-  color: black;
+  border: 1px solid white;
   border-radius: 2px;
   margin-right: 8px;
+  padding: 4px;
 `;
+
+// type IoEllipseProps = {
+//   isAllowDuplication: boolean;
+// };
+
+// export const IoEllipseDuplicationYes = styled(
+//   IoEllipse,
+// )< IoEllipseProps>`
+//   color: ${(props) => (props.isAllowDuplication ? 'green' : 'black')};
+// `;
+
+// export const IoEllipseDuplicationNo = styled(
+//   IoEllipse,
+// )< IoEllipseProps>`
+//   color: ${(props) => (props.isAllowDuplication ? 'black' : 'green')};
+// `;
 
 export const IconWrapper = styled.span`
   display: flex;
@@ -49,12 +62,20 @@ export const ListSpan = styled.span`
 
 export const ListSelect = styled.select`
   border: 1px solid ${theme.color.gray[300]};
-  border-radius: 2px;
+  border-radius: 4px;
   min-height: 32px;
   color: black;
+  &:hover {
+    border-color: ${({ theme }) => theme.hoverBorder.gray};
+  }
+
+  &:focus {
+    border-color: ${({ theme }) => theme.border.primary};
+  }
   align-items: center;
   text-align: center;
   padding: 4px;
+  margin-left: 5px;
 `;
 
 export const BigBsShield = styled(BsShieldExclamation)`

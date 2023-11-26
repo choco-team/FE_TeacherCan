@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { BsBrightnessHighFill } from 'react-icons/bs';
+import { IoEllipse } from 'react-icons/io5';
 
 import useModal from '@Hooks/useModal';
 
 import Button from '@Components/Button';
 import Input from '@Components/Input';
+
+import theme from '@Styles/theme';
 
 import * as S from './style';
 import { MOCK_STUDENTS_LISTS } from '../mock';
@@ -129,7 +131,13 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
           onClick={handleClickDuplication}
         >
           <S.IconWrapper>
-            <BsBrightnessHighFill />
+            <IoEllipse
+              style={{
+                color: settings.isAllowDuplication
+                  ? theme.color.primary[300]
+                  : 'black',
+              }}
+            />
           </S.IconWrapper>
           학생 중복뽑기
         </S.SmallButton>
@@ -139,7 +147,13 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
           onClick={handleClickDuplication}
         >
           <S.IconWrapper>
-            <BsBrightnessHighFill />
+            <IoEllipse
+              style={{
+                color: settings.isAllowDuplication
+                  ? 'black'
+                  : theme.color.primary[300],
+              }}
+            />
           </S.IconWrapper>
           뽑힌 학생 제외하기
         </S.SmallButton>
