@@ -1,5 +1,4 @@
 import { BsShieldExclamation } from 'react-icons/bs';
-import { IoEllipse } from 'react-icons/io5';
 import styled from 'styled-components';
 
 import theme from '@Styles/theme';
@@ -26,18 +25,6 @@ export const SmallButton = styled.button<{ isOnClick?: boolean }>`
   border-radius: 2px;
   margin-right: 8px;
   padding: 4px;
-`;
-
-type IoEllipseProps = {
-  isAllowDuplication: boolean;
-};
-
-export const IoEllipseDuplicationYes = styled(IoEllipse)<IoEllipseProps>`
-  color: ${(props) => (props.isAllowDuplication ? 'green' : 'black')};
-`;
-
-export const IoEllipseDuplicationNo = styled(IoEllipse)<IoEllipseProps>`
-  color: ${(props) => (props.isAllowDuplication ? 'black' : 'green')};
 `;
 
 export const IconWrapper = styled.span`
