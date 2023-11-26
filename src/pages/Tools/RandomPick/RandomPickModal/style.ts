@@ -21,7 +21,6 @@ export const SmallButtonWrapper = styled.div`
 
 export const SmallButton = styled.button<{ isOnClick?: boolean }>`
   display: flex;
-  border: 1px solid white;
   border-radius: 2px;
   margin-right: 8px;
   padding: 4px;
