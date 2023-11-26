@@ -7,13 +7,14 @@ const lightTheme = {
   subText: theme.color.gray[400],
   grayText: theme.color.gray[500],
   accentText: theme.color.primary[500],
-  pageBackground: theme.color.gray[100],
-  sectionBackground: theme.color.gray[200],
-  modalBackground: 'rgba(0, 0, 0, 0.65)',
   shadow: {
     100: 'rgba(198, 198, 198, 0.25) 0rem 0.2rem 1.5rem',
     200: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;',
   },
+  pageBackground: theme.color.gray[100],
+  mainBackground: theme.color.gray[50],
+  sectionBackground: theme.color.gray[200],
+  modalBackground: 'rgba(0, 0, 0, 0.65)',
   background: {
     primary: theme.color.primary[500],
     secondary: theme.color.secondary[400],

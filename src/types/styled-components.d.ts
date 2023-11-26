@@ -13,6 +13,7 @@ declare module 'styled-components' {
     grayText: string;
     accentText: string;
     pageBackground: string;
+    mainBackground: string;
     sectionBackground: string;
     modalBackground: string;
     shadow: {
