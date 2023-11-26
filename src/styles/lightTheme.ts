@@ -44,11 +44,11 @@ const lightTheme = {
   },
   activeBackground: {
     primary: theme.color.primary[800],
-    secondary: theme.color.secondary[400],
-    gray: theme.color.gray[200],
-    success: theme.color.success[400],
-    warning: theme.color.warning[400],
-    error: theme.color.error[400],
+    secondary: theme.color.secondary[600],
+    gray: theme.color.gray[600],
+    success: theme.color.success[800],
+    warning: theme.color.warning[700],
+    error: theme.color.error[700],
     orange: theme.color.orange[800],
   },
   selectionBackground: {
