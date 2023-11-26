@@ -20,6 +20,11 @@ function LunchMenu() {
 
   const changeStandardDate = (date: Date) => setPickDate(date);
 
+  const handleDeleteSchool = () =>
+    updateUser({
+      schoolCode: null,
+    });
+
   if (isLoading || updateLoading) return <PageLoading />;
 
   const { school } = userInfo;
@@ -39,14 +44,7 @@ function LunchMenu() {
     <S.Layout>
       <S.TitleContainer>
         <S.SchoolName>{school.name} 급식</S.SchoolName>
-        <Button
-          onClick={() => {
-            updateUser({
-              schoolCode: null,
-            });
-          }}
-          concept="outlined"
-        >
+        <Button onClick={handleDeleteSchool} concept="outlined">
           학교 정보 삭제
         </Button>
       </S.TitleContainer>

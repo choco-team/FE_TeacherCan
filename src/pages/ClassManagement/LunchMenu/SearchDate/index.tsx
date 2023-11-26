@@ -33,7 +33,9 @@ function SearchDate({ pickDate, changeStandardDate }: SearchDateProps) {
   return (
     <S.Layout>
       <span>{displayDate}</span>
-      <BsCalendarCheck onClick={handleClickCalendarIcon} />
+      <button onClick={handleClickCalendarIcon}>
+        <BsCalendarCheck />
+      </button>
       {isOpenDatePicker && (
         <S.DatePickerLayout ref={ref}>
           <DatePicker
