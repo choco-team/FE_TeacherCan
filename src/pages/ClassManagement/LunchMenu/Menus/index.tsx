@@ -2,21 +2,15 @@ import { useLunchMenuList } from '@Hooks/query/school/useLunchMenu';
 
 import dateFunctions from '@Utils/date';
 
-import PageLoading from '@Components/PageLoading';
-
 import * as S from './style';
 import { MenuProps } from './type';
 import MenusInformation from '../MenusInformation';
 
 function Menus({ date }: MenuProps) {
-  const { lunchMenuList, origins, isLoading } = useLunchMenuList({
+  const { lunchMenuList, origins } = useLunchMenuList({
     date: dateFunctions.getToday(date),
     type: 'weekend',
   });
-
-  if (isLoading) {
-    return <PageLoading />;
-  }
 
   if (!lunchMenuList.length) {
     return <S.NoLunch>이번 주 급식 정보가 없어요.</S.NoLunch>;
