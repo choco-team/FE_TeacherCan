@@ -132,11 +132,9 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
         >
           <S.IconWrapper>
             <IoEllipse
-              style={{
-                color: settings.isAllowDuplication
-                  ? theme.color.primary[300]
-                  : 'black',
-              }}
+              color={
+                settings.isAllowDuplication ? theme.color.primary[300] : 'black'
+              }
             />
           </S.IconWrapper>
           학생 중복뽑기
@@ -148,23 +146,19 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
         >
           <S.IconWrapper>
             <IoEllipse
-              style={{
-                color: settings.isAllowDuplication
-                  ? 'black'
-                  : theme.color.primary[300],
-              }}
+              color={
+                settings.isAllowDuplication ? 'black' : theme.color.primary[300]
+              }
             />
           </S.IconWrapper>
           뽑힌 학생 제외하기
         </S.SmallButton>
       </S.ModalContainer>
       <S.SmallButtonWrapper>
-        <Button variant={'error'} onClick={handleCancelBtn}>
+        <Button concept="text" variant="gray" onClick={handleCancelBtn}>
           취소
         </Button>
-        <Button variant={'success'} onClick={handleSaveBtn}>
-          저장
-        </Button>
+        <Button onClick={handleSaveBtn}>저장</Button>
       </S.SmallButtonWrapper>
     </>
   );

@@ -28,25 +28,21 @@ export const SmallButton = styled.button<{ isOnClick?: boolean }>`
   padding: 4px;
 `;
 
-// type IoEllipseProps = {
-//   isAllowDuplication: boolean;
-// };
+type IoEllipseProps = {
+  isAllowDuplication: boolean;
+};
 
-// export const IoEllipseDuplicationYes = styled(
-//   IoEllipse,
-// )< IoEllipseProps>`
-//   color: ${(props) => (props.isAllowDuplication ? 'green' : 'black')};
-// `;
+export const IoEllipseDuplicationYes = styled(IoEllipse)<IoEllipseProps>`
+  color: ${(props) => (props.isAllowDuplication ? 'green' : 'black')};
+`;
 
-// export const IoEllipseDuplicationNo = styled(
-//   IoEllipse,
-// )< IoEllipseProps>`
-//   color: ${(props) => (props.isAllowDuplication ? 'black' : 'green')};
-// `;
+export const IoEllipseDuplicationNo = styled(IoEllipse)<IoEllipseProps>`
+  color: ${(props) => (props.isAllowDuplication ? 'black' : 'green')};
+`;
 
 export const IconWrapper = styled.span`
   display: flex;
-  margin-right: 2px; /* Adjust the margin as needed */
+  margin-right: 2px;
   align-items: center;
 `;
 
@@ -74,7 +70,7 @@ export const ListSelect = styled.select`
   }
   align-items: center;
   text-align: center;
-  padding: 4px;
+  padding: 8px 12px;
   margin-left: 5px;
 `;
 
