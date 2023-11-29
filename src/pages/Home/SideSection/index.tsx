@@ -1,3 +1,4 @@
+import SkeletonSummaryList from '@Components/SummaryList/SkeletonSummaryList';
 import { Suspense } from 'react';
 
 import useUserInfo from '@Hooks/useUserInfo';
@@ -17,7 +18,7 @@ function SideSection({ today }: SideSectionProps) {
     <S.SideSection>
       <VacationDate season="여름" date={100} />
       <HomeMemo />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<SkeletonSummaryList title="오늘의 급식 메뉴" />}>
         {school && <TodayLunchMenu today={today} />}
       </Suspense>
     </S.SideSection>
