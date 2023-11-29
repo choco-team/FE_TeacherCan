@@ -11,7 +11,7 @@ export const Input = styled.input<T.StyledInput>`
   margin: ${({ margin = '0' }) => margin};
   border: ${({ theme, border = `1px solid ${theme.border.gray}` }) => border};
   border-radius: ${({ borderRadius = '5px' }) => borderRadius};
-  background-color: ${({ theme, backgroundColor = theme.background.gray }) =>
+  background-color: ${({ theme, backgroundColor = theme.mainBackground }) =>
     backgroundColor};
   color: ${({ theme, color = theme.text }) => color};
   font-size: ${({ $size, fontSize = $size === 'sm' ? '1.4rem' : 'inherit' }) =>
