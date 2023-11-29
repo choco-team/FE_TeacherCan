@@ -97,9 +97,9 @@ export const Select = styled.select`
   min-width: 6rem;
   width: 8rem;
   padding: 0.8rem 1.2rem;
-  border: 1px solid ${({ theme }) => theme.border.gray};
+  border: 1px solid ${({ theme }) => theme.hoverBorder.gray};
   border-radius: 5px;
-  background-color: ${({ theme }) => theme.background.gray};
+  background-color: ${({ theme }) => theme.mainBackground};
   color: ${({ theme }) => theme.grayText};
   text-align: center;
 `;

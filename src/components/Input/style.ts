@@ -9,7 +9,8 @@ export const Input = styled.input<T.StyledInput>`
   min-width: ${({ minWidth = '120px' }) => minWidth};
   padding: ${({ dense, padding = dense ? '8px' : '16px' }) => padding};
   margin: ${({ margin = '0' }) => margin};
-  border: ${({ theme, border = `1px solid ${theme.border.gray}` }) => border};
+  border: ${({ theme, border = `1px solid ${theme.hoverBorder.gray}` }) =>
+    border};
   border-radius: ${({ borderRadius = '5px' }) => borderRadius};
   background-color: ${({ theme, backgroundColor = theme.mainBackground }) =>
     backgroundColor};

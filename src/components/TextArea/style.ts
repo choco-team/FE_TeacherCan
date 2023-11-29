@@ -16,7 +16,8 @@ export const TextArea = styled.textarea<T.StyledTextArea>`
   min-width: ${({ minWidth = '120px' }) => minWidth};
   padding: ${({ dense, padding = dense ? '8px' : '16px' }) => padding};
   margin: ${({ margin = '0' }) => margin};
-  border: ${({ theme, border = `1px solid ${theme.border.gray}` }) => border};
+  border: ${({ theme, border = `1px solid ${theme.hoverBorder.gray}` }) =>
+    border};
   border-width: ${({ borderWidth }) => borderWidth};
   border-style: ${({ borderStyle }) => borderStyle};
   border-radius: ${({ borderRadius = '5px' }) => borderRadius};
