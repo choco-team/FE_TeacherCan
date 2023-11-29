@@ -28,10 +28,38 @@ export const DefaultButton: Story = {
   },
 };
 
+export const SecondaryButton: Story = {
+  args: {
+    children: '버튼',
+    variant: 'secondary',
+  },
+};
+
+export const GrayButton: Story = {
+  args: {
+    children: '버튼',
+    variant: 'gray',
+  },
+};
+
 export const SuccessButton: Story = {
   args: {
     children: '버튼',
     variant: 'success',
+  },
+};
+
+export const WarningButton: Story = {
+  args: {
+    children: '버튼',
+    variant: 'warning',
+  },
+};
+
+export const ErrorButton: Story = {
+  args: {
+    children: '버튼',
+    variant: 'error',
   },
 };
 

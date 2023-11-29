@@ -9,7 +9,7 @@ export const Layout = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 
-  background-color: ${(props) => props.theme.background.gray};
+  background-color: ${(props) => props.theme.mainBackground};
   border-bottom: 1px solid ${(props) => props.theme.sectionBackground};
 
   z-index: 1;

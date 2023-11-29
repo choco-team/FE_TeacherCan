@@ -20,7 +20,7 @@ export const TextArea = styled.textarea<T.StyledTextArea>`
   border-width: ${({ borderWidth }) => borderWidth};
   border-style: ${({ borderStyle }) => borderStyle};
   border-radius: ${({ borderRadius = '5px' }) => borderRadius};
-  background-color: ${({ theme, backgroundColor = theme.background.gray }) =>
+  background-color: ${({ theme, backgroundColor = theme.mainBackground }) =>
     backgroundColor};
   color: ${({ theme, color = theme.text }) => color};
   font-size: ${({ $size, fontSize = $size === 'sm' ? '1.4rem' : 'inherit' }) =>
