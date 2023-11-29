@@ -84,5 +84,5 @@ const ModalContainer = styled.div`
   padding: 20px;
   border-radius: 8px;
 
-  background-color: ${(props) => props.theme.background.gray};
+  background-color: ${(props) => props.theme.mainBackground};
 `;
