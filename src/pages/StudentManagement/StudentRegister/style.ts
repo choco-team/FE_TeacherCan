@@ -75,6 +75,7 @@ export const TabButton = styled(Button)<{ isOnFocus: boolean }>`
   border-color: ${({ isOnFocus, theme }) =>
     isOnFocus ? theme.border.primary : 'transparent'};
   font-size: 1.6rem;
+  width: 50%;
 
   &:hover,
   &:active {
@@ -157,4 +158,5 @@ export const GenderButton = styled(Button)<{ position: 'left' | 'right' }>`
 
 export const CreateButton = styled(Button)`
   align-self: end;
+  min-width: 120px;
 `;

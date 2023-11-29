@@ -1,4 +1,4 @@
-import { css, useTheme } from 'styled-components';
+import { css } from 'styled-components';
 
 import * as S from './style';
 import type { Button } from './type';
@@ -11,8 +11,6 @@ function Button({
   children,
   ...props
 }: React.PropsWithChildren<Button>) {
-  const theme = useTheme();
-  console.log(theme);
   return (
     <S.Button
       variant={variant}
