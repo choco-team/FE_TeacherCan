@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import theme from '@Styles/theme';
 
+import { TEXTAREA_THEME } from './constant';
 import * as T from './type';
 
 export const BORDER_STYLE = {
@@ -10,45 +11,30 @@ export const BORDER_STYLE = {
 } as const;
 
 export const TextArea = styled.textarea<T.StyledTextArea>`
-  width: ${({ width = '100%' }) => width};
-  max-width: ${({ $size, maxWidth = $size === 'sm' ? '240px' : '480px' }) =>
-    maxWidth};
-  min-width: ${({ minWidth = '120px' }) => minWidth};
-  padding: ${({ dense, padding = dense ? '8px' : '16px' }) => padding};
-  margin: ${({ margin = '0' }) => margin};
-  border: ${({ theme, border = `1px solid ${theme.hoverBorder.gray}` }) =>
-    border};
-  border-width: ${({ borderWidth }) => borderWidth};
-  border-style: ${({ borderStyle }) => borderStyle};
-  border-radius: ${({ borderRadius = '5px' }) => borderRadius};
-  background-color: ${({ theme, backgroundColor = theme.mainBackground }) =>
-    backgroundColor};
-  color: ${({ theme, color = theme.text }) => color};
-  font-size: ${({ $size, fontSize = $size === 'sm' ? '1.4rem' : 'inherit' }) =>
-    fontSize};
+  ${({
+    theme,
+    width = '100%',
+    $size,
+    maxWidth = $size === 'sm' ? '240px' : '480px',
+    minWidth = '120px',
+    dense,
+    padding = dense ? '8px' : '16px',
+    borderWidth,
+    borderStyle,
+    borderRadius,
+    fontSize = $size === 'sm' ? '1.4rem' : 'inherit',
+  }) => css`
+    ${TEXTAREA_THEME[theme.name]}
 
-  &:hover {
-    border-color: ${({ theme }) => theme.hoverBorder.gray};
-  }
-
-  &:focus {
-    border-color: ${({ theme }) => theme.border.primary};
-  }
-
-  &::placeholder {
-    color: ${({ theme }) => theme.hoverBorder.gray};
-  }
-
-  &:disabled {
-    background-color: ${({ theme }) => theme.background.disabled};
-    color: ${({ theme }) => theme.subText};
-  }
-
-  &:read-only,
-  &:disabled {
-    &:hover,
-    &:focus {
-      border-color: ${({ theme }) => theme.border.gray};
-    }
-  }
+    width: ${width};
+    max-width: ${maxWidth};
+    min-width: ${minWidth};
+    padding: ${padding};
+    border-width: ${borderWidth};
+    border-style: ${borderStyle};
+    border-radius: ${borderRadius};
+    background-color: ${theme.mainBackground};
+    color: ${theme.text};
+    font-size: ${fontSize};
+  `}
 `;
