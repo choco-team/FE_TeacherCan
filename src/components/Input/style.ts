@@ -21,7 +21,7 @@ export const Input = styled.input<T.StyledInput>`
     padding: ${padding};
     border-radius: ${borderRadius};
     background-color: ${theme.mainBackground};
-    color: ${theme.color};
+    color: ${theme.text};
     font-size: ${fontSize};
 
     ${INPUT_THEME[theme.name]};

@@ -35,18 +35,18 @@ export const INPUT_THEME: Record<ThemeName, RuleSet> = {
   `,
 
   dark: css`
-    border: ${`1px solid ${theme.color.gray[700]}`};
+    border: ${`1px solid ${theme.color.gray[600]}`};
 
     &:hover {
-      border-color: ${theme.color.gray[700]};
+      border-color: ${theme.color.gray[500]};
     }
 
-    &:hover {
+    &:focus {
       border-color: ${theme.color.primary[500]};
     }
 
     &::placeholder {
-      color: ${theme.color.gray[700]};
+      color: ${theme.color.gray[600]};
     }
 
     &:disabled {
