@@ -112,18 +112,22 @@ function RandomPick() {
         }
       >
         <S.SelectBackgroundButtonWrapper justifyContent="space-between">
-          <S.BackgroundButtonContainer>
-            <S.WoodBackgroundButton
-              onClick={toggleWoodBackground}
-              backgroundColor="#007200"
-              hoverBackground="#14540d"
-            />
-            <S.WoodBackgroundButton
-              onClick={toggleWhiteBackground}
-              backgroundColor="white"
-              hoverBackground="#ece6cc"
-            />
-          </S.BackgroundButtonContainer>
+          <S.WoodBackgroundButton
+            onClick={toggleWoodBackground}
+            backgroundColor="#007200"
+            hoverBackground="#14540d"
+            textColor="white"
+          >
+            G
+          </S.WoodBackgroundButton>
+          <S.WoodBackgroundButton
+            onClick={toggleWhiteBackground}
+            backgroundColor="white"
+            hoverBackground="#ece6cc"
+            textColor="black"
+          >
+            W
+          </S.WoodBackgroundButton>
         </S.SelectBackgroundButtonWrapper>
         <S.ResultWrapper color={background == 'wood' ? 'white' : 'black'}>
           {pickedStudents.length !== 0 && (

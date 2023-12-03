@@ -68,6 +68,7 @@ export const BackgroundButtonContainer = styled.div`
 interface backgroundButtonProps {
   backgroundColor: string;
   hoverBackground: string;
+  textColor: string;
 }
 
 export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
@@ -79,6 +80,7 @@ export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
   border-radius: 50%;
   background-color: ${(props) => props.backgroundColor};
   border-color: ${(props) => props.backgroundColor};
+  color: ${(props) => props.textColor};
   &:hover {
     background-color: ${(props) => props.hoverBackground};
   }

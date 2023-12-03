@@ -1,9 +1,12 @@
 import { useState } from 'react';
+import { IoEllipse, IoEllipseOutline } from 'react-icons/io5';
 
 import useModal from '@Hooks/useModal';
 
 import Button from '@Components/Button';
 import Input from '@Components/Input';
+
+import theme from '@Styles/theme';
 
 import * as S from './style';
 import { MOCK_STUDENTS_LISTS } from '../mock';
@@ -85,11 +88,18 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
   return (
     <>
       <S.ModalContainer>
+        <S.BigBsShield />
+        <S.WarningSpan>
+          명렬표 또는 중복 여부를 바꾸면 뽑기가 초기화됩니다
+        </S.WarningSpan>
+      </S.ModalContainer>
+      <S.ModalContainer>
+        <S.ListSpan>명렬표 선택</S.ListSpan>
         <S.ListSelect
           value={settings.studentsListId}
           onChange={handleChangeStudentsListId}
         >
-          <option value={0}>명렬표 선택</option>
+          <option value={0}>클릭하여 명렬표 선택</option>
           {MOCK_STUDENTS_LISTS.map(({ id, name }) => (
             <option key={id} value={id}>
               {name}
@@ -98,6 +108,7 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
         </S.ListSelect>
       </S.ModalContainer>
       <S.ModalContainer>
+        <S.ListSpan>학생 수 선택</S.ListSpan>
         <label>
           <Input
             size="sm"
@@ -112,11 +123,20 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
         </label>
       </S.ModalContainer>
       <S.ModalContainer>
+        <S.ListSpan>중복 여부</S.ListSpan>
+
         <S.SmallButton
           value="YES"
           isOnClick={settings.isAllowDuplication}
           onClick={handleClickDuplication}
         >
+          <S.IconWrapper>
+            {settings.isAllowDuplication ? (
+              <IoEllipse color={theme.color.primary[300]} />
+            ) : (
+              <IoEllipseOutline />
+            )}
+          </S.IconWrapper>
           학생 중복뽑기
         </S.SmallButton>
         <S.SmallButton
@@ -124,14 +144,22 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
           isOnClick={!settings.isAllowDuplication}
           onClick={handleClickDuplication}
         >
+          <S.IconWrapper>
+            {settings.isAllowDuplication ? (
+              <IoEllipseOutline />
+            ) : (
+              <IoEllipse color={theme.color.primary[300]} />
+            )}
+          </S.IconWrapper>
           뽑힌 학생 제외하기
         </S.SmallButton>
       </S.ModalContainer>
       <S.SmallButtonWrapper>
-        <Button onClick={handleCancelBtn}>취소</Button>
+        <Button concept="text" variant="gray" onClick={handleCancelBtn}>
+          취소
+        </Button>
         <Button onClick={handleSaveBtn}>저장</Button>
       </S.SmallButtonWrapper>
-      <p>명렬표와 중복 여부를 수정하면 처음부터 다시 학생을 뽑게 됩니다</p>
     </>
   );
 }
