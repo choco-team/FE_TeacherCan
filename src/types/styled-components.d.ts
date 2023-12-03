@@ -1,5 +1,5 @@
 import 'styled-components';
-import { Variant } from './style';
+import { ThemeName, Variant } from './style';
 
 declare module 'styled-components' {
   export interface Theme {
@@ -8,6 +8,7 @@ declare module 'styled-components' {
 
   export interface DefaultTheme extends Theme {
     text: string;
+    name: ThemeName;
     primaryText: string;
     subText: string;
     grayText: string;
@@ -20,13 +21,6 @@ declare module 'styled-components' {
       100: string;
       200: string;
     };
-    background: Partial<Record<Variant, string>> & {
-      disabled?: string;
-      orange?: string;
-    };
-    border: Partial<Record<Variant, string>>;
-    hoverBackground: Partial<Record<Variant, string>>;
-    activeBackground: Partial<Record<Variant, string>>;
     selectionBackground: Partial<Record<Variant, string>>;
     hoverBorder: Partial<Record<Variant, string>>;
   }
