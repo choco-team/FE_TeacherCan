@@ -8,7 +8,8 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
-  padding: 20px;
+  padding: 10px;
+  width: 100%;
 `;
 
 export const InputContainer = styled.div`
@@ -66,7 +67,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const Button = styled.div`
-  padding: 10px 20px;
+  padding: 10px;
   font-size: 14px;
   background-color: #f48d8d;
   color: white;
@@ -89,6 +90,55 @@ export const StorageButton = styled.div`
   margin-left: auto;
   display: flex;
   cursor: pointer;
+
+  &:hover {
+    background-color: #ff6f61;
+  }
+`;
+
+export const ModalContent = styled.div`
+  background-color: white;
+  max-width: 80%;
+  max-height: 80%;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    margin-bottom: 20px;
+  }
+`;
+
+export const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+`;
+
+export const CloseButton = styled.button`
+  background-color: #f48d8d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
 
   &:hover {
     background-color: #ff6f61;
