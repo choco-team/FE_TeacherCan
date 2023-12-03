@@ -9,7 +9,7 @@ import { ROUTE_PATH } from '@Constant/routePath';
 
 import Button from '@Components/Button';
 
-import { LUNCH_MENU_GUIDES } from './constant';
+import { LUNCH_MENU_GUIDES } from './constants';
 import * as S from './style';
 import { MenusInformationProps } from './type';
 import AllergyModal from '../AllergyModal';

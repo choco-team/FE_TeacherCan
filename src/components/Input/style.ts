@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { INPUT_THEME } from './constant';
+import { INPUT_THEME } from './constants';
 import * as T from './type';
 
 export const Input = styled.input<T.StyledInput>`
