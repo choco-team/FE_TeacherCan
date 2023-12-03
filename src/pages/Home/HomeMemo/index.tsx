@@ -1,3 +1,5 @@
+import { css } from 'styled-components';
+
 import Button from '@Components/Button';
 import TextArea from '@Components/TextArea';
 
@@ -12,14 +14,36 @@ function HomeMemo() {
     <S.Layout>
       <S.HeaderContainer>
         <S.Label>메모</S.Label>
-        <Button handleClick={handleClick} fontSize="1.4rem">
+        <Button
+          onClick={handleClick}
+          $style={css`
+            font-size: 1.4rem;
+          `}
+        >
           저장목록
         </Button>
       </S.HeaderContainer>
-      <TextArea placeholder="메모를 남겨주세요." border="dashed" rows={4} />
+      <TextArea
+        placeholder="메모를 남겨주세요."
+        borderStyle="dashed"
+        borderWidth="2px"
+        rows={4}
+      />
       <S.ButtonContainer>
-        <Button fontSize="1.4rem">취소</Button>
-        <Button fontSize="1.4rem">저장</Button>
+        <Button
+          $style={css`
+            font-size: 1.4rem;
+          `}
+        >
+          취소
+        </Button>
+        <Button
+          $style={css`
+            font-size: 1.4rem;
+          `}
+        >
+          저장
+        </Button>
       </S.ButtonContainer>
     </S.Layout>
   );

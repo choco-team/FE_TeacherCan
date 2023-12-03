@@ -1,22 +1,23 @@
 import { AiOutlineUsergroupAdd } from 'react-icons/ai';
-import { BiBowlRice, BiTimer } from 'react-icons/bi';
-import {
-  BsCalendarWeek,
-  BsNewspaper,
-  BsQrCodeScan,
-  BsSticky,
-} from 'react-icons/bs';
-import { CgReorder } from 'react-icons/cg';
-import { CiViewTimeline } from 'react-icons/ci';
-import { FaPeopleCarry } from 'react-icons/fa';
+import { BiBowlRice } from 'react-icons/bi';
+// import {
+//   BsCalendarWeek,
+//   BsNewspaper,
+//   BsQrCodeScan,
+//   BsSticky,
+// } from 'react-icons/bs';
+// import { CgReorder } from 'react-icons/cg';
+// import { CiViewTimeline } from 'react-icons/ci';
+// import { FaPeopleCarry } from 'react-icons/fa';
 import { GiCardRandom } from 'react-icons/gi';
-import { GoReport } from 'react-icons/go';
-import { IoInformationCircleOutline } from 'react-icons/io5';
-import { MdOutlineFavoriteBorder } from 'react-icons/md';
-import { RiCalendarTodoLine } from 'react-icons/ri';
-import { TbWriting, TbExchange, TbMoodKid } from 'react-icons/tb';
-import { TiWeatherWindyCloudy } from 'react-icons/ti';
-import { VscSymbolProperty } from 'react-icons/vsc';
+// import { GoReport } from 'react-icons/go';
+// import { IoInformationCircleOutline } from 'react-icons/io5';
+// import { MdOutlineFavoriteBorder } from 'react-icons/md';
+// import { RiCalendarTodoLine } from 'react-icons/ri';
+// import { TbWriting, TbExchange, TbMoodKid } from 'react-icons/tb';
+import { TbMoodKid } from 'react-icons/tb';
+// import { TiWeatherWindyCloudy } from 'react-icons/ti';
+// import { VscSymbolProperty } from 'react-icons/vsc';
 
 import type { Categories, RoutePath } from '@Types/route';
 

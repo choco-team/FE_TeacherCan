@@ -1,6 +1,7 @@
 import { HiOutlineBell, HiUserCircle } from 'react-icons/hi';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
+import { css } from 'styled-components';
 
 import useUserInfoAction from '@Hooks/useUserInfoAction';
 
@@ -15,7 +16,13 @@ function HeaderBadge({ username, alarm = false, isLoading }: HeaderBadge) {
 
   const UserButtonTrigger = () => {
     return (
-      <Button borderRadius="20px" padding="5px 10px" fontWeight="400">
+      <Button
+        $style={css`
+          border-radius: 20px;
+          padding: 5px 10px;
+          font-weight: 400;
+        `}
+      >
         <S.UserNameWrapper>
           <HiUserCircle />
           <S.UserName>{username}</S.UserName>
@@ -28,7 +35,13 @@ function HeaderBadge({ username, alarm = false, isLoading }: HeaderBadge) {
   if (isLoading)
     return (
       <S.Layout>
-        <Button borderRadius="20px" padding="5px 10px" fontWeight="400">
+        <Button
+          $style={css`
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-weight: 400;
+          `}
+        >
           <S.LoadingText>Loading</S.LoadingText>
         </Button>
       </S.Layout>

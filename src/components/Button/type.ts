@@ -1,36 +1,19 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import { Variant } from 'src/types/style';
+import { RuleSet } from 'styled-components';
+
+type ButtonSize = 'sm' | 'md' | 'lg' | 'wide';
+type ButtonConcept = 'text' | 'contained' | 'outlined';
 
 type Button = {
-  className?: string;
   variant?: Variant;
-  concept?: 'text' | 'contained' | 'outlined';
-  size?: 'sm' | 'md' | 'lg' | 'narrow' | 'wide';
-  width?: string;
-  fullWidth?: boolean;
-  minWidth?: string;
-  margin?: string;
-  border?: string;
-  borderRadius?: string;
-  padding?: string;
-  handleClick?: () => void;
-  color?: string;
-  fontSize?: string;
-  fontWeight?: string;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+  concept?: ButtonConcept;
+  size?: ButtonSize;
+  $style?: RuleSet;
+} & ComponentPropsWithoutRef<'button'>;
 
-type StyledButton = {
-  variant: Variant;
-  concept: 'text' | 'contained' | 'outlined';
-  size: 'sm' | 'md' | 'lg' | 'narrow' | 'wide';
-  width: string;
-  fullWidth: boolean;
-  minWidth: string;
-  borderRadius: string;
-  padding: string;
-  margin: string;
-  fontSize: string;
-  fontWeight: string;
-};
+type StyledButton = Required<
+  Pick<Button, 'variant' | 'concept' | 'size' | '$style'>
+>;
 
-export type { Button, StyledButton };
+export type { Button, StyledButton, ButtonSize };

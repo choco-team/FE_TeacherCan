@@ -1,3 +1,5 @@
+import AuthErrorBoundary from '@Components/ErrorBoundary/AuthErrorBoundary';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useState } from 'react';
 import { PiSunBold, PiMoonStarsBold } from 'react-icons/pi';
 import { Outlet, useLocation } from 'react-router-dom';
@@ -8,6 +10,8 @@ import route from '@Utils/route';
 import { ROUTE_PATH } from '@Constant/routePath';
 
 import ModalProvider from '@Providers/ModalProvider';
+import QueryProvider from '@Providers/QueryProvider';
+import UserProvider from '@Providers/UserProvider';
 
 import GlobalStyle from '@Styles/GlobalStyle';
 import darkTheme from '@Styles/darkTheme';
@@ -23,37 +27,37 @@ function App() {
   const { pathname } = useLocation();
   const [main] = route.getPathnames(pathname);
 
-  if (main === 'auth') {
-    return (
-      <>
-        <GlobalStyle />
-        <ThemeProvider theme={lightTheme}>
-          <Outlet />
-        </ThemeProvider>
-      </>
-    );
-  }
-
   const toggleTheme = () => setIsLightTheme((prev) => !prev);
 
   return (
     <>
       <GlobalStyle />
       <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
-        <ModalProvider>
-          <Header pathname={pathname} />
-          <S.DefaultPageLayout>
-            {pathname !== route.calculatePath([ROUTE_PATH.main]) && (
-              <SideNavLink pathname={pathname} />
-            )}
-            <S.PageWrapper>
-              <Outlet />
-            </S.PageWrapper>
-            <S.ThemeToggleButton handleClick={toggleTheme}>
-              {isLightTheme ? <PiSunBold /> : <PiMoonStarsBold />}
-            </S.ThemeToggleButton>
-          </S.DefaultPageLayout>
-        </ModalProvider>
+        <QueryProvider>
+          <AuthErrorBoundary>
+            <UserProvider>
+              {main === 'auth' ? (
+                <Outlet />
+              ) : (
+                <ModalProvider>
+                  <Header pathname={pathname} />
+                  <S.DefaultPageLayout>
+                    {pathname !== route.calculatePath([ROUTE_PATH.main]) && (
+                      <SideNavLink pathname={pathname} />
+                    )}
+                    <S.PageWrapper>
+                      <Outlet />
+                    </S.PageWrapper>
+                    <S.ThemeToggleButton onClick={toggleTheme}>
+                      {isLightTheme ? <PiSunBold /> : <PiMoonStarsBold />}
+                    </S.ThemeToggleButton>
+                  </S.DefaultPageLayout>
+                </ModalProvider>
+              )}
+            </UserProvider>
+          </AuthErrorBoundary>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryProvider>
       </ThemeProvider>
     </>
   );

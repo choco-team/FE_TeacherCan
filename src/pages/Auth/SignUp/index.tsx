@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { css } from 'styled-components';
 
-import useAuth from '@Hooks/api/useAuth';
+import { useSignUp } from '@Hooks/query/auth/useAuth';
 
 import route from '@Utils/route';
 
@@ -32,7 +32,7 @@ const SIGN_UP_INPUTS = [
     label: '비밀번호',
     placeholder: '영어, 숫자, 특수문자 포함 8자 이상',
     autocomplete: 'new-password',
-    validationMessage: '영어, 숫자, 특수문자 포함 8~20자로 입력해주세요.',
+    validationMessage: '영어, 숫자, 특수문자 포함 8자 이상 입력해주세요.',
   },
   {
     name: 'passwordConfirmation',
@@ -56,9 +56,9 @@ const validate = (inputValue: Record<string, string>) => {
   const regExp = {
     // 아이디: 영어 1글자 포함 영어/숫자 6~15자
     email: /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    // 비밀번호: 영어 대소문자+숫자+특수문자 8~20자
+    // 비밀번호: 영어 대소문자+숫자+특수문자 8자 이상
     password:
-      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*#?&])[a-zA-Z\d@$!%*#?&]{8,20}$/,
+      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[\[\]\{\}\/\(\)\.\?\<\>!@#$%^&*])[a-zA-Z\d\[\]\{\}\/\(\)\.\?\<\>!@#$%^&*]{8,}$/,
     // 닉네임: 한글/영어/숫자 2~10자
     nickname: /^[가-힣a-zA-Z0-9]{2,10}$/,
   } as const;
@@ -77,7 +77,15 @@ const validate = (inputValue: Record<string, string>) => {
 function SignUp() {
   const navigate = useNavigate();
 
-  const { signUp, isLoading } = useAuth();
+  const { signUp, isLoading } = useSignUp({
+    onSuccess: () => {
+      const { email, password } = inputValue;
+
+      navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]), {
+        state: { email, password },
+      });
+    },
+  });
 
   const [inputValue, setInputValue] = useState({
     email: '',
@@ -101,18 +109,10 @@ function SignUp() {
     setInputValue((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmitSignUpForm = async (
-    event: React.FormEvent<HTMLFormElement>,
-  ) => {
+  const handleSubmitSignUpForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const { email, password, nickname } = inputValue;
-
-    await signUp(email, password, nickname);
-
-    navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]), {
-      state: { email, password },
-    });
+    signUp(inputValue);
   };
 
   return (
@@ -141,19 +141,14 @@ function SignUp() {
               isValid={validation[name]}
               validationMessage={validationMessage}
               isCheckedEmail={isCheckedEmail}
-              isSignup
+              isSignUp
               setIsCheckedEmail={setIsCheckedEmail}
               required
               handleChange={handleChangeInputValue}
             />
           ),
         )}
-        <S.SubmitButton
-          type="submit"
-          variant="primary"
-          disabled={!isAllValid}
-          fullWidth
-        >
+        <S.SubmitButton type="submit" variant="primary" disabled={!isAllValid}>
           {isLoading ? (
             <CircularProgress
               $style={css`

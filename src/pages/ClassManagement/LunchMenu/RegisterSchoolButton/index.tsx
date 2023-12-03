@@ -10,11 +10,9 @@ function RegisterSchoolButton() {
     openModal(<RegisterSchoolModal />);
   };
   return (
-    <>
-      <Button size="md" handleClick={handleClickButton}>
-        학교 등록하기
-      </Button>
-    </>
+    <Button size="md" onClick={handleClickButton}>
+      학교 등록하기
+    </Button>
   );
 }
 

@@ -61,13 +61,6 @@ export const SelectBackgroundButtonWrapper = styled.div<SelectBackgroundButtonWr
   justify-content: flex-end;
 `;
 
-export const ResultWrapper = styled.div<ResultWrapperProps>`
-  color: ${(props) => props.color};
-  font-weight: bold;
-  font-size: 3rem;
-  margin-bottom: 16px;
-`;
-
 export const BackgroundButtonContainer = styled.div`
   ${flexCustom('row', 'center', 'center')}
 `;
@@ -75,6 +68,7 @@ export const BackgroundButtonContainer = styled.div`
 interface backgroundButtonProps {
   backgroundColor: string;
   hoverBackground: string;
+  textColor: string;
 }
 
 export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
@@ -86,6 +80,7 @@ export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
   border-radius: 50%;
   background-color: ${(props) => props.backgroundColor};
   border-color: ${(props) => props.backgroundColor};
+  color: ${(props) => props.textColor};
   &:hover {
     background-color: ${(props) => props.hoverBackground};
   }
@@ -95,9 +90,21 @@ export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
   }
 `;
 
+export const ResultWrapper = styled.div<ResultWrapperProps>`
+  color: ${(props) => props.color};
+  font-weight: bold;
+  font-size: 3rem;
+  margin-bottom: 16px;
+  text-align: center;
+`;
+
 export const ResultSpan = styled.span`
+  display: inline-block;
+  text-align: center;
   font-size: 3.6rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, gold 50%);
+  max-width: 840px;
+  word-break: break-all;
+  /* background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, gold 50%); */
 `;
 
 export const ButtonWrapper = styled.div`

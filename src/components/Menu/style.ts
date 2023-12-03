@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import theme from '@Styles/theme';
+
 import { MenuProps } from './type';
 
 import { MENU_LIST_POSITION } from '.';
@@ -29,7 +31,7 @@ export const MenuList = styled.ul<Required<Pick<MenuProps, 'position'>>>`
 
   box-shadow: ${(props) => props.theme.shadow[200]};
 
-  background-color: ${(props) => props.theme.background.gray};
+  background-color: ${(props) => props.theme.mainBackground};
 
   li {
     padding: 8px 20px;
@@ -40,8 +42,8 @@ export const MenuList = styled.ul<Required<Pick<MenuProps, 'position'>>>`
 
     cursor: pointer;
 
-    :hover {
-      background-color: ${(props) => props.theme.hoverBackground.gray};
+    &:hover {
+      background-color: ${theme.color.gray[200]};
     }
   }
 

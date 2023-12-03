@@ -35,4 +35,5 @@ export const SubmitButton = styled(Button)`
   border-radius: calc((1.6rem + 16px));
 
   height: 53px;
+  width: 100%;
 `;

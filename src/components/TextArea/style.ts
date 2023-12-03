@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import theme from '@Styles/theme';
 
+import { TEXTAREA_THEME } from './constants';
 import * as T from './type';
 
 export const BORDER_STYLE = {
@@ -10,12 +11,30 @@ export const BORDER_STYLE = {
 } as const;
 
 export const TextArea = styled.textarea<T.StyledTextArea>`
-  width: 100%;
-  border: ${(props) => BORDER_STYLE[props.border]};
-  padding: 16px;
-  font-size: 15px;
+  ${({
+    theme,
+    width = '100%',
+    $size,
+    maxWidth = $size === 'sm' ? '240px' : '480px',
+    minWidth = '120px',
+    dense,
+    padding = dense ? '8px' : '16px',
+    borderWidth,
+    borderStyle,
+    borderRadius,
+    fontSize = $size === 'sm' ? '1.4rem' : 'inherit',
+  }) => css`
+    ${TEXTAREA_THEME[theme.name]}
 
-  &::placeholder {
-    color: ${(props) => props.theme.color.gray[400]};
-  }
+    width: ${width};
+    max-width: ${maxWidth};
+    min-width: ${minWidth};
+    padding: ${padding};
+    border-width: ${borderWidth};
+    border-style: ${borderStyle};
+    border-radius: ${borderRadius};
+    background-color: ${theme.mainBackground};
+    color: ${theme.text};
+    font-size: ${fontSize};
+  `}
 `;

@@ -5,9 +5,12 @@ import {
   createContext,
   useState,
 } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { ThemeStyleSet } from '@Types/style';
 
 type ModalContext = {
+  isOpen: boolean;
   openModal: (model: ReactNode) => void;
   closeModal: () => void;
 } | null;
@@ -23,6 +26,7 @@ const ModalProvider = ({ children }: PropsWithChildren) => {
   const closeModal = () => setCurrentModal(null);
 
   const value = {
+    isOpen,
     openModal,
     closeModal,
   };
@@ -57,6 +61,16 @@ const Modal = ({ children, closeModal }: PropsWithChildren<ModalProps>) => {
   );
 };
 
+const MODAL_LAYOUT_THEME: ThemeStyleSet = {
+  light: css`
+    background-color: rgba(0, 0, 0, 0.65);
+  `,
+
+  dark: css`
+    background-color: rgba(110, 110, 110, 0.65);
+  `,
+};
+
 const ModalLayout = styled.div`
   position: fixed;
   min-width: 100vw;
@@ -68,19 +82,24 @@ const ModalLayout = styled.div`
   align-items: center;
   justify-items: center;
 
-  background-color: ${(props) => props.theme.modalBackground};
-
   z-index: 5;
+
+  ${({ theme }) => css`
+    ${MODAL_LAYOUT_THEME[theme.name]}
+  `}
 `;
 
 const ModalContainer = styled.div`
   width: 480px;
   max-height: 500px;
 
-  overflow-y: scroll;
+  overflow-y: auto;
 
   padding: 20px;
   border-radius: 8px;
 
-  background-color: ${(props) => props.theme.background.gray};
+  ${({ theme }) => css`
+    color: ${theme.text};
+    background-color: ${theme.mainBackground};
+  `}
 `;
