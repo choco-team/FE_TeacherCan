@@ -2,7 +2,7 @@ import { RuleSet, css } from 'styled-components';
 
 import theme from '@Styles/theme';
 
-import { ThemeName } from '@Types/style';
+import { ThemeName, ThemeStyleSet } from '@Types/style';
 
 export const LAYOUT_CATEGORY: Record<'main' | 'middle', RuleSet> = {
   main: css`
@@ -20,7 +20,7 @@ export const SIDE_NAVIGATION_LINK_THEME = (
   concept: ThemeName,
   isSelected: boolean,
 ) => {
-  const options: Record<ThemeName, RuleSet> = {
+  const options: ThemeStyleSet = {
     light: css`
       color: ${isSelected ? theme.color.primary[500] : theme.color.gray[400]};
       background-color: ${isSelected

@@ -5,9 +5,9 @@ import {
   createContext,
   useState,
 } from 'react';
-import styled, { RuleSet, css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { ThemeName } from '@Types/style';
+import { ThemeStyleSet } from '@Types/style';
 
 type ModalContext = {
   isOpen: boolean;
@@ -61,7 +61,7 @@ const Modal = ({ children, closeModal }: PropsWithChildren<ModalProps>) => {
   );
 };
 
-const MODAL_LAYOUT_THEME: Record<ThemeName, RuleSet> = {
+const MODAL_LAYOUT_THEME: ThemeStyleSet = {
   light: css`
     background-color: rgba(0, 0, 0, 0.65);
   `,

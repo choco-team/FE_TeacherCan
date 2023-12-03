@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { INFORMATION_CONTENTS_THEME } from './constant';
+import { INFORMATION_CONTENTS_THEME } from './constants';
 
 export const Layout = styled.div`
   display: grid;

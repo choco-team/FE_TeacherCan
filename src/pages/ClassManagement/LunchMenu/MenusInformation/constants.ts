@@ -1,8 +1,8 @@
-import { RuleSet, css } from 'styled-components';
+import { css } from 'styled-components';
 
 import theme from '@Styles/theme';
 
-import { ThemeName } from '@Types/style';
+import { ThemeStyleSet } from '@Types/style';
 
 export const LUNCH_MENU_GUIDES = [
   '학생에 알러지가 있다면 식단표에서 확인할 수 있어요.',
@@ -11,7 +11,7 @@ export const LUNCH_MENU_GUIDES = [
   '알러지 정보에서는 번호에 해당하는 알러지를 확인할 수 있어요.',
 ];
 
-export const INFORMATION_CONTENTS_THEME: Record<ThemeName, RuleSet> = {
+export const INFORMATION_CONTENTS_THEME: ThemeStyleSet = {
   light: css`
     color: ${theme.color.gray[500]};
     background-color: ${theme.color.gray[200]};

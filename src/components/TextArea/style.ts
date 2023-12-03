@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import theme from '@Styles/theme';
 
-import { TEXTAREA_THEME } from './constant';
+import { TEXTAREA_THEME } from './constants';
 import * as T from './type';
 
 export const BORDER_STYLE = {

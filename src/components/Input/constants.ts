@@ -1,10 +1,10 @@
-import { RuleSet, css } from 'styled-components';
+import { css } from 'styled-components';
 
 import theme from '@Styles/theme';
 
-import { ThemeName } from '@Types/style';
+import { ThemeStyleSet } from '@Types/style';
 
-export const INPUT_THEME: Record<ThemeName, RuleSet> = {
+export const INPUT_THEME: ThemeStyleSet = {
   light: css`
     border: ${`1px solid ${theme.color.gray[300]}`};
 

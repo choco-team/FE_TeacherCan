@@ -1,5 +1,5 @@
 import { BsCheckCircleFill } from 'react-icons/bs';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Input from '@Components/Input';
 
@@ -86,10 +86,11 @@ export const DoubleCheckIcon = styled.div<{ isCheckedEmail?: boolean }>`
   height: 16px;
   border-radius: 50%;
 
-  background-color: ${(props) =>
-    props.isCheckedEmail
-      ? props.theme.background.success
-      : props.theme.background.error};
-
   color: white;
+
+  ${({ theme, isCheckedEmail }) => css`
+    background-color: ${isCheckedEmail
+      ? theme.color.success[600]
+      : theme.color.error[500]};
+  `}
 `;
