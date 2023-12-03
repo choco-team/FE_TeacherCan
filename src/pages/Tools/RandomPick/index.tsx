@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AiOutlineUserAdd, AiFillSetting } from 'react-icons/ai';
+import { css } from 'styled-components';
 
 import useModal from '@Hooks/useModal';
 
@@ -112,7 +113,7 @@ function RandomPick() {
       >
         <S.SelectBackgroundButtonWrapper justifyContent="space-between">
           <S.WoodBackgroundButton
-            handleClick={toggleWoodBackground}
+            onClick={toggleWoodBackground}
             backgroundColor="#007200"
             hoverBackground="#14540d"
             textColor="white"
@@ -120,7 +121,7 @@ function RandomPick() {
             G
           </S.WoodBackgroundButton>
           <S.WoodBackgroundButton
-            handleClick={toggleWhiteBackground}
+            onClick={toggleWhiteBackground}
             backgroundColor="white"
             hoverBackground="#ece6cc"
             textColor="black"
@@ -147,7 +148,12 @@ function RandomPick() {
                   수 있습니다.
                 </p>
 
-                <Button onClick={handleConfirm} margin="20px">
+                <Button
+                  onClick={handleConfirm}
+                  $style={css`
+                    margin: 20px;
+                  `}
+                >
                   확인
                 </Button>
               </>

@@ -28,6 +28,34 @@ export const DefaultButton: Story = {
   },
 };
 
+export const SmallButton: Story = {
+  args: {
+    children: '버튼',
+    size: 'sm',
+  },
+};
+
+export const LargeButton: Story = {
+  args: {
+    children: '버튼',
+    size: 'lg',
+  },
+};
+
+export const SecondaryButton: Story = {
+  args: {
+    children: '버튼',
+    variant: 'secondary',
+  },
+};
+
+export const GrayButton: Story = {
+  args: {
+    children: '버튼',
+    variant: 'gray',
+  },
+};
+
 export const SuccessButton: Story = {
   args: {
     children: '버튼',
@@ -35,10 +63,23 @@ export const SuccessButton: Story = {
   },
 };
 
+export const WarningButton: Story = {
+  args: {
+    children: '버튼',
+    variant: 'warning',
+  },
+};
+
+export const ErrorButton: Story = {
+  args: {
+    children: '버튼',
+    variant: 'error',
+  },
+};
+
 export const FullWidthButton: Story = {
   args: {
     children: '버튼',
-    fullWidth: true,
   },
 };
 

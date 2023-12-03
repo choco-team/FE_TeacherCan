@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-import Button from '@Components/Button';
-
 import { flexCustom } from '@Styles/common';
+import theme from '@Styles/theme';
 
 export const DefaultPageLayout = styled.div`
   display: grid;
@@ -21,14 +20,14 @@ export const PageWrapper = styled.div`
   color: ${({ theme }) => theme.text};
 `;
 
-export const ThemeToggleButton = styled(Button)`
+export const ThemeToggleButton = styled.button`
   position: fixed;
   left: 16px;
   bottom: 16px;
   ${flexCustom('row', 'center', 'center')}
-  width: 48px;
-  min-width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  font-size: 32px;
+  color: ${theme.color.primary[50]};
+  background-color: ${theme.color.primary[500]};
 `;

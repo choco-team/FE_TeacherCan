@@ -48,7 +48,7 @@ function App() {
                     <S.PageWrapper>
                       <Outlet />
                     </S.PageWrapper>
-                    <S.ThemeToggleButton handleClick={toggleTheme}>
+                    <S.ThemeToggleButton onClick={toggleTheme}>
                       {isLightTheme ? <PiSunBold /> : <PiMoonStarsBold />}
                     </S.ThemeToggleButton>
                   </S.DefaultPageLayout>

@@ -88,12 +88,7 @@ function SignIn() {
             />
           ),
         )}
-        <S.SubmitButton
-          type="submit"
-          variant="primary"
-          fullWidth
-          disabled={!isValid}
-        >
+        <S.SubmitButton type="submit" variant="primary" disabled={!isValid}>
           {isLoading ? (
             <CircularProgress
               $style={css`

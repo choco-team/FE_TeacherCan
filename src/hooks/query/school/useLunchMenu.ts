@@ -5,10 +5,11 @@ import { LunchMenuListRequest, getLunchMenuList } from '@Api/school/lunchMenu';
 export const useLunchMenuList = (
   lunchMenuListRequest: LunchMenuListRequest,
 ) => {
-  const { data: lunchMenuList, isLoading } = useQuery({
+  const { data: lunchMenuList } = useQuery({
     queryKey: ['lunchMenuList', lunchMenuListRequest],
     queryFn: () =>
       getLunchMenuList(lunchMenuListRequest).then((response) => response.data),
+    suspense: true,
   });
 
   const getOrigins = () => {
@@ -29,6 +30,5 @@ export const useLunchMenuList = (
   return {
     lunchMenuList: lunchMenuList?.data || [],
     origins: getOrigins(),
-    isLoading,
   };
 };

@@ -13,7 +13,7 @@ export const LinkContainer = styled.div`
 
   ${flexCustom('column', 'stretch', 'flex-start')}
 
-  background-color: ${(props) => props.theme.background.gray};
+  background-color: ${(props) => props.theme.mainBackground};
 
   width: calc(100vw / 12 * 2);
   min-width: 25rem;
