@@ -1,4 +1,3 @@
-import QRCode from 'qrcode.react';
 import { useState } from 'react';
 
 import * as S from './style';

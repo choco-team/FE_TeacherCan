@@ -13,8 +13,6 @@ function QrcodeInput() {
     setInputValue('');
   };
 
-  const handlePrint = () => {};
-
   const handleDownload = () => {
     const canvas = document.querySelector('canvas');
     const url = canvas ? canvas.toDataURL('image/png') : '';
@@ -57,7 +55,7 @@ function QrcodeInput() {
       {isButtonVisible && (
         <S.ButtonContainer>
           <S.Button onClick={handleViewLarger}>크게보기</S.Button>
-          <S.Button onClick={handlePrint}>인쇄하기</S.Button>
+          <S.Button>인쇄하기</S.Button>
           <S.Button onClick={handleDownload}>다운로드</S.Button>
           <S.Button>보관함에 저장</S.Button>
         </S.ButtonContainer>

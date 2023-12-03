@@ -1,9 +1,14 @@
-import QRCode from 'qrcode.react';
-import { useState } from 'react';
+import React from 'react';
 
 import * as S from './style';
 
-function QrcodeStorage({ setIsInStorageMode, isInStorageMode }) {
+function QrcodeStorage({
+  setIsInStorageMode,
+  isInStorageMode,
+}: {
+  setIsInStorageMode: (value: boolean) => void;
+  isInStorageMode: boolean;
+}) {
   const handleToStorage = () => {
     setIsInStorageMode(false);
   };
@@ -15,7 +20,6 @@ function QrcodeStorage({ setIsInStorageMode, isInStorageMode }) {
     link.download = `qrcode.png`;
     link.click();
   };
-  const handlePrint = () => {};
 
   const handleViewLarger = () => {
     const canvas = document.querySelector('canvas');
@@ -36,7 +40,7 @@ function QrcodeStorage({ setIsInStorageMode, isInStorageMode }) {
       <S.ButtonContainer>
         <S.Button onClick={handleToStorage}>새QR코드생성</S.Button>
         <S.Button onClick={handleViewLarger}>크게보기</S.Button>
-        <S.Button onClick={handlePrint}>인쇄하기</S.Button>
+        <S.Button>인쇄하기</S.Button>
         <S.Button onClick={handleDownload}>다운로드</S.Button>
         <S.Button onClick={handleDownload}>삭제하기</S.Button>
       </S.ButtonContainer>
