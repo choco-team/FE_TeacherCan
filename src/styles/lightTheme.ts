@@ -9,7 +9,7 @@ const lightTheme = {
   grayText: theme.color.gray[500],
   accentText: theme.color.primary[500],
   shadow: {
-    100: 'rgba(198, 198, 198, 0.25) 0rem 0.2rem 1.5rem',
+    100: 'rgba(198, 198, 198, 0.25) 0rem 0.2px 1.5px',
     200: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;',
   },
   pageBackground: theme.color.gray[100],

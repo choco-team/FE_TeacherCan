@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { TextSkeletonStyle } from '@Styles/skeleton';
 import theme from '@Styles/theme';
@@ -32,9 +32,10 @@ export const MenuContainer = styled.div`
   padding: 25px;
   border-radius: 8px;
 
-  box-shadow: ${(props) => props.theme.shadow[100]};
-
-  background-color: ${theme.color.gray[50]};
+  ${({ theme }) => css`
+    background-color: ${theme.mainBackground};
+    box-shadow: ${theme.shadow[100]};
+  `}
 `;
 
 export const Menu = styled.div`
