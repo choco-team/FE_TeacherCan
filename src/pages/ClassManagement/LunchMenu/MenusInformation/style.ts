@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { INFORMATION_CONTENTS_THEME } from './constants';
 
 export const Layout = styled.div`
   display: grid;
@@ -16,19 +18,16 @@ export const InformationContents = styled.ul`
   border-radius: 8px;
   padding: 20px;
 
-  background-color: ${(props) => props.theme.sectionBackground};
+  ${({ theme }) => css`
+    ${INFORMATION_CONTENTS_THEME[theme.name]};
+  `}
 `;
 
 export const InformationContent = styled.li`
   line-height: 160%;
-  color: ${(props) => props.theme.grayText};
 
   margin-left: 2rem;
   list-style-type: disc;
-
-  &::marker {
-    color: ${({ theme }) => theme.grayText};
-  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -36,15 +35,7 @@ export const ButtonContainer = styled.div`
   gap: 20px;
 
   button {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     gap: 20px;
-
-    span {
-      position: relative;
-      right: 16px;
-    }
   }
 `;

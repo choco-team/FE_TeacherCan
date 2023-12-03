@@ -168,7 +168,6 @@ const StudentRegister = () => {
                   value={tabValue}
                   isOnFocus={createType === tabValue}
                   concept="outlined"
-                  width="50%"
                   size="lg"
                   onClick={handleChangeCreateType}
                 >
@@ -275,9 +274,7 @@ const StudentRegister = () => {
             fullHeight
             minHeight={512}
           />
-          <S.CreateButton size="wide" onClick={handleCreate}>
-            저장
-          </S.CreateButton>
+          <S.CreateButton onClick={handleCreate}>저장</S.CreateButton>
         </S.ColumnContainer>
       </S.RowContainer>
     </S.Layout>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from '@Components/Button';
 
 import { flexCustom } from '@Styles/common';
+import theme from '@Styles/theme';
 
 export const TabContainer = styled.div`
   ${flexCustom('row', 'flex-start', 'center', '8px')}
@@ -31,7 +32,7 @@ export const ScrollBox = styled.div`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.border.gray};
+    background-color: ${theme.color.gray[400]};
     border-radius: 10px;
   }
 `;

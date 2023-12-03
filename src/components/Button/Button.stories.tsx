@@ -28,6 +28,20 @@ export const DefaultButton: Story = {
   },
 };
 
+export const SmallButton: Story = {
+  args: {
+    children: '버튼',
+    size: 'sm',
+  },
+};
+
+export const LargeButton: Story = {
+  args: {
+    children: '버튼',
+    size: 'lg',
+  },
+};
+
 export const SecondaryButton: Story = {
   args: {
     children: '버튼',
@@ -66,7 +80,6 @@ export const ErrorButton: Story = {
 export const FullWidthButton: Story = {
   args: {
     children: '버튼',
-    fullWidth: true,
   },
 };
 

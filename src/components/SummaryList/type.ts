@@ -3,7 +3,7 @@ type SummaryList = {
   list?: string[];
   guideMessage?: string;
   width?: string;
-  isLoading: boolean;
+  isLoading?: boolean;
 };
 
 type LayoutProps = {

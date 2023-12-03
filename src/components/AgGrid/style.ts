@@ -1,33 +1,21 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { getHexOpacity } from '@Styles/common';
+import { AG_GRID_WRAPPER_THEME } from './constants';
 
 export const AgGridWrapper = styled.div<{
   fullHeight?: boolean;
   minHeight?: number;
 }>`
   width: 100%;
-  height: ${({ fullHeight }) => (fullHeight ? '100%' : undefined)};
-  min-height: ${({ minHeight }) => `${minHeight}px`};
   font-family: inherit;
 
-  --ag-row-hover-color: ${({ theme }) =>
-    `${theme.selectionBackground.primary}${getHexOpacity(0.5)}`};
-  --ag-selected-row-background-color: ${({ theme }) =>
-    theme.selectionBackground.primary};
-  --ag-alpine-active-color: ${({ theme }) => theme.background.primary};
   --ag-input-border-color: transparent;
-  --ag-input-focus-border-color: ${({ theme }) => theme.border.primary};
 
   .ag-header-cell-label {
     justify-content: center;
   }
 
   .ag-select {
-    :active {
-      border: 1px solid ${({ theme }) => theme.border.primary};
-    }
-
     .ag-picker-field-wrapper {
       border: none;
       border-radius: var(--ag-card-radius);
@@ -35,10 +23,19 @@ export const AgGridWrapper = styled.div<{
   }
 
   .ag-picker-field-icon {
-    color: ${({ theme }) => theme.accentText};
-
     .ag-icon {
       font-size: 1.8rem;
     }
   }
+
+  ${({ theme, fullHeight, minHeight }) => css`
+    height: ${fullHeight ? '100%' : undefined};
+    min-height: ${`${minHeight}px`};
+
+    .ag-picker-field-icon {
+      color: ${theme.accentText};
+    }
+
+    ${AG_GRID_WRAPPER_THEME[theme.name]}
+  `}
 `;

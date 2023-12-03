@@ -1,9 +1,10 @@
 import { BsCheckCircleFill } from 'react-icons/bs';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Input from '@Components/Input';
 
 import { flexCustom } from '@Styles/common';
+import theme from '@Styles/theme';
 
 import * as T from './type';
 
@@ -22,7 +23,7 @@ export const AuthInput = styled(Input)<T.StyledInput>`
   height: calc(1.6rem + 36px);
   padding: ${({ type }) =>
     type === 'password' ? '16px 40px 16px 16px' : '16px'};
-  color: ${({ theme }) => theme.border.primary};
+  color: ${theme.color.primary[500]};
 `;
 
 export const LabelHeader = styled.div`
@@ -42,7 +43,7 @@ export const EyeButton = styled.button`
   position: absolute;
   right: 16px;
   top: 50%;
-  color: ${({ theme }) => theme.border.primary};
+  color: ${theme.color.primary[500]};
   line-height: 0;
   transform: translateY(-50%);
 `;
@@ -69,7 +70,7 @@ export const DoubleCheckEmail = styled.div`
   position: absolute;
   right: 16px;
   top: 50%;
-  color: ${({ theme }) => theme.border.primary};
+  color: ${theme.color.primary[500]};
   line-height: 0;
   transform: translateY(-50%);
 
@@ -85,10 +86,11 @@ export const DoubleCheckIcon = styled.div<{ isCheckedEmail?: boolean }>`
   height: 16px;
   border-radius: 50%;
 
-  background-color: ${(props) =>
-    props.isCheckedEmail
-      ? props.theme.background.success
-      : props.theme.background.error};
-
   color: white;
+
+  ${({ theme, isCheckedEmail }) => css`
+    background-color: ${isCheckedEmail
+      ? theme.color.success[600]
+      : theme.color.error[500]};
+  `}
 `;

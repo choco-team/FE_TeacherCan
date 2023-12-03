@@ -1,5 +1,5 @@
-import { TbMoodKid } from 'react-icons/tb';
 import { useNavigate } from 'react-router-dom';
+import { css } from 'styled-components';
 
 import useModal from '@Hooks/useModal';
 
@@ -8,11 +8,6 @@ import route from '@Utils/route';
 import { ROUTE_PATH } from '@Constant/routePath';
 
 import Button from '@Components/Button';
-
-import AllergyIcon from '@Assets/image/icon/AllergyIcon';
-import OriginPlaceIcon from '@Assets/image/icon/OriginPlaceIcon';
-
-import theme from '@Styles/theme';
 
 import { LUNCH_MENU_GUIDES } from './constant';
 import * as S from './style';
@@ -27,7 +22,6 @@ function MenusInformation({ origins }: MenusInformationProps) {
   const lunchMenuButtons = [
     {
       name: '학생 정보로 이동',
-      Icon: <TbMoodKid />,
       onClick: () => {
         navigate(
           route.calculatePath([
@@ -39,14 +33,12 @@ function MenusInformation({ origins }: MenusInformationProps) {
     },
     {
       name: '원산지 정보 확인',
-      Icon: <OriginPlaceIcon color={theme.color.white} />,
       onClick: () => {
         openModal(<OriginPlaceModal origins={origins} />);
       },
     },
     {
       name: '알러지 정보 확인',
-      Icon: <AllergyIcon color={theme.color.white} />,
       onClick: () => {
         openModal(<AllergyModal />);
       },
@@ -62,9 +54,14 @@ function MenusInformation({ origins }: MenusInformationProps) {
         ))}
       </S.InformationContents>
       <S.ButtonContainer>
-        {lunchMenuButtons.map(({ name, Icon, onClick }) => (
-          <Button key={name} fullWidth onClick={onClick}>
-            {Icon}
+        {lunchMenuButtons.map(({ name, onClick }) => (
+          <Button
+            key={name}
+            onClick={onClick}
+            $style={css`
+              width: 100%;
+            `}
+          >
             <span>{name}</span>
           </Button>
         ))}

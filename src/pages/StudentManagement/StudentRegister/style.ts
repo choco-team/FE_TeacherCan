@@ -73,13 +73,14 @@ export const TabButton = styled(Button)<{ isOnFocus: boolean }>`
   border: none;
   border-bottom: 2px solid transparent;
   border-color: ${({ isOnFocus, theme }) =>
-    isOnFocus ? theme.border.primary : 'transparent'};
+    isOnFocus ? theme.color.primary[500] : 'transparent'};
   font-size: 1.6rem;
+  width: 50%;
 
   &:hover,
   &:active {
     border-color: ${({ isOnFocus, theme }) =>
-      isOnFocus ? theme.border.primary : 'transparent'};
+      isOnFocus ? theme.color.primary[500] : 'transparent'};
   }
 `;
 
@@ -96,9 +97,9 @@ export const Select = styled.select`
   min-width: 6rem;
   width: 8rem;
   padding: 0.8rem 1.2rem;
-  border: 1px solid ${({ theme }) => theme.border.gray};
+  border: 1px solid ${({ theme }) => theme.hoverBorder.gray};
   border-radius: 5px;
-  background-color: ${({ theme }) => theme.background.gray};
+  background-color: ${({ theme }) => theme.mainBackground};
   color: ${({ theme }) => theme.grayText};
   text-align: center;
 `;
@@ -111,7 +112,7 @@ export const FileInput = styled(Input)`
   &::file-selector-button {
     padding: 8px;
     margin-right: 8px;
-    background-color: ${({ theme }) => theme.background.primary};
+    background-color: ${({ theme }) => theme.color.primary[500]};
     color: ${({ theme }) => theme.primaryText};
     border: none;
     outline: none;
@@ -121,7 +122,7 @@ export const FileInput = styled(Input)`
     cursor: pointer;
 
     &:hover {
-      background-color: ${({ theme }) => theme.hoverBackground.primary};
+      background-color: ${({ theme }) => theme.color.primary[700]};
     }
   }
 `;
@@ -157,4 +158,5 @@ export const GenderButton = styled(Button)<{ position: 'left' | 'right' }>`
 
 export const CreateButton = styled(Button)`
   align-self: end;
+  min-width: 120px;
 `;

@@ -1,6 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { flexCustom } from '@Styles/common';
+
+import { LAYOUT_THEME } from './constants';
 
 export const Layout = styled.div`
   position: fixed;
@@ -10,9 +12,12 @@ export const Layout = styled.div`
   grid-template-columns: repeat(12, 1fr);
 
   background-color: ${(props) => props.theme.mainBackground};
-  border-bottom: 1px solid ${(props) => props.theme.sectionBackground};
 
   z-index: 1;
+
+  ${({ theme }) => css`
+    ${LAYOUT_THEME[theme.name]}
+  `}
 `;
 
 export const Logo = styled.h1`
