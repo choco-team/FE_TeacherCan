@@ -16,7 +16,6 @@ declare module 'styled-components' {
     pageBackground: string;
     mainBackground: string;
     sectionBackground: string;
-    modalBackground: string;
     shadow: {
       100: string;
       200: string;

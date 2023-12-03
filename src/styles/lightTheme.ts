@@ -15,7 +15,6 @@ const lightTheme = {
   pageBackground: theme.color.gray[100],
   mainBackground: theme.color.gray[50],
   sectionBackground: theme.color.gray[200],
-  modalBackground: 'rgba(0, 0, 0, 0.65)',
   selectionBackground: {
     primary: theme.color.primary[100],
   },

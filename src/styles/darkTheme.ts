@@ -15,7 +15,6 @@ const darkTheme = {
   pageBackground: theme.color.gray[800],
   mainBackground: theme.color.gray[900],
   sectionBackground: theme.color.gray[900],
-  modalBackground: 'rgba(255, 255, 255, 0.3)',
   selectionBackground: {
     primary: theme.color.primary[800],
   },
