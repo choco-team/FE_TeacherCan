@@ -210,13 +210,13 @@ export const CATEGORIES: Categories = [
   //   path: 'set-order',
   //   Icon: CgReorder,
   // },
-  // {
-  //   key: 'qrCode',
-  //   category: 'middle',
-  //   name: 'QR코드',
-  //   path: 'qr-code',
-  //   Icon: BsQrCodeScan,
-  // },
+  {
+    key: 'qrCode',
+    category: 'middle',
+    name: 'QR코드',
+    path: 'qr-code',
+    Icon: BsQrCodeScan,
+  },
   // {
   //   key: 'favorites',
   //   category: 'middle',
