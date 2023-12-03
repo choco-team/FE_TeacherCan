@@ -1,11 +1,11 @@
 import { AiOutlineUsergroupAdd } from 'react-icons/ai';
 import { BiBowlRice } from 'react-icons/bi';
-// import {
-//   BsCalendarWeek,
-//   BsNewspaper,
-//   BsQrCodeScan,
-//   BsSticky,
-// } from 'react-icons/bs';
+import {
+  // BsCalendarWeek,
+  // BsNewspaper,
+  BsQrCodeScan,
+  // BsSticky,
+} from 'react-icons/bs';
 // import { CgReorder } from 'react-icons/cg';
 // import { CiViewTimeline } from 'react-icons/ci';
 // import { FaPeopleCarry } from 'react-icons/fa';
