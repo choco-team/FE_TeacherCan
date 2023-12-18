@@ -1,4 +1,4 @@
-const MEDIA_SIZE = {
+export const MEDIA_SIZE = {
   mobile: 768,
   tablet: 1023,
 };
