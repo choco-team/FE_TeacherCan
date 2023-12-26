@@ -52,7 +52,7 @@ export const ListSelect = styled.select`
   }
 
   &:focus {
-    border-color: ${({ theme }) => theme.border.primary};
+    border-color: ${({ theme }) => theme.accentText};
   }
   align-items: center;
   text-align: center;

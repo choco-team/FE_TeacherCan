@@ -36,7 +36,7 @@ export const ChoosedComponentsContainer = styled.div`
   ${flexCustom('row', 'center', 'flex-start')}
   width: 100%;
   max-width: 720px;
-  border: 3px solid ${theme.color.primary[500]};
+  border: 3px solid ${theme.color.primary};
   border-radius: 3px;
   margin: 20px 0 20px 0;
   padding: 16px;

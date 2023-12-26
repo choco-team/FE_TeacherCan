@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { AiOutlineUserAdd, AiFillSetting } from 'react-icons/ai';
 import { css } from 'styled-components';
 
+import useMedia from '@Hooks/useMedia';
 import useModal from '@Hooks/useModal';
 
 import Button from '@Components/Button';
@@ -14,6 +15,7 @@ import { MOCK_STUDENTS_LISTS } from './mock';
 import * as S from './style';
 
 function RandomPick() {
+  const media = useMedia();
   const [randomPickSetting, setRandomPickSetting] = useState<RandomPickSetting>(
     {
       studentsListId: undefined,
@@ -160,12 +162,17 @@ function RandomPick() {
             )}
         </S.ResultWrapper>
         <S.ButtonWrapper>
-          <Button size="lg">
+          <Button size={media === 'mobile' ? 'sm' : 'lg'}>
             <AiOutlineUserAdd />
-            <div onClick={handlePick}>뽑기</div>
+            <div
+              onClick={handlePick}
+              style={media === 'mobile' ? { fontSize: 'smaller' } : {}}
+            >
+              뽑기
+            </div>
           </Button>
           <Button
-            size="lg"
+            size={media === 'mobile' ? 'sm' : 'lg'}
             onClick={() => {
               openModal(
                 <RandomPickModal randomPickSetting={randomPickSetting} />,
@@ -173,7 +180,9 @@ function RandomPick() {
             }}
           >
             <AiFillSetting />
-            <div>설정</div>
+            <div style={media === 'mobile' ? { fontSize: 'smaller' } : {}}>
+              설정
+            </div>
           </Button>
         </S.ButtonWrapper>
       </S.RandomResult>
