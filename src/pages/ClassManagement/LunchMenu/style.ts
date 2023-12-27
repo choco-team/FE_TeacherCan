@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { MEDIA_QUERY } from '@Constant/media';
+
 import { flexCustom } from '@Styles/common';
 
 export const Layout = styled.div`
@@ -48,6 +50,10 @@ export const BoardLayout = styled.div`
   gap: 25px;
 
   border-radius: 12px;
+
+  ${MEDIA_QUERY.tablet} {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const IconWrapper = styled.div`
