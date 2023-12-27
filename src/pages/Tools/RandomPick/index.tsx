@@ -119,6 +119,12 @@ function RandomPick() {
             backgroundColor="#007200"
             hoverBackground="#14540d"
             textColor="white"
+            buttonWidth={media == 'mobile' ? '20px' : '28px'}
+            style={
+              media === 'mobile'
+                ? { fontSize: 'smaller' }
+                : { fontSize: 'large' }
+            }
           >
             G
           </S.WoodBackgroundButton>
@@ -127,6 +133,12 @@ function RandomPick() {
             backgroundColor="white"
             hoverBackground="#ece6cc"
             textColor="black"
+            buttonWidth={media == 'mobile' ? '20px' : '28px'}
+            style={
+              media === 'mobile'
+                ? { fontSize: 'smaller' }
+                : { fontSize: 'large' }
+            }
           >
             W
           </S.WoodBackgroundButton>

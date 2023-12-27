@@ -69,15 +69,16 @@ interface backgroundButtonProps {
   backgroundColor: string;
   hoverBackground: string;
   textColor: string;
+  buttonWidth: string;
 }
 
 export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
   ${flexCustom('row', 'center', 'center')}
-  width: 24px;
-  min-width: 24px;
-  height: 24px;
-  margin: 8px 4px;
+  width: ${(props) => props.buttonWidth};
+  height: ${(props) => props.buttonWidth};
+  margin: 12px 12px 8px 0px;
   border-radius: 50%;
+  padding: 0px;
   background-color: ${(props) => props.backgroundColor};
   border-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.textColor};
