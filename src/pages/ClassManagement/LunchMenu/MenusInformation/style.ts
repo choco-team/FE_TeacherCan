@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { MEDIA_QUERY } from '@Constant/media';
+
 import { INFORMATION_CONTENTS_THEME } from './constants';
 
 export const Layout = styled.div`
@@ -8,6 +10,11 @@ export const Layout = styled.div`
   row-gap: 10px;
 
   color: transparent;
+
+  ${MEDIA_QUERY.tablet} {
+    position: relative;
+    top: -20px;
+  }
 `;
 
 export const InformationContents = styled.ul`
