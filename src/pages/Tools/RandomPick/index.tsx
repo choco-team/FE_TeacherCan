@@ -146,18 +146,24 @@ function RandomPick() {
         <S.ResultWrapper color={background == 'wood' ? 'white' : 'black'}>
           {pickedStudents.length !== 0 && (
             <p>
-              <S.ResultSpan>{pickedStudents.join('    ')}</S.ResultSpan>
+              <S.ResultSpan
+                style={media === 'mobile' ? { fontSize: 'large' } : {}}
+              >
+                {pickedStudents.join('    ')}
+              </S.ResultSpan>
             </p>
           )}
 
           {!localStorage.getItem('random-pick-setting') && (
-            <p>학생 목록을 선택하세요</p>
+            <p style={media === 'mobile' ? { fontSize: 'large' } : {}}>
+              학생 목록을 선택하세요
+            </p>
           )}
 
           {studentsList.length === 0 &&
             localStorage.getItem('random-pick-setting') && (
               <>
-                <p>
+                <p style={media === 'mobile' ? { fontSize: 'large' } : {}}>
                   모든 학생을 선정했습니다. 확인을 누르면 처음부터 다시 선정할
                   수 있습니다.
                 </p>
@@ -167,6 +173,7 @@ function RandomPick() {
                   $style={css`
                     margin: 20px;
                   `}
+                  size={media === 'mobile' ? 'sm' : 'lg'}
                 >
                   확인
                 </Button>
@@ -174,14 +181,9 @@ function RandomPick() {
             )}
         </S.ResultWrapper>
         <S.ButtonWrapper>
-          <Button size={media === 'mobile' ? 'sm' : 'lg'}>
+          <Button onClick={handlePick} size={media === 'mobile' ? 'sm' : 'lg'}>
             <AiOutlineUserAdd />
-            <div
-              onClick={handlePick}
-              style={media === 'mobile' ? { fontSize: 'smaller' } : {}}
-            >
-              뽑기
-            </div>
+            뽑기
           </Button>
           <Button
             size={media === 'mobile' ? 'sm' : 'lg'}
@@ -192,9 +194,7 @@ function RandomPick() {
             }}
           >
             <AiFillSetting />
-            <div style={media === 'mobile' ? { fontSize: 'smaller' } : {}}>
-              설정
-            </div>
+            설정
           </Button>
         </S.ButtonWrapper>
       </S.RandomResult>
