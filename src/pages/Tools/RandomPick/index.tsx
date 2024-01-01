@@ -177,7 +177,11 @@ function RandomPick() {
             size={media === 'mobile' ? 'sm' : 'lg'}
             onClick={() => {
               openModal(
-                <RandomPickModal randomPickSetting={randomPickSetting} />,
+                <RandomPickModal
+                  randomPickSetting={randomPickSetting}
+                  isOpen={isOpen}
+                  media={media}
+                />,
               );
             }}
           >

@@ -110,7 +110,6 @@ export const ResultSpan = styled.span<ResultSpanProps>`
   max-width: 840px;
   word-break: break-all;
   font-size: ${(props) => (props.media === 'mobile' ? 'large' : {})};
-  /* background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, gold 50%); */
 `;
 
 export const ButtonWrapper = styled.div`

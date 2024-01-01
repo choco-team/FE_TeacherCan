@@ -19,9 +19,15 @@ export type RandomPickSetting = {
 
 type RandomPickModalProps = {
   randomPickSetting: RandomPickSetting;
+  isOpen: boolean;
+  media: string;
 };
 
-function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
+function RandomPickModal({
+  randomPickSetting,
+  isOpen,
+  media,
+}: RandomPickModalProps) {
   const initialSetting = randomPickSetting ?? {
     studentsListId: undefined,
     studentsCount: undefined,
@@ -87,13 +93,13 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
 
   return (
     <>
-      <S.ModalContainer>
+      <S.ModalContainer isOpen={isOpen} media={media}>
         <S.BigBsShield />
         <S.WarningSpan>
           명렬표 또는 중복 여부를 바꾸면 뽑기가 초기화됩니다
         </S.WarningSpan>
       </S.ModalContainer>
-      <S.ModalContainer>
+      <S.ModalContainer isOpen={isOpen} media={media}>
         <S.ListSpan>명렬표 선택</S.ListSpan>
         <S.ListSelect
           value={settings.studentsListId}
@@ -107,8 +113,8 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
           ))}
         </S.ListSelect>
       </S.ModalContainer>
-      <S.ModalContainer>
-        <S.ListSpan>학생 수 선택</S.ListSpan>
+      <S.ModalContainer isOpen={isOpen} media={media}>
+        <S.ListSpan media={media}>학생 수 선택</S.ListSpan>
         <label>
           <Input
             size="sm"
@@ -122,8 +128,8 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
           명
         </label>
       </S.ModalContainer>
-      <S.ModalContainer>
-        <S.ListSpan>중복 여부</S.ListSpan>
+      <S.ModalContainer isOpen={isOpen} media={media}>
+        <S.ListSpan media={media}>중복 여부</S.ListSpan>
 
         <S.SmallButton
           value="YES"
