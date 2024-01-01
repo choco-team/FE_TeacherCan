@@ -115,30 +115,20 @@ function RandomPick() {
       >
         <S.SelectBackgroundButtonWrapper justifyContent="space-between">
           <S.WoodBackgroundButton
+            media={media}
             onClick={toggleWoodBackground}
             backgroundColor="#007200"
             hoverBackground="#14540d"
             textColor="white"
-            buttonWidth={media == 'mobile' ? '20px' : '28px'}
-            style={
-              media === 'mobile'
-                ? { fontSize: 'smaller' }
-                : { fontSize: 'large' }
-            }
           >
             G
           </S.WoodBackgroundButton>
           <S.WoodBackgroundButton
+            media={media}
             onClick={toggleWhiteBackground}
             backgroundColor="white"
             hoverBackground="#ece6cc"
             textColor="black"
-            buttonWidth={media == 'mobile' ? '20px' : '28px'}
-            style={
-              media === 'mobile'
-                ? { fontSize: 'smaller' }
-                : { fontSize: 'large' }
-            }
           >
             W
           </S.WoodBackgroundButton>
@@ -146,9 +136,7 @@ function RandomPick() {
         <S.ResultWrapper color={background == 'wood' ? 'white' : 'black'}>
           {pickedStudents.length !== 0 && (
             <p>
-              <S.ResultSpan
-                style={media === 'mobile' ? { fontSize: 'large' } : {}}
-              >
+              <S.ResultSpan media={media}>
                 {pickedStudents.join('    ')}
               </S.ResultSpan>
             </p>

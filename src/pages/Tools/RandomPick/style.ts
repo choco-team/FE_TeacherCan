@@ -65,17 +65,16 @@ export const BackgroundButtonContainer = styled.div`
   ${flexCustom('row', 'center', 'center')}
 `;
 
-interface backgroundButtonProps {
+type backgroundButtonProps = {
   backgroundColor: string;
   hoverBackground: string;
   textColor: string;
-  buttonWidth: string;
-}
+  media: string;
+};
 
 export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
   ${flexCustom('row', 'center', 'center')}
-  width: ${(props) => props.buttonWidth};
-  height: ${(props) => props.buttonWidth};
+  width: ${(props) => (props.media === 'mobile' ? '20px' : '28px')};
   margin: 12px 12px 8px 0px;
   border-radius: 50%;
   padding: 0px;
@@ -89,6 +88,7 @@ export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
   &:active {
     background-color: ${(props) => props.hoverBackground};
   }
+  font-size: ${(props) => (props.media === 'mobile' ? 'smaller' : 'large')};
 `;
 
 export const ResultWrapper = styled.div<ResultWrapperProps>`
@@ -99,12 +99,17 @@ export const ResultWrapper = styled.div<ResultWrapperProps>`
   text-align: center;
 `;
 
-export const ResultSpan = styled.span`
+type ResultSpanProps = {
+  media: string;
+};
+
+export const ResultSpan = styled.span<ResultSpanProps>`
   display: inline-block;
   text-align: center;
   font-size: 3.6rem;
   max-width: 840px;
   word-break: break-all;
+  font-size: ${(props) => (props.media === 'mobile' ? 'large' : {})};
   /* background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, gold 50%); */
 `;
 
