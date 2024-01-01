@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { MEDIA_QUERY } from '@Constant/media';
+
 import { flexCustom } from '@Styles/common';
 import theme from '@Styles/theme';
 
@@ -18,6 +20,10 @@ export const PageWrapper = styled.div`
   margin-top: calc(2rem + 34px);
   padding: 32px;
   color: ${({ theme }) => theme.text};
+
+  ${MEDIA_QUERY.tablet} {
+    grid-column: 1 / -1;
+  }
 `;
 
 export const ThemeToggleButton = styled.button`
