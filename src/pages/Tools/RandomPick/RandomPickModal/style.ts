@@ -3,12 +3,7 @@ import styled from 'styled-components';
 
 import theme from '@Styles/theme';
 
-type ModalContainerProps = {
-  isOpen: boolean;
-  media: string;
-};
-
-export const ModalContainer = styled.div<ModalContainerProps>`
+export const ModalContainer = styled.div`
   padding: 5px;
   display: flex; /* Use flexbox */
   align-items: center;
@@ -36,17 +31,13 @@ export const IconWrapper = styled.span`
   align-items: center;
 `;
 
-type ListSpanProps = {
-  media: string;
-};
-
-export const ListSpan = styled.span<ListSpanProps>`
+export const ListSpan = styled.span`
   margin: 5px;
   border-radius: 2px;
   min-height: 24px;
   min-width: 96px;
   padding: 8px;
-  color: ${(props) => (props.media === 'mobile' ? 'red' : 'black')};
+  color: 'black';
 `;
 
 export const ListSelect = styled.select`

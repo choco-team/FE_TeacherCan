@@ -74,7 +74,7 @@ type backgroundButtonProps = {
 
 export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
   ${flexCustom('row', 'center', 'center')}
-  width: ${(props) => (props.media === 'mobile' ? '20px' : '28px')};
+  width: ${(props) => (props.media === 'tablet' ? '20px' : '28px')};
   margin: 12px 12px 8px 0px;
   border-radius: 50%;
   padding: 0px;
@@ -88,7 +88,7 @@ export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
   &:active {
     background-color: ${(props) => props.hoverBackground};
   }
-  font-size: ${(props) => (props.media === 'mobile' ? 'smaller' : 'large')};
+  font-size: ${(props) => (props.media === 'tablet' ? 'smaller' : 'large')};
 `;
 
 export const ResultWrapper = styled.div<ResultWrapperProps>`
@@ -109,7 +109,7 @@ export const ResultSpan = styled.span<ResultSpanProps>`
   font-size: 3.6rem;
   max-width: 840px;
   word-break: break-all;
-  font-size: ${(props) => (props.media === 'mobile' ? 'large' : {})};
+  font-size: ${(props) => (props.media === 'tablet' ? 'large' : {})};
 `;
 
 export const ButtonWrapper = styled.div`

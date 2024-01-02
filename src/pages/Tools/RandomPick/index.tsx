@@ -151,7 +151,7 @@ function RandomPick() {
           {studentsList.length === 0 &&
             localStorage.getItem('random-pick-setting') && (
               <>
-                <p style={media === 'mobile' ? { fontSize: 'large' } : {}}>
+                <p style={media === 'tablet' ? { fontSize: 'large' } : {}}>
                   모든 학생을 선정했습니다. 확인을 누르면 처음부터 다시 선정할
                   수 있습니다.
                 </p>
@@ -161,7 +161,7 @@ function RandomPick() {
                   $style={css`
                     margin: 20px;
                   `}
-                  size={media === 'mobile' ? 'sm' : 'lg'}
+                  size={media === 'tablet' ? 'sm' : 'lg'}
                 >
                   확인
                 </Button>
@@ -169,20 +169,21 @@ function RandomPick() {
             )}
         </S.ResultWrapper>
         <S.ButtonWrapper>
-          <Button onClick={handlePick} size={media === 'mobile' ? 'sm' : 'lg'}>
+          <Button onClick={handlePick} size={media === 'tablet' ? 'sm' : 'lg'}>
             <AiOutlineUserAdd />
             뽑기
           </Button>
           <Button
-            size={media === 'mobile' ? 'sm' : 'lg'}
+            size={media === 'tablet' ? 'sm' : 'lg'}
             onClick={() => {
-              openModal(
-                <RandomPickModal
-                  randomPickSetting={randomPickSetting}
-                  isOpen={isOpen}
-                  media={media}
-                />,
-              );
+              if (media !== 'mobile') {
+                openModal(
+                  <RandomPickModal
+                    randomPickSetting={randomPickSetting}
+                    media={media}
+                  />,
+                );
+              }
             }}
           >
             <AiFillSetting />
