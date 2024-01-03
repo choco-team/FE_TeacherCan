@@ -71,6 +71,13 @@ function RandomPick() {
     setPickedStudents([]);
   };
 
+  //mobile 버전일 때
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleToggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
   //StudentsList 업데이트하기
   useEffect(() => {
     if (duplication !== true) {
@@ -108,89 +115,160 @@ function RandomPick() {
 
   return (
     <S.Layout>
-      <S.RandomResult
-        backgroundImage={
-          background == 'wood' ? woodbackground : whitebackground
-        }
-      >
-        <S.SelectBackgroundButtonWrapper justifyContent="space-between">
-          <S.WoodBackgroundButton
-            media={media}
-            onClick={toggleWoodBackground}
-            backgroundColor="#007200"
-            hoverBackground="#14540d"
-            textColor="white"
-          >
-            G
-          </S.WoodBackgroundButton>
-          <S.WoodBackgroundButton
-            media={media}
-            onClick={toggleWhiteBackground}
-            backgroundColor="white"
-            hoverBackground="#ece6cc"
-            textColor="black"
-          >
-            W
-          </S.WoodBackgroundButton>
-        </S.SelectBackgroundButtonWrapper>
-        <S.ResultWrapper color={background == 'wood' ? 'white' : 'black'}>
-          {pickedStudents.length !== 0 && (
-            <p>
-              <S.ResultSpan media={media}>
-                {pickedStudents.join('    ')}
-              </S.ResultSpan>
-            </p>
-          )}
-
-          {!localStorage.getItem('random-pick-setting') && (
-            <p style={media === 'mobile' ? { fontSize: 'large' } : {}}>
-              학생 목록을 선택하세요
-            </p>
-          )}
-
-          {studentsList.length === 0 &&
-            localStorage.getItem('random-pick-setting') && (
-              <>
-                <p style={media === 'tablet' ? { fontSize: 'large' } : {}}>
-                  모든 학생을 선정했습니다. 확인을 누르면 처음부터 다시 선정할
-                  수 있습니다.
-                </p>
-
-                <Button
-                  onClick={handleConfirm}
-                  $style={css`
-                    margin: 20px;
-                  `}
-                  size={media === 'tablet' ? 'sm' : 'lg'}
+      {media === 'mobile' ? (
+        <>
+          <S.RandomResult media={media}>
+            <S.LeftMenuButton onClick={handleToggleMenu}>
+              {/* Icon for the left menu button */}
+              <AiOutlineUserAdd />
+            </S.LeftMenuButton>
+            {isMenuOpen && (
+              <S.LeftMenu>
+                <S.LeftMenuButton onClick={handlePick}>
+                  <AiOutlineUserAdd />
+                  뽑기
+                </S.LeftMenuButton>
+                <S.LeftMenuButton
+                  onClick={() => {
+                    {
+                      openModal(
+                        <RandomPickModal
+                          randomPickSetting={randomPickSetting}
+                          media={media}
+                        />,
+                      );
+                    }
+                  }}
                 >
-                  확인
-                </Button>
-              </>
+                  <AiFillSetting />
+                  설정
+                </S.LeftMenuButton>
+              </S.LeftMenu>
             )}
-        </S.ResultWrapper>
-        <S.ButtonWrapper>
-          <Button onClick={handlePick} size={media === 'tablet' ? 'sm' : 'lg'}>
-            <AiOutlineUserAdd />
-            뽑기
-          </Button>
-          <Button
-            size={media === 'tablet' ? 'sm' : 'lg'}
-            onClick={() => {
-              if (media !== 'mobile') {
-                openModal(
-                  <RandomPickModal
-                    randomPickSetting={randomPickSetting}
-                    media={media}
-                  />,
-                );
-              }
-            }}
+            <S.ResultWrapper color={background == 'wood' ? 'white' : 'black'}>
+              {pickedStudents.length !== 0 && (
+                <p>
+                  <S.ResultSpan media={media} style={{ fontSize: 'medium' }}>
+                    {pickedStudents.join('    ')}
+                  </S.ResultSpan>
+                </p>
+              )}
+              {!localStorage.getItem('random-pick-setting') && (
+                <p style={{ fontSize: 'medium' }}>학생 목록을 선택하세요</p>
+              )}
+              {studentsList.length === 0 &&
+                localStorage.getItem('random-pick-setting') && (
+                  <>
+                    <p style={{ fontSize: 'medium' }}>
+                      모든 학생을 선정했습니다. <br />
+                      확인을 누르면 처음부터 다시 선정할 수 있습니다.
+                    </p>
+
+                    <Button
+                      onClick={handleConfirm}
+                      $style={css`
+                        margin: 20px;
+                      `}
+                      size={'sm'}
+                    >
+                      확인
+                    </Button>
+                  </>
+                )}
+            </S.ResultWrapper>
+          </S.RandomResult>
+        </>
+      ) : (
+        <>
+          <S.RandomResult
+            media={media}
+            backgroundImage={
+              background == 'wood' ? woodbackground : whitebackground
+            }
           >
-            <AiFillSetting />
-            설정
-          </Button>
-        </S.ButtonWrapper>
-      </S.RandomResult>
+            <S.SelectBackgroundButtonWrapper justifyContent="space-between">
+              <S.WoodBackgroundButton
+                media={media}
+                onClick={toggleWoodBackground}
+                backgroundColor="#007200"
+                hoverBackground="#14540d"
+                textColor="white"
+              >
+                G
+              </S.WoodBackgroundButton>
+              <S.WoodBackgroundButton
+                media={media}
+                onClick={toggleWhiteBackground}
+                backgroundColor="white"
+                hoverBackground="#ece6cc"
+                textColor="black"
+              >
+                W
+              </S.WoodBackgroundButton>
+            </S.SelectBackgroundButtonWrapper>
+            <S.ResultWrapper color={background == 'wood' ? 'white' : 'black'}>
+              {pickedStudents.length !== 0 && (
+                <p>
+                  <S.ResultSpan media={media}>
+                    {pickedStudents.join('    ')}
+                  </S.ResultSpan>
+                </p>
+              )}
+
+              {!localStorage.getItem('random-pick-setting') && (
+                <p style={media === 'tablet' ? { fontSize: 'large' } : {}}>
+                  학생 목록을 선택하세요
+                </p>
+              )}
+
+              {studentsList.length === 0 &&
+                localStorage.getItem('random-pick-setting') && (
+                  <>
+                    <p style={media === 'tablet' ? { fontSize: 'large' } : {}}>
+                      모든 학생을 선정했습니다. 확인을 누르면 처음부터 다시
+                      선정할 수 있습니다.
+                    </p>
+
+                    <Button
+                      onClick={handleConfirm}
+                      $style={css`
+                        margin: 20px;
+                      `}
+                      size={media === 'tablet' ? 'sm' : 'lg'}
+                    >
+                      확인
+                    </Button>
+                  </>
+                )}
+            </S.ResultWrapper>
+            <S.ButtonWrapper>
+              <Button
+                onClick={handlePick}
+                size={media === 'tablet' ? 'sm' : 'lg'}
+              >
+                <AiOutlineUserAdd />
+                뽑기
+              </Button>
+              <Button
+                size={media === 'tablet' ? 'sm' : 'lg'}
+                onClick={() => {
+                  {
+                    openModal(
+                      <RandomPickModal
+                        randomPickSetting={randomPickSetting}
+                        media={media}
+                      />,
+                    );
+                  }
+                }}
+              >
+                <AiFillSetting />
+                설정
+              </Button>
+            </S.ButtonWrapper>
+          </S.RandomResult>
+        </>
+      )}
     </S.Layout>
   );
 }

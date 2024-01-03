@@ -7,7 +7,8 @@ import { flexCustom } from '@Styles/common';
 import theme from '@Styles/theme';
 
 type RandomResultLayoutProps = {
-  backgroundImage: string;
+  backgroundImage?: string;
+  media: string;
 };
 
 export const Layout = styled.div`
@@ -25,7 +26,8 @@ export const RandomResult = styled.div<RandomResultLayoutProps>`
   aspect-ratio: 5/3;
   margin: auto;
   border-radius: 10px;
-  background-image: url(${(props) => props.backgroundImage});
+  background-image: ${(props) =>
+    props.media !== 'mobile' ? `url(${props.backgroundImage})` : 'none'};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -132,4 +134,34 @@ export const ButtonWrapper = styled.div`
     justify-content: center;
     gap: 10px;
   }
+`;
+
+//mobile 버전
+export const LeftMenuButton = styled.button`
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 12px;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+
+export const LeftMenu = styled.div`
+  position: absolute;
+  bottom: 0px; /* Adjust the top position as needed */
+  left: 0px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1; /* Ensure the menu is above other elements */
 `;
