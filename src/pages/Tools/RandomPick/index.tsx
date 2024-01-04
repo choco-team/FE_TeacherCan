@@ -118,41 +118,10 @@ function RandomPick() {
       {media === 'mobile' ? (
         <>
           <S.RandomResult media={media}>
-            <S.LeftMenu>
-              <S.LeftMenuButton onClick={handleToggleMenu}>
-                {/* Icon for the left menu button */}
-                <AiOutlineUserAdd />
-              </S.LeftMenuButton>
-              <S.LeftMenuButton
-                onClick={handlePick}
-                style={{
-                  position: 'absolute',
-                  top: '35px',
-                }}
-              >
-                뽑기
-              </S.LeftMenuButton>
-              {isMenuOpen && (
-                <div>
-                  <S.LeftMenuButton
-                    onClick={() => {
-                      {
-                        openModal(
-                          <RandomPickModal
-                            randomPickSetting={randomPickSetting}
-                            media={media}
-                          />,
-                        );
-                      }
-                    }}
-                    style={{ position: 'absolute', top: '100px' }}
-                  >
-                    설정
-                  </S.LeftMenuButton>{' '}
-                </div>
-              )}
-            </S.LeftMenu>
-
+            <S.LeftMenuButton onClick={handleToggleMenu}>
+              {/* Icon for the left menu button */}
+              <AiOutlineUserAdd />
+            </S.LeftMenuButton>
             <S.ResultWrapper color={background == 'wood' ? 'white' : 'black'}>
               {pickedStudents.length !== 0 && (
                 <p>
@@ -184,6 +153,13 @@ function RandomPick() {
                   </>
                 )}
             </S.ResultWrapper>
+            {isMenuOpen && (
+              <S.MobileContainer
+                style={{ position: 'absolute', bottom: '0px' }}
+              >
+                <S.MobileButton onClick={handlePick}>뽑기</S.MobileButton>
+              </S.MobileContainer>
+            )}
           </S.RandomResult>
         </>
       ) : (

@@ -122,8 +122,6 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-
-  display: flex;
   gap: 10px;
 
   margin: 10px;
@@ -154,14 +152,21 @@ export const LeftMenuButton = styled.button`
   }
 `;
 
-export const LeftMenu = styled.div`
-  position: absolute;
-  top: 0px; /* Adjust the top position as needed */
-  left: 0px;
-  background-color: white;
-  border: 1px solid #ccc;
+export const MobileContainer = styled.div`
+  /* position: 'absolute';
+  bottom: 0px; */
+`;
+
+export const MobileButton = styled.button`
+  background-color: #007bff;
+  color: white;
+  border: none;
   border-radius: 5px;
   padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1; /* Ensure the menu is above other elements */
+  cursor: pointer;
+  font-size: 12px;
+
+  &:hover {
+    background-color: #0056b3;
+  }
 `;
