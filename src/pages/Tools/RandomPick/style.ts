@@ -156,7 +156,7 @@ export const LeftMenuButton = styled.button`
 
 export const LeftMenu = styled.div`
   position: absolute;
-  bottom: 0px; /* Adjust the top position as needed */
+  top: 0px; /* Adjust the top position as needed */
   left: 0px;
   background-color: white;
   border: 1px solid #ccc;
