@@ -10,7 +10,6 @@ import Button from '@Components/Button';
 import whitebackground from '@Assets/image/background/random-whitebg.png';
 import woodbackground from '@Assets/image/background/random-woodbg.png';
 
-import Mobile from './Mobile';
 import RandomPickModal, { RandomPickSetting } from './RandomPickModal';
 import { MOCK_STUDENTS_LISTS } from './mock';
 import * as S from './style';
@@ -111,13 +110,13 @@ function RandomPick() {
     <S.Layout>
       {media === 'mobile' ? (
         <>
-          <Mobile
+          {/* <Mobile
             randomPickSetting={randomPickSetting}
             studentsList={studentsList}
             pickedStudents={pickedStudents}
             handleConfirm={handleConfirm}
             handlePick={handlePick}
-          />
+          /> */}
         </>
       ) : (
         <>
