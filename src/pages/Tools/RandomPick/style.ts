@@ -134,39 +134,39 @@ export const ButtonWrapper = styled.div`
   }
 `;
 
-//mobile 버전
-export const LeftMenuButton = styled.button`
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 12px;
+// //mobile 버전
+// export const LeftMenuButton = styled.button`
+//   position: absolute;
+//   top: 0px;
+//   left: 0px;
+//   background-color: #007bff;
+//   color: white;
+//   border: none;
+//   border-radius: 5px;
+//   padding: 10px;
+//   cursor: pointer;
+//   font-size: 12px;
 
-  &:hover {
-    background-color: #0056b3;
-  }
-`;
+//   &:hover {
+//     background-color: #0056b3;
+//   }
+// `;
 
-export const MobileContainer = styled.div`
-  /* position: 'absolute';
-  bottom: 0px; */
-`;
+// export const MobileContainer = styled.div`
+//   /* position: 'absolute';
+//   bottom: 0px; */
+// `;
 
-export const MobileButton = styled.button`
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 12px;
+// export const MobileButton = styled.button`
+//   background-color: #007bff;
+//   color: white;
+//   border: none;
+//   border-radius: 5px;
+//   padding: 10px;
+//   cursor: pointer;
+//   font-size: 12px;
 
-  &:hover {
-    background-color: #0056b3;
-  }
-`;
+//   &:hover {
+//     background-color: #0056b3;
+//   }
+// `;

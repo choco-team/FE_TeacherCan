@@ -10,6 +10,7 @@ import Button from '@Components/Button';
 import whitebackground from '@Assets/image/background/random-whitebg.png';
 import woodbackground from '@Assets/image/background/random-woodbg.png';
 
+import Mobile from './Mobile';
 import RandomPickModal, { RandomPickSetting } from './RandomPickModal';
 import { MOCK_STUDENTS_LISTS } from './mock';
 import * as S from './style';
@@ -71,13 +72,6 @@ function RandomPick() {
     setPickedStudents([]);
   };
 
-  //mobile 버전일 때
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleToggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
-
   //StudentsList 업데이트하기
   useEffect(() => {
     if (duplication !== true) {
@@ -117,50 +111,13 @@ function RandomPick() {
     <S.Layout>
       {media === 'mobile' ? (
         <>
-          <S.RandomResult media={media}>
-            <S.LeftMenuButton onClick={handleToggleMenu}>
-              {/* Icon for the left menu button */}
-              <AiOutlineUserAdd />
-            </S.LeftMenuButton>
-            <S.ResultWrapper color={background == 'wood' ? 'white' : 'black'}>
-              {pickedStudents.length !== 0 && (
-                <p>
-                  <S.ResultSpan media={media} style={{ fontSize: 'medium' }}>
-                    {pickedStudents.join('    ')}
-                  </S.ResultSpan>
-                </p>
-              )}
-              {!localStorage.getItem('random-pick-setting') && (
-                <p style={{ fontSize: 'medium' }}>학생 목록을 선택하세요</p>
-              )}
-              {studentsList.length === 0 &&
-                localStorage.getItem('random-pick-setting') && (
-                  <>
-                    <p style={{ fontSize: 'medium' }}>
-                      모든 학생을 선정했습니다. <br />
-                      확인을 누르면 처음부터 다시 선정할 수 있습니다.
-                    </p>
-
-                    <Button
-                      onClick={handleConfirm}
-                      $style={css`
-                        margin: 20px;
-                      `}
-                      size={'sm'}
-                    >
-                      확인
-                    </Button>
-                  </>
-                )}
-            </S.ResultWrapper>
-            {isMenuOpen && (
-              <S.MobileContainer
-                style={{ position: 'absolute', bottom: '0px' }}
-              >
-                <S.MobileButton onClick={handlePick}>뽑기</S.MobileButton>
-              </S.MobileContainer>
-            )}
-          </S.RandomResult>
+          <Mobile
+            randomPickSetting={randomPickSetting}
+            studentsList={studentsList}
+            pickedStudents={pickedStudents}
+            handleConfirm={handleConfirm}
+            handlePick={handlePick}
+          />
         </>
       ) : (
         <>
