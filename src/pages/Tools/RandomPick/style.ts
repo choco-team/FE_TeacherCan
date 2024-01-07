@@ -114,6 +114,10 @@ export const ResultSpan = styled.span<ResultSpanProps>`
   font-size: ${(props) => (props.media === 'tablet' ? 'large' : {})};
 `;
 
+export const CheckParagraph = styled.p<ResultSpanProps>`
+  font-size: ${(props) => (props.media === 'tablet' ? 'large' : {})};
+`;
+
 export const ButtonWrapper = styled.div`
   position: absolute;
   right: 0;
@@ -133,40 +137,3 @@ export const ButtonWrapper = styled.div`
     gap: 10px;
   }
 `;
-
-// //mobile 버전
-// export const LeftMenuButton = styled.button`
-//   position: absolute;
-//   top: 0px;
-//   left: 0px;
-//   background-color: #007bff;
-//   color: white;
-//   border: none;
-//   border-radius: 5px;
-//   padding: 10px;
-//   cursor: pointer;
-//   font-size: 12px;
-
-//   &:hover {
-//     background-color: #0056b3;
-//   }
-// `;
-
-// export const MobileContainer = styled.div`
-//   /* position: 'absolute';
-//   bottom: 0px; */
-// `;
-
-// export const MobileButton = styled.button`
-//   background-color: #007bff;
-//   color: white;
-//   border: none;
-//   border-radius: 5px;
-//   padding: 10px;
-//   cursor: pointer;
-//   font-size: 12px;
-
-//   &:hover {
-//     background-color: #0056b3;
-//   }
-// `;

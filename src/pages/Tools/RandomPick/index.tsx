@@ -156,18 +156,18 @@ function RandomPick() {
               )}
 
               {!localStorage.getItem('random-pick-setting') && (
-                <p style={media === 'tablet' ? { fontSize: 'large' } : {}}>
+                <S.CheckParagraph media={media}>
                   학생 목록을 선택하세요
-                </p>
+                </S.CheckParagraph>
               )}
 
               {studentsList.length === 0 &&
                 localStorage.getItem('random-pick-setting') && (
                   <>
-                    <p style={media === 'tablet' ? { fontSize: 'large' } : {}}>
+                    <S.CheckParagraph media={media}>
                       모든 학생을 선정했습니다. 확인을 누르면 처음부터 다시
                       선정할 수 있습니다.
-                    </p>
+                    </S.CheckParagraph>
 
                     <Button
                       onClick={handleConfirm}
