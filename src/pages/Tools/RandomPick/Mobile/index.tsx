@@ -51,8 +51,6 @@ function Mobile({
       ...prevSettings,
       studentsListId: Number(value),
     }));
-
-    localStorage.setItem('random-pick-setting', JSON.stringify(settings));
   };
 
   const handleChangeStudentsCount = (
@@ -63,13 +61,6 @@ function Mobile({
       ...prevSettings,
       studentsCount: Number(value),
     }));
-
-    if (!settings.studentsCount) {
-      alert('뽑을 학생 수를 선택해주세요.');
-      return;
-    }
-
-    localStorage.setItem('random-pick-setting', JSON.stringify(settings));
   };
 
   const handleClickDuplication = (
@@ -80,6 +71,20 @@ function Mobile({
       ...prevSettings,
       isAllowDuplication: value == 'YES',
     }));
+  };
+
+  const handleSaveBtn = () => {
+    if (!settings.studentsListId) {
+      alert('명렬표를 선택해주세요.');
+      return;
+    }
+
+    if (!settings.studentsCount) {
+      alert('뽑을 학생 수를 선택해주세요.');
+      return;
+    }
+
+    localStorage.setItem('random-pick-setting', JSON.stringify(settings));
   };
 
   return (
@@ -144,6 +149,7 @@ function Mobile({
           </div>
           뽑힌 학생 제외하기
         </S.SmallButton>
+        <Button onClick={handleSaveBtn}>저장</Button>
       </S.MobileContainer>
       {pickedStudents.length !== 0 && (
         <p>
