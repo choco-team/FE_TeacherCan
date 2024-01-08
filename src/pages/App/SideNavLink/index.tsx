@@ -1,4 +1,4 @@
-import useMedia from '@Hooks/useMedia';
+import { useMedia } from '@Hooks/useMedia';
 
 import route from '@Utils/route';
 

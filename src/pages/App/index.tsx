@@ -5,6 +5,8 @@ import { PiSunBold, PiMoonStarsBold } from 'react-icons/pi';
 import { Outlet, useLocation } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
+import { useMediaInit } from '@Hooks/useMedia';
+
 import route from '@Utils/route';
 
 import ModalProvider from '@Providers/ModalProvider';
@@ -20,6 +22,8 @@ import SideNavLink from './SideNavLink';
 import * as S from './style';
 
 function App() {
+  useMediaInit();
+
   const [isLightTheme, setIsLightTheme] = useState(true);
 
   const { pathname } = useLocation();

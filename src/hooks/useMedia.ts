@@ -3,8 +3,7 @@ import useMediaStore from 'src/stores/useMediaStore';
 
 import { MEDIA_SIZE } from '@Constant/media';
 
-const useMedia = () => {
-  const media = useMediaStore((state) => state.media);
+export const useMediaInit = () => {
   const setMedia = useMediaStore((state) => state.setMedia);
 
   const observerBodySize: ResizeObserverCallback = useCallback(
@@ -31,8 +30,10 @@ const useMedia = () => {
 
     return () => observer.unobserve(body);
   }, [observerBodySize]);
+};
+
+export const useMedia = () => {
+  const media = useMediaStore((state) => state.media);
 
   return media;
 };
-
-export default useMedia;
