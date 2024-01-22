@@ -46,6 +46,10 @@ function RandomPick() {
     setbackground('white');
   };
 
+  const lightGreen = 'rgb(23, 142, 23)';
+  const darkGreen = 'rgb(20, 84, 13)';
+  const darkYellow = 'rgb(236, 230, 204)';
+
   const handlePick = () => {
     //학생 명단 셔플하기
     for (let i = studentsList.length - 1; i >= 0; i--) {
@@ -130,8 +134,8 @@ function RandomPick() {
               <S.WoodBackgroundButton
                 media={media}
                 onClick={toggleWoodBackground}
-                backgroundColor="#007200"
-                hoverBackground="#14540d"
+                backgroundColor={lightGreen}
+                hoverBackground={darkGreen}
                 textColor="white"
               >
                 G
@@ -140,7 +144,7 @@ function RandomPick() {
                 media={media}
                 onClick={toggleWhiteBackground}
                 backgroundColor="white"
-                hoverBackground="#ece6cc"
+                hoverBackground={darkYellow}
                 textColor="black"
               >
                 W
