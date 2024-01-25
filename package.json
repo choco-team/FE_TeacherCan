@@ -35,6 +35,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
     "react-router-dom": "^6.16.0",
+    "react-toastify": "^10.0.4",
     "styled-components": "^6.0.8",
     "xlsx": "^0.18.5",
     "zustand": "^4.4.7"
@@ -90,5 +91,3 @@
     "wrap-ansi": "7.0.0"
   }
 }
-
-
