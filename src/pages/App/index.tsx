@@ -5,11 +5,9 @@ import { PiSunBold, PiMoonStarsBold } from 'react-icons/pi';
 import { Outlet, useLocation } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import useMedia from '@Hooks/useMedia';
+import { useMediaInit } from '@Hooks/useMedia';
 
 import route from '@Utils/route';
-
-import { ROUTE_PATH } from '@Constant/routePath';
 
 import ModalProvider from '@Providers/ModalProvider';
 import QueryProvider from '@Providers/QueryProvider';
@@ -24,8 +22,9 @@ import SideNavLink from './SideNavLink';
 import * as S from './style';
 
 function App() {
+  useMediaInit();
+
   const [isLightTheme, setIsLightTheme] = useState(true);
-  const media = useMedia();
 
   const { pathname } = useLocation();
   const [main] = route.getPathnames(pathname);
@@ -45,10 +44,7 @@ function App() {
                 <ModalProvider>
                   <Header pathname={pathname} />
                   <S.DefaultPageLayout>
-                    {media === 'desktop' &&
-                      pathname !== route.calculatePath([ROUTE_PATH.main]) && (
-                        <SideNavLink pathname={pathname} />
-                      )}
+                    <SideNavLink pathname={pathname} />
                     <S.PageWrapper>
                       <Outlet />
                     </S.PageWrapper>
