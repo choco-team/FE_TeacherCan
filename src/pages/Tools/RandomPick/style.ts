@@ -7,7 +7,8 @@ import { flexCustom } from '@Styles/common';
 import theme from '@Styles/theme';
 
 type RandomResultLayoutProps = {
-  backgroundImage: string;
+  backgroundImage?: string;
+  media: string;
 };
 
 export const Layout = styled.div`
@@ -25,7 +26,8 @@ export const RandomResult = styled.div<RandomResultLayoutProps>`
   aspect-ratio: 5/3;
   margin: auto;
   border-radius: 10px;
-  background-image: url(${(props) => props.backgroundImage});
+  background-image: ${(props) =>
+    props.media !== 'mobile' ? `url(${props.backgroundImage})` : 'none'};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -36,7 +38,7 @@ export const ChoosedComponentsContainer = styled.div`
   ${flexCustom('row', 'center', 'flex-start')}
   width: 100%;
   max-width: 720px;
-  border: 3px solid ${theme.color.primary[500]};
+  border: 3px solid ${theme.color.primary};
   border-radius: 3px;
   margin: 20px 0 20px 0;
   padding: 16px;
@@ -65,19 +67,19 @@ export const BackgroundButtonContainer = styled.div`
   ${flexCustom('row', 'center', 'center')}
 `;
 
-interface backgroundButtonProps {
+type backgroundButtonProps = {
   backgroundColor: string;
   hoverBackground: string;
   textColor: string;
-}
+  media: string;
+};
 
 export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
   ${flexCustom('row', 'center', 'center')}
-  width: 24px;
-  min-width: 24px;
-  height: 24px;
-  margin: 8px 4px;
+  width: ${(props) => (props.media === 'tablet' ? '20px' : '28px')};
+  margin: 12px 12px 8px 0px;
   border-radius: 50%;
+  padding: 0px;
   background-color: ${(props) => props.backgroundColor};
   border-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.textColor};
@@ -88,6 +90,7 @@ export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
   &:active {
     background-color: ${(props) => props.hoverBackground};
   }
+  font-size: ${(props) => (props.media === 'tablet' ? 'smaller' : 'large')};
 `;
 
 export const ResultWrapper = styled.div<ResultWrapperProps>`
@@ -98,13 +101,21 @@ export const ResultWrapper = styled.div<ResultWrapperProps>`
   text-align: center;
 `;
 
-export const ResultSpan = styled.span`
+type ResultSpanProps = {
+  media: string;
+};
+
+export const ResultSpan = styled.span<ResultSpanProps>`
   display: inline-block;
   text-align: center;
   font-size: 3.6rem;
   max-width: 840px;
   word-break: break-all;
-  /* background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, gold 50%); */
+  font-size: ${(props) => (props.media === 'tablet' ? 'large' : {})};
+`;
+
+export const CheckParagraph = styled.p<ResultSpanProps>`
+  font-size: ${(props) => (props.media === 'tablet' ? 'large' : {})};
 `;
 
 export const ButtonWrapper = styled.div`
@@ -115,8 +126,6 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-
-  display: flex;
   gap: 10px;
 
   margin: 10px;

@@ -6,7 +6,7 @@ import theme from '@Styles/theme';
 export const ModalContainer = styled.div`
   padding: 5px;
   display: flex; /* Use flexbox */
-  align-items: center; /* Align items vertically */
+  align-items: center;
 `;
 
 export const SmallButtonWrapper = styled.div`
@@ -23,7 +23,6 @@ export const SmallButton = styled.button<{ isOnClick?: boolean }>`
   display: flex;
   border-radius: 2px;
   margin-right: 8px;
-  padding: 4px;
 `;
 
 export const IconWrapper = styled.span`
@@ -34,12 +33,11 @@ export const IconWrapper = styled.span`
 
 export const ListSpan = styled.span`
   margin: 5px;
-
   border-radius: 2px;
   min-height: 24px;
   min-width: 96px;
   padding: 8px;
-  color: black;
+  color: 'black';
 `;
 
 export const ListSelect = styled.select`
@@ -52,12 +50,11 @@ export const ListSelect = styled.select`
   }
 
   &:focus {
-    border-color: ${({ theme }) => theme.border.primary};
+    border-color: ${({ theme }) => theme.accentText};
   }
   align-items: center;
   text-align: center;
   padding: 8px 12px;
-  margin-left: 5px;
 `;
 
 export const BigBsShield = styled(BsShieldExclamation)`

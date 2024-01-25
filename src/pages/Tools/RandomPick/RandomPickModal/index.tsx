@@ -19,6 +19,8 @@ export type RandomPickSetting = {
 
 type RandomPickModalProps = {
   randomPickSetting: RandomPickSetting;
+  media: string;
+  style?: React.CSSProperties;
 };
 
 function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
