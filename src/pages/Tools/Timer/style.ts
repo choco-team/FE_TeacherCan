@@ -40,9 +40,14 @@ export const TimeBar = styled.div`
   min-width: 100%;
   height: 24px;
 
-  border-radius: 4px;
-
   background-color: ${theme.color.primary[100]};
+`;
+
+export const ProgressBar = styled.div<{ progress: number }>`
+  height: 100%;
+  width: ${({ progress }) => `${progress}%`};
+
+  background-color: ${theme.color.primary[500]};
 `;
 
 export const TimerButton = styled.div`
