@@ -5,10 +5,13 @@ import theme from '@Styles/theme';
 
 export const Layout = styled.div`
   ${flexCustom('column', 'center', 'center')};
+
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  min-width: 90%;
 `;
 
 export const TimerMemo = styled.div`
@@ -18,21 +21,24 @@ export const TimerMemo = styled.div`
   background-color: ${theme.color.gray[200]};
 
   font-weight: 600;
-  font-size: 4rem;
+  font-size: 6rem;
 `;
 
 export const TimeContainer = styled.div`
   ${flexCustom('column', 'center', 'center')};
+  min-width: 100%;
 `;
 
 export const Time = styled.span`
   font-size: 24vw;
-  font-weight: 600;
+  font-weight: 700;
+
+  font-variant-numeric: tabular-nums;
 `;
 
 export const TimeBar = styled.div`
-  width: 100%;
-  height: 20px;
+  min-width: 100%;
+  height: 24px;
 
   border-radius: 4px;
 
