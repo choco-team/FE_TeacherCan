@@ -13,6 +13,7 @@ import StudentManagement from '@Pages/StudentManagement';
 import StudentInfo from '@Pages/StudentManagement/StudentInfo';
 import StudentRegister from '@Pages/StudentManagement/StudentRegister';
 import RandomPick from '@Pages/Tools/RandomPick';
+import Timer from '@Pages/Tools/Timer';
 
 const router = createBrowserRouter([
   {
@@ -89,6 +90,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: ROUTE_PATH.timer,
+            element: <Timer />,
           },
           {
             path: ROUTE_PATH.randomPick,

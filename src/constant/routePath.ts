@@ -1,5 +1,5 @@
 import { AiOutlineUsergroupAdd } from 'react-icons/ai';
-import { BiBowlRice } from 'react-icons/bi';
+import { BiBowlRice, BiTimer } from 'react-icons/bi';
 import {
   // BsCalendarWeek,
   // BsNewspaper,
@@ -90,7 +90,7 @@ export const CATEGORIES: Categories = [
     category: 'main',
     name: '편의도구',
     path: 'tools',
-    firstChildPath: 'random-pick',
+    firstChildPath: 'timer',
     children: [
       'timer',
       'randomPick',
@@ -182,13 +182,13 @@ export const CATEGORIES: Categories = [
   },
 
   // tools
-  // {
-  //   key: 'timer',
-  //   category: 'middle',
-  //   name: '타이머',
-  //   path: 'timer',
-  //   Icon: BiTimer,
-  // },
+  {
+    key: 'timer',
+    category: 'middle',
+    name: '타이머',
+    path: 'timer',
+    Icon: BiTimer,
+  },
   {
     key: 'randomPick',
     category: 'middle',
