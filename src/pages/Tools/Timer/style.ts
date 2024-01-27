@@ -1,7 +1,9 @@
-import styled from 'styled-components';
+import styled, { RuleSet, css } from 'styled-components';
 
 import { flexCustom } from '@Styles/common';
 import theme from '@Styles/theme';
+
+import { ThemeName } from '@Types/style';
 
 export const Layout = styled.div`
   ${flexCustom('column', 'center', 'center')};
@@ -14,14 +16,26 @@ export const Layout = styled.div`
   min-width: 90%;
 `;
 
+const TIMER_MEMO_THEME: Record<ThemeName, RuleSet> = {
+  light: css`
+    background-color: ${theme.color.gray[200]};
+  `,
+
+  dark: css`
+    background-color: ${theme.color.gray[700]};
+  `,
+};
+
 export const TimerMemo = styled.div`
   padding: 20px 240px;
   border-radius: 20px;
 
-  background-color: ${theme.color.gray[200]};
-
   font-weight: 600;
   font-size: 6rem;
+
+  ${({ theme }) => css`
+    ${TIMER_MEMO_THEME[theme.name]};
+  `}
 `;
 
 export const TimeContainer = styled.div`
