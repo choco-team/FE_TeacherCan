@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BiCheck, BiX } from 'react-icons/bi';
+import { BiCheck } from 'react-icons/bi';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import { css } from 'styled-components';
 
@@ -85,10 +85,12 @@ function AuthInput({
               />
             ) : (
               <>
-                {!isCheckedEmail && '중복확인'}
-                <S.DoubleCheckIcon isCheckedEmail={isCheckedEmail}>
-                  {isCheckedEmail ? <BiCheck /> : <BiX />}
-                </S.DoubleCheckIcon>
+                {!isCheckedEmail && isValid && '중복확인'}
+                {isCheckedEmail && (
+                  <S.DoubleCheckIcon isCheckedEmail={isCheckedEmail}>
+                    <BiCheck />
+                  </S.DoubleCheckIcon>
+                )}
               </>
             )}
           </S.DoubleCheckEmail>
