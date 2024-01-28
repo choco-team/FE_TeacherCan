@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { AiOutlineUserAdd, AiFillSetting } from 'react-icons/ai';
 import { css } from 'styled-components';
 
-import useMedia from '@Hooks/useMedia';
+import { useMedia } from '@Hooks/useMedia';
 import useModal from '@Hooks/useModal';
 
 import Button from '@Components/Button';

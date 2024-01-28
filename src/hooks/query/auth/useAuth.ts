@@ -27,17 +27,17 @@ export const useSignUp = ({ onSuccess }: { onSuccess: () => void }) => {
 
 export const useSignIn = ({
   onSuccess,
+  onError,
 }: {
   onSuccess: (data: SignInResponse) => void;
+  onError: () => void;
 }) => {
   const { mutate, isLoading } = useMutation({
     mutationFn: (params: SignInRequest) =>
       postSignIn(params).then((response) => response.data),
     onSuccess: (data) => onSuccess(data),
     onError: (error) => {
-      if (error instanceof APIError) {
-        alert(error.message);
-      }
+      if (error instanceof APIError) onError();
     },
   });
 

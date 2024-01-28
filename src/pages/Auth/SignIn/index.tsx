@@ -43,6 +43,9 @@ function SignIn() {
       sessionStorage.setItem('token', data.token);
       navigate(route.calculatePath([ROUTE_PATH.main]));
     },
+    onError: () => {
+      window.alert('아이디 또는 비밀번호가 맞지 않습니다. 다시 확인해 주세요.');
+    },
   });
 
   const { state } = useLocation() as {
