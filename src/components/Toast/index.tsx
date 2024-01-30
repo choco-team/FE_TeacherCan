@@ -1,21 +1,27 @@
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, ToastPosition, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import * as S from './style';
-import { Toast } from './type';
 
-function Toast() {
-  const closeAfter15 = () =>
-    toast('Will close after 15s', { autoClose: 15000 });
+type ToastProps = {
+  position?: ToastPosition;
+  message?: string;
+  autoclose?: number;
+};
 
-  const closeAfter7 = () => toast('Will close after 7s', { autoClose: 7000 });
+function Toast({ position, message, autoclose }: ToastProps) {
+  const notify = () => toast(message);
 
   return (
     <div>
-      <S.ToastButton onClick={closeAfter15}>
-        Close after 15 seconds
-      </S.ToastButton>
-      <S.ToastButton onClick={closeAfter7}>Close after 7 seconds</S.ToastButton>
-      <ToastContainer autoClose={8000} />
+      <S.ToastButton onClick={notify}>Notify !</S.ToastButton>
+      <ToastContainer
+        position={position}
+        limit={1}
+        closeButton={false}
+        autoClose={autoclose}
+        hideProgressBar
+      />
     </div>
   );
 }

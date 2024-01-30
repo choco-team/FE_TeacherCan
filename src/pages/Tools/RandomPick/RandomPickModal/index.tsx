@@ -5,6 +5,7 @@ import useModal from '@Hooks/useModal';
 
 import Button from '@Components/Button';
 import Input from '@Components/Input';
+import Toast from '@Components/Toast';
 
 import theme from '@Styles/theme';
 
@@ -162,6 +163,7 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
         </Button>
         <Button onClick={handleSaveBtn}>저장</Button>
       </S.SmallButtonWrapper>
+      <Toast position={'bottom-center'} message="Wow!" autoclose={2000} />
     </>
   );
 }
