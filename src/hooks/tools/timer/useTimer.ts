@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import useInterval from '@Hooks/useInterval';
+
 const useTimer = () => {
   const [initTime, setInitTime] = useState(320);
   const [time, setTime] = useState(320);
@@ -12,15 +14,12 @@ const useTimer = () => {
     else setState('play');
   };
 
-  useEffect(() => {
-    if (time === 0 || state === 'stop') return;
-
-    const timer = setInterval(() => {
+  useInterval(
+    () => {
       setTime((prev) => prev - 1);
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [time, state]);
+    },
+    time === 0 || state === 'stop' ? null : 1000,
+  );
 
   return { time, state, progress, toggleState };
 };
