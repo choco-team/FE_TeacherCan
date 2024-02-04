@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { flexCustom } from '@Styles/common';
 import theme from '@Styles/theme';
 
 export const Layout = styled.div`
