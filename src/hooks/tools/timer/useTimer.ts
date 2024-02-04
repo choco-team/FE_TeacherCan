@@ -1,13 +1,18 @@
 import { useCallback, useEffect, useState } from 'react';
 
 const useTimer = () => {
-  const [initTime, setInitTime] = useState(5);
-  const [time, setTime] = useState(initTime);
+  const [initTime, setInitTime] = useState(300);
+  const [time, setTime] = useState(300);
   const [isProceeding, setIsProceeding] = useState(false);
 
   const progress = ((initTime - time) / initTime) * 100;
 
   const toggleState = () => setIsProceeding((prev) => !prev);
+
+  const changeInitTime = (minute: number, second: number) => {
+    setInitTime(minute * 60 + second);
+    setTime(minute * 60 + second);
+  };
 
   const resetTimer = () => {
     setTime(initTime);
@@ -38,7 +43,14 @@ const useTimer = () => {
     };
   }, [playTimer, isProceeding]);
 
-  return { time, isProceeding, progress, toggleState, resetTimer };
+  return {
+    time,
+    isProceeding,
+    progress,
+    toggleState,
+    resetTimer,
+    changeInitTime,
+  };
 };
 
 export default useTimer;

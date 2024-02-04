@@ -43,11 +43,42 @@ export const TimeContainer = styled.div`
   min-width: 100%;
 `;
 
+const TIMER_THEME: Record<ThemeName, RuleSet> = {
+  light: css`
+    &:hover {
+      background-color: ${theme.color.gray[200]};
+    }
+  `,
+
+  dark: css`
+    &:hover {
+      background-color: ${theme.color.gray[700]};
+    }
+  `,
+};
+
 export const Time = styled.span`
+  width: 100%;
+
+  margin: 40px 0px;
+
   font-size: 24vw;
   font-weight: 700;
+  text-align: center;
+
+  line-height: 100%;
 
   font-variant-numeric: tabular-nums;
+  transition: background-color 0.2s ease;
+  border-radius: 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  ${({ theme }) => css`
+    ${TIMER_THEME[theme.name]};
+  `}
 `;
 
 export const TimeBar = styled.div`
