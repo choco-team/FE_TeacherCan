@@ -15,7 +15,7 @@ function Timer() {
 
   const displayTime = `${displayMinute}:${displaySecond}`;
 
-  const timerButton = state === 'stop' ? <FaPlay /> : <FaPause />;
+  const timerButton = state === 'pause' ? <FaPlay /> : <FaPause />;
 
   return (
     <S.Layout>

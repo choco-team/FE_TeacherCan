@@ -1,25 +1,39 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-import useInterval from '@Hooks/useInterval';
+const worker = new Worker('../../../src/workers/timerWorker.ts');
 
 const useTimer = () => {
-  const [initTime, setInitTime] = useState(320);
-  const [time, setTime] = useState(320);
-  const [state, setState] = useState<'stop' | 'play'>('stop');
+  const [initTime, setInitTime] = useState(20);
+  const [time, setTime] = useState(initTime);
+  const [state, setState] = useState<'pause' | 'play'>('pause');
 
   const progress = ((initTime - time) / initTime) * 100;
 
   const toggleState = () => {
-    if (state === 'play') setState('stop');
+    if (state === 'play') setState('pause');
     else setState('play');
   };
 
-  useInterval(
+  const playTimer = useCallback(() => {
     () => {
-      setTime((prev) => prev - 1);
-    },
-    time === 0 || state === 'stop' ? null : 1000,
-  );
+      worker.postMessage(time);
+      worker.onmessage = (event: MessageEvent<number>) => {
+        const leftTime = event.data;
+
+        setTime(leftTime);
+
+        if (leftTime === 0) setState('pause');
+      };
+    };
+  }, [time]);
+
+  useEffect(() => {
+    if (state === 'play') playTimer();
+
+    return () => {
+      worker.terminate();
+    };
+  }, [playTimer, state]);
 
   return { time, state, progress, toggleState };
 };
