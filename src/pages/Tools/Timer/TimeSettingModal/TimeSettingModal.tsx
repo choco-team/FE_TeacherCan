@@ -8,14 +8,20 @@ import Input from '@Components/Input';
 import * as S from './style';
 
 type Props = {
+  minute: number;
+  second: number;
   changeInitTime: (minute: number, second: number) => void;
 };
 
-function TimeSettingModal({ changeInitTime }: Props) {
+function TimeSettingModal({
+  minute: prevMinute,
+  second: prevSecond,
+  changeInitTime,
+}: Props) {
   const { closeModal } = useModal();
 
-  const [minute, setMinute] = useState(5);
-  const [second, setSecond] = useState(0);
+  const [minute, setMinute] = useState(prevMinute);
+  const [second, setSecond] = useState(prevSecond);
 
   const handleChangeTime: (
     type: 'minute' | 'second',
@@ -54,7 +60,7 @@ function TimeSettingModal({ changeInitTime }: Props) {
       <S.ModalDescription>
         타이머 시간을 설정할 수 있어요.
         <br />
-        직접 설정할 수 있는 최대 시간은 60분에요.
+        직접 설정할 수 있는 최대 시간은 60분이에요.
       </S.ModalDescription>
       <S.InputLabel>
         <S.InputLabelText>직접 설정하기</S.InputLabelText>
@@ -80,7 +86,7 @@ function TimeSettingModal({ changeInitTime }: Props) {
       <S.InputLabel>
         <S.InputLabelText>간편 설정하기</S.InputLabelText>
         <S.TimerButtonContainer>
-          {[1, 3, 5, 10, 20, 30].map((minute) => (
+          {[3, 5, 10, 20, 30].map((minute) => (
             <Button
               size="sm"
               key={minute}
@@ -91,6 +97,9 @@ function TimeSettingModal({ changeInitTime }: Props) {
             </Button>
           ))}
         </S.TimerButtonContainer>
+      </S.InputLabel>
+      <S.InputLabel>
+        <S.InputLabelText>최근 타이머 시간</S.InputLabelText>
       </S.InputLabel>
       <S.BottomButtonContainer>
         <Button variant="gray" concept="text" onClick={closeModal}>

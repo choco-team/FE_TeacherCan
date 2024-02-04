@@ -33,7 +33,13 @@ function Timer() {
       <S.TimeContainer>
         <S.Time
           onClick={() =>
-            openModal(<TimeSettingModal changeInitTime={changeInitTime} />)
+            openModal(
+              <TimeSettingModal
+                changeInitTime={changeInitTime}
+                minute={minute}
+                second={second}
+              />,
+            )
           }
         >
           {displayTime}

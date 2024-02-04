@@ -22,7 +22,7 @@ export const ModalDescription = styled.p`
 
 export const InputLabel = styled.label`
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 140px 1fr;
 `;
 
 export const InputLabelText = styled.span`
