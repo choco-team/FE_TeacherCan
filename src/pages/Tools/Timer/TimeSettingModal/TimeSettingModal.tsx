@@ -23,6 +23,11 @@ function TimeSettingModal({
   const [minute, setMinute] = useState(prevMinute);
   const [second, setSecond] = useState(prevSecond);
 
+  const jsonRecentTimer = localStorage.getItem('timer');
+  const recentTimer: number[] = jsonRecentTimer
+    ? JSON.parse(jsonRecentTimer)
+    : [];
+
   const handleChangeTime: (
     type: 'minute' | 'second',
   ) => ChangeEventHandler<HTMLInputElement> = (type) => (event) => {
@@ -44,12 +49,23 @@ function TimeSettingModal({
     else setSecond(value);
   };
 
-  const handleClickMinute = (minute: number) => {
+  const handleClickTimeButton = (minute: number, second: number = 0) => {
     setMinute(minute);
-    setSecond(0);
+    setSecond(second);
+  };
+
+  const setRecentTimer = () => {
+    localStorage.setItem(
+      'timer',
+      JSON.stringify([
+        ...(recentTimer.length === 6 ? recentTimer.slice(1) : recentTimer),
+        minute * 60 + second,
+      ]),
+    );
   };
 
   const handleClickConfirm = () => {
+    setRecentTimer();
     changeInitTime(minute, second);
     closeModal();
   };
@@ -91,7 +107,7 @@ function TimeSettingModal({
               size="sm"
               key={minute}
               concept="outlined"
-              onClick={() => handleClickMinute(minute)}
+              onClick={() => handleClickTimeButton(minute)}
             >
               {minute}분
             </Button>
@@ -100,6 +116,25 @@ function TimeSettingModal({
       </S.InputLabel>
       <S.InputLabel>
         <S.InputLabelText>최근 타이머 시간</S.InputLabelText>
+        <S.RecentTimer>
+          {recentTimer.length !== 0 ? (
+            recentTimer.map((time, index) => (
+              <span
+                key={index}
+                className="recent-timer"
+                onClick={() =>
+                  handleClickTimeButton(Math.floor(time / 60), time % 60)
+                }
+              >
+                {Math.floor(time / 60)}분 {time % 60}초
+              </span>
+            ))
+          ) : (
+            <span className="empty-message">
+              최근에 사용한 타이머가 없어요.
+            </span>
+          )}
+        </S.RecentTimer>
       </S.InputLabel>
       <S.BottomButtonContainer>
         <Button variant="gray" concept="text" onClick={closeModal}>
