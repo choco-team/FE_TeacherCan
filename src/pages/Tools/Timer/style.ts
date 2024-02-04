@@ -64,6 +64,11 @@ export const ProgressBar = styled.div<{ progress: number }>`
   background-color: ${theme.color.primary[500]};
 `;
 
+export const TimerButtonWrapper = styled.div`
+  display: flex;
+  gap: 60px;
+`;
+
 export const TimerButton = styled.div`
   ${flexCustom('row', 'center', 'center')}
 

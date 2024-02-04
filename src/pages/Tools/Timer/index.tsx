@@ -1,11 +1,11 @@
-import { FaPause, FaPlay } from 'react-icons/fa6';
+import { FaPause, FaPlay, FaStop } from 'react-icons/fa6';
 
 import useTimer from '@Hooks/tools/timer/useTimer';
 
 import * as S from './style';
 
 function Timer() {
-  const { state, time, progress, toggleState } = useTimer();
+  const { isProceeding, time, progress, toggleState, resetTimer } = useTimer();
 
   const minute = Math.floor(time / 60);
   const second = time - minute * 60;
@@ -15,8 +15,6 @@ function Timer() {
 
   const displayTime = `${displayMinute}:${displaySecond}`;
 
-  const timerButton = state === 'pause' ? <FaPlay /> : <FaPause />;
-
   return (
     <S.Layout>
       <S.TimerMemo>쉬는시간</S.TimerMemo>
@@ -25,7 +23,20 @@ function Timer() {
         <S.TimeBar>
           <S.ProgressBar progress={progress}></S.ProgressBar>
         </S.TimeBar>
-        <S.TimerButton onClick={toggleState}>{timerButton}</S.TimerButton>
+        <S.TimerButtonWrapper>
+          {isProceeding || progress === 100 ? (
+            <S.TimerButton onClick={toggleState}>
+              <FaPause />
+            </S.TimerButton>
+          ) : (
+            <S.TimerButton onClick={toggleState}>
+              <FaPlay />
+            </S.TimerButton>
+          )}
+          <S.TimerButton onClick={resetTimer}>
+            <FaStop />
+          </S.TimerButton>
+        </S.TimerButtonWrapper>
       </S.TimeContainer>
     </S.Layout>
   );

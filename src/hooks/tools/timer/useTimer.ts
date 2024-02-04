@@ -1,41 +1,44 @@
 import { useCallback, useEffect, useState } from 'react';
 
-const worker = new Worker('../../../src/workers/timerWorker.ts');
-
 const useTimer = () => {
-  const [initTime, setInitTime] = useState(20);
+  const [initTime, setInitTime] = useState(5);
   const [time, setTime] = useState(initTime);
-  const [state, setState] = useState<'pause' | 'play'>('pause');
+  const [isProceeding, setIsProceeding] = useState(false);
 
   const progress = ((initTime - time) / initTime) * 100;
 
-  const toggleState = () => {
-    if (state === 'play') setState('pause');
-    else setState('play');
+  const toggleState = () => setIsProceeding((prev) => !prev);
+
+  const resetTimer = () => {
+    setTime(initTime);
+    setIsProceeding(false);
   };
 
-  const playTimer = useCallback(() => {
-    () => {
+  const playTimer = useCallback(
+    (worker: Worker) => {
       worker.postMessage(time);
       worker.onmessage = (event: MessageEvent<number>) => {
         const leftTime = event.data;
 
         setTime(leftTime);
 
-        if (leftTime === 0) setState('pause');
+        if (leftTime === 0) setIsProceeding(false);
       };
-    };
-  }, [time]);
+    },
+    [time],
+  );
 
   useEffect(() => {
-    if (state === 'play') playTimer();
+    const worker = new Worker('../../../src/workers/timerWorker.ts');
+
+    if (isProceeding) playTimer(worker);
 
     return () => {
       worker.terminate();
     };
-  }, [playTimer, state]);
+  }, [playTimer, isProceeding]);
 
-  return { time, state, progress, toggleState };
+  return { time, isProceeding, progress, toggleState, resetTimer };
 };
 
 export default useTimer;
