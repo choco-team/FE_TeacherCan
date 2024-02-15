@@ -27,11 +27,16 @@ const TIMER_MEMO_THEME: Record<ThemeName, RuleSet> = {
 };
 
 export const TimerMemo = styled.div`
-  padding: 20px 240px;
+  max-width: 100%;
+  /* width: 100%; */
+
+  padding: 20px 60px;
   border-radius: 20px;
 
   font-weight: 600;
   font-size: 6rem;
+
+  text-align: center;
 
   ${({ theme }) => css`
     ${TIMER_MEMO_THEME[theme.name]};

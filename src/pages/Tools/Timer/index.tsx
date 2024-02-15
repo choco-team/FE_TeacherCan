@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { FaPause, FaPlay, FaStop } from 'react-icons/fa6';
 
 import useTimer from '@Hooks/tools/timer/useTimer';
 import useModal from '@Hooks/useModal';
 
-import TimeSettingModal from './TimeSettingModal/TimeSettingModal';
+import TimeSettingModal from './TimeSettingModal';
+import TimerMemoModal from './TimerMemoModal';
 import * as S from './style';
 
 function Timer() {
@@ -17,7 +19,7 @@ function Timer() {
     changeInitTime,
   } = useTimer();
 
-  console.log(time);
+  const [memo, setMemo] = useState<string>();
 
   const minute = Math.floor(time / 60);
   const second = time - minute * 60;
@@ -27,23 +29,22 @@ function Timer() {
 
   const displayTime = `${displayMinute}:${displaySecond}`;
 
+  const handleClickTime = () =>
+    openModal(
+      <TimeSettingModal
+        changeInitTime={changeInitTime}
+        minute={minute}
+        second={second}
+      />,
+    );
+
+  const handleClickMessage = () => openModal(<TimerMemoModal />);
+
   return (
     <S.Layout>
-      <S.TimerMemo>쉬는시간</S.TimerMemo>
+      {memo && <S.TimerMemo onClick={handleClickMessage}>{memo}</S.TimerMemo>}
       <S.TimeContainer>
-        <S.Time
-          onClick={() =>
-            openModal(
-              <TimeSettingModal
-                changeInitTime={changeInitTime}
-                minute={minute}
-                second={second}
-              />,
-            )
-          }
-        >
-          {displayTime}
-        </S.Time>
+        <S.Time onClick={handleClickTime}>{displayTime}</S.Time>
         <S.TimeBar>
           <S.ProgressBar progress={progress}></S.ProgressBar>
         </S.TimeBar>

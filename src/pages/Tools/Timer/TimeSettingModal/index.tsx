@@ -34,7 +34,16 @@ function TimeSettingModal({
     const value = Number(event.target.value);
 
     if (isNaN(value)) return;
-    if (minute === 60 && type === 'second') return;
+    if (minute === 60 && type === 'second') {
+      setSecond(0);
+      return;
+    }
+
+    if (value === 60 && type === 'minute') {
+      setMinute(60);
+      setSecond(0);
+      return;
+    }
 
     if (value > 60 && type === 'minute') {
       setMinute(60);
