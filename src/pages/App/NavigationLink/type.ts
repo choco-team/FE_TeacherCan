@@ -8,6 +8,6 @@ type NavigationLink = {
   Icon?: IconType;
 };
 
-type LayoutProps = Pick<NavigationLink, 'category' | 'isSelected'>;
+type LayoutProps = Pick<NavigationLink, 'category'> & { $isSelected: boolean };
 
 export type { NavigationLink, LayoutProps };
