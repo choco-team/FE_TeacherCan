@@ -1,8 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 
+import localStorageHelper from '@Utils/localStorageHelper';
+
 const useTimer = () => {
-  const [initTime, setInitTime] = useState(300);
-  const [time, setTime] = useState(300);
+  const recentTimes = localStorageHelper.get<number[]>('timer') ?? [];
+  const recentTime = recentTimes[0] ?? 300;
+
+  const [initTime, setInitTime] = useState(recentTime);
+  const [time, setTime] = useState(recentTime);
   const [isProceeding, setIsProceeding] = useState(false);
 
   const progress = ((initTime - time) / initTime) * 100;

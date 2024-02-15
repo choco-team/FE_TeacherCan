@@ -4,6 +4,8 @@ import { FaPause, FaPlay, FaStop } from 'react-icons/fa6';
 import useTimer from '@Hooks/tools/timer/useTimer';
 import useModal from '@Hooks/useModal';
 
+import format from '@Utils/format';
+
 import TimeSettingModal from './TimeSettingModal';
 import TimerMemoModal from './TimerMemoModal';
 import * as S from './style';
@@ -21,22 +23,10 @@ function Timer() {
 
   const [memo, setMemo] = useState<string>();
 
-  const minute = Math.floor(time / 60);
-  const second = time - minute * 60;
-
-  const displayMinute = minute < 10 ? '0' + String(minute) : minute;
-  const displaySecond = second < 10 ? '0' + String(second) : second;
-
-  const displayTime = `${displayMinute}:${displaySecond}`;
+  const displayTime = format.time(time);
 
   const handleClickTime = () =>
-    openModal(
-      <TimeSettingModal
-        changeInitTime={changeInitTime}
-        minute={minute}
-        second={second}
-      />,
-    );
+    openModal(<TimeSettingModal changeInitTime={changeInitTime} />);
 
   const handleClickMessage = () => openModal(<TimerMemoModal />);
 

@@ -2,31 +2,25 @@ import { ChangeEventHandler, useState } from 'react';
 
 import useModal from '@Hooks/useModal';
 
+import localStorageHelper from '@Utils/localStorageHelper';
+
 import Button from '@Components/Button';
 import Input from '@Components/Input';
 
 import * as S from './style';
 
 type Props = {
-  minute: number;
-  second: number;
   changeInitTime: (minute: number, second: number) => void;
 };
 
-function TimeSettingModal({
-  minute: prevMinute,
-  second: prevSecond,
-  changeInitTime,
-}: Props) {
+function TimeSettingModal({ changeInitTime }: Props) {
   const { closeModal } = useModal();
 
-  const [minute, setMinute] = useState(prevMinute);
-  const [second, setSecond] = useState(prevSecond);
+  const recentTimes = localStorageHelper.get<number[]>('timer') ?? [];
+  const recentTime = recentTimes[0] ?? 300;
 
-  const jsonRecentTimer = localStorage.getItem('timer');
-  const recentTimer: number[] = jsonRecentTimer
-    ? JSON.parse(jsonRecentTimer)
-    : [];
+  const [minute, setMinute] = useState(Math.floor(recentTime / 60));
+  const [second, setSecond] = useState(recentTime - minute * 60);
 
   const handleChangeTime: (
     type: 'minute' | 'second',
@@ -68,8 +62,8 @@ function TimeSettingModal({
     localStorage.setItem(
       'timer',
       JSON.stringify([
-        ...(recentTimer.length === 6 ? recentTimer.slice(1) : recentTimer),
         minute * 60 + second,
+        ...(recentTimes.length === 6 ? recentTimes.slice(0, 5) : recentTimes),
       ]),
     );
   };
@@ -127,8 +121,8 @@ function TimeSettingModal({
       <S.InputLabel>
         <S.InputLabelText>최근 타이머 시간</S.InputLabelText>
         <S.RecentTimer>
-          {recentTimer.length !== 0 ? (
-            recentTimer.map((time, index) => (
+          {recentTimes.length !== 0 ? (
+            recentTimes.map((time, index) => (
               <span
                 key={index}
                 className="recent-timer"
