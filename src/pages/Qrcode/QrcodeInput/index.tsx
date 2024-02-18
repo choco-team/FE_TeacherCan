@@ -62,7 +62,15 @@ function QrcodeInput() {
           <S.Button>인쇄하기</S.Button>
           <S.Button onClick={handleDownload}>다운로드</S.Button>
           <S.Button
-            onClick={() => openModal(<QrcodeName closeModal={closeModal} />)}
+            onClick={() =>
+              openModal(
+                <QrcodeName
+                  closeModal={function (): void {
+                    throw new Error('Function not implemented.');
+                  }}
+                />,
+              )
+            }
           >
             보관함에 저장
           </S.Button>
