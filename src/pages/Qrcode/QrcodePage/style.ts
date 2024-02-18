@@ -7,9 +7,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
   margin-top: 30px;
-  padding: 20px;
+  /* padding: 20px; */
 `;
+
 export const StorageButton = styled.div`
   padding: 10px 20px;
   font-size: 14px;

@@ -1,10 +1,15 @@
 import QRCode from 'qrcode.react';
 import { useState } from 'react';
 
+import useModal from '@Hooks/useModal';
+
 import * as S from './style';
+import QrcodeName from '../QrcodeName';
 
 function QrcodeInput() {
   const [inputValue, setInputValue] = useState('');
+
+  const { isOpen, openModal, closeModal } = useModal();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -33,14 +38,13 @@ function QrcodeInput() {
         </div>
       `);
     }
-    // 크게 보기 로직 추가
   };
 
   const isButtonVisible = inputValue.trim() !== '';
 
   return (
     <S.Container>
-      <h1>URL 주소를 입력해주세요.</h1>
+      {/* <h1>URL 주소를 입력해주세요.</h1> */}
       <S.InputContainer>
         <S.Input
           type="url"
@@ -57,9 +61,14 @@ function QrcodeInput() {
           <S.Button onClick={handleViewLarger}>크게보기</S.Button>
           <S.Button>인쇄하기</S.Button>
           <S.Button onClick={handleDownload}>다운로드</S.Button>
-          <S.Button>보관함에 저장</S.Button>
+          <S.Button
+            onClick={() => openModal(<QrcodeName closeModal={closeModal} />)}
+          >
+            보관함에 저장
+          </S.Button>
         </S.ButtonContainer>
       )}
+      {isOpen && <QrcodeName closeModal={closeModal} />}
     </S.Container>
   );
 }

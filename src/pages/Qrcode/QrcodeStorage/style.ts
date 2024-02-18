@@ -6,7 +6,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   margin-top: 30px;
   padding: 20px;
   width: 100%;
@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const ButtonContainer = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin: 20px;
   gap: 20px;
 `;
@@ -46,4 +46,15 @@ export const StorageButton = styled.div`
   &:hover {
     background-color: #ff6f61;
   }
+`;
+
+export const QrcodeBlockContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  padding: 20px;
+`;
+
+export const SelectAllButton = styled.button`
+  text-align: right;
 `;
