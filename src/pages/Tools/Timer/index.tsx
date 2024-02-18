@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { FaPause, FaPlay, FaStop } from 'react-icons/fa6';
 
 import useTimer from '@Hooks/tools/timer/useTimer';
@@ -16,8 +16,6 @@ function Timer() {
     standard: 'width',
   });
 
-  console.log(width);
-
   const { openModal } = useModal();
   const {
     isProceeding,
@@ -28,15 +26,18 @@ function Timer() {
     changeInitTime,
   } = useTimer();
 
-  const [memo, setMemo] = useState<string>();
+  const [memo, setMemo] = useState<string>('');
 
   const displayTime = format.time(time);
-  const timerFontSize = `${width / 3.3}px`;
+  const timerFontSize = `${width / 3.8}px`;
+
+  const changeMemo = (memo: string) => setMemo(memo);
 
   const handleClickTime = () =>
     openModal(<TimeSettingModal changeInitTime={changeInitTime} />);
 
-  const handleClickMessage = () => openModal(<TimerMemoModal />);
+  const handleClickMessage = () =>
+    openModal(<TimerMemoModal changeMemo={changeMemo} memo={memo} />);
 
   return (
     <S.Layout ref={ref}>

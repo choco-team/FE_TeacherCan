@@ -37,6 +37,8 @@ export const TimerMemo = styled.div`
 
   text-align: center;
 
+  cursor: pointer;
+
   ${({ theme }) => css`
     ${TIMER_MEMO_THEME[theme.name]};
   `}
@@ -57,6 +59,8 @@ const TIMER_THEME: Record<ThemeName, RuleSet> = {
 };
 
 export const Time = styled.span<{ $fontSize: string }>`
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -69,7 +73,7 @@ export const Time = styled.span<{ $fontSize: string }>`
   text-align: center;
   letter-spacing: 20px;
 
-  line-height: 100%;
+  text-indent: 1;
 
   font-variant-numeric: tabular-nums;
   transition: background-color 0.2s ease;
