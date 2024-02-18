@@ -6,14 +6,14 @@ import theme from '@Styles/theme';
 import { ThemeName } from '@Types/style';
 
 export const Layout = styled.div`
-  ${flexCustom('column', 'center', 'center')};
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  gap: 20px;
+  justify-items: center;
 
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding: 0px 40px;
 
-  min-width: 90%;
+  min-height: 100%;
 `;
 
 const TIMER_MEMO_THEME: Record<ThemeName, RuleSet> = {
@@ -27,25 +27,19 @@ const TIMER_MEMO_THEME: Record<ThemeName, RuleSet> = {
 };
 
 export const TimerMemo = styled.div`
-  max-width: 100%;
-  /* width: 100%; */
+  max-width: 90%;
 
   padding: 20px 60px;
   border-radius: 20px;
 
   font-weight: 600;
-  font-size: 6rem;
+  font-size: 5rem;
 
   text-align: center;
 
   ${({ theme }) => css`
     ${TIMER_MEMO_THEME[theme.name]};
   `}
-`;
-
-export const TimeContainer = styled.div`
-  ${flexCustom('column', 'center', 'center')};
-  min-width: 100%;
 `;
 
 const TIMER_THEME: Record<ThemeName, RuleSet> = {
@@ -62,14 +56,18 @@ const TIMER_THEME: Record<ThemeName, RuleSet> = {
   `,
 };
 
-export const Time = styled.span`
+export const Time = styled.span<{ $fontSize: string }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
 
-  margin: 40px 0px;
+  padding: 20px 0px;
 
-  font-size: 24vw;
   font-weight: 700;
   text-align: center;
+  letter-spacing: 20px;
 
   line-height: 100%;
 
@@ -81,7 +79,9 @@ export const Time = styled.span`
     cursor: pointer;
   }
 
-  ${({ theme }) => css`
+  ${({ theme, $fontSize }) => css`
+    font-size: ${$fontSize};
+
     ${TIMER_THEME[theme.name]};
   `}
 `;
@@ -102,6 +102,7 @@ export const ProgressBar = styled.div<{ progress: number }>`
 
 export const TimerButtonWrapper = styled.div`
   display: flex;
+  justify-content: center;
   gap: 60px;
 `;
 
