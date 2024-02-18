@@ -5,12 +5,19 @@ import {
   createContext,
   useState,
 } from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+import Keyframes from 'styled-components/dist/models/Keyframes';
+
+import useKeydown from '@Hooks/useKeydown';
+import usePreventBodyScroll from '@Hooks/usePreventBodyScroll';
 
 import { ThemeStyleSet } from '@Types/style';
 
+export type Animation = 'appear' | 'disAppear';
+
 type ModalContext = {
   isOpen: boolean;
+  animation: Animation;
   openModal: (model: ReactNode) => void;
   closeModal: () => void;
 } | null;
@@ -19,14 +26,24 @@ export const ModalContext = createContext<ModalContext>(null);
 
 const ModalProvider = ({ children }: PropsWithChildren) => {
   const [currentModal, setCurrentModal] = useState<ReactNode | null>(null);
+  const [animation, setAnimation] = useState<Animation>('appear');
   const isOpen = !!currentModal;
 
-  const openModal = (modal: ReactNode) => setCurrentModal(modal);
+  const openModal = (modal: ReactNode) => {
+    setAnimation('appear');
+    setCurrentModal(modal);
+  };
 
-  const closeModal = () => setCurrentModal(null);
+  const closeModal = () => {
+    setAnimation('disAppear');
+    setTimeout(() => {
+      setCurrentModal(null);
+    }, 200);
+  };
 
   const value = {
     isOpen,
+    animation,
     openModal,
     closeModal,
   };
@@ -34,7 +51,11 @@ const ModalProvider = ({ children }: PropsWithChildren) => {
   return (
     <ModalContext.Provider value={value}>
       {children}
-      {isOpen && <Modal closeModal={closeModal}>{currentModal}</Modal>}
+      {isOpen && (
+        <Modal closeModal={closeModal} animation={animation}>
+          {currentModal}
+        </Modal>
+      )}
     </ModalContext.Provider>
   );
 };
@@ -42,10 +63,19 @@ const ModalProvider = ({ children }: PropsWithChildren) => {
 export default ModalProvider;
 
 type ModalProps = {
+  animation: Animation;
   closeModal: () => void;
 };
 
-const Modal = ({ children, closeModal }: PropsWithChildren<ModalProps>) => {
+const Modal = ({
+  animation,
+  children,
+  closeModal,
+}: PropsWithChildren<ModalProps>) => {
+  usePreventBodyScroll();
+
+  useKeydown('Escape', closeModal);
+
   const onClickBackdrop = () => {
     closeModal();
   };
@@ -55,13 +85,15 @@ const Modal = ({ children, closeModal }: PropsWithChildren<ModalProps>) => {
   };
 
   return (
-    <ModalLayout onClick={onClickBackdrop}>
-      <ModalContainer onClick={preventCloseModal}>{children}</ModalContainer>
-    </ModalLayout>
+    <ModalBackdrop onClick={onClickBackdrop}>
+      <ModalContainer animation={animation} onClick={preventCloseModal}>
+        {children}
+      </ModalContainer>
+    </ModalBackdrop>
   );
 };
 
-const MODAL_LAYOUT_THEME: ThemeStyleSet = {
+const MODAL_BACKDROP_THEME: ThemeStyleSet = {
   light: css`
     background-color: rgba(0, 0, 0, 0.65);
   `,
@@ -71,7 +103,7 @@ const MODAL_LAYOUT_THEME: ThemeStyleSet = {
   `,
 };
 
-const ModalLayout = styled.div`
+const ModalBackdrop = styled.div`
   position: fixed;
   min-width: 100vw;
   min-height: 100vh;
@@ -85,11 +117,35 @@ const ModalLayout = styled.div`
   z-index: 5;
 
   ${({ theme }) => css`
-    ${MODAL_LAYOUT_THEME[theme.name]}
+    ${MODAL_BACKDROP_THEME[theme.name]}
   `}
 `;
 
-const ModalContainer = styled.div`
+const modalAnimation: Record<Animation, Keyframes> = {
+  appear: keyframes`
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+`,
+
+  disAppear: keyframes`
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+`,
+};
+
+const ModalContainer = styled.div<{ animation: Animation }>`
   width: 480px;
   max-height: 500px;
 
@@ -98,8 +154,9 @@ const ModalContainer = styled.div`
   padding: 20px;
   border-radius: 8px;
 
-  ${({ theme }) => css`
+  ${({ theme, animation }) => css`
     color: ${theme.text};
     background-color: ${theme.mainBackground};
+    animation: ${modalAnimation[animation]} 0.2s ease;
   `}
 `;
