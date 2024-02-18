@@ -66,7 +66,7 @@ function QrcodeInput() {
           </S.Button>
         </S.ButtonContainer>
       )}
-      {isOpen && <QrcodeName closeModal={closeModal} />}
+      {isOpen && <QrcodeName />}
     </S.Container>
   );
 }
