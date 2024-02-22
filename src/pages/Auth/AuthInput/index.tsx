@@ -31,6 +31,7 @@ function AuthInput({
     onSuccess: () => {
       if (setIsCheckedEmail) setIsCheckedEmail(true);
     },
+    onError: (message) => window.alert(message),
   });
 
   const togglePasswordVisible = () => setIsPasswordVisible((prev) => !prev);

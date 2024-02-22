@@ -11,14 +11,18 @@ import {
 } from '@Api/auth/auth';
 import { APIError } from '@Api/common';
 
-export const useSignUp = ({ onSuccess }: { onSuccess: () => void }) => {
+export const useSignUp = ({
+  onSuccess,
+  onError,
+}: {
+  onSuccess: () => void;
+  onError: (message: string) => void;
+}) => {
   const { mutate, isLoading } = useMutation({
     mutationFn: (params: SignUpRequest) => postSignUp(params),
     onSuccess,
     onError: (error) => {
-      if (error instanceof APIError) {
-        alert(error.message);
-      }
+      if (error instanceof APIError) onError(error.message);
     },
   });
 
@@ -44,14 +48,18 @@ export const useSignIn = ({
   return { signIn: mutate, isLoading };
 };
 
-export const useValidateEmail = ({ onSuccess }: { onSuccess: () => void }) => {
+export const useValidateEmail = ({
+  onSuccess,
+  onError,
+}: {
+  onSuccess: () => void;
+  onError: (message: string) => void;
+}) => {
   const { mutate, isLoading } = useMutation({
     mutationFn: (params: ValidationEmailRequest) => postEmailValidation(params),
     onSuccess,
     onError: (error) => {
-      if (error instanceof APIError) {
-        alert(error.message);
-      }
+      if (error instanceof APIError) onError(error.message);
     },
   });
 
