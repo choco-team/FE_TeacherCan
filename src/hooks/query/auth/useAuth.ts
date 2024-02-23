@@ -34,14 +34,14 @@ export const useSignIn = ({
   onError,
 }: {
   onSuccess: (data: SignInResponse) => void;
-  onError: () => void;
+  onError: (message: string) => void;
 }) => {
   const { mutate, isLoading } = useMutation({
     mutationFn: (params: SignInRequest) =>
       postSignIn(params).then((response) => response.data),
     onSuccess: (data) => onSuccess(data),
     onError: (error) => {
-      if (error instanceof APIError) onError();
+      if (error instanceof APIError) onError(error.message);
     },
   });
 
