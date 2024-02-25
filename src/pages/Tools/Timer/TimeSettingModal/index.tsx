@@ -33,14 +33,9 @@ function TimeSettingModal({ changeInitTime }: Props) {
       return;
     }
 
-    if (value === 60 && type === 'minute') {
+    if (value >= 60 && type === 'minute') {
       setMinute(60);
       setSecond(0);
-      return;
-    }
-
-    if (value > 60 && type === 'minute') {
-      setMinute(60);
       return;
     }
 
