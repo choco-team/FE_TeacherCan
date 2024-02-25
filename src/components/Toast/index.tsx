@@ -26,7 +26,7 @@ function Toast({ position, name, message, autoclose, onClick }: ToastProps) {
       <Button onClick={handleButtonClick}>{name}</Button>
       <ToastContainer
         position={position}
-        limit={1}
+        // limit={1}
         closeButton={false}
         autoClose={autoclose}
         hideProgressBar
