@@ -1,5 +1,6 @@
+import { ToastContainer } from 'react-toastify';
 import styled from 'styled-components';
 
-export const ToastButton = styled.button`
-  text-align: center;
+export const StyledToastContainer = styled(ToastContainer)`
+  color: pink;
 `;
