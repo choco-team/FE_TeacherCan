@@ -5,16 +5,23 @@ import * as S from './style';
 
 type ToastProps = {
   position?: ToastPosition;
+  name?: string;
   message?: string;
   autoclose?: number;
+  onClick?: () => void;
 };
 
-function Toast({ position, message, autoclose }: ToastProps) {
-  const notify = () => toast(message);
+function Toast({ position, name, message, autoclose, onClick }: ToastProps) {
+  const handleButtonClick = () => {
+    if (onClick) {
+      onClick();
+    }
+    toast(message);
+  };
 
   return (
     <div>
-      <S.ToastButton onClick={notify}>Notify !</S.ToastButton>
+      <S.ToastButton onClick={handleButtonClick}>{name}</S.ToastButton>
       <ToastContainer
         position={position}
         limit={1}

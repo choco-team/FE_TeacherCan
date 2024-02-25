@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { IoEllipse, IoEllipseOutline } from 'react-icons/io5';
+import { toast } from 'react-toastify';
 
 import useModal from '@Hooks/useModal';
 
@@ -71,12 +72,10 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
 
   const handleSaveBtn = () => {
     if (!settings.studentsListId) {
-      alert('명렬표를 선택해주세요.');
       return;
     }
 
     if (!settings.studentsCount) {
-      alert('뽑을 학생 수를 선택해주세요.');
       return;
     }
 
@@ -161,9 +160,15 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
         <Button concept="text" variant="gray" onClick={handleCancelBtn}>
           취소
         </Button>
-        <Button onClick={handleSaveBtn}>저장</Button>
+        {/* <Button onClick={handleSaveBtn}>저장</Button> */}
+        <Toast
+          name={'저장'}
+          position={'bottom-center'}
+          onClick={handleSaveBtn}
+          message={'명렬표 또는 학생 수를 선택하세요'}
+          autoclose={1000}
+        ></Toast>
       </S.SmallButtonWrapper>
-      <Toast position={'bottom-center'} message="Wow!" autoclose={2000} />
     </>
   );
 }
