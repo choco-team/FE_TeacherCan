@@ -1,5 +1,7 @@
 import { ToastContainer, ToastPosition, toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
+import Button from '@Components/Button';
 
 import * as S from './style';
 
@@ -21,7 +23,7 @@ function Toast({ position, name, message, autoclose, onClick }: ToastProps) {
 
   return (
     <div>
-      <S.ToastButton onClick={handleButtonClick}>{name}</S.ToastButton>
+      <Button onClick={handleButtonClick}>{name}</Button>
       <ToastContainer
         position={position}
         limit={1}
