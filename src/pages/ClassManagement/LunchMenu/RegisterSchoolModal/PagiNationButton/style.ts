@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { flexCustom } from '@Styles/common';
 
 type LayoutProps = {
-  hasPage: boolean;
+  $hasPage: boolean;
 };
 
 export const Layout = styled.div<LayoutProps>`
@@ -11,9 +11,9 @@ export const Layout = styled.div<LayoutProps>`
   gap: 10px;
 
   margin-top: 10px;
-  color: ${(props) => (props.hasPage ? props.theme.grayText : 'transparent')};
+  color: ${(props) => (props.$hasPage ? props.theme.grayText : 'transparent')};
 
   svg {
-    cursor: ${(props) => props.hasPage && 'pointer'};
+    cursor: ${(props) => props.$hasPage && 'pointer'};
   }
 `;

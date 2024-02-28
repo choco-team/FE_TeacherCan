@@ -75,6 +75,10 @@ const Select = <Options extends readonly (string | number)[]>({
     setOptionsPositionWidth();
   }, [isOpenOptions, setOptionsPositionWidth]);
 
+  useEffect(() => {
+    if (defaultOption) setSelectedOption(defaultOption);
+  }, [defaultOption]);
+
   // 스크롤 계산
   useEffect(() => {
     if (!isOpenOptions || !optionsRef?.current) return;

@@ -6,11 +6,21 @@ import useLength from '@Hooks/useLength';
 import useModal from '@Hooks/useModal';
 
 import format from '@Utils/format';
+import localStorageHelper from '@Utils/localStorageHelper';
 
-import TimeSettingModal from './TimeSettingModal';
+import SettingModal from './SettingModal';
 import * as S from './style';
 
 function Timer() {
+  const recentMemo = localStorageHelper.get<string>('memo') ?? '';
+
+  const [memo, setMemo] = useState<string>(recentMemo);
+
+  const changeMemo = (memo: string) => {
+    setMemo(memo);
+    localStorage.setItem('memo', JSON.stringify(memo));
+  };
+
   const [ref, width] = useLength<HTMLDivElement>({
     standard: 'width',
   });
@@ -25,19 +35,15 @@ function Timer() {
     changeInitTime,
   } = useTimer();
 
-  const [memo, setMemo] = useState<string>('');
-
   const displayTime = format.time(time);
   const timerFontSize = `${width / 3.8}px`;
 
-  const changeMemo = (memo: string) => setMemo(memo);
-
   const handleClickTime = () =>
     openModal(
-      <TimeSettingModal
+      <SettingModal
         changeInitTime={changeInitTime}
         changeMemo={changeMemo}
-        memo={memo}
+        memo={recentMemo}
       />,
     );
 

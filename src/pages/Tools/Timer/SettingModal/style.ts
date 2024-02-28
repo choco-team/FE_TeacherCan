@@ -4,7 +4,7 @@ import theme from '@Styles/theme';
 
 export const Layout = styled.div`
   display: grid;
-  gap: 30px;
+  gap: 24px;
 `;
 
 export const ModalTitle = styled.h2`
@@ -27,6 +27,12 @@ export const SelectContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
+`;
+
+export const RecentTimes = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 `;
 
 export const BottomButtonContainer = styled.div`

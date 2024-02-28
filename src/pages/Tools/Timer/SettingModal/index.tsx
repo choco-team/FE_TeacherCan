@@ -1,5 +1,6 @@
 import { DEFAULT_TIME } from '@Constant/tools/timer';
 import { useState } from 'react';
+import { css } from 'styled-components';
 
 import useModal from '@Hooks/useModal';
 
@@ -17,57 +18,38 @@ type Props = {
   changeMemo: (memo: string) => void;
 };
 
-function TimeSettingModal({ memo, changeInitTime, changeMemo }: Props) {
+function SettingModal({ memo, changeInitTime, changeMemo }: Props) {
+  const convertStringTime = (time: number) =>
+    time < 10 ? `0${time}` : String(time);
+
   const { closeModal } = useModal();
 
   const recentTimes = localStorageHelper.get<number[]>('timer') ?? [];
   const recentTime = recentTimes[0] ?? DEFAULT_TIME;
 
-  const [minute, setMinute] = useState(Math.floor(recentTime / 60));
-  const [second, setSecond] = useState(recentTime - minute * 60);
+  const [minute, setMinute] = useState(
+    convertStringTime(Math.floor(recentTime / 60)),
+  );
+  const [second, setSecond] = useState(convertStringTime(recentTime % 60));
 
   const [newMemo, setNewMemo] = useState(memo);
 
-  const handleClickTime = (selected: string) => {
-    const [minute, second] = selected
-      .replace(/[^0-9\s]/g, '')
-      .split(' ')
-      .map(Number);
-
-    setMinute(minute);
-    setSecond(second);
-  };
-
-  const setRecentTimer = () => {
-    const recentTIme = minute * 60 + second;
-
-    if (!recentTimes.includes(recentTIme))
-      localStorage.setItem(
-        'timer',
-        JSON.stringify([
-          minute * 60 + second,
-          ...(recentTimes.length === 12
-            ? recentTimes.slice(0, 11)
-            : recentTimes),
-        ]),
-      );
+  const handleRecentClickTime = (time: number) => {
+    setMinute(convertStringTime(Math.floor(time / 60)));
+    setSecond(convertStringTime(time % 60));
   };
 
   const handleClickConfirm = () => {
-    if (minute === 0 && second === 0) {
+    if (minute === '00' && second === '00') {
       alert('유효한 시간을 설정해주세요.');
 
       return;
     }
 
-    setRecentTimer();
     changeMemo(newMemo);
-    changeInitTime(minute, second);
+    changeInitTime(Number(minute), Number(second));
     closeModal();
   };
-
-  const convertStringTime = (time: number) =>
-    time < 10 ? `0${time}` : String(time);
 
   return (
     <S.Layout>
@@ -81,7 +63,7 @@ function TimeSettingModal({ memo, changeInitTime, changeMemo }: Props) {
               convertStringTime(index),
             )}
             defaultOption={String(minute)}
-            onChangeOption={(selected) => setMinute(Number(selected))}
+            onChangeOption={(selected) => setMinute(selected)}
           />
           <Select
             label="초"
@@ -89,10 +71,31 @@ function TimeSettingModal({ memo, changeInitTime, changeMemo }: Props) {
               convertStringTime(index),
             )}
             defaultOption={String(second)}
-            onChangeOption={(selected) => setSecond(Number(selected))}
+            onChangeOption={(selected) => setSecond(selected)}
           />
         </S.SelectContainer>
       </S.SettingContainer>
+      {recentTimes.length > 0 && (
+        <S.SettingContainer>
+          <S.SettingType>최근 타이머 시간</S.SettingType>
+          <S.RecentTimes>
+            {recentTimes.map((time) => (
+              <Button
+                key={time}
+                variant="primary"
+                $style={css`
+                  border-radius: 40px;
+                `}
+                onClick={() => handleRecentClickTime(time)}
+              >
+                {`${convertStringTime(
+                  Math.floor(time / 60),
+                )}분 ${convertStringTime(time % 60)}초`}
+              </Button>
+            ))}
+          </S.RecentTimes>
+        </S.SettingContainer>
+      )}
       <S.SettingContainer>
         <S.SettingType>메모 설정하기</S.SettingType>
         <Input
@@ -112,4 +115,4 @@ function TimeSettingModal({ memo, changeInitTime, changeMemo }: Props) {
   );
 }
 
-export default TimeSettingModal;
+export default SettingModal;

@@ -42,20 +42,6 @@ export const TimerMemo = styled.div`
   `}
 `;
 
-const TIMER_THEME: Record<ThemeName, RuleSet> = {
-  light: css`
-    &:hover {
-      background-color: ${theme.color.gray[200]};
-    }
-  `,
-
-  dark: css`
-    &:hover {
-      background-color: ${theme.color.gray[700]};
-    }
-  `,
-};
-
 export const Time = styled.span<{ $fontSize: string }>`
   position: relative;
 
@@ -77,14 +63,8 @@ export const Time = styled.span<{ $fontSize: string }>`
   transition: background-color 0.2s ease;
   border-radius: 20px;
 
-  &:hover {
-    cursor: pointer;
-  }
-
-  ${({ theme, $fontSize }) => css`
+  ${({ $fontSize }) => css`
     font-size: ${$fontSize};
-
-    ${TIMER_THEME[theme.name]};
   `}
 `;
 

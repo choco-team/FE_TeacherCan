@@ -18,6 +18,15 @@ const useTimer = () => {
   const changeInitTime = (minute: number, second: number) => {
     setInitTime(minute * 60 + second);
     setTime(minute * 60 + second);
+
+    if (!recentTimes.includes(recentTime))
+      localStorage.setItem(
+        'timer',
+        JSON.stringify([
+          minute * 60 + second,
+          ...(recentTimes.length === 6 ? recentTimes.slice(0, 5) : recentTimes),
+        ]),
+      );
   };
 
   const resetTimer = () => {
