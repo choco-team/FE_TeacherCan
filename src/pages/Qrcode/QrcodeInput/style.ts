@@ -45,7 +45,7 @@ export const Input = styled.input`
 export const ClearButton = styled.div`
   padding: 10px 20px;
   height: 35px;
-  width: 100px;
+  width: fit-content;
   text-align: center;
   font-size: 14px;
   background-color: #f48d8d;

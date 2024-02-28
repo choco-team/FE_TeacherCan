@@ -1,19 +1,21 @@
 import QRCode from 'qrcode.react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import useModal from '@Hooks/useModal';
 
 import * as S from './style';
 import QrcodeName from '../QrcodeName';
+import QrcodePrintOption from '../QrcodePrintOption';
 
 function QrcodeInput() {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState<string>('');
 
   const { isOpen, openModal, closeModal } = useModal();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
+
   const handleClearClick = () => {
     setInputValue('');
   };
@@ -24,7 +26,9 @@ function QrcodeInput() {
     const link = document.createElement('a');
     link.href = url;
     link.download = `qrcode.png`;
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   };
 
   const handleViewLarger = () => {
@@ -40,11 +44,20 @@ function QrcodeInput() {
     }
   };
 
+  const handleGoToLink = () => {
+    if (inputValue) {
+      const url =
+        inputValue.startsWith('http://') || inputValue.startsWith('https://')
+          ? inputValue
+          : `https://${inputValue}`;
+      window.open(url, '_blank');
+    }
+  };
+
   const isButtonVisible = inputValue.trim() !== '';
 
   return (
     <S.Container>
-      {/* <h1>URL 주소를 입력해주세요.</h1> */}
       <S.InputContainer>
         <S.Input
           type="url"
@@ -52,15 +65,18 @@ function QrcodeInput() {
           value={inputValue}
           onChange={handleInputChange}
         />
-        <S.ClearButton onClick={handleClearClick}>새QR생성</S.ClearButton>
+        <S.ClearButton onClick={handleClearClick}>새 QR 생성</S.ClearButton>
       </S.InputContainer>
 
       {isButtonVisible && <QRCode value={inputValue} size={400} />}
       {isButtonVisible && (
         <S.ButtonContainer>
           <S.Button onClick={handleViewLarger}>크게보기</S.Button>
-          <S.Button>인쇄하기</S.Button>
+          <S.Button onClick={() => openModal(<QrcodePrintOption />)}>
+            인쇄하기
+          </S.Button>
           <S.Button onClick={handleDownload}>다운로드</S.Button>
+          <S.Button onClick={handleGoToLink}>바로가기</S.Button>
           <S.Button onClick={() => openModal(<QrcodeName />)}>
             보관함에 저장
           </S.Button>

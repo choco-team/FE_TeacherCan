@@ -11,6 +11,7 @@ export const Storage = styled.div`
 
   &:hover {
     background-color: #fee3e2;
+    border: 1px solid #fe6f61;
   }
 `;
 
