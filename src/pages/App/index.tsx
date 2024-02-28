@@ -9,6 +9,8 @@ import { useMediaInit } from '@Hooks/useMedia';
 
 import route from '@Utils/route';
 
+import { ToastProvider } from '@Components/Toast';
+
 import ModalProvider from '@Providers/ModalProvider';
 import QueryProvider from '@Providers/QueryProvider';
 import UserProvider from '@Providers/UserProvider';
@@ -34,31 +36,33 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
-        <QueryProvider>
-          <AuthErrorBoundary>
-            <UserProvider>
-              {main === 'auth' ? (
-                <Outlet />
-              ) : (
-                <ModalProvider>
-                  <Header pathname={pathname} />
-                  <S.DefaultPageLayout>
-                    <SideNavLink pathname={pathname} />
-                    <S.PageWrapper>
-                      <Outlet />
-                    </S.PageWrapper>
-                    <S.ThemeToggleButton onClick={toggleTheme}>
-                      {isLightTheme ? <PiSunBold /> : <PiMoonStarsBold />}
-                    </S.ThemeToggleButton>
-                  </S.DefaultPageLayout>
-                </ModalProvider>
-              )}
-            </UserProvider>
-          </AuthErrorBoundary>
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryProvider>
-      </ThemeProvider>
+      <ToastProvider>
+        <ThemeProvider theme={isLightTheme ? lightTheme : darkTheme}>
+          <QueryProvider>
+            <AuthErrorBoundary>
+              <UserProvider>
+                {main === 'auth' ? (
+                  <Outlet />
+                ) : (
+                  <ModalProvider>
+                    <Header pathname={pathname} />
+                    <S.DefaultPageLayout>
+                      <SideNavLink pathname={pathname} />
+                      <S.PageWrapper>
+                        <Outlet />
+                      </S.PageWrapper>
+                      <S.ThemeToggleButton onClick={toggleTheme}>
+                        {isLightTheme ? <PiSunBold /> : <PiMoonStarsBold />}
+                      </S.ThemeToggleButton>
+                    </S.DefaultPageLayout>
+                  </ModalProvider>
+                )}
+              </UserProvider>
+            </AuthErrorBoundary>
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryProvider>
+        </ThemeProvider>
+      </ToastProvider>
     </>
   );
 }

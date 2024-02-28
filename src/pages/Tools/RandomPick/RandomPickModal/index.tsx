@@ -5,7 +5,7 @@ import useModal from '@Hooks/useModal';
 
 import Button from '@Components/Button';
 import Input from '@Components/Input';
-import Toast, { notify } from '@Components/Toast';
+import { useToast } from '@Components/Toast';
 
 import theme from '@Styles/theme';
 
@@ -38,6 +38,7 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
   });
 
   const { closeModal } = useModal();
+  const showToast = useToast();
 
   const handleChangeStudentsListId = (
     event: React.ChangeEvent<HTMLSelectElement>,
@@ -71,18 +72,12 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
 
   const handleSaveBtn = () => {
     if (!settings.studentsListId) {
-      notify({
-        type: 'warning',
-        message: '학생 명단을 선택하세요.',
-      });
+      showToast('학생 명단을 선택하세요', 'warning');
       return;
     }
 
     if (!settings.studentsCount) {
-      notify({
-        type: 'warning',
-        message: '뽑을 학생 수를 설정하세요.',
-      });
+      showToast('뽑을 학생 수를 설정하세요', 'warning');
       return;
     }
 
@@ -168,7 +163,6 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
           취소
         </Button>
         <Button onClick={handleSaveBtn}>저장</Button>
-        <Toast position={'bottom-right'} autoClose={2000} />
       </S.SmallButtonWrapper>
     </>
   );
