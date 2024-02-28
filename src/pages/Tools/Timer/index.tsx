@@ -8,7 +8,6 @@ import useModal from '@Hooks/useModal';
 import format from '@Utils/format';
 
 import TimeSettingModal from './TimeSettingModal';
-import TimerMemoModal from './TimerMemoModal';
 import * as S from './style';
 
 function Timer() {
@@ -34,14 +33,17 @@ function Timer() {
   const changeMemo = (memo: string) => setMemo(memo);
 
   const handleClickTime = () =>
-    openModal(<TimeSettingModal changeInitTime={changeInitTime} />);
-
-  const handleClickMessage = () =>
-    openModal(<TimerMemoModal changeMemo={changeMemo} memo={memo} />);
+    openModal(
+      <TimeSettingModal
+        changeInitTime={changeInitTime}
+        changeMemo={changeMemo}
+        memo={memo}
+      />,
+    );
 
   return (
     <S.Layout ref={ref}>
-      <S.TimerMemo onClick={handleClickMessage}>{memo}</S.TimerMemo>
+      {memo ? <S.TimerMemo>{memo}</S.TimerMemo> : <div></div>}
       <S.Time onClick={handleClickTime} $fontSize={timerFontSize}>
         {displayTime}
       </S.Time>

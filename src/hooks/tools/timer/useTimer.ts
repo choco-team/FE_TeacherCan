@@ -1,10 +1,11 @@
+import { DEFAULT_TIME } from '@Constant/tools/timer';
 import { useCallback, useEffect, useState } from 'react';
 
 import localStorageHelper from '@Utils/localStorageHelper';
 
 const useTimer = () => {
   const recentTimes = localStorageHelper.get<number[]>('timer') ?? [];
-  const recentTime = recentTimes[0] ?? 300;
+  const recentTime = recentTimes[0] ?? DEFAULT_TIME;
 
   const [initTime, setInitTime] = useState(recentTime);
   const [time, setTime] = useState(recentTime);

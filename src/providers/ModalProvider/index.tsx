@@ -6,18 +6,14 @@ import {
   useState,
 } from 'react';
 import styled, { css, keyframes } from 'styled-components';
-import Keyframes from 'styled-components/dist/models/Keyframes';
 
 import useKeydown from '@Hooks/useKeydown';
 import usePreventBodyScroll from '@Hooks/usePreventBodyScroll';
 
 import { ThemeStyleSet } from '@Types/style';
 
-export type Animation = 'appear' | 'disAppear';
-
 type ModalContext = {
   isOpen: boolean;
-  animation: Animation;
   openModal: (model: ReactNode) => void;
   closeModal: () => void;
 } | null;
@@ -26,24 +22,14 @@ export const ModalContext = createContext<ModalContext>(null);
 
 const ModalProvider = ({ children }: PropsWithChildren) => {
   const [currentModal, setCurrentModal] = useState<ReactNode | null>(null);
-  const [animation, setAnimation] = useState<Animation>('appear');
   const isOpen = !!currentModal;
 
-  const openModal = (modal: ReactNode) => {
-    setAnimation('appear');
-    setCurrentModal(modal);
-  };
+  const openModal = (modal: ReactNode) => setCurrentModal(modal);
 
-  const closeModal = () => {
-    setAnimation('disAppear');
-    setTimeout(() => {
-      setCurrentModal(null);
-    }, 200);
-  };
+  const closeModal = () => setCurrentModal(null);
 
   const value = {
     isOpen,
-    animation,
     openModal,
     closeModal,
   };
@@ -51,11 +37,7 @@ const ModalProvider = ({ children }: PropsWithChildren) => {
   return (
     <ModalContext.Provider value={value}>
       {children}
-      {isOpen && (
-        <Modal closeModal={closeModal} animation={animation}>
-          {currentModal}
-        </Modal>
-      )}
+      {isOpen && <Modal closeModal={closeModal}>{currentModal}</Modal>}
     </ModalContext.Provider>
   );
 };
@@ -63,15 +45,10 @@ const ModalProvider = ({ children }: PropsWithChildren) => {
 export default ModalProvider;
 
 type ModalProps = {
-  animation: Animation;
   closeModal: () => void;
 };
 
-const Modal = ({
-  animation,
-  children,
-  closeModal,
-}: PropsWithChildren<ModalProps>) => {
+const Modal = ({ children, closeModal }: PropsWithChildren<ModalProps>) => {
   usePreventBodyScroll();
 
   useKeydown('Escape', closeModal);
@@ -86,9 +63,7 @@ const Modal = ({
 
   return (
     <ModalBackdrop onClick={onClickBackdrop}>
-      <ModalContainer animation={animation} onClick={preventCloseModal}>
-        {children}
-      </ModalContainer>
+      <ModalContainer onClick={preventCloseModal}>{children}</ModalContainer>
     </ModalBackdrop>
   );
 };
@@ -121,8 +96,7 @@ const ModalBackdrop = styled.div`
   `}
 `;
 
-const modalAnimation: Record<Animation, Keyframes> = {
-  appear: keyframes`
+const modalAnimation = keyframes`
   0% {
     transform: scale(0.9);
     opacity: 0;
@@ -131,21 +105,9 @@ const modalAnimation: Record<Animation, Keyframes> = {
     transform: scale(1);
     opacity: 1;
   }
-`,
+`;
 
-  disAppear: keyframes`
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-`,
-};
-
-const ModalContainer = styled.div<{ animation: Animation }>`
+const ModalContainer = styled.div`
   width: 480px;
   max-height: 500px;
 
@@ -154,9 +116,10 @@ const ModalContainer = styled.div<{ animation: Animation }>`
   padding: 20px;
   border-radius: 8px;
 
-  ${({ theme, animation }) => css`
+  animation: ${modalAnimation} 0.2s ease;
+
+  ${({ theme }) => css`
     color: ${theme.text};
     background-color: ${theme.mainBackground};
-    animation: ${modalAnimation[animation]} 0.2s ease;
   `}
 `;

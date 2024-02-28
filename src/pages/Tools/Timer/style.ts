@@ -37,8 +37,6 @@ export const TimerMemo = styled.div`
 
   text-align: center;
 
-  cursor: pointer;
-
   ${({ theme }) => css`
     ${TIMER_MEMO_THEME[theme.name]};
   `}
