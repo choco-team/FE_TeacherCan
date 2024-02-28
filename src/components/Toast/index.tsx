@@ -3,12 +3,10 @@ import { ToastContainer, ToastPosition, toast } from 'react-toastify';
 import * as S from './style';
 
 import 'react-toastify/dist/ReactToastify.css';
-// https://eundol1113.tistory.com/788
 
 type NotifyProps = {
   message?: string;
   type?: string;
-  autoClose?: number;
 };
 
 type ToastProps = {

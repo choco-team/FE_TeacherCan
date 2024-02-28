@@ -96,7 +96,7 @@ export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
 export const ResultWrapper = styled.div<ResultWrapperProps>`
   color: ${(props) => props.color};
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 2.4rem;
   margin-bottom: 16px;
   text-align: center;
 `;
@@ -108,7 +108,7 @@ type ResultSpanProps = {
 export const ResultSpan = styled.span<ResultSpanProps>`
   display: inline-block;
   text-align: center;
-  font-size: 3.6rem;
+  font-size: 2.8rem;
   max-width: 840px;
   word-break: break-all;
   font-size: ${(props) => (props.media === 'tablet' ? 'large' : {})};
@@ -127,8 +127,6 @@ export const ButtonWrapper = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   gap: 10px;
-
-  margin: 10px;
 
   button {
     display: flex;
