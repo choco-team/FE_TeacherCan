@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaPause, FaPlay, FaStop } from 'react-icons/fa6';
+import { IoSettings } from 'react-icons/io5';
 
 import useTimer from '@Hooks/tools/timer/useTimer';
 import useLength from '@Hooks/useLength';
@@ -36,9 +37,10 @@ function Timer() {
   } = useTimer();
 
   const displayTime = format.time(time);
-  const timerFontSize = `${width / 3.8}px`;
+  const timerFontSize = `${width / 4}px`;
 
-  const handleClickTime = () =>
+  const setTimer = () => {
+    resetTimer();
     openModal(
       <SettingModal
         changeInitTime={changeInitTime}
@@ -46,17 +48,16 @@ function Timer() {
         memo={recentMemo}
       />,
     );
+  };
 
   return (
     <S.Layout ref={ref}>
       {memo ? <S.TimerMemo>{memo}</S.TimerMemo> : <div></div>}
-      <S.Time onClick={handleClickTime} $fontSize={timerFontSize}>
-        {displayTime}
-      </S.Time>
+      <S.Time $fontSize={timerFontSize}>{displayTime}</S.Time>
       <S.TimeBar>
         <S.ProgressBar progress={progress}></S.ProgressBar>
       </S.TimeBar>
-      <S.TimerButtonWrapper>
+      <S.TimerButtons>
         {isProceeding || progress === 100 ? (
           <S.TimerButton onClick={toggleState}>
             <FaPause />
@@ -69,7 +70,12 @@ function Timer() {
         <S.TimerButton onClick={resetTimer}>
           <FaStop />
         </S.TimerButton>
-      </S.TimerButtonWrapper>
+      </S.TimerButtons>
+      <S.TimerSideButtons>
+        <S.SideButton onClick={setTimer}>
+          <IoSettings />
+        </S.SideButton>
+      </S.TimerSideButtons>
     </S.Layout>
   );
 }

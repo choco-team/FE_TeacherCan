@@ -6,6 +6,7 @@ import theme from '@Styles/theme';
 import { ThemeName } from '@Types/style';
 
 export const Layout = styled.div`
+  position: relative;
   display: grid;
   grid-template-rows: auto 1fr auto auto;
   gap: 20px;
@@ -82,7 +83,7 @@ export const ProgressBar = styled.div<{ progress: number }>`
   background-color: ${theme.color.primary[500]};
 `;
 
-export const TimerButtonWrapper = styled.div`
+export const TimerButtons = styled.div`
   display: flex;
   justify-content: center;
   gap: 60px;
@@ -101,6 +102,27 @@ export const TimerButton = styled.div`
   color: ${theme.color.white};
 
   font-size: 4rem;
+
+  cursor: pointer;
+`;
+
+export const TimerSideButtons = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
+
+export const SideButton = styled.div`
+  ${flexCustom('row', 'center', 'center')}
+
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+
+  background-color: ${theme.color.primary[500]};
+  color: ${theme.color.white};
+
+  font-size: 2rem;
 
   cursor: pointer;
 `;
