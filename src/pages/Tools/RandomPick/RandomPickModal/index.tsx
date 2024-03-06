@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { IoEllipse, IoEllipseOutline } from 'react-icons/io5';
 
+import { useToast } from '@Hooks/toast';
 import useModal from '@Hooks/useModal';
 
 import Button from '@Components/Button';
 import Input from '@Components/Input';
-import { useToast } from '@Components/Toast';
 
 import theme from '@Styles/theme';
 

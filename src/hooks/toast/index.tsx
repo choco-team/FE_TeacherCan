@@ -9,8 +9,8 @@ type ToastContextType = {
 const ToastContext = createContext<ToastContextType>({ showToast: () => {} });
 
 export const useToast = () => {
-  const context = useContext(ToastContext);
-  return context.showToast;
+  const context = useContext(ToastContext).showToast;
+  return context;
 };
 
 export const ToastProvider = ({ children }: { children: React.ReactNode }) => {

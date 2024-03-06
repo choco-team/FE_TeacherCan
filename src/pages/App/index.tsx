@@ -5,11 +5,10 @@ import { PiSunBold, PiMoonStarsBold } from 'react-icons/pi';
 import { Outlet, useLocation } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
+import { ToastProvider } from '@Hooks/toast';
 import { useMediaInit } from '@Hooks/useMedia';
 
 import route from '@Utils/route';
-
-import { ToastProvider } from '@Components/Toast';
 
 import ModalProvider from '@Providers/ModalProvider';
 import QueryProvider from '@Providers/QueryProvider';
