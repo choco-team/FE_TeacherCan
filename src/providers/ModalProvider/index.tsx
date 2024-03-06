@@ -3,8 +3,11 @@ import {
   PropsWithChildren,
   ReactNode,
   createContext,
+  useEffect,
+  useRef,
   useState,
 } from 'react';
+import { useLocation } from 'react-router-dom';
 import styled, { css, keyframes } from 'styled-components';
 
 import useKeydown from '@Hooks/useKeydown';
@@ -51,6 +54,9 @@ type ModalProps = {
 const Modal = ({ children, closeModal }: PropsWithChildren<ModalProps>) => {
   usePreventBodyScroll();
 
+  const isInitialRender = useRef(true);
+  const { pathname } = useLocation();
+
   useKeydown('Escape', closeModal);
 
   const onClickBackdrop = () => {
@@ -60,6 +66,11 @@ const Modal = ({ children, closeModal }: PropsWithChildren<ModalProps>) => {
   const preventCloseModal: MouseEventHandler = (event) => {
     event.stopPropagation();
   };
+
+  useEffect(() => {
+    if (isInitialRender.current) isInitialRender.current = false;
+    else closeModal();
+  }, [closeModal, pathname]);
 
   return (
     <ModalBackdrop onClick={onClickBackdrop}>
