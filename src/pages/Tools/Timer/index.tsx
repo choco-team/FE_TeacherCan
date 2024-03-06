@@ -82,6 +82,7 @@ function Timer() {
         <S.EasySettingTimes>
           {EASY_SETTING_TIMER.map(({ minute, second }, index) => (
             <Button
+              concept="outlined"
               $style={css`
                 padding: 10px 20px;
                 border-radius: 20px;
