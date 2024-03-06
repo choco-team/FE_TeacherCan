@@ -19,7 +19,7 @@ const useTimer = () => {
     setInitTime(minute * 60 + second);
     setTime(minute * 60 + second);
 
-    if (!recentTimes.includes(recentTime))
+    if (!recentTimes.includes(minute * 60 + second))
       localStorage.setItem(
         'timer',
         JSON.stringify([
