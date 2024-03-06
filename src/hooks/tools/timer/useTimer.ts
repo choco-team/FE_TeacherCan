@@ -24,7 +24,7 @@ const useTimer = () => {
         'timer',
         JSON.stringify([
           minute * 60 + second,
-          ...(recentTimes.length === 6 ? recentTimes.slice(0, 5) : recentTimes),
+          ...(recentTimes.length === 5 ? recentTimes.slice(0, 4) : recentTimes),
         ]),
       );
   };

@@ -90,7 +90,7 @@ function SettingModal({ memo, changeInitTime, changeMemo }: Props) {
               >
                 {`${convertStringTime(
                   Math.floor(time / 60),
-                )}분 ${convertStringTime(time % 60)}초`}
+                )}:${convertStringTime(time % 60)}`}
               </Button>
             ))}
           </S.RecentTimes>
