@@ -1,2 +1,31 @@
-export const EASY_SETTING_TIMER = [30, 60, 90, 180, 300, 600, 1200, 1800];
+export const EASY_SETTING_TIMER = [
+  {
+    minute: 0,
+    second: 30,
+  },
+  {
+    minute: 1,
+    second: 0,
+  },
+  {
+    minute: 3,
+    second: 0,
+  },
+  {
+    minute: 5,
+    second: 0,
+  },
+  {
+    minute: 10,
+    second: 0,
+  },
+  {
+    minute: 20,
+    second: 0,
+  },
+  {
+    minute: 30,
+    second: 0,
+  },
+];
 export const DEFAULT_TIME = 300;

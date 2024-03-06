@@ -110,6 +110,10 @@ export const TimerSideButtons = styled.div`
   position: absolute;
   top: 0;
   right: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 `;
 
 export const SideButton = styled.div`
@@ -120,9 +124,17 @@ export const SideButton = styled.div`
   border-radius: 20px;
 
   background-color: ${theme.color.primary[500]};
-  color: ${theme.color.white};
+  color: ${({ theme }) => theme.pageBackground};
 
   font-size: 2rem;
 
   cursor: pointer;
+`;
+
+export const EasySettingTimes = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  margin-top: 10px;
 `;
