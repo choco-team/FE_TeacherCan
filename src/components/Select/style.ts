@@ -2,6 +2,8 @@ import { css, styled } from 'styled-components';
 
 import theme from '@Styles/theme';
 
+import { ThemeStyleSet } from '@Types/style';
+
 export const Select = styled.div`
   max-width: 100%;
 
@@ -10,15 +12,36 @@ export const Select = styled.div`
   }
 `;
 
+const LABEL_TEXT_THEME: ThemeStyleSet = {
+  light: css`
+    color: ${theme.color.gray[500]};
+  `,
+
+  dark: css`
+    color: ${theme.color.gray[300]};
+  `,
+};
+
 export const LabelText = styled.p`
   margin-bottom: 4px;
 
   font-size: 1.5rem;
-  color: ${theme.color.gray[500]};
+
+  ${({ theme }) => LABEL_TEXT_THEME[theme.name]}
 `;
 
 type InputLayoutProps = {
   $isFocus: boolean;
+};
+
+const INPUT_LAYOUT_THEME: ThemeStyleSet = {
+  light: css`
+    background-color: ${theme.color.gray[100]};
+  `,
+
+  dark: css`
+    background-color: ${theme.color.gray[700]};
+  `,
 };
 
 export const InputLayout = styled.div<InputLayoutProps>`
@@ -29,10 +52,22 @@ export const InputLayout = styled.div<InputLayoutProps>`
 
   border-radius: 12px;
 
-  background-color: ${theme.color.gray[100]};
-
   cursor: pointer;
+
+  ${({ theme }) => INPUT_LAYOUT_THEME[theme.name]}
 `;
+
+const INPUT_THEME: ThemeStyleSet = {
+  light: css`
+    color: ${theme.color.gray[900]};
+    background-color: ${theme.color.gray[100]};
+  `,
+
+  dark: css`
+    color: ${theme.color.gray[100]};
+    background-color: ${theme.color.gray[700]};
+  `,
+};
 
 export const Input = styled.input`
   outline: none;
@@ -46,11 +81,29 @@ export const Input = styled.input`
   font-size: 1.5rem;
 
   cursor: pointer;
+
+  ${({ theme }) => INPUT_THEME[theme.name]}
 `;
 
 type OptionsProps = {
   top: string;
   width: string;
+};
+
+const OPTIONS_THEME: ThemeStyleSet = {
+  light: css`
+    border: 1px solid ${theme.color.gray[300]};
+    background-color: ${theme.color.white};
+
+    color: ${theme.color.black};
+  `,
+
+  dark: css`
+    border: 1px solid ${theme.color.gray[700]};
+    background-color: ${theme.color.gray[900]};
+
+    color: ${theme.color.white};
+  `,
 };
 
 export const Options = styled.ul<OptionsProps>`
@@ -70,13 +123,23 @@ export const Options = styled.ul<OptionsProps>`
   border: 1px solid ${theme.color.gray[300]};
   border-radius: 8px;
 
-  background-color: ${theme.color.white};
-
   z-index: 15;
+
+  ${({ theme }) => OPTIONS_THEME[theme.name]}
 `;
 
 type OptionProps = {
   $isSelected: boolean;
+};
+
+const OPTION_THEME: ThemeStyleSet = {
+  light: css`
+    background-color: ${theme.color.gray[100]};
+  `,
+
+  dark: css`
+    background-color: ${theme.color.gray[800]};
+  `,
 };
 
 export const Option = styled.li<OptionProps>`
@@ -88,7 +151,7 @@ export const Option = styled.li<OptionProps>`
 
   cursor: pointer;
 
-  ${({ $isSelected }) =>
+  ${({ $isSelected, theme }) =>
     $isSelected
       ? css`
           background-color: ${theme.color.primary[500]};
@@ -96,7 +159,7 @@ export const Option = styled.li<OptionProps>`
         `
       : css`
           &:hover {
-            background-color: ${theme.color.gray[100]};
+            ${OPTION_THEME[theme.name]}
           }
         `}
 `;
