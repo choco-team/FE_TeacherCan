@@ -27,7 +27,7 @@ function Header({ pathname }: { pathname: string }) {
           <S.LogoText>티처캔</S.LogoText>
         </Link>
       </S.Logo>
-      <S.LinkList mainCategoriesCount={mainCategoriesCount}>
+      <S.LinkList $mainCategoriesCount={mainCategoriesCount}>
         {mainCategories.map((category) => (
           <NavigationLink
             key={category.name}

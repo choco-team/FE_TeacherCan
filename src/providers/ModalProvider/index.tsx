@@ -3,9 +3,15 @@ import {
   PropsWithChildren,
   ReactNode,
   createContext,
+  useEffect,
+  useRef,
   useState,
 } from 'react';
-import styled, { css } from 'styled-components';
+import { useLocation } from 'react-router-dom';
+import styled, { css, keyframes } from 'styled-components';
+
+import useKeydown from '@Hooks/useKeydown';
+import usePreventBodyScroll from '@Hooks/usePreventBodyScroll';
 
 import { ThemeStyleSet } from '@Types/style';
 
@@ -46,6 +52,13 @@ type ModalProps = {
 };
 
 const Modal = ({ children, closeModal }: PropsWithChildren<ModalProps>) => {
+  usePreventBodyScroll();
+
+  const isInitialRender = useRef(true);
+  const { pathname } = useLocation();
+
+  useKeydown('Escape', closeModal);
+
   const onClickBackdrop = () => {
     closeModal();
   };
@@ -54,14 +67,19 @@ const Modal = ({ children, closeModal }: PropsWithChildren<ModalProps>) => {
     event.stopPropagation();
   };
 
+  useEffect(() => {
+    if (isInitialRender.current) isInitialRender.current = false;
+    else closeModal();
+  }, [closeModal, pathname]);
+
   return (
-    <ModalLayout onClick={onClickBackdrop}>
+    <ModalBackdrop onClick={onClickBackdrop}>
       <ModalContainer onClick={preventCloseModal}>{children}</ModalContainer>
-    </ModalLayout>
+    </ModalBackdrop>
   );
 };
 
-const MODAL_LAYOUT_THEME: ThemeStyleSet = {
+const MODAL_BACKDROP_THEME: ThemeStyleSet = {
   light: css`
     background-color: rgba(0, 0, 0, 0.65);
   `,
@@ -71,7 +89,7 @@ const MODAL_LAYOUT_THEME: ThemeStyleSet = {
   `,
 };
 
-const ModalLayout = styled.div`
+const ModalBackdrop = styled.div`
   position: fixed;
   min-width: 100vw;
   min-height: 100vh;
@@ -85,8 +103,19 @@ const ModalLayout = styled.div`
   z-index: 5;
 
   ${({ theme }) => css`
-    ${MODAL_LAYOUT_THEME[theme.name]}
+    ${MODAL_BACKDROP_THEME[theme.name]}
   `}
+`;
+
+const modalAnimation = keyframes`
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 `;
 
 const ModalContainer = styled.div`
@@ -97,6 +126,8 @@ const ModalContainer = styled.div`
 
   padding: 20px;
   border-radius: 8px;
+
+  animation: ${modalAnimation} 0.2s ease;
 
   ${({ theme }) => css`
     color: ${theme.text};

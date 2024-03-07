@@ -1,7 +1,8 @@
-import SkeletonSummaryList from '@Components/SummaryList/SkeletonSummaryList';
 import { Suspense } from 'react';
 
 import useUserInfo from '@Hooks/useUserInfo';
+
+import SkeletonSummaryList from '@Components/SummaryList/SkeletonSummaryList';
 
 import * as S from './style';
 import { SideSectionProps } from './type';

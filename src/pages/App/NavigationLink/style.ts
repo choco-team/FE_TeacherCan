@@ -16,12 +16,12 @@ export const Layout = styled.div<LayoutProps>`
     min-width: 100%;
   }
 
-  ${({ theme, category, isSelected }) => css`
-    border-bottom: ${category === 'main' && isSelected
+  ${({ theme, category, $isSelected }) => css`
+    border-bottom: ${category === 'main' && $isSelected
       ? `2px solid ${theme.accentText}`
       : '2px solid transparent'};
 
-    color: ${isSelected ? theme.accentText : theme.grayText};
+    color: ${$isSelected ? theme.accentText : theme.grayText};
 
     ${LAYOUT_CATEGORY[category]};
   `}
@@ -43,9 +43,9 @@ const SideNavigationLink = css<LayoutProps>`
     margin-right: 1rem;
   }
 
-  ${({ isSelected, theme }) => css`
-    font-weight: ${isSelected ? 600 : 400};
-    ${SIDE_NAVIGATION_LINK_THEME(theme.name, isSelected)}
+  ${({ $isSelected, theme }) => css`
+    font-weight: ${$isSelected ? 600 : 400};
+    ${SIDE_NAVIGATION_LINK_THEME(theme.name, $isSelected)}
   `}
 `;
 

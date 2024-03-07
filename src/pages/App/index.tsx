@@ -1,4 +1,3 @@
-import AuthErrorBoundary from '@Components/ErrorBoundary/AuthErrorBoundary';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { useState } from 'react';
 import { PiSunBold, PiMoonStarsBold } from 'react-icons/pi';
@@ -8,6 +7,8 @@ import { ThemeProvider } from 'styled-components';
 import { useMediaInit } from '@Hooks/useMedia';
 
 import route from '@Utils/route';
+
+import AuthErrorBoundary from '@Components/ErrorBoundary/AuthErrorBoundary';
 
 import ModalProvider from '@Providers/ModalProvider';
 import QueryProvider from '@Providers/QueryProvider';
