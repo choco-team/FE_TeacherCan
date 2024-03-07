@@ -85,6 +85,7 @@ function SignUp() {
         state: { email, password },
       });
     },
+    onError: (message) => window.alert(message),
   });
 
   const [inputValue, setInputValue] = useState({

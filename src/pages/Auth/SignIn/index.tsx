@@ -43,6 +43,7 @@ function SignIn() {
       sessionStorage.setItem('token', data.token);
       navigate(route.calculatePath([ROUTE_PATH.main]));
     },
+    onError: (message) => window.alert(message),
   });
 
   const { state } = useLocation() as {
