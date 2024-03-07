@@ -1,21 +1,24 @@
-import { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FaSquare } from 'react-icons/fa';
 import {
   TfiLayoutGrid4Alt,
   TfiLayoutGrid2Alt,
   TfiLayoutGrid3Alt,
 } from 'react-icons/tfi';
+import { useReactToPrint } from 'react-to-print';
 
 import useModal from '@Hooks/useModal';
 
 import Button from '@Components/Button';
 
 import * as S from './style';
+import QrcodePrintPage from '../QrcodePrintPage';
 
 const QrcodePrintOption: React.FC = () => {
   const [selectedSize, setSelectedSize] = useState<string>('');
   const { closeModal } = useModal();
   const [number, setNumber] = useState<number>(0);
+  const componentRef = useRef();
 
   const handleChangeNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(e.target.value, 10);
@@ -37,8 +40,9 @@ const QrcodePrintOption: React.FC = () => {
     closeModal();
   };
 
-  const handlePrintBtn = () => {};
-
+  const handlePrintBtn = useReactToPrint({
+    content: () => componentRef.current,
+  });
   return (
     <S.Container>
       <S.NumberSelectContainer>
@@ -49,10 +53,6 @@ const QrcodePrintOption: React.FC = () => {
             value={number}
             onChange={handleChangeNumber}
           />
-          <div>
-            <S.NumberUpdownButton onClick={increment}>△</S.NumberUpdownButton>
-            <S.NumberUpdownButton onClick={decrement}>▽</S.NumberUpdownButton>
-          </div>
         </S.NumberContainer>
       </S.NumberSelectContainer>
 
@@ -76,6 +76,7 @@ const QrcodePrintOption: React.FC = () => {
           취소
         </Button>
         <Button onClick={handlePrintBtn}>인쇄</Button>
+        <QrcodePrintPage ref={componentRef} />
       </S.SmallButtonWrapper>
     </S.Container>
   );
