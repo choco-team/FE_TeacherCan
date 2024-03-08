@@ -33,12 +33,44 @@ function QrcodeStorage() {
     );
   };
 
-  const handleDownload = () => {
+  function handleDownload() {
     // 다운로드 로직 구현
-  };
+  }
+
+  // const handleViewLarger = () => {
+  //     const qrCodeDataURL = "www.google.com"
+  //     const newWindow = window.open(qrCodeDataURL, 'qrcodePopup');
+  //     if (newWindow) {
+  //       newWindow.document.write(`
+  //         <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  //           <img src="${qrCodeDataURL}" style="max-width: 100%; max-height: 100%;" />
+  //         </div>
+  //       `);
+  //     }
+
+  //   // 크게 보기 로직 구현
+  // };
 
   const handleViewLarger = () => {
-    // 크게 보기 로직 구현
+    const newWindow = window.open('', 'qrcodePopup');
+    if (newWindow) {
+      newWindow.document.write(`
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; height: 100vh;">
+      `);
+
+      selectedQrcodes.forEach((selectedId) => {
+        const qrCodeItem = qrcodeData.find((item) => item.id === selectedId);
+        if (qrCodeItem) {
+          newWindow.document.write(`
+            <div style="margin: 10px;">
+              <img src="${qrCodeItem.url}" style="max-width: 100%; max-height: 100%;" />
+            </div>
+          `);
+        }
+      });
+
+      newWindow.document.write(`</div>`);
+    }
   };
 
   const handleDeleteQrcode = () => {
@@ -48,19 +80,23 @@ function QrcodeStorage() {
   return (
     <S.Container>
       <S.ButtonContainer>
+        <S.SelectAllButton onClick={toggleSelectAll}>
+          {selectedQrcodes.length < qrcodeData.length
+            ? '전체 선택'
+            : '선택 해제'}
+        </S.SelectAllButton>
         <S.Button onClick={handleViewLarger}>크게보기</S.Button>
         <S.Button>인쇄하기</S.Button>
         <S.Button onClick={handleDownload}>다운로드</S.Button>
         <S.Button onClick={handleDeleteQrcode}>삭제하기</S.Button>
       </S.ButtonContainer>
-      <S.SelectAllButton onClick={toggleSelectAll}>
-        {selectedQrcodes.length < qrcodeData.length ? '전체 선택' : '선택 해제'}
-      </S.SelectAllButton>
+
       <S.QrcodeBlockContainer>
         {qrcodeData.map((item) => (
           <QrcodeBlock
+            onClick={() => onToggle(data.id)}
             key={item.id}
-            data={item}
+            data={item.url}
             isSelected={selectedQrcodes.includes(item.id)}
             onToggle={() => toggleSelect(item.id)}
           />
