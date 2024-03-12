@@ -9,7 +9,7 @@ type ToastContextType = {
 const ToastContext = createContext<ToastContextType>({ showToast: () => {} });
 
 export const useToast = () => {
-  const context = useContext(ToastContext).showToast;
+  const context = useContext(ToastContext);
   return context;
 };
 

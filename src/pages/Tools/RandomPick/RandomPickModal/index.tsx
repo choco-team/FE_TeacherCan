@@ -38,7 +38,7 @@ function RandomPickModal({ randomPickSetting }: RandomPickModalProps) {
   });
 
   const { closeModal } = useModal();
-  const showToast = useToast();
+  const { showToast } = useToast();
 
   const handleChangeStudentsListId = (
     event: React.ChangeEvent<HTMLSelectElement>,
