@@ -70,7 +70,7 @@ export const DoubleCheckEmail = styled.div`
   position: absolute;
   right: 16px;
   top: 50%;
-  color: ${theme.color.primary[500]};
+  color: ${theme.color.error[500]};
   line-height: 0;
   transform: translateY(-50%);
 
@@ -90,7 +90,7 @@ export const DoubleCheckIcon = styled.div<{ isCheckedEmail?: boolean }>`
 
   ${({ theme, isCheckedEmail }) => css`
     background-color: ${isCheckedEmail
-      ? theme.color.success[600]
+      ? theme.color.success[500]
       : theme.color.error[500]};
   `}
 `;

@@ -40,10 +40,12 @@ const UserProvider = ({ children }: PropsWithChildren) => {
 
   const [main] = route.getPathnames(pathname);
 
+  const token = sessionStorage.getItem('token');
+
   const { data } = useQuery({
     queryKey: ['user'],
     queryFn: () => getUser().then((response) => response.data.data),
-    enabled: main !== ROUTE_PATH.auth,
+    enabled: main !== ROUTE_PATH.auth && !!token,
     useErrorBoundary: true,
   });
 
@@ -70,6 +72,12 @@ const UserProvider = ({ children }: PropsWithChildren) => {
     }),
     [isLoading, mutate, navigate],
   );
+
+  useEffect(() => {
+    if (token) return;
+
+    navigate(route.calculatePath([ROUTE_PATH.auth, ROUTE_PATH.signIn]));
+  }, [navigate, token]);
 
   useEffect(() => {
     if (data) setUserInfo(data);

@@ -27,7 +27,7 @@ function PagiNationButton({
   };
 
   return (
-    <S.Layout hasPage={hasPage}>
+    <S.Layout $hasPage={hasPage}>
       <BiSolidLeftArrow onClick={() => handleClickPagiNationButton('prev')} />
       <BiSolidRightArrow onClick={() => handleClickPagiNationButton('next')} />
     </S.Layout>

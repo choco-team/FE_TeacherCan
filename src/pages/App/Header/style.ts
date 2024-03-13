@@ -48,9 +48,9 @@ export const LogoText = styled.span`
   letter-spacing: 0.3rem;
 `;
 
-export const LinkList = styled.ul<{ mainCategoriesCount: number }>`
+export const LinkList = styled.ul<{ $mainCategoriesCount: number }>`
   grid-column: 3/-3;
   display: grid;
-  grid-template-columns: repeat(${(props) => props.mainCategoriesCount}, 1fr);
+  grid-template-columns: repeat(${(props) => props.$mainCategoriesCount}, 1fr);
   column-gap: 2rem;
 `;

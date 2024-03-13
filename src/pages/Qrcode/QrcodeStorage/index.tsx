@@ -1,50 +1,107 @@
-import React from 'react';
+import React, { useState } from 'react'; // useState 추가
 
 import * as S from './style';
+import QrcodeBlock from '../QrcodeBlock';
 
-function QrcodeStorage({
-  setIsInStorageMode,
-  isInStorageMode,
-}: {
-  setIsInStorageMode: (value: boolean) => void;
-  isInStorageMode: boolean;
-}) {
-  const handleToStorage = () => {
-    setIsInStorageMode(false);
+function QrcodeStorage() {
+  const qrcodeData = [
+    { id: 'qr1', url: 'https://example.com/qr1' },
+    { id: 'qr2', url: 'https://example.com/qr2' },
+    { id: 'qr3', url: 'https://example.com/qr3' },
+    { id: 'qr4', url: 'https://example.com/qr4' },
+    { id: 'qr5', url: 'https://example.com/qr5' },
+    { id: 'qr6', url: 'https://example.com/qr6' },
+    { id: 'qr7', url: 'https://example.com/qr7' },
+    { id: 'qr8', url: 'https://example.com/qr8' },
+  ];
+
+  const [selectedQrcodes, setSelectedQrcodes] = useState([]);
+
+  const toggleSelectAll = () => {
+    if (selectedQrcodes.length < qrcodeData.length) {
+      setSelectedQrcodes(qrcodeData.map((item) => item.id));
+    } else {
+      setSelectedQrcodes([]);
+    }
   };
-  const handleDownload = () => {
-    const canvas = document.querySelector('canvas');
-    const url = canvas ? canvas.toDataURL('image/png') : '';
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `qrcode.png`;
-    link.click();
+
+  const toggleSelect = (id) => {
+    setSelectedQrcodes((prevSelected) =>
+      prevSelected.includes(id)
+        ? prevSelected.filter((qrId) => qrId !== id)
+        : [...prevSelected, id],
+    );
   };
+
+  function handleDownload() {
+    // 다운로드 로직 구현
+  }
+
+  // const handleViewLarger = () => {
+  //     const qrCodeDataURL = "www.google.com"
+  //     const newWindow = window.open(qrCodeDataURL, 'qrcodePopup');
+  //     if (newWindow) {
+  //       newWindow.document.write(`
+  //         <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+  //           <img src="${qrCodeDataURL}" style="max-width: 100%; max-height: 100%;" />
+  //         </div>
+  //       `);
+  //     }
+
+  //   // 크게 보기 로직 구현
+  // };
 
   const handleViewLarger = () => {
-    const canvas = document.querySelector('canvas');
-    const qrCodeDataURL = canvas ? canvas.toDataURL('image/png') : '';
-    const newWindow = window.open(qrCodeDataURL, 'qrcodePopup');
+    const newWindow = window.open('', 'qrcodePopup');
     if (newWindow) {
       newWindow.document.write(`
-        <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-          <img src="${qrCodeDataURL}" style="max-width: 100%; max-height: 100%;" />
-        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; height: 100vh;">
       `);
+
+      selectedQrcodes.forEach((selectedId) => {
+        const qrCodeItem = qrcodeData.find((item) => item.id === selectedId);
+        if (qrCodeItem) {
+          newWindow.document.write(`
+            <div style="margin: 10px;">
+              <img src="${qrCodeItem.url}" style="max-width: 100%; max-height: 100%;" />
+            </div>
+          `);
+        }
+      });
+
+      newWindow.document.write(`</div>`);
     }
-    // 크게 보기 로직 추가
   };
+
+  const handleDeleteQrcode = () => {
+    // 삭제하기 로직 구현
+  };
+
   return (
     <S.Container>
-      <h1>저장된 큐알코드 보기</h1>
       <S.ButtonContainer>
-        <S.Button onClick={handleToStorage}>새QR코드생성</S.Button>
+        <S.SelectAllButton onClick={toggleSelectAll}>
+          {selectedQrcodes.length < qrcodeData.length
+            ? '전체 선택'
+            : '선택 해제'}
+        </S.SelectAllButton>
         <S.Button onClick={handleViewLarger}>크게보기</S.Button>
         <S.Button>인쇄하기</S.Button>
         <S.Button onClick={handleDownload}>다운로드</S.Button>
-        <S.Button onClick={handleDownload}>삭제하기</S.Button>
+        <S.Button onClick={handleDeleteQrcode}>삭제하기</S.Button>
       </S.ButtonContainer>
-      <h1>큐알블럭</h1>
+
+      <S.QrcodeBlockContainer>
+        {qrcodeData.map((item) => (
+          <QrcodeBlock
+            onClick={() => onToggle(data.id)}
+            key={item.id}
+            data={item.url}
+            isSelected={selectedQrcodes.includes(item.id)}
+            onToggle={() => toggleSelect(item.id)}
+          />
+        ))}
+      </S.QrcodeBlockContainer>
     </S.Container>
   );
 }

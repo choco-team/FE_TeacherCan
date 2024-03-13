@@ -11,7 +11,7 @@ function NavigationLink({
   Icon,
 }: NavigationLink) {
   return (
-    <S.Layout category={category} isSelected={isSelected}>
+    <S.Layout category={category} $isSelected={isSelected}>
       <Link to={path}>
         {Icon && <Icon />}
         <S.LinkName>{name}</S.LinkName>

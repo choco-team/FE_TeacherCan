@@ -60,7 +60,7 @@
             "position": "after"
           },
           {
-            "pattern": "@Components/*",
+            "pattern": "@Components/**/*",
             "group": "internal",
             "position": "after"
           },
