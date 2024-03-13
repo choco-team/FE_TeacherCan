@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
+import QrCodeInput from './QrCodeInput';
+import QrCodeStorage from './QrCodeStorage';
 import * as S from './style';
-import QrcodeInput from '../QrcodeInput';
-import QrcodeStorage from '../QrcodeStorage';
 
-function QrcodePage() {
+function QrCode() {
   const [isInStorageMode, setIsInStorageMode] = useState(false);
   const handleToStorage = () => {
     setIsInStorageMode(!isInStorageMode); // isInStorageMode 상태 토글
@@ -18,15 +18,15 @@ function QrcodePage() {
       </S.StorageButton>
 
       {isInStorageMode ? (
-        <QrcodeStorage
+        <QrCodeStorage
           isInStorageMode={isInStorageMode}
           setIsInStorageMode={setIsInStorageMode}
         />
       ) : (
-        <QrcodeInput />
+        <QrCodeInput />
       )}
     </S.Container>
   );
 }
 
-export default QrcodePage;
+export default QrCode;

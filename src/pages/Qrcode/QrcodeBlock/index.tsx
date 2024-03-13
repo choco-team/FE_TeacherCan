@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import * as S from './style';
 
-const QrcodeBlock = () => {
+const QrCodeBlock = () => {
   const [isSelected, setIsSelected] = useState(false);
 
   const toggleSelection = () => {
@@ -27,4 +27,4 @@ const QrcodeBlock = () => {
   );
 };
 
-export default QrcodeBlock;
+export default QrCodeBlock;

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'; // useState 추가
 
 import * as S from './style';
-import QrcodeBlock from '../QrcodeBlock';
+import QrCodeBlock from '../QrCodeBlock';
 
-function QrcodeStorage() {
-  const qrcodeData = [
+function QrCodeStorage() {
+  const qrCodeData = [
     { id: 'qr1', url: 'https://example.com/qr1' },
     { id: 'qr2', url: 'https://example.com/qr2' },
     { id: 'qr3', url: 'https://example.com/qr3' },
@@ -15,11 +15,11 @@ function QrcodeStorage() {
     { id: 'qr8', url: 'https://example.com/qr8' },
   ];
 
-  const [selectedQrcodes, setSelectedQrcodes] = useState([]);
+  const [selectedQrCodes, setSelectedQrcodes] = useState([]);
 
   const toggleSelectAll = () => {
-    if (selectedQrcodes.length < qrcodeData.length) {
-      setSelectedQrcodes(qrcodeData.map((item) => item.id));
+    if (selectedQrCodes.length < qrCodeData.length) {
+      setSelectedQrcodes(qrCodeData.map((item) => item.id));
     } else {
       setSelectedQrcodes([]);
     }
@@ -58,8 +58,8 @@ function QrcodeStorage() {
         <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; height: 100vh;">
       `);
 
-      selectedQrcodes.forEach((selectedId) => {
-        const qrCodeItem = qrcodeData.find((item) => item.id === selectedId);
+      selectedQrCodes.forEach((selectedId) => {
+        const qrCodeItem = qrCodeData.find((item) => item.id === selectedId);
         if (qrCodeItem) {
           newWindow.document.write(`
             <div style="margin: 10px;">
@@ -73,7 +73,7 @@ function QrcodeStorage() {
     }
   };
 
-  const handleDeleteQrcode = () => {
+  const handleDeleteQrCode = () => {
     // 삭제하기 로직 구현
   };
 
@@ -81,29 +81,29 @@ function QrcodeStorage() {
     <S.Container>
       <S.ButtonContainer>
         <S.SelectAllButton onClick={toggleSelectAll}>
-          {selectedQrcodes.length < qrcodeData.length
+          {selectedQrCodes.length < qrCodeData.length
             ? '전체 선택'
             : '선택 해제'}
         </S.SelectAllButton>
         <S.Button onClick={handleViewLarger}>크게보기</S.Button>
         <S.Button>인쇄하기</S.Button>
         <S.Button onClick={handleDownload}>다운로드</S.Button>
-        <S.Button onClick={handleDeleteQrcode}>삭제하기</S.Button>
+        <S.Button onClick={handleDeleteQrCode}>삭제하기</S.Button>
       </S.ButtonContainer>
 
-      <S.QrcodeBlockContainer>
-        {qrcodeData.map((item) => (
-          <QrcodeBlock
+      <S.QrCodeBlockContainer>
+        {qrCodeData.map((item) => (
+          <QrCodeBlock
             onClick={() => onToggle(data.id)}
             key={item.id}
             data={item.url}
-            isSelected={selectedQrcodes.includes(item.id)}
+            isSelected={selectedQrCodes.includes(item.id)}
             onToggle={() => toggleSelect(item.id)}
           />
         ))}
-      </S.QrcodeBlockContainer>
+      </S.QrCodeBlockContainer>
     </S.Container>
   );
 }
 
-export default QrcodeStorage;
+export default QrCodeStorage;

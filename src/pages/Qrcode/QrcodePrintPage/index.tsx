@@ -1,9 +1,5 @@
-import React, { useState } from 'react';
-
-import * as S from './style';
-
-function QrcodePrintPage() {
-  return;
+function QrCodePrintPage() {
+  return <></>;
 }
 
-export default QrcodePrintPage;
+export default QrCodePrintPage;
