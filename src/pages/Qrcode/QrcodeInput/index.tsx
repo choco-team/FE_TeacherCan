@@ -10,7 +10,7 @@ import QrCodePrintOption from '../QrCodePrintOption';
 function QrCodeInput() {
   const [inputValue, setInputValue] = useState<string>('');
 
-  const { isOpen, openModal, closeModal } = useModal();
+  const { openModal } = useModal();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -82,7 +82,6 @@ function QrCodeInput() {
           </S.Button>
         </S.ButtonContainer>
       )}
-      {isOpen && <QrCodeName />}
     </S.Container>
   );
 }
