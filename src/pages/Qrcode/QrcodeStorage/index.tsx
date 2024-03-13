@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; // useState 추가
+import { useState } from 'react'; // useState 추가
 
 import * as S from './style';
 import QrCodeBlock from '../QrCodeBlock';
@@ -15,18 +15,18 @@ function QrCodeStorage() {
     { id: 'qr8', url: 'https://example.com/qr8' },
   ];
 
-  const [selectedQrCodes, setSelectedQrcodes] = useState([]);
+  const [selectedQrCodes, setSelectedQrCodes] = useState<string[]>([]);
 
   const toggleSelectAll = () => {
     if (selectedQrCodes.length < qrCodeData.length) {
-      setSelectedQrcodes(qrCodeData.map((item) => item.id));
+      setSelectedQrCodes(qrCodeData.map((item) => item.id));
     } else {
-      setSelectedQrcodes([]);
+      setSelectedQrCodes([]);
     }
   };
 
-  const toggleSelect = (id) => {
-    setSelectedQrcodes((prevSelected) =>
+  const toggleSelect = (id: string) => {
+    setSelectedQrCodes((prevSelected) =>
       prevSelected.includes(id)
         ? prevSelected.filter((qrId) => qrId !== id)
         : [...prevSelected, id],
@@ -94,11 +94,10 @@ function QrCodeStorage() {
       <S.QrCodeBlockContainer>
         {qrCodeData.map((item) => (
           <QrCodeBlock
-            onClick={() => onToggle(data.id)}
+            onClick={() => toggleSelect(item.id)}
             key={item.id}
             data={item.url}
             isSelected={selectedQrCodes.includes(item.id)}
-            onToggle={() => toggleSelect(item.id)}
           />
         ))}
       </S.QrCodeBlockContainer>
