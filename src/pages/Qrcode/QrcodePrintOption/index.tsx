@@ -18,7 +18,7 @@ const QrCodePrintOption: React.FC = () => {
   const [selectedSize, setSelectedSize] = useState<string>('');
   const { closeModal } = useModal();
   const [number, setNumber] = useState<number>(0);
-  const componentRef = useRef();
+  const componentRef = useRef<HTMLDivElement>(null);
 
   const handleChangeNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(e.target.value, 10);
@@ -41,7 +41,7 @@ const QrCodePrintOption: React.FC = () => {
   };
 
   const handlePrintBtn = useReactToPrint({
-    content: () => componentRef.current,
+    content: () => componentRef.current!,
   });
   return (
     <S.Container>
