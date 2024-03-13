@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
-export const Storage = styled.div`
-  background-color: ${(props) => (props.isSelected ? '#fee3e2' : 'white')};
+type StorageProps = {
+  $isSelected: boolean;
+};
+
+export const Storage = styled.div<StorageProps>`
+  background-color: ${({ $isSelected }) => ($isSelected ? '#fee3e2' : 'white')};
   cursor: pointer;
   padding: 20px;
   margin: 10px;
