@@ -17,14 +17,7 @@ function QrCode() {
         {isInStorageMode ? '새 QR 코드 생성' : '보관함'}
       </S.StorageButton>
 
-      {isInStorageMode ? (
-        <QrCodeStorage
-          isInStorageMode={isInStorageMode}
-          setIsInStorageMode={setIsInStorageMode}
-        />
-      ) : (
-        <QrCodeInput />
-      )}
+      {isInStorageMode ? <QrCodeStorage /> : <QrCodeInput />}
     </S.Container>
   );
 }
