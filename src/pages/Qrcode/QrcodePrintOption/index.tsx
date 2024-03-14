@@ -12,13 +12,13 @@ import useModal from '@Hooks/useModal';
 import Button from '@Components/Button';
 
 import * as S from './style';
-import QrcodePrintPage from '../QrcodePrintPage';
+import QrCodePrintPage from '../QrCodePrintPage';
 
-const QrcodePrintOption: React.FC = () => {
+const QrCodePrintOption: React.FC = () => {
   const [selectedSize, setSelectedSize] = useState<string>('');
   const { closeModal } = useModal();
   const [number, setNumber] = useState<number>(0);
-  const componentRef = useRef();
+  const componentRef = useRef<HTMLDivElement>(null);
 
   const handleChangeNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = parseInt(e.target.value, 10);
@@ -41,7 +41,7 @@ const QrcodePrintOption: React.FC = () => {
   };
 
   const handlePrintBtn = useReactToPrint({
-    content: () => componentRef.current,
+    content: () => componentRef.current!,
   });
   return (
     <S.Container>
@@ -76,10 +76,10 @@ const QrcodePrintOption: React.FC = () => {
           취소
         </Button>
         <Button onClick={handlePrintBtn}>인쇄</Button>
-        <QrcodePrintPage ref={componentRef} />
+        <QrCodePrintPage ref={componentRef} />
       </S.SmallButtonWrapper>
     </S.Container>
   );
 };
 
-export default QrcodePrintOption;
+export default QrCodePrintOption;

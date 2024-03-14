@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import { ForwardedRef, forwardRef } from 'react';
 
-import * as S from './style';
+const QrCodePrintPage = forwardRef(
+  (props = {}, ref: ForwardedRef<HTMLDivElement>) => {
+    return <div ref={ref}></div>;
+  },
+);
 
-function QrcodePrintPage() {
-  return;
-}
+QrCodePrintPage.displayName = 'QrCodePrintPage';
 
-export default QrcodePrintPage;
+export default QrCodePrintPage;

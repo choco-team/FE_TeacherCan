@@ -8,7 +8,7 @@ import SignIn from '@Pages/Auth/SignIn';
 import SignUp from '@Pages/Auth/SignUp';
 import LunchMenu from '@Pages/ClassManagement/LunchMenu';
 import Home from '@Pages/Home';
-import QrcodePage from '@Pages/Qrcode/QrcodePage';
+import QrCode from '@Pages/QrCode';
 import StudentManagement from '@Pages/StudentManagement';
 import StudentInfo from '@Pages/StudentManagement/StudentInfo';
 import StudentRegister from '@Pages/StudentManagement/StudentRegister';
@@ -104,7 +104,7 @@ const router = createBrowserRouter([
           },
           {
             path: ROUTE_PATH.qrCode,
-            element: <QrcodePage />,
+            element: <QrCode />,
           },
           {
             path: ROUTE_PATH.favorites,

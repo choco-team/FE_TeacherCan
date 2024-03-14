@@ -4,13 +4,13 @@ import React, { useState } from 'react';
 import useModal from '@Hooks/useModal';
 
 import * as S from './style';
-import QrcodeName from '../QrcodeName';
-import QrcodePrintOption from '../QrcodePrintOption';
+import QrCodeName from '../QrCodeName';
+import QrCodePrintOption from '../QrCodePrintOption';
 
-function QrcodeInput() {
+function QrCodeInput() {
   const [inputValue, setInputValue] = useState<string>('');
 
-  const { isOpen, openModal, closeModal } = useModal();
+  const { openModal } = useModal();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
@@ -25,7 +25,7 @@ function QrcodeInput() {
     const url = canvas ? canvas.toDataURL('image/png') : '';
     const link = document.createElement('a');
     link.href = url;
-    link.download = `qrcode.png`;
+    link.download = `qrCode.png`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -34,7 +34,7 @@ function QrcodeInput() {
   const handleViewLarger = () => {
     const canvas = document.querySelector('canvas');
     const qrCodeDataURL = canvas ? canvas.toDataURL('image/png') : '';
-    const newWindow = window.open(qrCodeDataURL, 'qrcodePopup');
+    const newWindow = window.open(qrCodeDataURL, 'qrCodePopup');
     if (newWindow) {
       newWindow.document.write(`
         <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
@@ -72,19 +72,18 @@ function QrcodeInput() {
       {isButtonVisible && (
         <S.ButtonContainer>
           <S.Button onClick={handleViewLarger}>크게보기</S.Button>
-          <S.Button onClick={() => openModal(<QrcodePrintOption />)}>
+          <S.Button onClick={() => openModal(<QrCodePrintOption />)}>
             인쇄하기
           </S.Button>
           <S.Button onClick={handleDownload}>다운로드</S.Button>
           <S.Button onClick={handleGoToLink}>바로가기</S.Button>
-          <S.Button onClick={() => openModal(<QrcodeName />)}>
+          <S.Button onClick={() => openModal(<QrCodeName />)}>
             보관함에 저장
           </S.Button>
         </S.ButtonContainer>
       )}
-      {isOpen && <QrcodeName />}
     </S.Container>
   );
 }
 
-export default QrcodeInput;
+export default QrCodeInput;

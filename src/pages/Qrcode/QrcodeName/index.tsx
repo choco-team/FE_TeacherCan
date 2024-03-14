@@ -3,7 +3,7 @@ import Input from '@Components/Input';
 
 import * as S from './style';
 
-const QrcodeName = () => {
+const QrCodeName = () => {
   return (
     <S.Container>
       <S.NameSpan>저장할 QR코드 이름</S.NameSpan>
@@ -13,4 +13,4 @@ const QrcodeName = () => {
   );
 };
 
-export default QrcodeName;
+export default QrCodeName;
