@@ -7,7 +7,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   /* align-items: center; */
-  margin-top: 30px;
   padding: 20px;
   width: 100%;
 `;
@@ -48,7 +47,7 @@ export const StorageButton = styled.div`
   }
 `;
 
-export const QrcodeBlockContainer = styled.div`
+export const QrCodeBlockContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
@@ -56,5 +55,17 @@ export const QrcodeBlockContainer = styled.div`
 `;
 
 export const SelectAllButton = styled.button`
+  width: fit-content;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #f4f4f5;
+  color: #f48d8d;
+  border: solid;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #e4e4e7;
+  }
   text-align: right;
 `;

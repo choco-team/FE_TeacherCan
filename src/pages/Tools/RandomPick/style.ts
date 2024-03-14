@@ -96,7 +96,7 @@ export const WoodBackgroundButton = styled(Button)<backgroundButtonProps>`
 export const ResultWrapper = styled.div<ResultWrapperProps>`
   color: ${(props) => props.color};
   font-weight: bold;
-  font-size: 3rem;
+  font-size: 3.6rem;
   margin-bottom: 16px;
   text-align: center;
 `;
@@ -127,8 +127,6 @@ export const ButtonWrapper = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   gap: 10px;
-
-  margin: 10px;
 
   button {
     display: flex;

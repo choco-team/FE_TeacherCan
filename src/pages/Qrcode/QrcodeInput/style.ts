@@ -7,7 +7,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   padding: 10px;
   width: 100%;
 `;
@@ -45,7 +45,7 @@ export const Input = styled.input`
 export const ClearButton = styled.div`
   padding: 10px 20px;
   height: 35px;
-  width: 100px;
+  width: fit-content;
   text-align: center;
   font-size: 14px;
   background-color: #f48d8d;

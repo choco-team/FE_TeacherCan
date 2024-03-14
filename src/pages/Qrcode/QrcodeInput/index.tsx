@@ -1,19 +1,21 @@
 import QRCode from 'qrcode.react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import useModal from '@Hooks/useModal';
 
 import * as S from './style';
-import QrcodeName from '../QrcodeName';
+import QrCodeName from '../QrCodeName';
+import QrCodePrintOption from '../QrCodePrintOption';
 
-function QrcodeInput() {
-  const [inputValue, setInputValue] = useState('');
+function QrCodeInput() {
+  const [inputValue, setInputValue] = useState<string>('');
 
-  const { isOpen, openModal, closeModal } = useModal();
+  const { openModal } = useModal();
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
+
   const handleClearClick = () => {
     setInputValue('');
   };
@@ -23,14 +25,16 @@ function QrcodeInput() {
     const url = canvas ? canvas.toDataURL('image/png') : '';
     const link = document.createElement('a');
     link.href = url;
-    link.download = `qrcode.png`;
+    link.download = `qrCode.png`;
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   };
 
   const handleViewLarger = () => {
     const canvas = document.querySelector('canvas');
     const qrCodeDataURL = canvas ? canvas.toDataURL('image/png') : '';
-    const newWindow = window.open(qrCodeDataURL, 'qrcodePopup');
+    const newWindow = window.open(qrCodeDataURL, 'qrCodePopup');
     if (newWindow) {
       newWindow.document.write(`
         <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
@@ -40,11 +44,20 @@ function QrcodeInput() {
     }
   };
 
+  const handleGoToLink = () => {
+    if (inputValue) {
+      const url =
+        inputValue.startsWith('http://') || inputValue.startsWith('https://')
+          ? inputValue
+          : `https://${inputValue}`;
+      window.open(url, '_blank');
+    }
+  };
+
   const isButtonVisible = inputValue.trim() !== '';
 
   return (
     <S.Container>
-      {/* <h1>URL 주소를 입력해주세요.</h1> */}
       <S.InputContainer>
         <S.Input
           type="url"
@@ -52,23 +65,25 @@ function QrcodeInput() {
           value={inputValue}
           onChange={handleInputChange}
         />
-        <S.ClearButton onClick={handleClearClick}>새QR생성</S.ClearButton>
+        <S.ClearButton onClick={handleClearClick}>새 QR 생성</S.ClearButton>
       </S.InputContainer>
 
       {isButtonVisible && <QRCode value={inputValue} size={400} />}
       {isButtonVisible && (
         <S.ButtonContainer>
           <S.Button onClick={handleViewLarger}>크게보기</S.Button>
-          <S.Button>인쇄하기</S.Button>
+          <S.Button onClick={() => openModal(<QrCodePrintOption />)}>
+            인쇄하기
+          </S.Button>
           <S.Button onClick={handleDownload}>다운로드</S.Button>
-          <S.Button onClick={() => openModal(<QrcodeName />)}>
+          <S.Button onClick={handleGoToLink}>바로가기</S.Button>
+          <S.Button onClick={() => openModal(<QrCodeName />)}>
             보관함에 저장
           </S.Button>
         </S.ButtonContainer>
       )}
-      {isOpen && <QrcodeName />}
     </S.Container>
   );
 }
 
-export default QrcodeInput;
+export default QrCodeInput;
