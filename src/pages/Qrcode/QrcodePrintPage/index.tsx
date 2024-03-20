@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import * as S from './style';
 
@@ -6,7 +6,7 @@ import * as S from './style';
 const QrcodePrintPage = React.forwardRef<
   HTMLDivElement,
   { selectedSize: string }
->((props, ref) => {
+>(({ selectedSize }, ref) => {
   const qrCodes = [
     { id: 1, content: '  1' },
     { id: 2, content: '  2' },
@@ -49,14 +49,41 @@ const QrcodePrintPage = React.forwardRef<
     { id: 9, content: '  9' },
     { id: 10, content: '  10' },
   ];
+
+  const itemsPerRowMap = {
+    '5*8': 5,
+    '4*4': 4,
+    '2*2': 2,
+    '1*1': 1,
+  };
+  const rowsMap = {
+    '5*8': 8,
+    '4*4': 4,
+    '2*2': 2,
+    '1*1': 1,
+  };
+
+  const itemsPerRow = itemsPerRowMap[selectedSize];
+  const maxRows = rowsMap[selectedSize];
+  const itemsPerPage = itemsPerRow * maxRows;
+
+  const groupedQrCodes = [];
+  for (let i = 0; i < qrCodes.length; i += itemsPerPage) {
+    groupedQrCodes.push(qrCodes.slice(i, i + itemsPerPage));
+  }
+
   return (
-    <S.GridContainer ref={ref} selectedSize={props.selectedSize}>
-      {qrCodes.map((qrCode) => (
-        <S.GridItem key={qrCode.id}>
-          <div>{qrCode.content}</div>
-        </S.GridItem>
+    <div ref={ref}>
+      {groupedQrCodes.map((group, index) => (
+        <S.GridContainer key={index} selectedSize={selectedSize}>
+          {group.map((qrCode) => (
+            <S.GridItem key={qrCode.id} selectedSize={selectedSize}>
+              <div>{qrCode.content}</div>
+            </S.GridItem>
+          ))}
+        </S.GridContainer>
       ))}
-    </S.GridContainer>
+    </div>
   );
 });
 

@@ -3,10 +3,17 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   padding-bottom: 10px;
   width: 100%;
   gap: 20px;
+`;
+
+export const Preview = styled.div`
+  margin: 0;
+  transform: scale(0.3);
+  transform-origin: top center;
+  overflow: hidden;
+  display: block;
 `;
 
 export const OptionContainer = styled.div`

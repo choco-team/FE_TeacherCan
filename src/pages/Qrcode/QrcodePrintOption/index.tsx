@@ -65,7 +65,9 @@ const QrcodePrintOption: React.FC = () => {
       </S.OptionContainer>
 
       <Container>
-        <QrcodePrintPage ref={componentRef} selectedSize={selectedSize} />
+        <S.Preview>
+          <QrcodePrintPage ref={componentRef} selectedSize={selectedSize} />
+        </S.Preview>
       </Container>
       <S.SmallButtonWrapper>
         <Button concept="text" variant="gray" onClick={handleCancelBtn}>
